@@ -1,0 +1,232 @@
+@use "variables" as *;
+
+.lesson-container { padding-top: 3rem; }
+
+.lesson-header {
+    margin-bottom: 3rem;
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        font-family: $font-code;
+        font-size: 0.85rem;
+        color: $color-text-muted;
+
+        a {
+            color: $accent-primary-light;
+            transition: color $transition;
+            &:hover { color: $accent-cyan; }
+        }
+
+        .separator { color: $color-border; }
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+
+        span { color: $accent-cyan; }
+    }
+
+    .lesson-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 1.25rem;
+        background: $color-surface;
+        border: 1px solid $color-border;
+        border-radius: $radius;
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+
+            .meta-label {
+                font-family: $font-code;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                color: $color-text-muted;
+            }
+
+            .meta-value {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: $color-text;
+            }
+        }
+    }
+}
+
+/* Lesson Content Typography & Blocks */
+.lesson-content {
+    h2 {
+        font-size: 1.6rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid $color-border;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .step-num {
+            color: $accent-cyan;
+            font-family: $font-code;
+        }
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.75rem;
+        margin-bottom: 0.75rem;
+        color: $accent-primary-light;
+    }
+
+    p {
+        color: $color-text-muted;
+        margin-bottom: 1.25rem;
+        line-height: 1.7;
+
+        strong { color: $color-text; }
+        code {
+            background: rgba(255, 255, 255, 0.08);
+            color: $accent-green;
+            padding: 0.15rem 0.4rem;
+            border-radius: $radius-small;
+            font-size: 0.88em;
+        }
+    }
+
+    ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        color: $color-text-muted;
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+
+            strong { color: $color-text; }
+            code {
+                background: rgba(255, 255, 255, 0.08);
+                color: $accent-green;
+                padding: 0.15rem 0.4rem;
+                border-radius: $radius-small;
+                font-size: 0.88em;
+            }
+        }
+    }
+
+    .code-window {
+        margin-block: 1.5rem;
+    }
+}
+
+/* Responsive Table Styles */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-block: 1.5rem;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: $color-surface;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 0.95rem;
+
+        th, td {
+            padding: 0.85rem 1.15rem;
+            border-bottom: 1px solid $color-border;
+            vertical-align: top;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            color: $accent-cyan;
+            font-family: $font-code;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td {
+            color: $color-text-muted;
+            strong { color: $color-text; }
+        }
+    }
+}
+
+/* Callout & Tip Cards */
+.callout {
+    padding: 1.25rem 1.5rem;
+    margin-block: 1.5rem;
+    border-radius: $radius;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-left: 4px solid $accent-primary;
+
+    &.callout-gold {
+        border-left-color: $accent-gold;
+        background: rgba($accent-gold, 0.05);
+    }
+
+    &.callout-green {
+        border-left-color: $accent-green;
+        background: rgba($accent-green, 0.05);
+    }
+
+    .callout-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: $color-text;
+
+        .icon { font-family: $font-code; }
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+blockquote {
+    margin-block: 1.25rem;
+    padding: 0.85rem 1.25rem;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-left: 4px solid $accent-cyan;
+    border-radius: $radius-small;
+
+    pre {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        overflow-x: auto;
+        font-family: $font-code;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: $color-text;
+
+        code {
+            font-family: inherit;
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+    }
+}

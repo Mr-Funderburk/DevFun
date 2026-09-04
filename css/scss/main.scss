@@ -1,0 +1,49 @@
+@use 'variables' as *;
+@use 'reset';
+@use 'header';
+@use 'hero';
+@use 'courses';
+@use 'course';
+@use 'lesson';
+@use 'about';
+@use 'footer';
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        transform $transition,
+        background $transition,
+        border-color $transition,
+        color $transition;
+
+    &:hover { transform: translateY(-2px); }
+    &:active { transform: translateY(0); }
+}
+
+.btn-primary {
+    background: $accent-primary;
+    color: $color-text;
+
+    &:hover { background: $accent-primary-light; }
+}
+
+.btn-secondary {
+    background: $color-surface;
+    border-color: $color-border;
+    color: $color-text;
+
+    &:hover {
+        background: $color-surface-hover;
+        border-color: $accent-primary;
+    }
+}

@@ -1,0 +1,19 @@
+# Jekyll & Sass Build Artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Bundler & Ruby
+.bundle/
+vendor/
+
+# OS-Generated Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor Settings (Optional)
+.vscode/
+.idea/
+*.swp

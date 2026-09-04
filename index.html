@@ -1,0 +1,441 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DevFun - Computer Science and Development Courses by Stephen 'Mr. Fun' Funderburk">
+
+    <title>DevFun | Learn. Build. Create.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/code-window.css">
+
+    <script src="js/prism.min.js" defer></script>
+    <script src="js/prism-gml.js" defer></script>
+    <script src="js/code-window.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="eyebrow">
+                        <span>&gt;_</span> Computer Science &amp; Development
+                    </p>
+
+                    <h1>
+                        Learn to <span>Build.</span><br>
+                        Learn to <span>Create.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        DevFun is your home for computer science,
+                        programming, web development, cybersecurity,
+                        and game development.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#courses" class="btn btn-primary">
+                            Explore Courses
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-code">
+                    <div class="code-window">
+                        <div class="code-window-header">
+                            <div class="code-window-left">
+                                <div class="window-dots dots-mac">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="window-filename">welcome.java</span>
+                            </div>
+
+                            <div class="code-window-right">
+                                <span class="code-lang-badge">Java</span>
+                                <!--button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                    </svg>
+                                    <span>Copy code</span>
+                                </button-->
+                            </div>
+                        </div>
+
+                        <div class="code-window-body">
+
+<pre><code class="language-java">
+public class DevFun {
+    public static void main(String[] args) {
+
+        String message = 
+            "Learn. Build. Create.";
+
+        System.out.println(message);
+
+    }
+}
+</code></pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label"><span>//</span> Courses</p>
+                        <h2>What are we building today?</h2>
+                    </div>
+                    <p class="section-description">
+                        Explore lessons, projects, resources,
+                        code examples, and more.
+                    </p>
+                </div>
+
+                <!-- APs -->
+                <div class="course-group">
+                    <h3>
+                        <span class="group-icon">AP</span>
+                        Advanced Placement
+                    </h3>
+
+                    <div class="course-grid course-grid-three">
+                        <!-- AP CSP -->
+                        <a href="courses/ap-csp/index.html" class="course-card">
+                            <div class="card-top">
+                                <span class="course-tag">CSP</span>
+                                <span class="course-arrow">→</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>AP Computer Science Principles</h4>
+                                <p>
+                                    Explore programming, algorithms,
+                                    data, the internet, and the impact
+                                    of computing.
+                                </p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Python</span>
+                                <span>Computer Science</span>
+                            </div>
+                        </a>
+
+                        <!-- AP CSA -->
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-tag">CSA</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>AP Computer Science A</h4>
+                                <p>
+                                    Learn Java, object-oriented
+                                    programming, algorithms, and
+                                    computational problem solving.
+                                </p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Java</span>
+                                <span>OOP</span>
+                            </div>
+                        </div>
+
+                        <!-- AP Cybersecurity -->
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-tag">Cyber</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>AP Cybersecurity</h4>
+                                <p>
+                                    Explore networks, digital
+                                    security, threats, vulnerabilities,
+                                    and cyber defense.
+                                </p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Security</span>
+                                <span>Networks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Dev -->
+                <div class="course-group">
+
+                    <h3>
+                        <span class="group-icon">▣</span>
+                        Game Development
+                    </h3>
+
+                    <div class="course-grid course-grid-four">
+
+                        <a href="courses/game-1/index.html" class="course-card">
+                            <div class="card-top">
+                                <span class="course-number">I</span>
+                                <span class="course-arrow">→</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Game Development I</h4>
+                                <p>Game design, mechanics, and the foundations of game development.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Design</span>
+                                <span>GameMaker</span>
+                            </div>
+                        </a>
+
+
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-number">II</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Game Development II</h4>
+                                <p>Advanced programming, systems, and game mechanics.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>GML</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+
+
+                        <div class="course-card card-disabled" aria-disabled="true">
+                            <div class="card-top">
+                                <span class="course-number">III</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Game Development III</h4>
+                                <p>Explore 3D engines, environments, and advanced game development.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Godot</span>
+                                <span>Unity</span>
+                                <span>Unreal Engine</span>
+                            </div>
+                        </div>
+
+
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-number">IV</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Game Development IV</h4>
+                                <p>Advanced projects, 3D engines, and professional workflows.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Unreal</span>
+                                <span>3D</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Web Dev -->
+                <div class="course-group">
+
+                    <h3>
+                        <span class="group-icon">{ }</span>
+                        Web Development
+                    </h3>
+
+                    <div class="course-grid course-grid-four">
+
+                        <a href="courses/web-1/index.html" class="course-card">
+                            <div class="card-top">
+                                <span class="course-number">I</span>
+                                <span class="course-arrow">→</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Web Development I</h4>
+                                <p>HTML, CSS, and the foundations of the web.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                            </div>
+                        </a>
+
+
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-number">II</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Web Development II</h4>
+                                <p>Interactive websites and front-end development.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+
+
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-number">III</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Web Development III</h4>
+                                <p>Advanced front-end tools, workflows, and development.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>PHP</span>
+                                <span>Database</span>
+                            </div>
+                        </div>
+
+
+                        <div class="course-card card-disabled">
+                            <div class="card-top">
+                                <span class="course-number">IV</span>
+                                <span class="badge-coming-soon">Coming Soon!</span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Web Development IV</h4>
+                                <p>Advanced web projects and professional development.</p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Foundational -->
+                <div class="course-group">
+
+                    <h3>
+                        <span class="group-icon">&lt;/&gt;</span>
+                        Foundational Courses
+                    </h3>
+
+                    <div class="course-grid">
+
+                        <a
+                            href="courses/intro-to-coding/index.html"
+                            class="course-card intro-coding"
+                        >
+
+                            <div class="card-top">
+                                <span class="course-number">Foundation</span>
+                                <span class="course-arrow">→</span>
+                            </div>
+
+                            <div class="card-content">
+
+                                <h4>
+                                    Introduction to Coding
+                                </h4>
+
+                                <p>
+                                    Start your programming journey
+                                    with Python and computational
+                                    problem solving.
+                                </p>
+
+                            </div>
+
+                            <div class="course-footer">
+                                <span>Python</span>
+                                <span>Beginner</span>
+                            </div>
+
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container about-content">
+                <div class="about-icon">
+                    <span>&gt;_</span>
+                </div>
+
+                <div>
+                    <p class="section-label"><span>//</span> About DevFun</p>
+
+                    <h2>
+                        Programming is complex.<br>
+                        Learning it shouldn't be.
+                    </h2>
+
+                    <p>DevFun is a collection of computer science courses designed to help students learn by doing: writing code, solving problems, and building real projects. Created and curated by Stephen "Mr. Fun" Funderburk, all original course materials are shared under the MIT License.</p>
+                    
+                    <p class="about-disclaimer"><strong>Note on Content & Attribution:</strong> Lessons incorporate ideas, examples, and adapted materials gathered over years of teaching. If you hold the copyright to any content featured here and believe it has been used without proper attribution or against your terms, please reach out so it can be cited or updated immediately.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-code">&lt;/&gt;</span>
+                    Dev<strong>Fun</strong>
+                </a>
+            </div>
+
+            <p>Learn. Build. Create.</p>
+
+            <p class="copyright">&copy; <span id="copyrightYear"></span> DevFun</p>
+        </div>
+    </footer>
+</body>
+</html>

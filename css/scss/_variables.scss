@@ -1,0 +1,67 @@
+$color-background: #0b1020;
+$color-background-light: #11182b;
+$color-surface: #151d32;
+$color-surface-hover: #1b2640;
+
+$color-border: #28324a;
+
+$accent-primary: #6d7cff;
+$accent-primary-light: #95a0ff;
+$accent-cyan: #38bdf8;
+$accent-green: #7ee787;
+$accent-purple: #c084fc;
+$accent-gold: #fbbf24;
+
+$color-text: #f4f7fb;
+$color-text-muted: #aab4c5;
+
+$font-code: Consolas, "Liberation Mono", "Courier New", monospace;
+$font-sans: "Inter", Helvetica, Verdana, Arial, sans-serif;
+
+$max-width: 1200px;
+
+$header-height: 70px;
+
+$section-padding: 6rem;
+$section-padding-mobile: 4rem;
+
+$radius-small: 5px;
+$radius: 14px;
+$radius-large: 20px;
+
+$breakpoint-large: 1000px;
+$breakpoint-medium: 750px;
+$breakpoint-small: 450px;
+
+$shadow-card: 0 20px 50px rgba(0, 0, 0, 0.20);
+$shadow-large: 0 30px 80px rgba(0, 0, 0, 0.30);
+
+$transition-fast: 0.15s ease;
+$transition: 0.2s ease;
+$transition-slow: 0.3s ease;
+
+
+// CSS vars for use in JS
+:root {
+    --background: #{$color-background};
+    --background-light: #{$color-background-light};
+
+    --surface: #{$color-surface};
+    --surface-hover: #{$color-surface-hover};
+
+    --border: #{$color-border};
+
+    --text: #{$color-text};
+    --text-muted: #{$color-text-muted};
+
+    --accent-primary: #{$accent-primary};
+    --accent-primary-light: #{$accent-primary-light};
+
+    --green: #{$accent-green};
+    --yellow: #{$accent-gold};
+    --purple: #{$accent-purple};
+    --blue: #{$accent-cyan};
+
+    --max-width: #{$max-width};
+    --radius: #{$radius};
+}

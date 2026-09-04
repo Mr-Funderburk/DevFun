@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 01: Demystifying the Web - Student reference notes covering web basics, file organization, HTML boilerplate, and core markup tags.">
+    <title>Lesson 01: Demystifying the Web | Web Development I</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/code-window.css">
+
+    <script src="../../js/prism.min.js" defer></script>
+    <script src="../../js/prism-gml.js" defer></script>
+    <script src="../../js/code-window.js" defer></script>
+    <script src="../../js/main.js" defer></script>
+</head>
+<body><!-- add id="noCopy" to disallow copy on this lesson -->
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="logo-code">&lt;/&gt;</span>
+                    Dev<strong>Fun</strong>
+                </a>
+            </div>
+
+            <input type="checkbox" id="menuToggle">
+            <label for="menuToggle" class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="links">
+                <div class="links-inner">
+                    <div><a href="../../index.html">Home</a></div>
+
+                    <div class="link-courses">
+                        <a href="../../index.html#courses">Courses</a>
+
+                        <div class="links-mega">
+                            <div>
+                                <span class="course-group">Advanced Placement</span>
+                                <a href="../../courses/ap-csp/index.html">AP Computer Science Principles</a>
+                                <a class="link-disabled">AP Computer Science A</a>
+                                <a class="link-disabled">AP Cybersecurity</a>
+                            </div>
+                            <div>
+                                <span class="course-group">Game Development</span>
+                                <a href="../../courses/game-1/index.html">Level I</a>
+                                <a class="link-disabled">Level II</a>
+                                <a class="link-disabled">Level III</a>
+                                <a class="link-disabled">Level IV</a>
+                            </div>
+                            <div>
+                                <span class="course-group">Web Development</span>
+                                <a href="../../courses/web-1/index.html">Level I</a>
+                                <a class="link-disabled">Level II</a>
+                                <a class="link-disabled">Level III</a>
+                                <a class="link-disabled">Level IV</a>
+                            </div>
+                            <div>
+                                <span class="course-group">Foundations</span>
+                                <a href="../../courses/intro-to-coding/index.html">Introduction to Coding</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div><a href="../../resources.html">Resources</a></div>
+
+                    <div><a href="../../index.html#about">About</a></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="lesson-container">
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <nav class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="../../index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Development I</a>
+                    <span class="separator">/</span>
+                    <span>Lesson 01</span>
+                </nav>
+
+                <h1>Lesson 01: <span>Demystifying the Web</span></h1>
+
+                <div class="lesson-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Topic</span>
+                        <span class="meta-value">HTML5 Fundamentals &amp; Web Mechanics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Core Concept</span>
+                        <span class="meta-value">Web pages are plain text documents parsed by browsers</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="lesson-content">
+
+                <!-- Section 1 -->
+                <h2><span class="step-num">01.</span> How the Web Works</h2>
+                <p>Websites are not mysterious compiled programs. They are simply plain text files containing code instructions that your web browser (Chrome, Firefox, Safari) reads and renders visually on screen.</p>
+                
+                <div class="callout callout-green">
+                    <div class="callout-title">
+                        <span class="icon">&gt;_</span> Developer Secret: Inspect Element
+                    </div>
+                    <p>You can peek under the hood of any site on the internet. Right-click anywhere on a webpage, select <strong>Inspect</strong>, and you will open <strong>DevTools</strong>. You can temporarily edit text or HTML live in your browser to test ideas without changing the actual website!</p>
+                </div>
+
+                <!-- Section 2 -->
+                <h2><span class="step-num">02.</span> File System &amp; Workspace Rules</h2>
+                <p>Before writing code, configure your project workspace correctly. Broken images and missing pages in web development are almost always caused by improper file naming or folder paths.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <span class="icon">!</span> The Golden Rules of Web File Management
+                    </div>
+                    <ul>
+                        <li><strong>Use Lowercase:</strong> Always write folder and file names in lowercase (e.g., <code>index.html</code>).</li>
+                        <li><strong>No Spaces:</strong> Never use spaces in file names. Use hyphens instead (e.g., <code>my-first-page.html</code>).</li>
+                        <li><strong>Standard Entry Point:</strong> The main homepage of any web project folder must be named <code>index.html</code>.</li>
+                        <li><strong>Keep It Organized:</strong> Store all project files inside a dedicated course folder structure:
+                            <br><code>web-dev-1 / lesson-01 / index.html</code>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <h2><span class="step-num">03.</span> The HTML5 Boilerplate</h2>
+                <p>Every HTML page requires a standard set of setup tags called a <strong>boilerplate</strong>. This tells the browser which HTML standard you are using and defines where invisible metadata ends and visible content begins.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">index.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;I am building a website from scratch!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                                <td>Informs the browser that this document uses modern HTML5.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;html&gt;</code></td>
+                                <td>The root container wrapping all elements on the page.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;head&gt;</code></td>
+                                <td>Holds invisible page data (tab title, styles, metadata).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;body&gt;</code></td>
+                                <td>Holds all visible content displayed inside the main browser window.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 4 -->
+                <h2><span class="step-num">04.</span> HTML Tags &amp; Text Reference</h2>
+                <p>HTML elements use <strong>tags</strong> to label content. Most elements use matching opening and closing tags acting like bookends around content.</p>
+
+                <h3>Anatomy of a Tag</h3>
+                <blockquote>
+                    <pre>&lt;p&gt;This is paragraph content.&lt;/p&gt;
+ ^ Opening Tag                 ^ Closing Tag (Notice the forward slash)</pre>
+                </blockquote>
+
+                <h3>Headings (Hierarchy)</h3>
+                <p>Headings establish visual structure and help search engines understand your content structure. Use <code>&lt;h1&gt;</code> for the primary title, down to <code>&lt;h6&gt;</code> for sub-topics.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">headings.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+<pre><code class="language-html">&lt;h1&gt;Main Page Title&lt;/h1&gt; &lt;!-- Rule: Use only ONE &lt;h1&gt; per page! --&gt;
+&lt;h2&gt;Section Title&lt;/h2&gt;
+&lt;h3&gt;Sub-section Heading&lt;/h3&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h3>Paragraphs &amp; Inline Formatting</h3>
+                <p>Use <code>&lt;p&gt;</code> tags for main text blocks. To emphasize specific words inside a paragraph, wrap them in inline tags like <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">formatting.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+<pre><code class="language-html">&lt;p&gt;I am &lt;strong&gt;bolding important words&lt;/strong&gt; and &lt;em&gt;italicizing phrases&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt; &lt;!-- &lt;hr&gt; creates a horizontal line divider (Self-closing: no closing tag needed) --&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <h2><span class="step-num">05.</span> Try It Yourself: Challenges</h2>
+
+                <h3>Challenge 1: Personal Mini-Bio</h3>
+                <p>Open your <code>index.html</code> file in VS Code and expand your page using the concepts covered above:</p>
+                <ul>
+                    <li>Add an <code>&lt;h2&gt;</code> subtitle below your main heading (e.g., <em>About Me</em> or <em>My Favorite Technologies</em>).</li>
+                    <li>Write a two-sentence paragraph describing a project or game you want to build.</li>
+                    <li>Use <code>&lt;strong&gt;</code> to bold key terms and <code>&lt;em&gt;</code> to italicize a title.</li>
+                    <li>Add an <code>&lt;hr&gt;</code> divider line between sections.</li>
+                </ul>
+
+                <h3>Challenge 2: Debugging Experiments</h3>
+                <p>Web browsers don't display giant red error screens when HTML breaks—they make an educated guess about what you meant. Test these intentional bugs to see how browsers behave:</p>
+                <ul>
+                    <li><strong>Missing End Tag:</strong> Delete a closing tag (e.g., <code>&lt;/h1&gt;</code>). Save, refresh your browser, and notice how downstream text inherits the heading style.</li>
+                    <li><strong>Typo in Tag Name:</strong> Rename a tag to an invalid term (e.g., <code>&lt;headder&gt;</code>). Observe how the browser treats unknown tags as unstyled plain inline text.</li>
+                    <li><strong>Improper Nesting:</strong> Swap closing tags incorrectly (e.g., <code>&lt;p&gt;&lt;em&gt;Text&lt;/p&gt;&lt;/em&gt;</code>). Notice how browser DevTools attempts to fix the tree automatically.</li>
+                </ul>
+
+                <div class="callout callout-gold">
+                    <div class="callout-title">
+                        <span class="icon">★</span> Workflow Checklist
+                    </div>
+                    <ul>
+                        <li><strong>Proper Nesting:</strong> Close elements in reverse order of opening (e.g., <code>&lt;p&gt;&lt;strong&gt;Text&lt;/strong&gt;&lt;/p&gt;</code>).</li>
+                        <li><strong>Save &amp; Refresh:</strong> Save edits in your code editor (<code>Ctrl+S</code> / <code>Cmd+S</code>), then reload the page in your browser (<code>F5</code> / <code>Cmd+R</code>).</li>
+                    </ul>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="logo-code">&lt;/&gt;</span>
+                    Dev<strong>Fun</strong>
+                </a>
+            </div>
+            <p>Learn. Build. Create.</p>
+            <p class="copyright">&copy; <span id="copyrightYear"></span> DevFun</p>
+        </div>
+    </footer>
+</body>
+</html>

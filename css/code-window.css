@@ -1,0 +1,326 @@
+/* ==========================================================================
+   DevFun - Code Window Component Stylesheet
+   Matches the sleek dark code window reference with:
+   - Line numbers
+   - Alternating background rows per line
+   - Prism.js syntax highlighting
+   - Copy to clipboard button
+   Supports: Python, Java, JavaScript, HTML, CSS, GML (GameMaker)
+   ========================================================================== */
+
+:root {
+  /* Code Window Base Palette */
+  --cw-bg: #0d1322;              /* Deep Navy/Black Background */
+  --cw-header-bg: #090e1a;       /* Window Title Bar Background */
+  --cw-border: rgba(255, 255, 255, 0.08); /* Window Border */
+  --cw-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  /* Alternating Line Row Colors */
+  --cw-line-even: rgba(255, 255, 255, 0.025); /* Subtle alternate stripe */
+  --cw-line-hover: rgba(255, 255, 255, 0.05); /* Hover line highlight */
+  --cw-gutter-border: rgba(255, 255, 255, 0.06); /* Vertical divider */
+  --cw-gutter-color: #4a5770;                 /* Line numbers text */
+  
+  /* Text & Syntax Palette */
+  --cw-text: #e6edf3;            /* Default text / variables */
+  --cw-muted: #8b9cb3;           /* Filename & comments */
+  --cw-keyword: #ba86f8;         /* Keywords (public, class, static, void, def, var) */
+  --cw-class: #ffcb6b;           /* Class Names & Definitions */
+  --cw-type: #79c0ff;            /* Types (String, int, boolean) */
+  --cw-method: #7aa2f7;          /* Method/Function names */
+  --cw-string: #5af78e;          /* Strings (bright mint green) */
+  --cw-number: #ff9e64;          /* Numbers & Booleans */
+  --cw-punctuation: #89ddff;     /* Braces, parens, semicolons */
+  --cw-operator: #89ddff;        /* Operators (=, +, -, *) */
+
+  /* Dot Colors */
+  --dot-gray: #3a4459;
+  --dot-red: #ff5f56;
+  --dot-yellow: #ffbd2e;
+  --dot-green: #27c93f;
+
+  /* Font Families */
+  --font-mono: Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: "Inter", Helvetica, Verdana, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Code Window Component
+   ========================================================================== */
+.code-window {
+  background: var(--cw-bg);
+  border: 1px solid var(--cw-border);
+  border-radius: 14px;
+  box-shadow: var(--cw-shadow);
+  overflow: hidden;
+  margin: 1.5rem 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.code-window:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Code Window Header Bar */
+.code-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--cw-header-bg);
+  border-bottom: 1px solid var(--cw-border);
+  user-select: none;
+}
+
+.code-window-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Window Control Dots */
+.window-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.window-dots .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+/* Style A: Gray Muted Dots */
+.window-dots.dots-gray .dot {
+  background-color: var(--dot-gray);
+}
+
+/* Style B: macOS Colored Dots */
+.window-dots.dots-mac .dot.dot-red {
+  background-color: var(--dot-red);
+}
+.window-dots.dots-mac .dot.dot-yellow {
+  background-color: var(--dot-yellow);
+}
+.window-dots.dots-mac .dot.dot-green {
+  background-color: var(--dot-green);
+}
+
+.code-window:hover .window-dots .dot {
+  opacity: 0.9;
+}
+
+/* Window Filename Title */
+.window-filename {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--cw-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Code Window Right Side Controls */
+.code-window-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.code-lang-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #79c0ff;
+  background: rgba(121, 192, 255, 0.1);
+  border: 1px solid rgba(121, 192, 255, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Copy Code Button */
+.copy-code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c9d1d9;
+  padding: 0.35rem 0.75rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.copy-code-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.copy-code-btn:active {
+  transform: scale(0.96);
+}
+
+.copy-code-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.copy-code-btn.copied {
+  background: rgba(39, 201, 63, 0.15);
+  border-color: rgba(39, 201, 63, 0.4);
+  color: #5af78e;
+}
+
+/* ==========================================================================
+   Code Window Content Body with Line Numbers & Alternating Rows
+   ========================================================================== */
+.code-window-body {
+  padding: 1.25rem 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.code-window pre {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.code-window code {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  color: var(--cw-text);
+  tab-size: 4;
+  line-height: 1.7;
+  white-space: pre;
+  display: block;
+  min-width: 100%;
+}
+
+/* Line Number Container & Alternating Background Rows */
+.code-line {
+  display: flex;
+  width: 100%;
+  min-width: max-content;
+  padding: 0.12rem 1.25rem 0.12rem 0;
+  box-sizing: border-box;
+  transition: background-color 0.1s ease;
+}
+
+/* Alternating Row Stripe (Even rows get subtle dark tint) */
+.code-line:nth-child(even) {
+  background-color: var(--cw-line-even);
+}
+
+/* Optional hover highlight */
+.code-line:hover {
+  background-color: var(--cw-line-hover);
+}
+
+/* Gutter Line Number */
+.line-num {
+  width: 3.25rem;
+  min-width: 3.25rem;
+  text-align: right;
+  padding-right: 1.1rem;
+  margin-right: 1.25rem;
+  color: var(--cw-gutter-color);
+  border-right: 1px solid var(--cw-gutter-border);
+  user-select: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  opacity: 0.85;
+}
+
+.line-code {
+  flex: 1;
+  white-space: pre;
+  color: var(--cw-text);
+}
+
+/* ==========================================================================
+   Syntax Highlighting Token Definitions (Matching Reference Image)
+   ========================================================================== */
+.token.keyword {
+  color: var(--cw-keyword) !important;
+  font-weight: 500;
+}
+
+.token.class-name {
+  color: var(--cw-class) !important;
+  font-weight: 600;
+}
+
+.token.string {
+  color: var(--cw-string) !important;
+}
+
+.token.punctuation,
+.token.operator {
+  color: var(--cw-punctuation) !important;
+}
+
+.token.function {
+  color: var(--cw-method) !important;
+}
+
+.token.number,
+.token.boolean {
+  color: var(--cw-number) !important;
+}
+
+.token.comment {
+  color: var(--cw-muted) !important;
+  font-style: italic;
+}
+
+.token.tag,
+.token.tag .token.punctuation {
+  color: #ff7b72 !important;
+}
+
+.token.attr-name {
+  color: #79c0ff !important;
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+  color: var(--cw-string) !important;
+}
+
+.token.property {
+  color: #79c0ff !important;
+}
+
+/* GML (GameMaker) Specific Tokens */
+.token.gml-builtin {
+  color: #5af78e !important;
+  font-weight: 600;
+}
+
+.token.gml-variable {
+  color: #ffcb6b !important;
+}
+
+.token.gml-constant {
+  color: #89ddff !important;
+  font-weight: 600;
+}

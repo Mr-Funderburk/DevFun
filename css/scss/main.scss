@@ -8,6 +8,10 @@
 @use 'about';
 @use 'footer';
 
+a:link, a:visited, a:active {
+    color: $accent-cyan;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;

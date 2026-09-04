@@ -1,0 +1,167 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson 01 - Why learn to code in the age of AI, setting up VS Code and Python, and writing your first Hello World program.">
+    <title>Lesson 01: Why Code? &amp; Environment Setup | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    {% include header.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <nav class="breadcrumb">
+                    <a href="../../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="../index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Lesson 01</span>
+                </nav>
+
+                <h1>Lesson 01: <span>Why Code? &amp; Python Setup</span></h1>
+
+                <div class="lesson-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Unit</span>
+                        <span class="meta-value">01: Getting Started</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Environment</span>
+                        <span class="meta-value">VS Code &amp; Python 3.x</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="lesson-content">
+
+                <!-- Part 1: Discussion -->
+                <h2><span class="step-num">01.</span> Big Question: Is AI Taking Software Jobs?</h2>
+                
+                <p class="lead"><em>"Should I stop learning to code because AI might take over software jobs?"</em></p>
+                
+                <p><strong>No—you should definitely keep learning to code!</strong> Even though artificial intelligence is transforming how developers work, learning to program remains essential for understanding and shaping technology. Here is why your skills matter now more than ever:</p>
+
+                <div class="callout-grid">
+                    <div class="callout">
+                        <div class="callout-title"><span class="icon">🔄</span> Technology Keeps Changing</div>
+                        <p>New tools appear all the time. Web developers used to write every line of raw HTML by hand, but now modern tools accelerate the build. Understanding underlying mechanics lets you use helper tools effectively instead of guessing blindly.</p>
+                    </div>
+
+                    <div class="callout callout-green">
+                        <div class="callout-title"><span class="icon">🤖</span> AI is a Co-Pilot, Not a Replacement</div>
+                        <p>Think of AI like a powerful calculator. It can output code rapidly, but it requires humans to verify syntax, debug logical errors, ensure security, and decide <em>why</em> a product should exist.</p>
+                    </div>
+
+                    <div class="callout">
+                        <div class="callout-title"><span class="icon">🧩</span> Humans Solve Real Problems</div>
+                        <p>Coding is fundamentally about human empathy, collaboration, and design. Whether building language apps or medical diagnostic software, AI lacks real-world context and human experience.</p>
+                    </div>
+
+                    <div class="callout callout-gold">
+                        <div class="callout-title"><span class="icon">🛡️</span> Responsible &amp; Ethical Technology</div>
+                        <p>We need thoughtful developers who evaluate bias, protect user privacy, and ensure automated systems serve society ethically and safely.</p>
+                    </div>
+                </div>
+
+                <blockquote class="citation-quote">
+                    <p>"Coding helps people make games, robots, apps, and even AI itself! Whether you want to be an engineer, a designer, or a scientist, programming trains you to think logically."</p>
+                    <cite>— Adapted from Anurodh Kumar, <em>"Should I Stop Learning Programming Because AI Will Take Over Software Jobs?"</em> (LinkedIn, 2023)</cite>
+                </blockquote>
+
+                <!-- Part 2: Environment Setup -->
+                <h2><span class="step-num">02.</span> Development Setup Checklist</h2>
+                <p>Complete these three installations to equip your workstation for the course:</p>
+
+                <div class="setup-checklist">
+                    <div class="check-item">
+                        <span class="check-number">1</span>
+                        <div class="check-details">
+                            <h4>Install Python 3</h4>
+                            <p>Download and run the official installer for your operating system. <strong class="text-gold">Crucial step on Windows:</strong> Check the box that says <em>"Add python.exe to PATH"</em> during installation.</p>
+                            <a href="https://www.python.org/downloads/" target="_blank" rel="noopener" class="btn-link">python.org/downloads &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="check-item">
+                        <span class="check-number">2</span>
+                        <div class="check-details">
+                            <h4>Install Visual Studio Code</h4>
+                            <p>Download VS Code, our lightweight primary code editor for the year.</p>
+                            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="btn-link">code.visualstudio.com &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="check-item">
+                        <span class="check-number">3</span>
+                        <div class="check-details">
+                            <h4>Install the VS Code Python Extension</h4>
+                            <p>Open VS Code, click the <strong>Extensions</strong> icon on the left sidebar (<code>Ctrl+Shift+X</code> / <code>Cmd+Shift+X</code>), search for <strong>Python</strong> (by Microsoft), and click <strong>Install</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 3: Why Python -->
+                <h2><span class="step-num">03.</span> Why Python?</h2>
+                <p>Python is consistently ranked as the world's most popular programming language on the <a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener">TIOBE Index</a>. Its clean, human-readable syntax makes it the standard choice across data science, web development, automation, and AI development.</p>
+
+                <!-- Part 4: Hands-on Activities -->
+                <h2><span class="step-num">04.</span> Activity A: The Zen of Python</h2>
+                <p>While your software finishes installing, test your installation and uncover Python’s core design philosophy hidden inside the language itself.</p>
+
+                <ol class="step-list">
+                    <li>Open <strong>VS Code</strong>.</li>
+                    <li>Create a new file named <code>zen.py</code>.</li>
+                    <li>Type the following line of code:</li>
+                </ol>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="file-name">zen.py</span>
+                        <span class="lang-tag">python</span>
+                    </div>
+                    <pre><code>import this</code></pre>
+                </div>
+
+                <p>Run the script by clicking the <strong>Play button (▶)</strong> in the top-right corner of VS Code. The terminal will print <em>The Zen of Python</em> by Tim Peters—a set of 19 guiding principles for writing clean code.</p>
+
+                <h2><span class="step-num">05.</span> Activity B: Hello, World!</h2>
+                <p>It is a rite of passage for every programmer across the globe to write a "Hello, World!" program when learning a new language.</p>
+
+                <ol class="step-list">
+                    <li>Create a second file named <code>main.py</code>.</li>
+                    <li>Enter the following code:</li>
+                </ol>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="file-name">main.py</span>
+                        <span class="lang-tag">python</span>
+                    </div>
+                    <pre><code>print("Hello, World!")</code></pre>
+                </div>
+
+                <div class="callout callout-green">
+                    <div class="callout-title"><span class="icon">🎉</span> Milestone Unlocked</div>
+                    <p>Congratulations! You just executed your first line of Python code and joined a global community of software creators.</p>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

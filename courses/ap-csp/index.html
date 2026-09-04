@@ -1,0 +1,156 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP Computer Science Principles - Master computational thinking, algorithms, data analysis, networking, and prepare for the College Board Create PT and AP Exam.">
+    
+    <title>AP Computer Science Principles | DevFun</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="../../js/main.js" defer></script>
+    <script src="../../js/timer.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <nav class="breadcrumb">
+                        <a href="../../index.html">Home</a>
+                        <span class="separator">/</span>
+                        <a href="../../index.html#courses">Courses</a>
+                        <span class="separator">/</span>
+                        <span>AP Computer Science Principles</span>
+                    </nav>
+
+                    <h1>AP Computer Science <span>Principles</span></h1>
+
+                    <p class="hero-description">AP CSP introduces you to the foundational concepts of computer science and challenges you to explore how computing and technology impact the world. Designed to broaden participation in technology, this course covers algorithms, programming, data analysis, internet infrastructure, and cybersecurity while preparing you for the AP Exam.</p>
+
+                    <div class="course-badge-list">
+                        <span class="badge">Big Ideas</span>
+                        <span class="badge">Computational Thinking</span>
+                        <span class="badge">Algorithms</span>
+                        <span class="badge">Create PT</span>
+                        <span class="badge">AP Exam</span>
+                    </div>
+                </div>
+
+                <div class="course-details">
+                    <h3>Course Details</h3>
+                    <ul>
+                        <li><strong>Skill Level:</strong> Advanced Placement</li>
+                        <li><strong>Prerequisites:</strong> Algebra I</li>
+                        <li><strong>College Credit:</strong> AP Exam Equivalent</li>
+                    </ul>
+                    <p>&nbsp;</p>
+
+                    <a href="../../resources.html#apcsp" class="btn btn-primary">Course Resources &nbsp; →</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+
+            <!-- AP Exam Info & Countdown Banner -->
+            <section class="extra-course-info">
+                <div>
+                    <h2><span class="icon">📅</span> AP Exam &amp; Performance Task Deadlines</h2>
+                    <p>Track key dates for College Board digital submissions and the multiple-choice exam.</p>
+                </div>
+
+                <div class="countdown-timers">
+                    <!-- Create Performance Task -->
+                    <div class="countdown-card card-cyan">
+                        <div class="card-header">
+                            <h4>Create Performance Task</h4>
+                            <span class="weight-badge">30% of Total Score</span>
+                        </div>
+                        <p class="task-desc">Digital Submission Deadline via AP Digital Portfolio</p>
+                        <div class="countdown-timer" id="create-pt-timer" data-target="2027-04-30T23:59:59">
+                            <div class="time-block"><span class="days">--</span><label>Days</label></div>
+                            <div class="time-block"><span class="hours">--</span><label>Hours</label></div>
+                            <div class="time-block"><span class="minutes">--</span><label>Mins</label></div>
+                            <div class="time-block"><span class="seconds">--</span><label>Secs</label></div>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Choice Exam -->
+                    <div class="countdown-card card-gold">
+                        <div class="card-header">
+                            <h4>AP CSP Multiple-Choice Exam</h4>
+                            <span class="weight-badge">70% of Total Score</span>
+                        </div>
+                        <p class="task-desc">70 Questions | 2 Hours (In-Person Exam)</p>
+                        <div class="countdown-timer" id="ap-exam-timer" data-target="2027-05-10T12:00:00">
+                            <div class="time-block"><span class="days">--</span><label>Days</label></div>
+                            <div class="time-block"><span class="hours">--</span><label>Hours</label></div>
+                            <div class="time-block"><span class="minutes">--</span><label>Mins</label></div>
+                            <div class="time-block"><span class="seconds">--</span><label>Secs</label></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="course-content-grid">
+                <aside class="course-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Jump to Unit</h3>
+                        
+                        <ul>
+                            <li><a href="#unit1">Unit 1: Digital Information</a></li>
+                            <li><a href="#unit2">Unit 2: The Internet</a></li>
+                            <li><a href="#unit3">Unit 3: Intro to App Design</a></li>
+                            <li><a href="#unit4">Unit 4: Variables &amp; Logic</a></li>
+                            <li><a href="#create-pt">Create PT Prep</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <section class="course-units">
+                    <h2 class="section-title">
+                        <span class="title-icon">{ }</span>
+                        Course Lessons
+                    </h2>
+
+                    <!-- Unit 1 -->
+                    <div class="lesson-container">
+                        <h2 class="unit-number" id="unit1"><span>//</span> Unit 1: Digital Information</h2>
+                        
+                        <a href="lesson-001.html" class="lesson-card">
+                            <div class="lesson-meta">
+                                <span class="lesson-number">Lesson 001</span>
+                            </div>
+
+                            <h3>Welcome to AP CSP &amp; Binary Data</h3>
+                            
+                            <p class="lesson-description">Explore how computing devices represent complex information using binary states, bits, and bytes.</p>
+                            
+                            <div class="lesson-topics">
+                                <span>Big Idea 1</span>
+                                <span>Binary</span>
+                                <span>Data Representation</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    {% include footer.html %}
+
+    
+</body>
+</html>

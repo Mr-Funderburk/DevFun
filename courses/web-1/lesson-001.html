@@ -1,10 +1,12 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lesson 01: Demystifying the Web - Student reference notes covering web basics, file organization, HTML boilerplate, and core markup tags.">
-    <title>Lesson 01: Demystifying the Web | Web Development I</title>
+    <meta name="description" content="Lesson 001: Demystifying the Web - Student reference notes covering web basics, file organization, HTML boilerplate, and core markup tags.">
+    <title>Lesson 001: Demystifying the Web | Web Development I</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,64 +22,7 @@
 </head>
 <body><!-- add id="noCopy" to disallow copy on this lesson -->
 
-    <header class="site-header">
-        <nav class="container">
-            <div class="logo">
-                <a href="../../index.html">
-                    <span class="logo-code">&lt;/&gt;</span>
-                    Dev<strong>Fun</strong>
-                </a>
-            </div>
-
-            <input type="checkbox" id="menuToggle">
-            <label for="menuToggle" class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <div class="links">
-                <div class="links-inner">
-                    <div><a href="../../index.html">Home</a></div>
-
-                    <div class="link-courses">
-                        <a href="../../index.html#courses">Courses</a>
-
-                        <div class="links-mega">
-                            <div>
-                                <span class="course-group">Advanced Placement</span>
-                                <a href="../../courses/ap-csp/index.html">AP Computer Science Principles</a>
-                                <a class="link-disabled">AP Computer Science A</a>
-                                <a class="link-disabled">AP Cybersecurity</a>
-                            </div>
-                            <div>
-                                <span class="course-group">Game Development</span>
-                                <a href="../../courses/game-1/index.html">Level I</a>
-                                <a class="link-disabled">Level II</a>
-                                <a class="link-disabled">Level III</a>
-                                <a class="link-disabled">Level IV</a>
-                            </div>
-                            <div>
-                                <span class="course-group">Web Development</span>
-                                <a href="../../courses/web-1/index.html">Level I</a>
-                                <a class="link-disabled">Level II</a>
-                                <a class="link-disabled">Level III</a>
-                                <a class="link-disabled">Level IV</a>
-                            </div>
-                            <div>
-                                <span class="course-group">Foundations</span>
-                                <a href="../../courses/intro-to-coding/index.html">Introduction to Coding</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div><a href="../../resources.html">Resources</a></div>
-
-                    <div><a href="../../index.html#about">About</a></div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    {% include header.html %}
 
     <main class="container">
         <article class="lesson-container">
@@ -91,10 +36,10 @@
                     <span class="separator">/</span>
                     <a href="index.html">Web Development I</a>
                     <span class="separator">/</span>
-                    <span>Lesson 01</span>
+                    <span>Lesson 001</span>
                 </nav>
 
-                <h1>Lesson 01: <span>Demystifying the Web</span></h1>
+                <h1>Lesson 001: <span>Demystifying the Web</span></h1>
 
                 <div class="lesson-meta-grid">
                     <div class="meta-item">
@@ -312,17 +257,6 @@
         </article>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="logo">
-                <a href="../../index.html">
-                    <span class="logo-code">&lt;/&gt;</span>
-                    Dev<strong>Fun</strong>
-                </a>
-            </div>
-            <p>Learn. Build. Create.</p>
-            <p class="copyright">&copy; <span id="copyrightYear"></span> DevFun</p>
-        </div>
-    </footer>
+    {% include footer.html %}
 </body>
 </html>

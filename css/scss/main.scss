@@ -26,7 +26,7 @@ a:link, a:visited, a:active {
     cursor: pointer;
     transition:
         transform $transition,
-        background $transition,
+        background-color $transition,
         border-color $transition,
         color $transition;
 
@@ -36,7 +36,7 @@ a:link, a:visited, a:active {
 
 .btn-primary {
     background: $accent-primary;
-    color: $color-text;
+    color: $color-text !important;
 
     &:hover { background: $accent-primary-light; }
 }

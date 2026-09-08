@@ -1,0 +1,156 @@
+@use "variables" as *;
+
+.resources-toolbar-section {
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+.resources-toolbar {
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        width: 1.15rem;
+        height: 1.15rem;
+        color: $color-text-muted;
+        pointer-events: none;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.85rem 2.8rem 0.85rem 2.8rem;
+        background-color: $color-background;
+        border: 1px solid $color-border;
+        border-radius: 8px;
+        color: $color-text;
+        font-size: 0.95rem;
+        font-family: inherit;
+        transition: border-color $transition, box-shadow $transition;
+
+        &::placeholder {
+            color: rgba($color-text-muted, 0.7);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $accent-primary;
+            box-shadow: 0 0 0 3px rgba($accent-primary, 0.2);
+        }
+
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
+
+    .search-clear-btn {
+        position: absolute;
+        right: 0.85rem;
+        background: transparent;
+        border: none;
+        color: $color-text-muted;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 4px;
+        transition: color $transition;
+
+        &:hover {
+            color: $color-text;
+        }
+    }
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-border;
+        border-radius: 2px;
+    }
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-chip {
+    padding: 0.45rem 0.85rem;
+    border: 1px solid $color-border;
+    border-radius: 9999px;
+    background-color: $color-background;
+    color: $color-text-muted;
+    font-family: $font-code;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all $transition;
+
+    &:hover {
+        border-color: $accent-primary;
+        color: $color-text;
+        background-color: $color-surface-hover;
+    }
+
+    &.active {
+        background-color: $accent-primary;
+        border-color: $accent-primary;
+        color: #fff;
+        box-shadow: 0 0 12px rgba($accent-primary, 0.35);
+    }
+}
+
+.toolbar-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: $color-text-muted;
+    font-family: $font-code;
+}
+
+.course-card.is-hidden,
+.resource-section.is-hidden {
+    display: none !important;
+}
+
+.resources-empty-state {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    margin-top: 2rem;
+    background-color: $color-surface;
+    border: 1px dashed $color-border;
+    border-radius: $radius;
+
+    p {
+        color: $color-text-muted;
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+    }
+}
+

@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AP Computer Science Principles - Master computational thinking, algorithms, data analysis, networking, and prepare for the College Board Create PT and AP Exam.">
+    <meta name="description" content="Resources for use in Mr. Fun's courses.">
     
-    <title>AP Computer Science Principles | DevFun</title>
+    <title>DevFun Resources</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="js/main.js" defer></script>
+    <script src="js/resources.js" defer></script>
 </head>
 <body>
 
@@ -32,8 +33,44 @@
             </div>
         </section>
 
+        <!-- Search/Filter -->
+        <section class="resources-toolbar-section">
+            <div class="container">
+                <div class="resources-toolbar">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="search" id="resourceSearch" class="search-input" placeholder="Search resources by name, topic, or keyword..." aria-label="Search resources">
+                        <button type="button" id="clearSearchBtn" class="search-clear-btn" aria-label="Clear search" hidden>&times;</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-chips" role="group" aria-label="Filter by course">
+                            <button type="button" class="filter-chip active" data-filter="all">All Courses</button>
+                            <button type="button" class="filter-chip" data-filter="ap-csp">AP CSP</button>
+                            <button type="button" class="filter-chip" data-filter="ap-csa">AP CSA</button>
+                            <button type="button" class="filter-chip" data-filter="ap-cyber">AP Cyber</button>
+                            <button type="button" class="filter-chip" data-filter="intro-coding">Intro. to Coding</button>
+                            <button type="button" class="filter-chip" data-filter="web-dev">Web Dev</button>
+                            <button type="button" class="filter-chip" data-filter="game-dev">Game Dev</button>
+                        </div>
+                    </div>
+
+                    <div class="toolbar-status">
+                        <span id="resourceCount" class="resource-count" aria-live="polite">Showing all 14 resources</span>
+                    </div>
+                </div>
+
+                <div id="resourcesEmptyState" class="resources-empty-state" hidden>
+                    <p>No resources found matching your search.</p>
+                    <button type="button" id="resetFiltersBtn" class="btn btn-secondary">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Software & Downloads -->
-        <section>
+        <section class="resource-section">
             <div class="container">
                 <p>&nbsp;</p>
                 <div class="section-heading">
@@ -49,7 +86,7 @@
                 <div class="course-group">
                     <div class="course-grid course-grid-three">
                         <!-- Python -->
-                        <a href="https://python.org" class="course-card" target="_blank">
+                        <a href="https://python.org" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -57,7 +94,7 @@
                             <div class="card-content">
                                 <h4>Python 3.x</h4>
                                 <p>
-                                    The interpreter that runs your code. Install the latest 3.x release for your Operating System.
+                                     The interpreter that runs your code. Install the latest 3.x release for your Operating System.
                                 </p>
                             </div>
 
@@ -68,7 +105,7 @@
                         </a>
 
                         <!-- VS Code -->
-                        <a href="https://code.visualstudio.com/" class="course-card" target="_blank">
+                        <a href="https://code.visualstudio.com/" class="course-card" target="_blank" data-courses="ap-csp web-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -87,7 +124,7 @@
                         </a>
 
                         <!-- PyCharm -->
-                        <a href="https://www.jetbrains.com/pycharm/" class="course-card" target="_blank">
+                        <a href="https://www.jetbrains.com/pycharm/" class="course-card" target="_blank" data-courses="ap-csp">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -104,8 +141,8 @@
                             </div>
                         </a>
 
-                        <!-- PyCharm -->
-                        <a href="https://www.jetbrains.com/idea/" class="course-card" target="_blank">
+                        <!-- IntelliJ -->
+                        <a href="https://www.jetbrains.com/idea/" class="course-card" target="_blank" data-courses="ap-csa">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -123,7 +160,7 @@
                         </a>
 
                         <!-- GameMaker Studio -->
-                        <a href="https://gamemaker.io/en" class="course-card" target="_blank">
+                        <a href="https://gamemaker.io/en" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -142,7 +179,7 @@
                         </a>
 
                         <!-- Godot -->
-                        <a href="https://godotengine.org/" class="course-card" target="_blank">
+                        <a href="https://godotengine.org/" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
@@ -165,7 +202,7 @@
         </section>
 
         <!-- Sites to Bookmark -->
-        <section>
+        <section class="resource-section">
             <div class="container">
                 <p>&nbsp;</p>
                 <div class="section-heading">
@@ -181,7 +218,7 @@
                 <div class="course-group">
                     <div class="course-grid course-grid-three">
                         <!-- AP Classroom -->
-                        <a href="https://myap.collegeboard.org/login" class="course-card" target="_blank">
+                        <a href="https://myap.collegeboard.org/login" class="course-card" target="_blank" data-courses="ap-csp ap-csa ap-cyber">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -189,7 +226,7 @@
                             <div class="card-content">
                                 <h4>AP Classroom</h4>
                                 <p>
-                                    Score reports, exam calendar, and official practice.
+                                     Score reports, exam calendar, and official practice.
                                 </p>
                             </div>
 
@@ -201,7 +238,7 @@
                         </a>
 
                         <!-- AP Digital Portfolio -->
-                        <a href="https://digitalportfolio.collegeboard.org/" class="course-card" target="_blank">
+                        <a href="https://digitalportfolio.collegeboard.org/" class="course-card" target="_blank" data-courses="ap-csp">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -219,7 +256,7 @@
                         </a>
 
                         <!-- Python 3 API -->
-                        <a href="https://docs.python.org/3/" class="course-card" target="_blank">
+                        <a href="https://docs.python.org/3/" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -238,7 +275,7 @@
                         </a>
 
                         <!-- Java 8 API -->
-                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank">
+                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank" data-courses="ap-csa">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -255,26 +292,46 @@
                             </div>
                         </a>
 
-                        <!-- Java 8 API -->
-                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank">
+                        <!-- Godot Docs -->
+                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
 
                             <div class="card-content">
-                                <h4>Java 8 API</h4>
+                                <h4>Godot Documentation</h4>
                                 <p>
-                                    Official language reference.
+                                    Official engine reference.
                                 </p>
                             </div>
 
                             <div class="course-footer">
+                                <span>Game Dev 3</span>
+                                <span>Game Dev 4</span>
+                            </div>
+                        </a>
+
+                        <!-- CodingBat -->
+                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank" data-courses="ap-csp ap-csa">
+                            <div class="card-top">
+                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
+                            </div>
+
+                            <div class="card-content">
+                                <h4>CodingBat</h4>
+                                <p>
+                                    Online coding practice with test cases for Python &amp; Java.
+                                </p>
+                            </div>
+
+                            <div class="course-footer">
+                                <span>AP CSP</span>
                                 <span>AP CSA</span>
                             </div>
                         </a>
 
                         <!-- Python Tutor -->
-                        <a href="https://pythontutor.com/index.html" class="course-card" target="_blank">
+                        <a href="https://pythontutor.com/index.html" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -293,7 +350,7 @@
                         </a>
 
                         <!-- Kenney Assets -->
-                        <a href="https://kenney.nl/assets" class="course-card" target="_blank">
+                        <a href="https://kenney.nl/assets" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -311,7 +368,7 @@
                         </a>
 
                         <!-- Open Game Art -->
-                        <a href="https://opengameart.org/" class="course-card" target="_blank">
+                        <a href="https://opengameart.org/" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>
@@ -329,7 +386,7 @@
                         </a>
 
                         <!-- Itch.io -->
-                        <a href="https://itch.io/game-assets/free" class="course-card" target="_blank">
+                        <a href="https://itch.io/game-assets/free" class="course-card" target="_blank" data-courses="game-dev">
                             <div class="card-top">
                                 <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
                             </div>

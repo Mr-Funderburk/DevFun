@@ -196,13 +196,14 @@
 
 .countdown-timers {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
     margin-top: 24px;
 
-    > div {
-        flex: 1;
+    > div { flex: 1; }
+    @media screen and (min-width: $breakpoint-medium) {
+        flex-direction: row;
     }
 }
 

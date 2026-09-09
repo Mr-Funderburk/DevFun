@@ -87,3 +87,22 @@
         .section-description { margin-bottom: 0; }
     }
 }
+
+
+
+@media screen and (max-width: $breakpoint-medium) {
+    .hero-code {
+        width: 100%;
+        max-width: 100%;
+
+        .code-window .code-window-body pre code {
+            font-size: 0.7rem;
+            .code-line .line-num {
+                font-size: 0.7rem;
+                width: 2.25rem;
+                min-width: 2.25rem;
+                padding-right: 1rem;
+            }
+        }
+    }
+}

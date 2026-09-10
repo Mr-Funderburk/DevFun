@@ -14,8 +14,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!resourceCards.length) return;
 
-    let activeFilter = 'all';
-    let searchQuery = '';
+    // Normalization mapping for query string params and hash fragments
+    const ALIAS_MAP = {
+        'ap-csp': 'ap-csp',
+        'apcsp': 'ap-csp',
+        'csp': 'ap-csp',
+        'ap-csa': 'ap-csa',
+        'apcsa': 'ap-csa',
+        'csa': 'ap-csa',
+        'ap-cyber': 'ap-cyber',
+        'apcyber': 'ap-cyber',
+        'cyber': 'ap-cyber',
+        'intro-coding': 'intro-coding',
+        'intro-to-coding': 'intro-coding',
+        'intro': 'intro-coding',
+        'foundations': 'intro-coding',
+        'web-dev': 'web-dev',
+        'web': 'web-dev',
+        'web1': 'web-dev',
+        'web-1': 'web-dev',
+        'game-dev': 'game-dev',
+        'game': 'game-dev',
+        'game1': 'game-dev',
+        'game-1': 'game-dev',
+        'all': 'all'
+    };
+
+    function getInitialFilterFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        let raw = params.get('course') || params.get('class') || params.get('filter');
+
+        // Fallback to URL hash if no query string (e.g. resources.html#apcsp or #game-dev)
+        if (!raw && window.location.hash) {
+            raw = window.location.hash.replace(/^#/, '');
+        }
+
+        if (!raw) return 'all';
+        raw = raw.toLowerCase().trim();
+        return ALIAS_MAP[raw] || 'all';
+    }
+
+    function getInitialSearchFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('q') || params.get('search') || '';
+    }
+
+    function syncURL() {
+        try {
+            const url = new URL(window.location.href);
+            if (activeFilter && activeFilter !== 'all') {
+                url.searchParams.set('course', activeFilter);
+            } else {
+                url.searchParams.delete('course');
+                url.searchParams.delete('class');
+                url.searchParams.delete('filter');
+            }
+
+            // Remove hash if it was used as an alias
+            if (url.hash && ALIAS_MAP[url.hash.replace(/^#/, '').toLowerCase().trim()]) {
+                url.hash = '';
+            }
+
+            window.history.replaceState({}, '', url.toString());
+        } catch (e) {
+            // In case of restricted environment (e.g. file:// without server)
+        }
+    }
+
+    let activeFilter = getInitialFilterFromURL();
+    let searchQuery = getInitialSearchFromURL();
+
+    if (searchQuery && searchInput) {
+        searchInput.value = searchQuery;
+    }
+
+    // Set active class on corresponding filter chip
+    filterChips.forEach(chip => {
+        chip.classList.toggle('active', chip.getAttribute('data-filter') === activeFilter);
+    });
 
     function applyFilters() {
         let visibleCount = 0;
@@ -112,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chip.classList.add('active');
             activeFilter = chip.getAttribute('data-filter') || 'all';
             applyFilters();
+            syncURL();
         });
     });
 
@@ -127,9 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             applyFilters();
+            syncURL();
             if (searchInput) searchInput.focus();
         });
     }
+
+    // Handle browser back/forward history buttons
+    window.addEventListener('popstate', () => {
+        activeFilter = getInitialFilterFromURL();
+        filterChips.forEach(c => {
+            c.classList.toggle('active', c.getAttribute('data-filter') === activeFilter);
+        });
+        applyFilters();
+    });
 
     // Initial run
     applyFilters();

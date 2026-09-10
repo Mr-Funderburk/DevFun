@@ -13,10 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 
-    <script src="/DevFun/js/main.js" defer></script>
-    <script src="/DevFun/js/timer.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/timer.js" defer></script>
 </head>
 <body>
 
@@ -27,9 +27,9 @@
             <div class="container">
                 <div class="hero-text">
                     <nav class="breadcrumb">
-                        <a href="/DevFun/index.html">Home</a>
+                        <a href="../../index.html">Home</a>
                         <span class="separator">/</span>
-                        <a href="/DevFun/index.html#courses">Courses</a>
+                        <a href="../../index.html#courses">Courses</a>
                         <span class="separator">/</span>
                         <span>AP CSP</span>
                     </nav>
@@ -56,7 +56,7 @@
                     </ul>
                     <p>&nbsp;</p>
 
-                    <a href="/DevFun/resources.html#apcsp" class="btn btn-primary">Course Resources &nbsp; →</a>
+                    <a href="../../resources.html?course=ap-csp" class="btn btn-primary">Course Resources &nbsp; →</a>
                 </div>
             </div>
         </section>
@@ -109,11 +109,13 @@
                         <h3>Jump to Unit</h3>
                         
                         <ul>
-                            <li><a href="#unit1">Unit 1: Digital Information</a></li>
-                            <li><a href="#unit2">Unit 2: The Internet</a></li>
-                            <li><a href="#unit3">Unit 3: Intro to App Design</a></li>
-                            <li><a href="#unit4">Unit 4: Variables &amp; Logic</a></li>
-                            <li><a href="#create-pt">Create PT Prep</a></li>
+                            {% assign unit_nav_counter = 0 %}
+                            {% for unit in site.data.courses.ap_csp.units %}
+                                {% if unit.published != false %}
+                                    {% assign unit_nav_counter = unit_nav_counter | plus: 1 %}
+                                    <li><a href="#unit{{ unit_nav_counter }}">Unit {{ unit_nav_counter }}: {{ unit.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </aside>
@@ -124,26 +126,72 @@
                         Course Lessons
                     </h2>
 
-                    <!-- Unit 1 -->
-                    <div class="lesson-container">
-                        <h2 class="unit-number" id="unit1"><span>//</span> Unit 1: Digital Information</h2>
-                        
-                        <a href="lesson-001.html" class="lesson-card">
-                            <div class="lesson-meta">
-                                <span class="lesson-number">Lesson 001</span>
-                            </div>
+                    {% assign unit_counter = 0 %}
+                    {% assign lesson_counter = 0 %}
+                    {% for unit in site.data.courses.ap_csp.units %}
+                        {% if unit.published != false %}
+                            {% assign unit_counter = unit_counter | plus: 1 %}
+                            <div class="lesson-container">
+                                <h2 class="unit-number" id="unit{{ unit_counter }}"><span>//</span> Unit {{ unit_counter }}: {{ unit.title }}</h2>
+                                
+                                {% for lesson in unit.lessons %}
+                                    {% if lesson.published != false %}
+                                        {% assign lesson_counter = lesson_counter | plus: 1 %}
+                                        {% if lesson_counter < 10 %}
+                                            {% assign num_str = "00" | append: lesson_counter %}
+                                        {% elsif lesson_counter < 100 %}
+                                            {% assign num_str = "0" | append: lesson_counter %}
+                                        {% else %}
+                                            {% assign num_str = lesson_counter %}
+                                        {% endif %}
 
-                            <h3>Welcome to AP CSP &amp; Binary Data</h3>
-                            
-                            <p class="lesson-description">Explore how computing devices represent complex information using binary states, bits, and bytes.</p>
-                            
-                            <div class="lesson-topics">
-                                <span>Big Idea 1</span>
-                                <span>Binary</span>
-                                <span>Data Representation</span>
+                                        {% if lesson.status == "coming_soon" %}
+                                            <div class="lesson-card card-disabled" aria-disabled="true">
+                                                <div class="lesson-meta">
+                                                    <span class="lesson-number">Lesson {{ num_str }}</span>
+                                                    <span class="badge-coming-soon">Coming Soon</span>
+                                                </div>
+
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ lesson.file }}" class="lesson-card">
+                                                <div class="lesson-meta">
+                                                    <span class="lesson-number">Lesson {{ num_str }}</span>
+                                                </div>
+
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                        </a>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </section>
             </div>
         </div>

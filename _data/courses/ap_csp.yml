@@ -1,0 +1,68 @@
+id: "ap_csp"
+title: "AP Computer Science Principles"
+breadcrumb: "AP CSP"
+
+units:
+  - title: "Digital Information"
+    lessons:
+      - title: "Why Code? & Python Setup"
+        file: "python-setup.html"
+        description: "Why learn to code in the age of AI, setting up VS Code and Python, and writing your first Hello World program."
+        topics:
+          - "Setup"
+          - "Python 3"
+          - "VS Code"
+        status: "published"
+
+      - title: "Welcome to Binary & Data Representation"
+        file: "binary-data.html"
+        description: "Explore how computing devices represent complex information using binary states, bits, and bytes."
+        topics:
+          - "Big Idea 1"
+          - "Binary"
+          - "Data Representation"
+        status: "coming_soon"
+
+  - title: "The Internet"
+    lessons:
+      - title: "IP Addressing & DNS"
+        file: "ip-addressing-dns.html"
+        description: "Explore how packets travel across the internet, routers, IP protocols, and domain names."
+        topics:
+          - "Networking"
+          - "DNS"
+          - "Packets"
+        status: "coming_soon"
+
+  - title: "Intro to App Design"
+    lessons:
+      - title: "User Interfaces & Event-Driven Apps"
+        file: "app-design-basics.html"
+        description: "Design interactive layouts and respond to user actions with event listeners."
+        topics:
+          - "UI Design"
+          - "Events"
+        status: "coming_soon"
+
+  - title: "Variables & Logic"
+    lessons:
+      - title: "Variables & Conditionals"
+        file: "variables-logic.html"
+        description: "Store data in variables and use conditional statements to make decisions in code."
+        topics:
+          - "Variables"
+          - "Conditionals"
+          - "Logic"
+        status: "coming_soon"
+
+  - title: "Create PT Prep"
+    lessons:
+      - title: "Create Performance Task Guidelines & Submission"
+        file: "create-pt-guide.html"
+        description: "Review College Board scoring criteria, written responses, and video requirements."
+        topics:
+          - "Create PT"
+          - "Rubric"
+          - "College Board"
+        status: "coming_soon"
+

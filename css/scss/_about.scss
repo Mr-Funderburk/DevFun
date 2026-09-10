@@ -56,3 +56,17 @@
 
     strong { color: $accent-cyan; }
 }
+
+.classroom-tenets {
+    li { 
+        margin: 5px; 
+        @media screen and (min-width: $breakpoint-medium) { margin-left: 15px; }
+
+        &::before {
+            content: "⋆ ";
+            color: $accent-green;
+            position: relative;
+            bottom: 3px;
+        }
+    }
+}

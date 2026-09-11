@@ -69,21 +69,6 @@
         font-family: $font-code;
         font-size: 0.75rem;
         font-weight: 700;
-
-        svg {
-            width: 28px;
-            height: 28px;
-
-            path {
-                stroke: #fff;
-                stroke-width: 1;
-            }
-
-            &.external-link path {
-                stroke-width: 0;
-                fill: #fff;
-            }
-        }
     }
 
     .badge-coming-soon {
@@ -154,6 +139,26 @@
     }
 }
 
+
+.resource-section .course-card {
+    padding-top: 0;
+    
+    svg {
+        width: 28px;
+        height: 28px;
+        float: right;
+
+        path {
+            stroke: #fff;
+            stroke-width: 1;
+        }
+
+        &.external-link path {
+            stroke-width: 0;
+            fill: #fff;
+        }
+    }
+}
 
 
 @media screen and (min-width: $breakpoint-medium) {

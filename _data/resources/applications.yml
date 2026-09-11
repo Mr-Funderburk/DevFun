@@ -1,0 +1,57 @@
+id: "applications"
+
+apps:
+  - title: "Python 3.x"
+    description: "The interpreter that runs your code. Install the latest 3.x release for your Operating System."
+    link: "https://python.org"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "Intro. to Coding"
+        class: "intro-coding"
+  
+  - title: "Thonny"
+    description: "A free and open-source Integrated Development Environment (IDE) for Python that is designed for beginners."
+    link: "https://thonny.org"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "Intro. to Coding"
+        class: "intro-coding"
+  
+  - title: "VS Code"
+    description: "Visual Studio Code (commonly known as VS Code) is a free, open-source, and lightweight source code editor developed by Microsoft.  It is designed for cross-platform use on Windows, macOS, and Linux, offering a fast, responsive environment for writing and debugging code."
+    link: "https://code.visualstudio.com/"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "Web Dev 1-4"
+        class: "web-dev"
+  
+  - title: "PyCharm"
+    description: "PyCharm is an Integrated Development Environment (IDE) developed by JetBrains specifically for Python programming.  It provides a comprehensive suite of tools to help developers write, debug, test, and deploy code efficiently, making it one of the most popular choices for Python, web development, and data science."
+    link: "https://www.jetbrains.com/pycharm/"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+  
+  - title: "IntelliJ IDEA"
+    description: "IntelliJ IDEA is a professional Integrated Development Environment (IDE) developed by JetBrains primarily for Java and Kotlin development, though it supports other JVM-based languages like Scala and Groovy, as well as web and mobile technologies.  It is designed to maximize developer productivity through intelligent code completion, static code analysis, and powerful refactoring tools that understand code context."
+    link: "https://www.jetbrains.com/idea/"
+    tags:
+      - label: "AP CSA"
+        class: "ap-csa"
+  
+  - title: "GameMaker Studio"
+    description: "GameMaker Studio is a cross-platform game development engine designed primarily for creating 2D games, developed by YoYo Games since 2007.  It features an intuitive interface that supports both drag-and-drop visual programming for beginners and a custom scripting language called GameMaker Language (GML) for advanced developers."
+    link: "https://gamemaker.io/en"
+    tags:
+      - label: "Game Dev 1 & 2"
+        class: "game-dev"
+  
+  - title: "Godot"
+    description: "Godot is a free and open-source game engine used to create 2D and 3D games and applications for desktop, mobile, web, and console platforms.  Released publicly in 2014 under the permissive MIT License, it allows developers to own their entire project with no royalties or licensing fees."
+    link: "https://godotengine.org/"
+    tags:
+      - label: "Game Dev 3 & 4"
+        class: "game-dev"

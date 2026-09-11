@@ -1,0 +1,98 @@
+id: "links"
+
+links:
+  - title: "AP Classroom"
+    description: "Score reports, exam calendar, and official practice."
+    link: "https://myap.collegeboard.org/login"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "AP CSA"
+        class: "ap-csa"
+      - label: "AP Cyber"
+        class: "ap-cyber"
+
+  - title: "AP Digital Portfolio"
+    description: "Where your Create Task is submitted."
+    link: "https://digitalportfolio.collegeboard.org/"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+
+  - title: "AP CSP Exam Reference Sheet"
+    description: "The reference sheet given on the AP CSP exam."
+    link: "https://apcentral.collegeboard.org/media/pdf/ap-computer-science-principles-exam-reference-sheet.pdf"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+
+  - title: "AP CSA Exam Reference Sheet"
+    description: "The reference sheet given on the AP CSA exam."
+    link: "https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf"
+    tags:
+      - label: "AP CSA"
+        class: "ap-csa"
+
+  - title: "Python 3 API"
+    description: "Official language reference."
+    link: "https://docs.python.org/3/"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "Intro. to Coding"
+        class: "intro-coding"
+
+  - title: "Java 8 API"
+    description: "Official language reference."
+    link: "https://docs.oracle.com/javase/8/docs/api/"
+    tags:
+      - label: "AP CSA"
+        class: "ap-csa"
+
+  - title: "Godot Documentation"
+    description: "Official language reference."
+    link: "https://docs.godotengine.org/en/stable/"
+    tags:
+      - label: "Game Dev 3 & 4"
+        class: "game-dev"
+
+  - title: "CodingBat"
+    description: "Online coding practice with test cases for Python &amp; Java."
+    link: "https://codingbat.com/"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "AP CSA"
+        class: "ap-csa"
+      - label: "Intro. to Coding"
+        class: "intro-coding"
+
+  - title: "Python Tutor"
+    description: "An online tool that lets you write code and see what happens step-by-step as the computer runs it. It visualizes variables, objects, pointers, data structures, and stack frames."
+    link: "https://pythontutor.com/index.html"
+    tags:
+      - label: "AP CSP"
+        class: "ap-csp"
+      - label: "Intro. to Coding"
+        class: "intro-coding"
+
+  - title: "Kenney Assets"
+    description: "Free sprites, tiles, and sound effects."
+    link: "https://kenney.nl/assets"
+    tags:
+      - label: "Game Dev"
+        class: "game-dev"
+
+  - title: "Open Game Art"
+    description: "Community art and audio—Check licenses!"
+    link: "https://opengameart.org/"
+    tags:
+      - label: "Game Dev"
+        class: "game-dev"
+
+  - title: "Itch.io"
+    description: "Community art and audio—Check licenses!"
+    link: "https://itch.io/game-assets/free"
+    tags:
+      - label: "Game Dev"
+        class: "game-dev"

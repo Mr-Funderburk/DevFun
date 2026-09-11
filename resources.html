@@ -15,8 +15,8 @@
 
     <link rel="stylesheet" href="/css/main.css">
 
-    <script src="js/main.js" defer></script>
-    <script src="js/resources.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/resources.js" defer></script>
 </head>
 <body>
 
@@ -85,136 +85,28 @@
                 
                 <div class="course-group">
                     <div class="course-grid course-grid-three">
-                        <!-- Python -->
-                        <a href="https://python.org" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
+                        {% for res in site.data.resources.applications.apps %}
+                            {% assign courses = "" %}
+                            {% for tag in res.tags %}
+                                {% assign courses = courses | append: tag.class %}
+                                {% unless forloop.last %}
+                                    {% assign courses = courses | append: " " %}
+                                {% endunless %}
+                            {% endfor %}
+                            <a href="{{ res.link }}" class="course-card" target="_blank" data-courses="{{ courses }}">
+                                <div class="card-content">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <h4>{{ res.title }}</h4>
+                                    <p>{{ res.description }}</p>
+                                </div>
 
-                            <div class="card-content">
-                                <h4>Python 3.x</h4>
-                                <p>
-                                     The interpreter that runs your code. Install the latest 3.x release for your Operating System.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>Intro. to Coding</span>
-                            </div>
-                        </a>
-                        
-                        <!-- Thonny -->
-                        <a href="https://thonny.org" class="course-card" target="_blank" data-courses="intro-coding">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Thonny</h4>
-                                <p>
-                                    A free and open-source Integrated Development Environment (IDE) for Python that is designed for beginners.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>Intro. to Coding</span>
-                            </div>
-                        </a>
-
-                        <!-- VS Code -->
-                        <a href="https://code.visualstudio.com/" class="course-card" target="_blank" data-courses="ap-csp web-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>VS Code</h4>
-                                <p>
-                                    Visual Studio Code (commonly known as VS Code) is a free, open-source, and lightweight source code editor developed by Microsoft.  It is designed for cross-platform use on Windows, macOS, and Linux, offering a fast, responsive environment for writing and debugging code. 
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>Web Dev 1-4</span>
-                            </div>
-                        </a>
-
-                        <!-- PyCharm -->
-                        <a href="https://www.jetbrains.com/pycharm/" class="course-card" target="_blank" data-courses="ap-csp">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>PyCharm</h4>
-                                <p>
-                                    PyCharm is an Integrated Development Environment (IDE) developed by JetBrains specifically for Python programming.  It provides a comprehensive suite of tools to help developers write, debug, test, and deploy code efficiently, making it one of the most popular choices for Python, web development, and data science.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                            </div>
-                        </a>
-
-                        <!-- IntelliJ -->
-                        <a href="https://www.jetbrains.com/idea/" class="course-card" target="_blank" data-courses="ap-csa">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>IntelliJ</h4>
-                                <p>
-                                    IntelliJ IDEA is a professional Integrated Development Environment (IDE) developed by JetBrains primarily for Java and Kotlin development, though it supports other JVM-based languages like Scala and Groovy, as well as web and mobile technologies.  It is designed to maximize developer productivity through intelligent code completion, static code analysis, and powerful refactoring tools that understand code context. 
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSA</span>
-                            </div>
-                        </a>
-
-                        <!-- GameMaker Studio -->
-                        <a href="https://gamemaker.io/en" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>GameMaker Studio</h4>
-                                <p>
-                                    GameMaker Studio is a cross-platform game development engine designed primarily for creating 2D games, developed by YoYo Games since 2007.  It features an intuitive interface that supports both drag-and-drop visual programming for beginners and a custom scripting language called GameMaker Language (GML) for advanced developers.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 1</span>
-                                <span>Game Dev 2</span>
-                            </div>
-                        </a>
-
-                        <!-- Godot -->
-                        <a href="https://godotengine.org/" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Godot</h4>
-                                <p>
-                                    Godot is a free and open-source game engine used to create 2D and 3D games and applications for desktop, mobile, web, and console platforms.  Released publicly in 2014 under the permissive MIT License, it allows developers to own their entire project with no royalties or licensing fees.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 3</span>
-                                <span>Game Dev 4</span>
-                            </div>
-                        </a>
+                                <div class="course-footer">
+                                    {% for tag in res.tags %}
+                                        <span>{{ tag.label }}</span>
+                                    {% endfor %}
+                                </div>
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -236,191 +128,28 @@
                 
                 <div class="course-group">
                     <div class="course-grid course-grid-three">
-                        <!-- AP Classroom -->
-                        <a href="https://myap.collegeboard.org/login" class="course-card" target="_blank" data-courses="ap-csp ap-csa ap-cyber">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
+                        {% for res in site.data.resources.links.links %}
+                            {% assign courses = "" %}
+                            {% for tag in res.tags %}
+                                {% assign courses = courses | append: tag.class %}
+                                {% unless forloop.last %}
+                                    {% assign courses = courses | append: " " %}
+                                {% endunless %}
+                            {% endfor %}
+                            <a href="{{ res.link }}" class="course-card" target="_blank" data-courses="{% for tag in res.tags %}{{tag.class}}{% unless forloop.last %} {% endunless %}{% endfor %}">
+                                <div class="card-content">
+                                    <svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg>
+                                    <h4>{{ res.title }}</h4>
+                                    <p>{{ res.description }}</p>
+                                </div>
 
-                            <div class="card-content">
-                                <h4>AP Classroom</h4>
-                                <p>
-                                     Score reports, exam calendar, and official practice.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>AP CSA</span>
-                                <span>AP Cyber</span>
-                            </div>
-                        </a>
-
-                        <!-- AP Digital Portfolio -->
-                        <a href="https://digitalportfolio.collegeboard.org/" class="course-card" target="_blank" data-courses="ap-csp">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>AP Digital Portfolio</h4>
-                                <p>
-                                    Where your Create Task is submitted.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                            </div>
-                        </a>
-
-                        <!-- Python 3 API -->
-                        <a href="https://docs.python.org/3/" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Python 3 API</h4>
-                                <p>
-                                    Official language reference.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>Intro. to Coding</span>
-                            </div>
-                        </a>
-
-                        <!-- Java 8 API -->
-                        <a href="https://docs.oracle.com/javase/8/docs/api/" class="course-card" target="_blank" data-courses="ap-csa">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Java 8 API</h4>
-                                <p>
-                                    Official language reference.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSA</span>
-                            </div>
-                        </a>
-
-                        <!-- Godot Docs -->
-                        <a href="https://docs.godotengine.org/en/stable/" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Godot Documentation</h4>
-                                <p>
-                                    Official engine reference.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 3</span>
-                                <span>Game Dev 4</span>
-                            </div>
-                        </a>
-
-                        <!-- CodingBat -->
-                        <a href="https://codingbat.com/java" class="course-card" target="_blank" data-courses="ap-csp ap-csa">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>CodingBat</h4>
-                                <p>
-                                    Online coding practice with test cases for Python &amp; Java.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>AP CSA</span>
-                            </div>
-                        </a>
-
-                        <!-- Python Tutor -->
-                        <a href="https://pythontutor.com/index.html" class="course-card" target="_blank" data-courses="ap-csp intro-coding">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Python Tutor</h4>
-                                <p>
-                                    An online tool that lets you write code and see what happens step-by-step as the computer runs it. It visualizes variables, objects, pointers, data structures, and stack frames.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>AP CSP</span>
-                                <span>Intro. to Coding</span>
-                            </div>
-                        </a>
-
-                        <!-- Kenney Assets -->
-                        <a href="https://kenney.nl/assets" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Kenney Assets</h4>
-                                <p>
-                                    Free sprites, tiles, and sound effects.
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 1-4</span>
-                            </div>
-                        </a>
-
-                        <!-- Open Game Art -->
-                        <a href="https://opengameart.org/" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Open Game Art</h4>
-                                <p>
-                                    Community art and audio—Check licenses!
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 1-4</span>
-                            </div>
-                        </a>
-
-                        <!-- Itch.io -->
-                        <a href="https://itch.io/game-assets/free" class="course-card" target="_blank" data-courses="game-dev">
-                            <div class="card-top">
-                                <span class="course-tag"><svg class="external-link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.21 1.5H10v1.25h3.08L7.9 7.21l.82 1 5.53-4.77V7h1.25V2.79a1.29 1.29 0 0 0-1.29-1.29z"/><path d="M12.25 13.25H1.75v-8.5H7.5V3.5h-6a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4h-1.25z"/></svg></span>
-                            </div>
-
-                            <div class="card-content">
-                                <h4>Itch.io</h4>
-                                <p>
-                                    Community art and audio—Check licenses!
-                                </p>
-                            </div>
-
-                            <div class="course-footer">
-                                <span>Game Dev 1-4</span>
-                            </div>
-                        </a>
+                                <div class="course-footer">
+                                    {% for tag in res.tags %}
+                                        <span>{{ tag.label }}</span>
+                                    {% endfor %}
+                                </div>
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

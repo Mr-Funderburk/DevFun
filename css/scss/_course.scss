@@ -20,7 +20,8 @@
 
 .course-details {
     background-color: $color-surface;
-    padding: 1.3rem 2rem;
+    padding: 0 2rem;
+    padding-bottom: 1rem;
     border: 1px solid $accent-primary;
     border-radius: $radius;
     box-shadow: $shadow-large;
@@ -31,6 +32,7 @@
         font-size: 1.4rem;
         font-weight: 200;
         margin-bottom: 12px;
+        color: $color-text;
     }
 
     strong { color: $accent-green; }
@@ -84,7 +86,9 @@
         font-family: $font-sans;
         font-size: 1.4rem;
         font-weight: 200;
+        margin-top: 0;
         margin-bottom: 12px;
+        color: $color-text;
     }
 
     @media screen and (min-width: $breakpoint-medium) {

@@ -1,0 +1,73 @@
+{% assign course_id = page.course | default: "ap_csp" %}
+{% assign course_data = site.data.courses[course_id] %}
+
+<!-- Backdrop for mobile/drawer dismiss -->
+<div id="lessonSidebarBackdrop" class="lesson-sidebar-backdrop" aria-hidden="true"></div>
+
+<!-- Slide-out Lesson Sidebar -->
+<aside id="lessonSidebar" class="lesson-sidebar" aria-label="Course Lessons Navigation" aria-hidden="true">
+    <div class="sidebar-header">
+        <div class="sidebar-course-title">
+            <span class="course-label">// Course Curriculum</span>
+            <h4>{{ course_data.title | default: "Course Lessons" }}</h4>
+        </div>
+        <button type="button" id="lessonSidebarClose" class="sidebar-close-btn" aria-label="Close sidebar">&times;</button>
+    </div>
+
+    <div class="sidebar-overview-link">
+        <a href="index.html">&larr; Back to Course Overview</a>
+    </div>
+
+    <nav class="sidebar-nav">
+        {% assign lesson_counter = 0 %}
+        {% assign unit_counter = 0 %}
+        {% for unit in course_data.units %}
+            {% if unit.published != false %}
+                {% assign unit_counter = unit_counter | plus: 1 %}
+                <div class="sidebar-unit-group">
+                    <h5 class="sidebar-unit-title">Unit {{ unit_counter }}: {{ unit.title }}</h5>
+                    <ul class="sidebar-lesson-list">
+                        {% for lesson in unit.lessons %}
+                            {% if lesson.published != false %}
+                                {% assign lesson_counter = lesson_counter | plus: 1 %}
+                                {% if lesson_counter < 10 %}
+                                    {% assign num_str = "00" | append: lesson_counter %}
+                                {% elsif lesson_counter < 100 %}
+                                    {% assign num_str = "0" | append: lesson_counter %}
+                                {% else %}
+                                    {% assign num_str = lesson_counter %}
+                                {% endif %}
+
+                                {% assign is_current = false %}
+                                {% if lesson.file == page.name %}
+                                    {% assign is_current = true %}
+                                {% endif %}
+
+                                <li class="sidebar-lesson-item">
+                                    {% if lesson.status == "coming_soon" %}
+                                        <div class="sidebar-lesson-link is-disabled" aria-disabled="true">
+                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
+                                            <span class="sidebar-lesson-name">{{ lesson.title }}</span>
+                                            <span class="badge-coming-soon">Soon</span>
+                                        </div>
+                                    {% elsif is_current %}
+                                        <div class="sidebar-lesson-link is-active" aria-current="page">
+                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
+                                            <span class="sidebar-lesson-name">{{ lesson.title }}</span>
+                                            <span class="sidebar-current-pill">Current</span>
+                                        </div>
+                                    {% else %}
+                                        <a href="{{ lesson.file }}" class="sidebar-lesson-link">
+                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
+                                            <span class="sidebar-lesson-name">{{ lesson.title }}</span>
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </nav>
+</aside>

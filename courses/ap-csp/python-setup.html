@@ -1,4 +1,5 @@
 ---
+course: ap_csp
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -19,16 +20,16 @@
     <script src="/DevFun/js/prism-gml.js" defer></script>
     <script src="/DevFun/js/code-window.js" defer></script>
     <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
 </head>
 <body>
 
     {% include header.html %}
+    {% include lesson-sidebar.html %}
 
     <main class="container">
         <article class="lesson-container">
-            
-            <!-- Lesson Header -->
-            <header class="lesson-header">
+            <div class="lesson-header-nav">
                 <nav class="breadcrumb">
                     <a href="/DevFun/index.html">Home</a>
                     <span class="separator">/</span>
@@ -39,18 +40,19 @@
                     <span>Why Code? &amp; Setup</span>
                 </nav>
 
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
                 <h1>Why Code? <span>&amp; Python Setup</span></h1>
-
-                <div class="lesson-meta-grid">
-                    <div class="meta-item">
-                        <span class="meta-label">Unit</span>
-                        <span class="meta-value">Digital Information</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Environment</span>
-                        <span class="meta-value">VS Code &amp; Python 3.x</span>
-                    </div>
-                </div>
             </header>
 
             <div class="lesson-content">
@@ -62,29 +64,19 @@
                 
                 <p><strong>No—you should definitely keep learning to code!</strong> Even though artificial intelligence is transforming how developers work, learning to program remains essential for understanding and shaping technology. Here is why your skills matter now more than ever:</p>
 
-                <div class="callout-grid">
-                    <div class="callout">
-                        <div class="callout-title">Technology Keeps Changing</div>
-                        <p>New tools appear all the time. Web developers used to write every line of raw HTML by hand, but now modern tools accelerate the build. Understanding underlying mechanics lets you use helper tools effectively instead of guessing blindly.</p>
-                    </div>
+                <blockquote>
+                    <h4>Technology Keeps Changing</h4>
+                    <p>New tools appear all the time. Web developers used to write every line of raw HTML by hand, but now modern tools accelerate the build. Understanding underlying mechanics lets you use helper tools effectively instead of guessing blindly.</p>
+                
+                    <h4>AI is a Co-Pilot, Not a Replacement</h4>
+                    <p>Think of AI like a powerful calculator. It can output code rapidly, but it requires humans to verify syntax, debug logical errors, ensure security, and decide <em>why</em> a product should exist.</p>
+                
+                    <h4>Humans Solve Real Problems</h4>
+                    <p>Coding is fundamentally about human empathy, collaboration, and design. Whether building language apps or medical diagnostic software, AI lacks real-world context and human experience.</p>
+                
+                    <h4>Responsible &amp; Ethical Technology</h4>
+                    <p>We need thoughtful developers who evaluate bias, protect user privacy, and ensure automated systems serve society ethically and safely.</p>
 
-                    <div class="callout callout-green">
-                        <div class="callout-title">AI is a Co-Pilot, Not a Replacement</div>
-                        <p>Think of AI like a powerful calculator. It can output code rapidly, but it requires humans to verify syntax, debug logical errors, ensure security, and decide <em>why</em> a product should exist.</p>
-                    </div>
-
-                    <div class="callout">
-                        <div class="callout-title">Humans Solve Real Problems</div>
-                        <p>Coding is fundamentally about human empathy, collaboration, and design. Whether building language apps or medical diagnostic software, AI lacks real-world context and human experience.</p>
-                    </div>
-
-                    <div class="callout callout-gold">
-                        <div class="callout-title">Responsible &amp; Ethical Technology</div>
-                        <p>We need thoughtful developers who evaluate bias, protect user privacy, and ensure automated systems serve society ethically and safely.</p>
-                    </div>
-                </div>
-
-                <blockquote class="citation-quote">
                     <p>"Coding helps people make games, robots, apps, and even AI itself! Whether you want to be an engineer, a designer, or a scientist, programming trains you to think logically."</p>
                     <cite>— Adapted from Anurodh Kumar, <em>"Should I Stop Learning Programming Because AI Will Take Over Software Jobs?"</em> (LinkedIn, 2023)</cite>
                 </blockquote>
@@ -93,63 +85,51 @@
                 <h2><span class="step-num">02.</span> Development Setup Checklist</h2>
                 <p>Complete these three installations to equip your workstation for the course:</p>
 
-                <div class="setup-checklist">
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Install Python 3</h4>
-                            <p>Download and run the official installer for your operating system. <strong class="text-gold">Crucial step on Windows:</strong> Check the box that says <em>"Add python.exe to PATH"</em> during installation.</p>
-                            <a href="https://www.python.org/downloads/" target="_blank" rel="noopener" class="btn-link">python.org/downloads &rarr;</a>
-                        </div>
-                    </div>
+                <blockquote>
+                    <h4>Install Python 3</h4>
+                    <p>Download and run the official installer for your operating system. <strong class="text-gold">Crucial step on Windows:</strong> Check the box that says <em>"Add python.exe to PATH"</em> during installation.</p>
+                    <a href="https://www.python.org/downloads/" target="_blank" rel="noopener" class="btn-link">python.org/downloads &rarr;</a>
+                </blockquote>
 
-                    <h3>Choose an IDE: PyCharm</h3>
+                <h3>Choose an IDE: PyCharm</h3>
 
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Install PyCharm</h4>
-                            <p>Download PyCharm, an industry standard IDE for Python development.</p>
-                            <a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener" class="btn-link">jetbrains.com/pycharm/ &rarr;</a>
-                        </div>
-                    </div>
+                <blockquote>
+                    <h4>Install PyCharm</h4>
+                    <p>Download PyCharm, an industry standard IDE for Python development.</p>
+                    <a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener" class="btn-link">jetbrains.com/pycharm/ &rarr;</a>
+                </blockquote>
 
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Disable Intellisense</h4>
-                            <p>For this course, you are asked to disable the intellisense option in your IDE to better learn the syntax of the language.</p>
-                            <ol>
-                                <li>Navigate to File > Settings (or PyCharm > Settings on macOS).</li>
-                                <li>Go to Editor > General > Inline Completion.</li>
-                                <li>Uncheck Enable local Full Line completion suggestions and any other inline completion options for your language.</li>
-                                <li>Alternatively, search for "Inline Completion" in the settings search bar and disable the feature entirely.</li>
-                            </ol>
-                        </div>
-                    </div>
+                <blockquote>
+                    <h4>Disable Intellisense</h4>
+                    <p>For this course, you are asked to disable the intellisense option in your IDE to better learn the syntax of the language.</p>
+                    <ol>
+                        <li>Navigate to File > Settings (or PyCharm > Settings on macOS).</li>
+                        <li>Go to Editor > General > Inline Completion.</li>
+                        <li>Uncheck Enable local Full Line completion suggestions and any other inline completion options for your language.</li>
+                        <li>Alternatively, search for "Inline Completion" in the settings search bar and disable the feature entirely.</li>
+                    </ol>
+                </blockquote>
 
-                    <h3>Choose an IDE: VS Code</h3>
+                <h3>Choose an IDE: VS Code</h3>
 
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Install Visual Studio Code</h4>
-                            <p>Download VS Code, our lightweight primary code editor for the year.</p>
-                            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="btn-link">code.visualstudio.com &rarr;</a>
-                        </div>
-                    </div>
+                <blockquote>
+                    <h4>Install Visual Studio Code</h4>
+                    <p>Download VS Code, our lightweight primary code editor for the year.</p>
+                    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="btn-link">code.visualstudio.com &rarr;</a>
+                </blockquote>
 
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Install the VS Code Python Extension</h4>
-                            <p>Open VS Code, click the <strong>Extensions</strong> icon on the left sidebar (<code>Ctrl+Shift+X</code> / <code>Cmd+Shift+X</code>), search for <strong>Python</strong> (by Microsoft), and click <strong>Install</strong>.</p>
-                        </div>
-                    </div>
+                <blockquote>
+                    <h4>Install the VS Code Python Extension</h4>
+                    <p>Open VS Code, click the <strong>Extensions</strong> icon on the left sidebar (<code>Ctrl+Shift+X</code> / <code>Cmd+Shift+X</code>), search for <strong>Python</strong> (by Microsoft), and click <strong>Install</strong>.</p>
+                </blockquote>
 
-                    <div class="check-item">
-                        <div class="check-details">
-                            <h4>Disable Intellisense</h4>
-                            <p>For this course, you are asked to disable the intellisense option in your IDE to better learn the syntax of the language.</p>
-                            <ol>
-                                <li>Open the Command Palette <code>(Ctrl+Shift+P or Cmd+Shift+P)</code> and select <strong>Preferences: Open User Settings (JSON)</strong>.</li>
-                                <li>Add or modify the following configuration to stop automatic suggestions and inline ghost text:
-                                    <blockquote><pre>{
+                <blockquote>
+                    <h4>Disable Intellisense</h4>
+                    <p>For this course, you are asked to disable the intellisense option in your IDE to better learn the syntax of the language.</p>
+                    <ol>
+                        <li>Open the Command Palette <code>(Ctrl+Shift+P or Cmd+Shift+P)</code> and select <strong>Preferences: Open User Settings (JSON)</strong>.</li>
+                        <li>Add or modify the following configuration to stop automatic suggestions and inline ghost text:
+                            <blockquote><pre>{
   "editor.quickSuggestions": {
     "other": false,
     "comments": false,
@@ -160,125 +140,117 @@
   "editor.acceptSuggestionOnEnter": false,
   "editor.autoClosingBrackets": false
 }   </pre></blockquote>
-                                </li>
-                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </blockquote>
+
+            <!-- Part 3: Why Python -->
+            <h2><span class="step-num">03.</span> Why Python?</h2>
+            <p>Python is consistently ranked as the world's most popular programming language on the <a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener">TIOBE Index</a>. Its clean, human-readable syntax makes it the standard choice across data science, web development, automation, and AI development.</p>
+            <p>Furethermore, while the AP Exam is language agnostic, Python mimics the format of the AP Exam code blocks quite well.</p>
+
+            <!-- Part 4: Hands-on Activities -->
+            <h2><span class="step-num">04.</span> Activity A: File Management</h2>
+            <p>An important part of this class will be file management. Therefore, let's set this up now:</p>
+            <p>Pick where your files for this class will live: on your desktop, or in your documents. Avoid locations like your downloads or somewhere deep inside your program files.</p>
+            
+            <p>If you're using PyCharm, we will create a new project in the program and it will setup our first folder for us:</p>
+            <ol>
+                <li>Click <strong>New Project</strong>.</li>
+                <li>Give the project the name <code>CSP</code>.</li>
+                <li>For the <strong>Location</strong>, choose your desktop or your documents (no new folder yet).</li>
+                <li>You can leave everything else default, except, ensure that <em>Create a welcome script</em> is <strong>unchecked</strong>.</li>
+                <li>Click <strong>Create</strong>. PyCharm will create the new <code>CSP</code> folder for you (along with some other files and folders PyCharm needs to run).</li>
+            </ol>
+            
+            <p>If you're using VS Code, we will set up the folder first:</p>
+            <ol>
+                <li>Create a new folder in your Documents or on your Desktop and call it <code>CSP</code>.</li>
+                <li>Everything you create for this class will live in this folder.</li>
+            </ol>
+
+            <h2><span class="step-num">05.</span> Activity B: The Zen of Python</h2>
+            <p>After your software finishes installing, test your installation and uncover Python's core design philosophy hidden inside the language itself.</p>
+
+            <ol class="step-list">
+                <li>Open your IDE.</li>
+                <li>Create a new file named <code>zen.py</code>.</li>
+                <li>Type the following line of code:</li>
+            </ol>
+
+            <div class="code-window">
+                <div class="code-window-header">
+                    <div class="code-window-left">
+                        <div class="window-dots dots-mac">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
                         </div>
+                        <span class="window-filename">zen.py</span>
+                    </div>
+                    <div class="code-window-right">
+                        <span class="code-lang-badge">Python</span>
+                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                            </svg>
+                            <span>Copy code</span>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Part 3: Why Python -->
-                <h2><span class="step-num">03.</span> Why Python?</h2>
-                <p>Python is consistently ranked as the world's most popular programming language on the <a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener">TIOBE Index</a>. Its clean, human-readable syntax makes it the standard choice across data science, web development, automation, and AI development.</p>
-                <p>Furethermore, while the AP Exam is language agnostic, Python mimics the format of the AP Exam code blocks quite well.</p>
-
-                <!-- Part 4: Hands-on Activities -->
-                <h2><span class="step-num">04.</span> Activity A: File Management</h2>
-                <p>An important part of this class will be file management. Therefore, let's set this up now:</p>
-                <p>Pick where your files for this class will live: on your desktop, or in your documents. Avoid locations like your downloads or somewhere deep inside your program files.</p>
-                
-                <p>If you're using PyCharm, we will create a new project in the program and it will setup our first folder for us:</p>
-                <ol>
-                    <li>Click <strong>New Project</strong>.</li>
-                    <li>Give the project the name <code>CSP</code>.</li>
-                    <li>For the <strong>Location</strong>, choose your desktop or your documents (no new folder yet).</li>
-                    <li>You can leave everything else default, except, ensure that <em>Create a welcome script</em> is <strong>unchecked</strong>.</li>
-                    <li>Click <strong>Create</strong>. PyCharm will create the new <code>CSP</code> folder for you (along with some other files and folders PyCharm needs to run).</li>
-                </ol>
-                
-                <p>If you're using VS Code, we will set up the folder first:</p>
-                <ol>
-                    <li>Create a new folder in your Documents or on your Desktop and call it <code>CSP</code>.</li>
-                    <li>Everything you create for this class will live in this folder.</li>
-                </ol>
-
-                <h2><span class="step-num">05.</span> Activity B: The Zen of Python</h2>
-                <p>After your software finishes installing, test your installation and uncover Python's core design philosophy hidden inside the language itself.</p>
-
-                <ol class="step-list">
-                    <li>Open your IDE.</li>
-                    <li>Create a new file named <code>zen.py</code>.</li>
-                    <li>Type the following line of code:</li>
-                </ol>
-
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="file-name">zen.py</span>
-                        <span class="lang-tag">python</span>
-                    </div>
-                    <pre><code>import this</code></pre>
+                <div class="code-window-body">
+                    <pre><code class="language-python">import this</code></pre>
                 </div>
-
-                <div class="code-window">
-                    <div class="code-window-header">
-                        <div class="code-window-left">
-                            <div class="window-dots dots-mac">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <span class="window-filename">zen.py</span>
-                        </div>
-                        <div class="code-window-right">
-                            <span class="code-lang-badge">Python</span>
-                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                                </svg>
-                                <span>Copy code</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-window-body">
-                        <pre><code class="language-python">import this</code></pre>
-                    </div>
-                </div>
-
-                <p>Run the script by clicking the <strong>Play button (▶)</strong> in the top-right corner of your IDE. The terminal will print <em>The Zen of Python</em> by Tim Peters—a set of 19 guiding principles for writing clean code.</p>
-                <p>Keyboard shortcuts will help <em>immensely</em> with your productivity in this class. The first one I recommend right from the start is <code>Ctrl/Cmd + S</code> - Save your work. This is pretty universal with any program.</p>
-
-                <h2><span class="step-num">06.</span> Activity C: Hello, World!</h2>
-                <p>It is a rite of passage for every programmer across the globe to write a "Hello, World!" program when learning a new language.</p>
-
-                <ol class="step-list">
-                    <li>Create a new folder inside of your main CSP folder (this will be referred to as the <strong>root</strong> folder of our class) called <code>learning</code>.</li>
-                    <li>Create a new file named <code>hello-world.py</code> in the <strong>learning</strong> folder.</li>
-                    <li>Enter the following code and run your program:</li>
-                </ol>
-
-                <div class="code-window">
-                    <div class="code-window-header">
-                        <div class="code-window-left">
-                            <div class="window-dots dots-mac">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <span class="window-filename">hello-world.py</span>
-                        </div>
-                        <div class="code-window-right">
-                            <span class="code-lang-badge">Python</span>
-                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                                </svg>
-                                <span>Copy code</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-window-body">
-                        <pre><code class="language-python">print("Obligatory, Hello World!")</code></pre>
-                    </div>
-                </div>
-
-                <div class="callout callout-green">
-                    <div class="callout-title"><span class="icon">🎉</span> Milestone Unlocked</div>
-                    <p>Congratulations! You just executed your first line of Python code and joined a global community of software creators.</p>
-                </div>
-
-                <p><strong>Side Note:</strong> Many code blocks on this website will allow copy and paste for your convenience. However, you are encouraged to type out most of our exercises to help commit the syntax to memory.</p>
             </div>
+
+            <p>Run the script by clicking the <strong>Play button (▶)</strong> in the top-right corner of your IDE. The terminal will print <em>The Zen of Python</em> by Tim Peters—a set of 19 guiding principles for writing clean code.</p>
+            <p>Keyboard shortcuts will help <em>immensely</em> with your productivity in this class. The first one I recommend right from the start is <code>Ctrl/Cmd + S</code> - Save your work. This is pretty universal with any program.</p>
+
+            <h2><span class="step-num">06.</span> Activity C: Hello, World!</h2>
+            <p>It is a rite of passage for every programmer across the globe to write a "Hello, World!" program when learning a new language.</p>
+
+            <ol class="step-list">
+                <li>Create a new folder inside of your main CSP folder (this will be referred to as the <strong>root</strong> folder of our class) called <code>learning</code>.</li>
+                <li>Create a new file named <code>hello-world.py</code> in the <strong>learning</strong> folder.</li>
+                <li>Enter the following code and run your program:</li>
+            </ol>
+
+            <div class="code-window">
+                <div class="code-window-header">
+                    <div class="code-window-left">
+                        <div class="window-dots dots-mac">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="window-filename">hello-world.py</span>
+                    </div>
+                    <div class="code-window-right">
+                        <span class="code-lang-badge">Python</span>
+                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                            </svg>
+                            <span>Copy code</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-window-body">
+                    <pre><code class="language-python">print("Obligatory, Hello World!")</code></pre>
+                </div>
+            </div>
+
+            <blockquote>
+                <h4> Milestone Unlocked</h4>
+                <p>Congratulations! You just executed your first line of Python code and joined a global community of software creators.</p>
+            </blockquote>
+
+            <p><strong>Side Note:</strong> Many code blocks on this website will allow copy and paste for your convenience. However, you are encouraged to type out most of our exercises to help commit the syntax to memory.</p>
+
+            {% include lesson-nav.html %}
         </article>
     </main>
 

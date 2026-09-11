@@ -86,6 +86,10 @@
   gap: 7px;
 }
 
+@media screen and (max-width: 600px) {
+  .window-dots { display: none; }
+}
+
 .window-dots .dot {
   width: 11px;
   height: 11px;
@@ -128,6 +132,10 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+@media screen and (max-width: 600px) {
+  .code-window-header { flex-direction: column; }
 }
 
 .code-lang-badge {

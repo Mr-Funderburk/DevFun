@@ -176,13 +176,16 @@
     }
     
     .lesson-topics {
-        display: inline-block;
-        background-color: $color-surface-hover;
-        font-size: 0.7rem;
-        padding: 3px 6px;
-        border: 1px solid $color-border;
-        border-radius: $radius-small;
-        color: $color-text-muted;
+        span {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: $color-text-muted;
+            background-color: $color-surface-hover;
+            margin: 0 3px;
+            padding: 3px 6px;
+            border: 1px solid $color-border;
+            border-radius: $radius-small;
+        }
     }
 
     .badge-coming-soon {
@@ -305,7 +308,7 @@
 
     .weight-badge {
       font-size: 0.75rem;
-      font-family: 'Fira Code', monospace;
+      font-family: $font-code;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
     }
@@ -349,7 +352,7 @@
     padding: 0.6rem 0.25rem;
 
     span, strong {
-      font-family: 'Fira Code', monospace;
+      font-family: $font-code;
       font-size: 1.35rem;
       font-weight: 600;
       line-height: 1.1;
@@ -375,4 +378,62 @@
     border-radius: 6px;
     border: 1px dashed rgba(243, 139, 168, 0.3);
   }
+}
+
+
+.quote {
+    border-left-color: $accent-gold;
+    position: relative;
+
+    .source {
+        text-align: right;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: $accent-gold;
+        margin-bottom: 0;
+    }
+
+    &::after {
+        content: "\201D";
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 6rem;
+        color: $accent-gold;
+        opacity: 1;
+        position: absolute;
+        top: -20px;
+        right: 20px;
+        opacity: 0.2;
+    }
+}
+
+.video-container {
+    width: 560px;
+    max-width: 100%;
+    margin: 12px auto;
+
+    iframe { 
+        width: 100%;
+        min-height: 360px;        
+    }
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    > div {
+        border: 1px solid $color-border;
+        background: $color-surface;
+        padding: 1rem;
+        border-radius: $radius;
+    }
+    div:last-child { grid-column: 1 / -1; }
+}
+
+.color-title {
+    color: $accent-cyan;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1;
 }

@@ -3,9 +3,9 @@ title: "AP Computer Science Principles"
 breadcrumb: "AP CSP"
 
 units:
-  - title: "Digital Information"
+  - title: "Intro to CS"
     lessons:
-      - title: "Why Code? & Python Setup"
+      - title: "Why Code & Python Setup"
         file: "python-setup.html"
         description: "Why learn to code in the age of AI, setting up VS Code and Python, and writing your first Hello World program."
         topics:
@@ -14,14 +14,23 @@ units:
           - "VS Code"
         status: "published"
 
-      - title: "Welcome to Binary & Data Representation"
-        file: "binary-data.html"
-        description: "Explore how computing devices represent complex information using binary states, bits, and bytes."
+      - title: "What is Computer Science"
+        file: "what-is-computer-science.html"
+        description: "Understand the umbrella that computer science covers—what it is and what it isn't."
         topics:
-          - "Big Idea 1"
-          - "Binary"
-          - "Data Representation"
-        status: "coming_soon"
+          - "Brief History"
+          - "Impacts"
+        status: "published"
+
+      - title: "Computational Thinking"
+        file: "computational-thinking.html"
+        description: "Learn what it means to 'think like a programmer'."
+        topics:
+          - "Decomposition"
+          - "Pattern Recognition"
+          - "Abstraction"
+          - "Algorithmic Thinking"
+        status: "published"
 
   - title: "The Internet"
     lessons:

@@ -1,0 +1,176 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learn to think like a programmer!">
+    <title>Computational Thinking | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Computational Thinking</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Computational Thinking</span></h1>
+            </header>
+
+            <div class="lesson-content">
+                <blockquote class="quote">
+                    <p>"Computational thinking is a problem-solving process that includes formulating problems in a way that enables us to use a computer to help solve them."</p>
+                    <p class="source">— AP Computer Science Principles Big Idea 1: Creative Development</p>
+                </blockquote>
+
+                <h2><span class="step-num">01.</span> Decomposition</h2>
+
+                <p><em>Decomposition is breaking a complex problem down into smaller, manageable, independent parts.</em></p>
+
+                <h4>Scenario: The Livestream Disaster</h4>
+                <p>Jordan was in charge of live-streaming the school's esports championship. During the finals, the stream constantly buffered, the audio had a loud echo, the scoreboard overlay froze on frame one, the laptop died mid-match because the charger was left in a classroom, and Jordan panicked trying to fix every issue at once until the entire stream went offline.</p>
+                <p>Isolate <strong>four</strong> distinct problems from Jordan's situation and propose a preventative solution for each.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Livestream disaster decomposition planning table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Isolated Sub-Problem</th>
+                                <th scope="col">Root Cause / Context</th>
+                                <th scope="col">Preventative Solution</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td scope="row"><em>Laptop shut down mid-stream</em></td>
+                                <td data-label="Root Cause / Context"><em>Charger left in classroom</em></td>
+                                <td data-label="Preventative Solution"><em>Create a pre-stream hardware checklist (charger plugged in, battery verified)</em></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">1.</td>
+                                <td data-label="Root Cause / Context"></td>
+                                <td data-label="Preventative Solution"></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">2.</td>
+                                <td data-label="Root Cause / Context"></td>
+                                <td data-label="Preventative Solution"></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">3.</td>
+                                <td data-label="Root Cause / Context"></td>
+                                <td data-label="Preventative Solution"></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">4.</td>
+                                <td data-label="Root Cause / Context"></td>
+                                <td data-label="Preventative Solution"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2><span class="step-num">02.</span> Pattern Recognition</h2>
+                <p><em>Pattern Recognition involves finding similarities, trends, or repeating rules within data.</em></p>
+
+                <p>Analyze each sequence below. State the <strong>next term</strong> and explain the <strong>rule/pattern</strong> you identified.</p>
+                <ol>
+                    <li>3, 7, 15, 31, 63, ___
+                        <ul>
+                            <li>Next Term: _______</li>
+                            <li>Rule/Pattern: _______</li>
+                        </ul>
+                    </li>
+                    <li>100, 90, 95, 85, 90, 80, ___
+                        <ul>
+                            <li>Next Term: _______</li>
+                            <li>Rule/Pattern: _______</li>
+                        </ul>
+                    </li>
+                    <li>A1, C4, E9, G16, ___
+                        <ul>
+                            <li>Next Term: _______</li>
+                            <li>Rule/Pattern: _______</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2><span class="step-num">03.</span> Abstraction</h2>
+                <p><em>Abstraction is filtering out unnecessary details (noise) to focus only on the core concept or universal rule (signal).</em></p>
+
+                <p>Read each scenario, remove the irrelevant details, and write a single general rule that applies to modern technology or real-world systems.</p>
+
+                <h4 class="color-title">Senario 1</h4>
+                <p>On a rainy Tuesday, Sam was working on an assignment in the library while wearing red sneakers. He stepped away to buy a drink from a vending machine, leaving his computer signed in. While he was gone, another student sent a joke email from Sam's account.</p>
+                <ul>
+                    <li>Irrelevant Details to Ignore: ______________</li>
+                    <li>Abstracted Universal Rule: ______________</li>
+                </ul>
+
+                <h4 class="color-title">Senario 2</h4>
+                <p>Maya attempts to render her 3D animation project every Wednesday during third period. Her computer crashes every single time because she runs three high-end video games, two browser windows with 40 tabs, and music software all at the same time. On days when she closes all background applications, her rendering finishes in two minutes without issues.</p>
+                <ul>
+                    <li>Irrelevant Details to Ignore: ______________</li>
+                    <li>Abstracted Universal Rule: ______________</li>
+                </ul>
+
+                <h2><span class="step-num">04.</span> Algorithmic Thinking</h2>
+                <p><em>Algorithmic Thinking is creating a clear, ordered set of step-by-step instructions to solve a problem.</em></p>
+                <ol>
+                    <li>Write a precise 4-step algorithm for a user to follow when an application on their device unexpectedly freezes or stops responding.</li>
+                    <li>Write out every algebraic operation step required to solve for <code>x</code> in the equation below. Treat each line like a single line of executed code.<br><code>3(2x - 4) = 4x + 10</code></li>
+                </ol>
+                
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,167 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - How to get user input in Python.">
+    <title>User Input in Python | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>User Input in Python</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>User Input in Python</span></h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>A critical aspect of programming is the ability to take information from a user and manipulate it. Python provides a robust mechanism to interact dynamically, but we must understand how it interprets the data it receives.</p>
+
+                <p>Python offers a simple framework for text-based user input using the <code>input([prompt])</code> function. The syntax is crucial: the optional prompt inside the parentheses is the message displayed to the user. The dynamic sequence is as follows:</p>
+                <blockquote style="padding-bottom: 0;">
+                    <ul>
+                        <li><strong>Display Prompt</strong>: The program outputs the prompt text (e.g., a question).</li>
+                        <li><strong>Halt Execution</strong>: The Python interpreter stops and waits.</li>
+                        <li><strong>Wait for Input</strong>: The program pauses until the user types text and presses <strong>[Enter]</strong>.</li>
+                        <li><strong>Resume</strong>: The function receives the typed text and the program continues.</li>
+                    </ul>
+                </blockquote>
+                
+                <h2>Printing Direct Input</h2>
+                <p>The simplest way to verify the <code>input()</code> mechanism is to immediately print the result. Try running the following code block in your Python editor. Note how the prompt appears, and the output is generated only after you press [Enter].</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename"></span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">print(input("What is your name? "))</code></pre>
+                    </div>
+                </div>
+
+                <h2>Storing Input: Using Variables</h2>
+                <p>Simply printing or testing the input is useful for diagnostic checks, but in a functional application, we need to keep the data for later or manipulate it further. We can set a variable to the value of the input, just as we would assign any other variable in Python. Consider the comprehensive example below:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">user-input.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># 1. Take raw input (received as a string)
+age = input("What is your age? ")
+
+# 2. Manipulate the data (requires casting to int)
+age_in_ten = age + 10
+
+# 3. Output the final result
+print(age_in_ten)</code></pre>
+                    </div>
+                </div>
+
+                <p>Unfortunately, this code crashes. Why do you think that is? What is the error?</p>
+                
+                <h2>How Input is Treated</h2>
+                <p>Python treats all user input as a <strong>string</strong>. <em>This is important</em>. In the above example, we attempt to add ten (an integer) to the user's age (since it's user input, it's a string). This is like asking someone what 2 plus 'fish' is. It just doesn't make sense. So how do we make it work?</p>
+
+                <h2>Type Casting</h2>
+                <p>Type casting in Python is the process of converting a value from one data type to another.</p>
+                <p>There are two types of type casting in Python:</p>
+                <ul>
+                    <li><strong>Implicit Type Casting:</strong> Python automatically converts a lower-capability type to a higher-capability type (e.g., int to float) to prevent data loss during operations.  This happens without any code from the developer and is always safe.</li>
+                    <li><strong>Explicit Type Casting:</strong> The developer manually converts a value using built-in functions like <code>int()</code>, <code>float()</code>, <code>str()</code>, or <code>bool()</code>.  This is required when Python cannot automatically determine the correct type or when converting to a lower-capability type (e.g., float to int), which may result in data loss. </li>
+                </ul>
+                <p>So to make our previous example work, we need to convert (or <em>cast</em>) the user input to an integer. Update line 5 to be <code>age_in_ten = int(age) + 10</code>. This will tell Python that we want to take the value of <code>age</code> (which is a string right now) and convert (or <em>cast</em>) the value to an integer. Now we can run our code and as long as the user inputs a valid integer, the code runs perfectly.</p>
+                <p>What happens when the user does not entire an integer though? What if they input 'fish'? Or even a float like 2.2? This is a concern that developers have to be aware of. We will cover more of this when we start talking about validation.</p>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following questions to solidify your understanding of system interaction and data processing. Provide your responses in full, complete sentences, referencing the concepts discussed in this lesson.</p>
+                <ol>
+                    <li>Why does Python classify the data received from the <code>input()</code> function as a string, regardless of whether the user types a number or a word? How can a developer verify this system behavior?</li>
+                    <li>Consider the error we had when attempting to run the user input <code>age</code> and adding it to 10. What was the precise name of the error produced by Python, and what specific message does the interpreter use to explain the failure to compare an integer to text?</li>
+                    <li>Create a code segment that will ask the user's name and then print the message <code>Hello, [name]!</code>, where <code>[name]</code> is replaced with the name the user inputs.</li>
+                    <li>Create a code segment that will get two numbers from the user and print the sum.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -19,7 +19,6 @@
     </div>
 
     <nav class="sidebar-nav">
-        {% assign lesson_counter = 0 %}
         {% assign unit_counter = 0 %}
         {% for unit in course_data.units %}
             {% if unit.published != false %}
@@ -29,15 +28,6 @@
                     <ul class="sidebar-lesson-list">
                         {% for lesson in unit.lessons %}
                             {% if lesson.published != false %}
-                                {% assign lesson_counter = lesson_counter | plus: 1 %}
-                                {% if lesson_counter < 10 %}
-                                    {% assign num_str = "00" | append: lesson_counter %}
-                                {% elsif lesson_counter < 100 %}
-                                    {% assign num_str = "0" | append: lesson_counter %}
-                                {% else %}
-                                    {% assign num_str = lesson_counter %}
-                                {% endif %}
-
                                 {% assign is_current = false %}
                                 {% if lesson.file == page.name %}
                                     {% assign is_current = true %}
@@ -46,19 +36,16 @@
                                 <li class="sidebar-lesson-item">
                                     {% if lesson.status == "coming_soon" %}
                                         <div class="sidebar-lesson-link is-disabled" aria-disabled="true">
-                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
                                             <span class="sidebar-lesson-name">{{ lesson.title }}</span>
                                             <span class="badge-coming-soon">Soon</span>
                                         </div>
                                     {% elsif is_current %}
                                         <div class="sidebar-lesson-link is-active" aria-current="page">
-                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
                                             <span class="sidebar-lesson-name">{{ lesson.title }}</span>
                                             <span class="sidebar-current-pill">Current</span>
                                         </div>
                                     {% else %}
                                         <a href="{{ lesson.file }}" class="sidebar-lesson-link">
-                                            <span class="sidebar-lesson-num">{{ num_str }}</span>
                                             <span class="sidebar-lesson-name">{{ lesson.title }}</span>
                                         </a>
                                     {% endif %}

@@ -1,0 +1,493 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Fundamentals of digital logic gates, Boolean algebra, and truth tables.">
+    <title>Logic Gates & Truth Tables | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Logic Gates & Truth Tables</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Logic Gates & Truth Tables</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>At the physical hardware level, computers operate using electrical signals represented as binary values: <strong>1</strong> (HIGH voltage / True) and <strong>0</strong> (LOW voltage / False). <strong>Logic gates</strong> are fundamental building blocks of digital integrated circuits that manipulate these signals according to logical rules.</p>
+                
+                <p>Just as software uses programming operators (<code>and</code>, <code>or</code>, <code>not</code>), hardware hardware processors implement these operations using microscopic physical logic gates built from transistors.</p>
+
+                <h2>Primary Logic Gates</h2>
+                <p>The three basic gates form the foundation of all digital systems.</p>
+
+                <h3>1. AND Gate</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>AND Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A &and; B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>0</td></tr>
+                        <tr><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td></tr>
+                        <tr><td>1</td><td>1</td><td>1</td></tr>
+                    </tbody>
+                </table>
+
+                <p>An <strong>AND gate</strong> outputs <code>1</code> (True) <strong>only if all of its inputs are 1</strong>. If any input is <code>0</code>, the output is <code>0</code>.</p>
+                <ul>
+                    <li><strong>Boolean Expression:</strong> C = A &middot; B or C = A &and; B</li>
+                    <li><strong>Programming Syntax:</strong> <code>A and B</code> or <code>A && B</code></li>
+                </ul>
+
+                <br style="clear: both;">
+
+                <h3>2. OR Gate</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>OR Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A &or; B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>0</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td></tr>
+                        <tr><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><td>1</td><td>1</td><td>1</td></tr>
+                    </tbody>
+                </table>
+
+                <p>An <strong>OR gate</strong> outputs <code>1</code> (True) if <strong>at least one of its inputs is 1</strong>. It only outputs <code>0</code> when all inputs are <code>0</code>.</p>
+                <ul>
+                    <li><strong>Boolean Expression:</strong> C = A + B or C = A &or; B</li>
+                    <li><strong>Programming Syntax:</strong> <code>A or B</code> or <code>A || B</code></li>
+                </ul>
+
+                <br style="clear: both;">
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Mnemonic Tip:</strong> To remember which mathematical symbol means OR (&or;) versus AND (&and;), think: you dig down (&or;) to mine <strong>ORE</strong>. Therefore, the downward-pointing wedge (&or;) represents <strong>OR</strong>.</p>
+                </blockquote>
+
+                <h3>3. NOT Gate (Inverter)</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>NOT Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Output (NOT A)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>1</td></tr>
+                        <tr><td>1</td><td>0</td></tr>
+                    </tbody>
+                </table>
+
+                <p>A <strong>NOT gate</strong> accepts only a <strong>single input</strong> and reverses (inverts) its state. If the input is <code>1</code>, the output is <code>0</code>; if the input is <code>0</code>, the output is <code>1</code>.</p>
+                <ul>
+                    <li><strong>Boolean Expression:</strong> B = &not;A</li>
+                    <li><strong>Programming Syntax:</strong> <code>not A</code> or <code>!A</code></li>
+                </ul>
+
+                <h2>Inverted Gates: NAND and NOR</h2>
+                <p>In digital circuit manufacturing, combining an inverted output with an AND or OR gate produces inverted universal gates.</p>
+
+                <br style="clear: both;">
+
+                <h3>4. NAND Gate (NOT-AND)</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>NAND Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A NAND B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td></tr>
+                        <tr><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><td>1</td><td>1</td><td>0</td></tr>
+                    </tbody>
+                </table>
+
+                <p>A <strong>NAND gate</strong> behaves as an AND gate followed immediately by a NOT gate. Its output is <code>0</code> <strong>only when all inputs are 1</strong>; otherwise, it outputs <code>1</code>.</p>
+
+                <br style="clear: both;">
+
+                <h3>5. NOR Gate (NOT-OR)</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>NOR Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A NOR B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td></tr>
+                        <tr><td>1</td><td>1</td><td>0</td></tr>
+                    </tbody>
+                </table>
+
+                <p>A <strong>NOR gate</strong> behaves as an OR gate followed immediately by a NOT gate. Its output is <code>1</code> <strong>only when all inputs are 0</strong>.</p>
+
+                <br style="clear: both;">
+
+                <h2>Exclusive Gates: XOR and XNOR</h2>
+                <p>Exclusive logic operations deal specifically with whether input patterns match or differ.</p>
+
+                <h3>6. XOR Gate (Exclusive-OR)</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>XOR Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A XOR B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>0</td></tr>
+                        <tr><td>0</td><td>1</td><td>1</td></tr>
+                        <tr><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><td>1</td><td>1</td><td>0</td></tr>
+                    </tbody>
+                </table>
+
+                <p>An <strong>XOR gate</strong> outputs <code>1</code> if the inputs are <strong>different</strong> (specifically when one and only one input is <code>1</code>). If both inputs are identical, it outputs <code>0</code>.</p>
+                <ul>
+                    <li><strong>Rule of Thumb:</strong> <em>"One or the other, but NOT both."</em></li>
+                    <li><strong>Boolean Expression:</strong> C = A &oplus; B</li>
+                </ul>
+
+                <br style="clear: both;">
+
+                <h3>7. XNOR Gate (Exclusive-NOR / Equivalence)</h3>
+
+                <table class="truth-table truth-table--float-right">
+                    <caption>XNOR Truth Table</caption>
+                    <thead>
+                        <tr><th>Input A</th><th>Input B</th><th>Output (A XNOR B)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td></tr>
+                        <tr><td>1</td><td>1</td><td>1</td></tr>
+                    </tbody>
+                </table>
+
+                <p>An <strong>XNOR gate</strong> outputs <code>1</code> if the inputs are <strong>identical</strong> (both <code>0</code> or both <code>1</code>). If the inputs differ, it outputs <code>0</code>.</p>
+
+                <br style="clear: both;">
+
+                <h2>Constructing & Solving Compound Truth Tables</h2>
+                <p>A <strong>Truth Table</strong> breaks down complex digital circuits or multi-variable Boolean expressions by displaying every possible input combination alongside the intermediate and final step outputs.</p>
+
+                <p>The total number of rows required in a truth table is determined by the number of inputs <code>n</code> using the formula: <code>total_rows = 2<sup>n</sup></code></p>
+
+                <p>For a 2-input system (<code>A</code>, <code>B</code>), you need <code>2<sup>2</sup> = 4</code> rows. For a 3-input system (<code>A</code>, <code>B</code>, <code>C</code>), you need <code>2<sup>3</sup> = 8</code> rows.</p>
+
+                <h3>Step-by-Step Worked Example</h3>
+                <p>Let's construct a truth table for the following compound circuit expression:</p>
+
+                <h4>Q = (A &and; B) &or; (&not;A)</h4>
+
+                <p><strong>Step 1: List all input combinations.</strong> For two inputs (<code>A</code>, <code>B</code>), list the 4 binary combinations (<code>00, 01, 10, 11</code>).</p>
+                <p><strong>Step 2: Solve individual sub-expressions (sub-gates) first.</strong></p>
+                <ul>
+                    <li>Evaluate sub-expression 1: (A &and; B)</li>
+                    <li>Evaluate sub-expression 2: (&not;A)</li>
+                </ul>
+                <p><strong>Step 3: Evaluate the primary combining gate.</strong> Take the outputs of Column 3 and Column 4 and process them through the final <strong>OR</strong> gate to determine final output <code>Q</code>.</p>
+
+                <table class="truth-table">
+                    <caption>Complex Truth Table</caption>
+                    <thead>
+                        <tr>
+                            <th>Input A</th>
+                            <th>Input B</th>
+                            <th>Sub 1: (A AND B)</th>
+                            <th>Sub 2: (NOT A)</th>
+                            <th>Final Output Q: (Sub 1 OR Sub 2)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="note">You can get more practice here: <a href="https://www.cs.utexas.edu/~learnlogic/truthtables/" target="_blank">https://www.cs.utexas.edu/~learnlogic/truthtables/</a></p>
+
+                <h2>DeMorgan's Laws: Simplifying Negations</h2>
+                <p>In computer science, <strong>DeMorgan's Laws</strong> are a pair of transformation rules used to simplify complex, negated conditional statements. They allow developers to rewrite awkward expressions containing a <code>not(...)</code> wrapper into clean, readable code.</p>
+
+                <p>To apply DeMorgan's Laws to any boolean expression, follow the <strong>Two-Step Rule</strong>:</p>
+                <ol>
+                    <li><strong>Distribute the <code>not</code></strong> to every variable/condition inside the parentheses.</li>
+                    <li><strong>Flip the logical operator</strong>: Change <code>and</code> to <code>or</code>, or change <code>or</code> to <code>and</code>.</li>
+                </ol>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>The Two Laws of DeMorgan:</strong></p>
+                    <ul>
+                        <li><code>not (A and B)</code> &nbsp;&rarr;&nbsp; <code>(not A) or (not B)</code></li>
+                        <li><code>not (A or B)</code> &nbsp;&rarr;&nbsp; <code>(not A) and (not B)</code></li>
+                    </ul>
+                </blockquote>
+
+                <h3>1. DeMorgan's First Law: Negating an <code>AND</code></h3>
+                <p>Imagine a theme park ride with the following safety rule: <em>To ride, you must be at least 48 inches tall <strong>AND</strong> wearing closed-toe shoes.</em></p>
+
+                <p>When does a park visitor get turned away? They are turned away if they are <strong>NOT</strong> 48 inches tall <strong>OR</strong> they are <strong>NOT</strong> wearing closed-toe shoes. Failing either individual condition breaks the rule.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">logic-gates.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Awkward / Hard to read
+if not (is_tall and has_shoes):
+    print("Cannot board the ride.")
+
+# Equivalent DeMorgan simplification (Cleaner)
+if not is_tall or not has_shoes:
+    print("Cannot board the ride.")</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. DeMorgan's Second Law: Negating an <code>OR</code></h3>
+                <p>Consider a school weather policy: <em>Class is canceled if it is snowing <strong>OR</strong> if there is an active flood warning.</em></p>
+
+                <p>When do students go to school as normal? School is held only if it is <strong>NOT</strong> snowing <strong>AND</strong> there is <strong>NOT</strong> a flood warning. Both conditions must be clear simultaneously.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">logic-gates.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Awkward / Hard to read
+if not (is_snowing or has_flood):
+    print("School is open today!")
+
+# Equivalent DeMorgan simplification (Cleaner)
+if not is_snowing and not has_flood:
+    print("School is open today!")</code></pre>
+                    </div>
+                </div>
+
+                <h3>Proof via Truth Table</h3>
+                <p>We can prove that <code>not (A and B)</code> is logically equivalent to <code>(not A) or (not B)</code> by comparing their output columns across all binary input combinations.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Input A</th>
+                            <th>Input B</th>
+                            <th>A and B</th>
+                            <th>not (A and B)</th>
+                            <th>not A</th>
+                            <th>not B</th>
+                            <th>(not A) or (not B)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Notice that the outputs in column 4 (<code>not (A and B)</code>) and column 7 (<code>(not A) or (not B)</code>) are identical across all rows. This proves the two expressions are interchangeable in code.</p>
+
+                <h3>Flipping Relational Operators</h3>
+                <p>When applying DeMorgan's Laws to numeric comparisons (like <code>&gt;</code>, <code>&lt;</code>, <code>==</code>), distributing the <code>not</code> also requires reversing the comparison operator:</p>
+                <ul>
+                    <li><code>not (x &gt; 5)</code> &nbsp;&rarr;&nbsp; <code>x &lt;= 5</code></li>
+                    <li><code>not (x == 10)</code> &nbsp;&rarr;&nbsp; <code>x != 10</code></li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">logic-gates.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Before DeMorgan:
+if not (score >= 70 and attempts < 3):
+    print("Retake required.")
+
+# After DeMorgan (Distribute 'not' and flip operators):
+if score < 70 or attempts >= 3:
+    print("Retake required.")</code></pre>
+                    </div>
+                </div>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following logic problems to test your understanding. Assume binary states where <code>1 = TRUE / HIGH</code> and <code>0 = FALSE / LOW</code>.</p>
+                <ol>
+                    <li>A security alarm system triggers an output of <code>1</code> only if the <strong>Master Switch (A)</strong> is enabled (<code>1</code>) AND either the <strong>Motion Sensor (B)</strong> OR <strong>Door Sensor (C)</strong> detects activity (<code>1</code>). Write the Boolean algebraic expression for this alarm system. How many rows would its complete truth table contain?</li>
+                    <li>Evaluate the output state <code>Q</code> when inputs are <code>A = 1</code> and <code>B = 0</code> for the expression:  
+                    <code>Q = (A &oplus; B) &and; (&not;B)</code></li>
+                    <li>Construct a full truth table for the expression <code>Q = &not;(A NOR B)</code> and state which single standard logic gate produces the exact same output table.</li>
+                    <li>Use DeMorgan's Laws to rewrite the expression <code>not (x == 0 or y == 0)</code> without using surrounding parentheses.</li>
+                    <li>Simplify the Python condition <code>not (age &gt;= 18 and registered == True)</code> using DeMorgan's Laws.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

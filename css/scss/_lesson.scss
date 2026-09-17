@@ -103,6 +103,13 @@ ul, ol {
     }
 }
 
+blockquote {
+    ul, ol {
+        list-style-type: disc;
+        li::marker { color: $accent-green; }
+    }
+}
+
 /* Environment setup checklist */
 .setup-checklist {
     display: grid;
@@ -402,6 +409,7 @@ blockquote {
     background: rgba($color-background, 0.6);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    z-index: 100;
 
     .breadcrumb {
         margin-bottom: 0;
@@ -761,3 +769,106 @@ blockquote {
     margin-bottom: 0;
     margin-top: 15px;
 }
+
+
+.fake-table {
+    line-height: 1.8;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 4px;
+}
+
+
+.note {
+    font-size: 0.8em;
+    color: $color-text-note;
+}
+
+
+.truth-table {
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.9rem;
+    border-radius: $radius;
+}
+
+.truth-table th,
+.truth-table td {
+    border: 1px solid $color-border;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+}
+
+.truth-table th {
+    background: $color-surface-hover;
+    font-weight: 600;
+}
+
+.truth-table--float-right {
+    float: right;
+    margin: 0 0 1.25rem 1.5rem;
+
+    @media screen and (max-width: $breakpoint-medium) {
+        float: none;
+    }
+}
+
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0 1.5rem;
+}
+
+.table-scroll .truth-table {
+    width: max-content;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+
+.lesson-content {
+    input[type="checkbox"] {
+        appearance: none;
+        width: 1.15rem;
+        height: 1.15rem;
+        margin: 0 0.5rem 0 0;
+        vertical-align: -0.2rem;
+        border: 2px solid var(--accent-color, #6366f1);
+        border-radius: 0.35rem;
+        background: var(--surface-color, #ffffff);
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease,
+                    box-shadow 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 4px color-mix(
+                in srgb,
+                var(--accent-color, #6366f1) 15%,
+                transparent
+            );
+        }
+
+        &:focus-visible {
+            outline: 3px solid color-mix(
+                in srgb,
+                var(--accent-color, #6366f1) 35%,
+                transparent
+            );
+            outline-offset: 2px;
+        }
+
+        &:checked {
+            border-color: var(--accent-color, #6366f1);
+            background-color: var(--accent-color, #6366f1);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5 6.5 12 13 4.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 0.8rem;
+        }
+    }
+}
+
+.test-cases td { text-align: left; }

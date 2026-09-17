@@ -1,0 +1,264 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Operator Symbols and their Meanings.">
+    <title>Python Operators | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Python Operators</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Python Operators</span></h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Operators are special symbols in Python that carry out arithmetic, logical, or assignment computations. Use this cheat sheet as a companion throughout your programming projects and AP exam review.</p>
+
+                <h2>Arithmetic Operators</h2>
+                <p>Arithmetic operators are used with numeric values to perform common mathematical operations.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Python Arithmetic Operators Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Operator</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>+</code></td>
+                                <td data-label="Name">Addition</td>
+                                <td data-label="Example"><code>x + y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>-</code></td>
+                                <td data-label="Name">Subtraction</td>
+                                <td data-label="Example"><code>x - y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>*</code></td>
+                                <td data-label="Name">Multiplication</td>
+                                <td data-label="Example"><code>x * y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>/</code></td>
+                                <td data-label="Name">Division</td>
+                                <td data-label="Example"><code>x / y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>%</code></td>
+                                <td data-label="Name">Modulus <span class="note">(Remainder)</span></td>
+                                <td data-label="Example"><code>x % y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>**</code></td>
+                                <td data-label="Name">Exponentiation</td>
+                                <td data-label="Example"><code>x ** y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>//</code></td>
+                                <td data-label="Name">Floor Division <span class="note">(Truncates the decimal)</span></td>
+                                <td data-label="Example"><code>x // y</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Comparison Operators</h2>
+                <p>Comparison operators compare two values and evaluate to either <code>True</code> or <code>False</code>.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Python Comparison Operators Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Operator</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>==</code></td>
+                                <td data-label="Name">Equal</td>
+                                <td data-label="Example"><code>x == y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>!=</code></td>
+                                <td data-label="Name">Not Equal</td>
+                                <td data-label="Example"><code>x != y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>&gt;</code></td>
+                                <td data-label="Name">Greater Than</td>
+                                <td data-label="Example"><code>x &gt; y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>&lt;</code></td>
+                                <td data-label="Name">Less Than</td>
+                                <td data-label="Example"><code>x &lt; y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>&gt;=</code></td>
+                                <td data-label="Name">Greater Than or Equal To</td>
+                                <td data-label="Example"><code>x &gt;= y</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>&lt;=</code></td>
+                                <td data-label="Name">Less Than or Equal To</td>
+                                <td data-label="Example"><code>x &lt;= y</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Logical Operators</h2>
+                <p>Logical operators combine multiple boolean expressions to build complex branching paths.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Python Logical Operators Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Operator</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>and</code></td>
+                                <td data-label="Name">Returns <strong>True</strong> if both statements evaluate to True</td>
+                                <td data-label="Example"><code>x &lt; 5 and x &gt; 1</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>or</code></td>
+                                <td data-label="Name">Returns <strong>True</strong> if at least one statement evaluates to True</td>
+                                <td data-label="Example"><code>x &lt; 5 or x &gt; 10</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Operator"><code>not</code></td>
+                                <td data-label="Name">Reverses the result; returns <strong>False</strong> if statement is True</td>
+                                <td data-label="Example"><code>not(x &lt; 5 and x &gt; 1)</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Operator Precedence</h2>
+                <p>Expressions evaluate from <strong>highest precedence (top) to lowest precedence (bottom)</strong>. If operators share the same precedence, Python evaluates left-to-right.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Python Operator Precedence Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Operators</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>1 (Highest)</strong></td>
+                                <td data-label="Operators"><code>()</code></td>
+                                <td data-label="Description">Parentheses (Grouping)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>2</strong></td>
+                                <td data-label="Operators"><code>**</code></td>
+                                <td data-label="Description">Exponentiation</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>3</strong></td>
+                                <td data-label="Operators"><code>* / // %</code></td>
+                                <td data-label="Description">Multiplication, Division, Floor Division, Modulus</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>4</strong></td>
+                                <td data-label="Operators"><code>+ -</code></td>
+                                <td data-label="Description">Addition and Subtraction</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>5</strong></td>
+                                <td data-label="Operators"><code>== != &gt; &gt;= &lt; &lt;=</code></td>
+                                <td data-label="Description">Comparisons</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>6</strong></td>
+                                <td data-label="Operators"><code>not</code></td>
+                                <td data-label="Description">Logical NOT</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>7</strong></td>
+                                <td data-label="Operators"><code>and</code></td>
+                                <td data-label="Description">Logical AND</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Priority"><strong>8 (Lowest)</strong></td>
+                                <td data-label="Operators"><code>or</code></td>
+                                <td data-label="Description">Logical OR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <p><strong>NOTE:</strong> Like in mathematics, operator precedence on the same level happens from left to right of the equation. Meaning, this chart shows multiplication comes before division. However, it there is division in the equation before the multiplication, the division happens <strong>first</strong>.</p>
+                </blockquote>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

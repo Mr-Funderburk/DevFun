@@ -1,0 +1,167 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Practice problems on Python strings, slicing, indexing, escape characters, and string methods.">
+    <title>Practice Problems: Strings & Text Manipulation | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Practice: Strings</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Practice Set: String Manipulation</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Test your knowledge of string concatenation, indexing rules, string methods, slicing parameters, escape characters, and f-strings. Write Python code segments to solve each of the following scenarios.</p>
+
+                <hr>
+
+                <h2>Easy Problems</h2>
+
+                <h3>Problem 1: User Input Standardization</h3>
+                <p>When users enter text, they often accidentally include extra spaces or unpredictable capitalization. Given a variable <code>raw_input = "  vOLleYbaLL  "</code>, write a code segment that cleans the string by removing extra whitespace and converting it entirely to lowercase. Print the final result.</p>
+
+                <h3>Problem 2: Simple String Length Check</h3>
+                <p>Write a code segment that checks the character length of a string variable named <code>username</code>. If the length is less than 6 characters, print <code>"Username too short"</code>. Otherwise, print <code>"Valid username"</code>.</p>
+
+                <h3>Problem 3: Receipt Formatting with Escape Sequences</h3>
+                <p>Write a single <code>print()</code> statement using escape characters (<code>\n</code> and <code>\t</code>) to display the following output exactly as shown below:</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">output.txt</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code>Receipt:
+	Coffee:	$3.50
+	Muffin:	$2.75</code></pre>
+                    </div>
+                </div>
+
+                <h3>Problem 4: Explicit Concatenation</h3>
+                <p>Given the variables <code>item = "Notebook"</code>, <code>qty = 4</code>, and <code>price = 2.50</code>, write a single <code>print()</code> statement using string concatenation (<code>+</code>) and explicit type casting (<code>str()</code>) to output: <code>"Order: 4 Notebook(s) at $2.50 each."</code></p>
+
+                <hr>
+
+                <h2>Medium Problems</h2>
+
+                <h3>Problem 5: Golden Rule of Indexing</h3>
+                <p>Remember: <em>"The index is always the count minus one!"</em> Given a variable <code>word = "ALPHABET"</code>:</p>
+                <ul>
+                    <li>Write a statement to extract and print the <strong>1st</strong> character using its index.</li>
+                    <li>Write a statement to extract and print the <strong>5th</strong> character using its index.</li>
+                    <li>Write a statement to extract and print the <strong>last</strong> character without hardcoding a number (use <code>len()</code>).</li>
+                </ul>
+
+                <h3>Problem 6: Character Replacement Pipeline</h3>
+                <p>Given the string variable <code>code_str = "100-200-300-400"</code>, write a code segment that replaces all hyphens (<code>-</code>) with spaces, and then prints the length of the newly formatted string.</p>
+
+                <h3>Problem 7: Basic Slicing Extraction</h3>
+                <p>Given the variable <code>filename = "document_v2_final.pdf"</code>, write slicing statements to perform the following:</p>
+                <ul>
+                    <li>Extract and print the first 8 characters (<code>"document"</code>).</li>
+                    <li>Extract and print the last 3 characters (<code>"pdf"</code>) using negative indexes.</li>
+                </ul>
+
+                <h3>Problem 8: Modern f-String Conversion</h3>
+                <p>Convert the following explicit concatenation snippet into a single clean line of code using an <strong>f-string</strong>:</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">main.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Rewrite this line into an f-string
+print("Student " + name.upper() + " has " + str(absences) + " absence(s).")</code></pre>
+                    </div>
+                </div>
+
+                <h3>Problem 9: Every Other Character (Step Parameter)</h3>
+                <p>Given the string <code>alphabet = "abcdefghijklmnopqrstuvwxyz"</code>, write a single slicing expression using the <code>step</code> parameter that extracts and prints every 2nd letter starting from <code>'a'</code> (i.e., <code>"aceg..."</code>).</p>
+
+                <hr>
+
+                <h2>Hard Problems</h2>
+
+                <h3>Problem 10: String Reversal & Palindrome Detector</h3>
+                <p>A word is a <strong>palindrome</strong> if it reads the same forward and backward (e.g., <code>"racecar"</code>). Given a variable <code>test_word = "radar"</code>, write a code segment using Python's step slice shortcut (<code>::-1</code>) and an <code>if/else</code> statement that prints <code>"Palindrome!"</code> if the word is identical backward, or <code>"Not a palindrome"</code> if it isn't.</p>
+
+                <h3>Problem 11: Credit Card Masking</h3>
+                <p>Cybersecurity applications often mask sensitive numbers before displaying them on screen. Given a 16-digit credit card number string like <code>card_number = "4532890123456789"</code>, write a code segment that creates a masked string where the first 12 digits are replaced with asterisks (<code>*</code>) and only the last 4 digits remain visible. <em>Output should look like: <code>"************6789"</code></em>.</p>
+
+                <h3>Problem 12: Pig Latin Converter (Single Word)</h3>
+                <p>In simplified Pig Latin, if a word begins with a consonant, move the first letter to the end of the word and append <code>"ay"</code> (for example, <code>"python"</code> becomes <code>"ythonpay"</code>).</p>
+                <p>Given a variable <code>word = "computer"</code>, write a code segment using string indexing and slicing to transform <code>word</code> into its Pig Latin equivalent and print the result.</p>
+
+                <h3>Problem 13: Initial Generator</h3>
+                <p>Given a string variable containing a person's full name in the format <code>full_name = "john quincy adams"</code>, write a code segment that:</p>
+                <ol>
+                    <li>Cleans up any surrounding spaces and converts the full string to uppercase.</li>
+                    <li>Slices out the first letter of each of the three names (assuming fixed word positions: First name starts at index 0, Middle name starts at index 5, Last name starts at index 12).</li>
+                    <li>Prints the initials joined by periods (e.g., <code>"J.Q.A."</code>).</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,608 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Working with Python Strings, methods, escape characters, and formatting.">
+    <title>Python Strings & Text Manipulation | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Strings & Text Manipulation</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Python Strings & Text Manipulation</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>A <strong>string</strong> is a sequence of characters—including letters, numbers, symbols, and spaces. In Python, strings are wrapped in either single quotes (<code>'...'</code>) or double quotes (<code>"..."</code>). Both methods are functionally identical in Python, but alternating between them lets you easily embed quotes inside text.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Single quotes allow unescaped double quotes inside
+quote_one = 'She said, "Canterbury School is the best!"'
+
+# Double quotes allow unescaped single quotes/apostrophes inside
+quote_two = "I'd say I don't like that, but I can't."</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Java / AP CSA Note:</strong></p>
+                    <p>While Python allows both single and double quotes, many languages (like Java and C++) strictly reserve single quotes for individual characters (<code>char</code>) and double quotes for full text strings. If you plan to take <strong>AP Computer Science A (Java)</strong>, habituating double quotes now makes for a smoother transition.</p>
+                </blockquote>
+
+                <h2>String Concatenation & Explicit Type Casting</h2>
+                <p>Joining strings end-to-end is called <strong>concatenation</strong>, which is performed using the <code>+</code> operator. Python requires <em>both</em> operands in a concatenation expression to be strings. Attempting to concatenate a string with an integer or float directly results in a <code>TypeError</code>.</p>
+
+                <p>To join numeric data with text, you must explicitly cast the variable using the <code>str()</code> function:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">state = "Florida"
+print("You selected " + state) # Valid concatenation
+
+score = 95
+
+# ERROR: Python cannot implicitly combine str and int
+# print("Your score is " + score) 
+
+# VALID: Explicitly cast score to a string first
+print("Your score is " + str(score))</code></pre>
+                    </div>
+                </div>
+
+                <h2>Escape Characters</h2>
+                <p>An <strong>escape character</strong> is a backslash (<code>\</code>) followed by a specific character. It tells Python to treat the following character as a special instruction rather than plain literal text.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr><th>Escape Sequence</th><th>Meaning / Action</th><th>Example Usage</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>\"</code></td><td>Escaped Double Quote</td><td><code>"She said, \"Hello!\""</code></td></tr>
+                        <tr><td><code>\'</code></td><td>Escaped Single Quote</td><td><code>'It\'s a sunny day'</code></td></tr>
+                        <tr><td><code>\n</code></td><td>New Line (Line Break)</td><td><code>"Hello\nWorld"</code></td></tr>
+                        <tr><td><code>\t</code></td><td>Tab Space (Indent)</td><td><code>"Item:\tPrice"</code></td></tr>
+                        <tr><td><code>\\</code></td><td>Literal Backslash</td><td><code>"C:\\Users\\Python"</code></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Formatting output with line breaks and tabs
+print("Shopping List:\n\t1. Apples\n\t2. Bread")
+
+# Output:
+# Shopping List:
+# 	1. Apples
+# 	2. Bread</code></pre>
+                    </div>
+                </div>
+
+                <h2>Essential String Methods</h2>
+                <p>Python provides built-in methods to analyze and modify string contents. Because strings in Python are <strong>immutable</strong> (cannot be changed in place), methods return a <em>new string</em> rather than altering the original variable.</p>
+
+                <h3>1. Case Conversion: <code>.upper()</code>, <code>.lower()</code>, <code>.capitalize()</code>, and <code>.title()</code></h3>
+                <p><code>.upper()</code> and <code>.lower()</code> converts all characters in the target string to uppercase or lowercase, respectively. Useful for standardizing user input before comparison.</p>
+                <p><code>.capitalize()</code> will convert all characters to lowercase, with the exception of the first word, which will have a capitalized first letter.</p>
+                <p><code>.title()</code> will convert all characters to lowercase and then capitalize the first letter of each word.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">text = "Python is Fun"
+print(text.upper()) # "PYTHON IS FUN"
+print(text.lower()) # "python is fun"
+print(text.capitalize()) # "Python is fun"
+print(text.title()) # "Python Is Fun"</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. Whitespace Removal: <code>.strip()</code></h3>
+                <p>Removes leading and trailing whitespace (spaces, tabs, newlines) from the edges of a string.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">user_input = "   user@example.com  \n"
+clean_input = user_input.strip()
+print(clean_input) # "user@example.com"</code></pre>
+                    </div>
+                </div>
+
+                <h3>3. Replacing Substrings: <code>.replace()</code></h3>
+                <p>Replaces all occurrences of a target phrase with a replacement phrase. An optional third parameter caps the total number of replacements performed.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">phrase = "English is fun"
+print(phrase.replace("English", "Python")) # "Python is fun"</code></pre>
+                    </div>
+                </div>
+
+                <h3>4. String Length: <code>len()</code></h3>
+                <p>The built-in function <code>len()</code> counts every character inside a string, including letters, numbers, symbols, and spaces.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">message = "Python is fun"
+print(len(message)) # 13</code></pre>
+                    </div>
+                </div>
+
+                <h2>String Indexing: Character Positions</h2>
+                <p>To extract specific characters or perform slicing, you must understand how Python tracks character locations. In programming, the location of each character inside a string is called its <strong>index</strong>.</p>
+
+                <p>Python uses <strong>zero-based indexing</strong>, meaning it begins counting positions at <code>0</code> rather than <code>1</code>.</p>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Golden Rule of Indexing:</strong></p>
+                    <p><em>"The index is always the count minus one!"</em></p>
+                    <ul>
+                        <li>The <strong>1st</strong> character is at index <code>1 - 1 = 0</code></li>
+                        <li>The <strong>5th</strong> character is at index <code>5 - 1 = 4</code></li>
+                        <li>The <strong>10th</strong> character is at index <code>10 - 1 = 9</code></li>
+                        <li>If a string has a length/count of <code>N</code> characters, its final character is at index <code>N - 1</code>.</li>
+                    </ul>
+                </blockquote>
+
+                <h3>Visual Index Map</h3>
+                <p>Consider the string <code>"PYTHON"</code> (which has a total length of 6 characters):</p>
+
+                <div class="table-scroll">
+                    <table class="truth-table">
+                        <thead>
+                            <tr>
+                                <th>Character</th>
+                                <th>P</th>
+                                <th>Y</th>
+                                <th>T</th>
+                                <th>H</th>
+                                <th>O</th>
+                                <th>N</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Human Count (Position)</strong></td>
+                                <td>1st</td>
+                                <td>2nd</td>
+                                <td>3rd</td>
+                                <td>4th</td>
+                                <td>5th</td>
+                                <td>6th</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Python Index (Count - 1)</strong></td>
+                                <td><code>0</code></td>
+                                <td><code>1</code></td>
+                                <td><code>2</code></td>
+                                <td><code>3</code></td>
+                                <td><code>4</code></td>
+                                <td><code>5</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Accessing Individual Characters</h3>
+                <p>Use square brackets <code>[ ]</code> directly after a string variable to access the character at a specific index.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">word = "PYTHON"
+
+# Access the 1st character (Count 1 - 1 = Index 0)
+first_letter = word[0] # "P"
+
+# Access the 4th character (Count 4 - 1 = Index 3)
+fourth_letter = word[3] # "H"
+
+# Access the last character using len() - 1
+last_index = len(word) - 1
+last_letter = word[last_index] # "N" (Index 5)
+
+print(first_letter + fourth_letter + last_letter) # Outputs: PHN</code></pre>
+                    </div>
+                </div>
+
+                <p><strong>Watch out for IndexErrors:</strong> If you try to access an index equal to or greater than the string's total length (e.g., <code>word[6]</code> on a 6-character string), Python will crash with an <code>IndexError: string index out of range</code> because index <code>6</code> would represent a nonexistent 7th character!</p>
+
+                <h3>Slicing (Substrings)</h3>
+                <p>Extracting a portion of a string is called <strong>slicing</strong>. In Python, slicing uses square brackets with up to three parameters separated by colons: <code>string[start:end:step]</code>.</p>
+
+                <ul>
+                    <li><code>start</code>: The starting index (<strong>inclusive</strong>). Defaults to index <code>0</code> if omitted.</li>
+                    <li><code>end</code>: The stopping index (<strong>exclusive</strong>—stops 1 position before). Defaults to the end of the string if omitted.</li>
+                    <li><code>step</code>: The increment value (how many characters to step forward each time). Defaults to <code>1</code>.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">phrase = "Python Programming"
+
+# Slice from index 0 up to (but not including) index 6
+print(phrase[0:6]) # "Python"
+
+# Omitting start defaults to 0
+print(phrase[:6])  # "Python"
+print(phrase[0:6]) # Equivalent to above
+# ** If it makes more sense to explicitly state the start index of 0, do it!
+
+# Omitting end defaults to the end
+print(phrase[7:])  # "Programming"
+print(phrase[7:len(phrase)]) # Equivalent to above
+# ** If it makes more sense to explicitly state the end index of len(str), do it!</code></pre>
+                    </div>
+                </div>
+
+                <h4>Negative Indexes in Slicing</h4>
+                <p>Python allows you to count backward from the end of a string using <strong>negative indexes</strong>. Index <code>-1</code> represents the very last character, <code>-2</code> is the second-to-last character, and so on.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">word = "COMPUTER"
+
+# Grab the last character
+print(word[-1]) # "R"
+
+# Slice from index 0 up to the 3rd character from the end
+print(word[:-3]) # "COMPU"
+
+# Slice the last 4 characters
+print(word[-4:]) # "UTER"</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Python-Specific Feature Warning:</strong></p>
+                    <p>Negative indexing is a unique convenience feature built into Python! Most other major programming languages (including Java, C++, and C#) <strong>do not support negative indexes</strong>. If you try using a negative index in Java (AP CSA), your program will crash with an <code>StringIndexOutOfBoundsException</code> error. Use this trick in Python, but remember it won't cross over to other languages!</p>
+                </blockquote>
+
+                <h4>The <code>step</code> Parameter</h4>
+                <p>The optional third parameter, <code>step</code>, controls how Python skips through characters during a slice. By default, <code>step</code> is <code>1</code> (reading every character in sequence).</p>
+
+                <p>If you change <code>step</code> to <code>2</code>, Python skips every other character. Setting <code>step</code> to <code>-1</code> reverses the direction and reads the string backward!</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">text = "0123456789"
+
+# Extract every 2nd character (step = 2)
+print(text[::2]) # "02468"
+
+# Extract every 3rd character from index 1 to 8
+print(text[1:8:3]) # "147"
+
+# Python Shortcut: Reverse a string using a step of -1
+greeting = "Hello"
+print(greeting[::-1]) # "olleH"</code></pre>
+                    </div>
+                </div>
+
+                <h2>Optional: String Interpolation with f-Strings</h2>
+                <p>Python 3.6 introduced <strong>f-strings</strong> (Formatted String Literals), a cleaner way to inject variables and expressions directly into text strings.</p>
+
+                <p>To declare an f-string, prefix the opening quotation mark with the letter <code>f</code>. You can then place variables or python expressions directly inside curly braces <code>{...}</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">strings.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">name = "Alex"
+age = 16
+gpa = 3.85
+
+# Traditional Explicit Casting + Concatenation
+print("Student " + name + " (Age " + str(age) + ") has a GPA of " + str(gpa))
+
+# Modern f-String Interpolation (Automatic Type Casting)
+print(f"Student {name} (Age {age}) has a GPA of {gpa}")
+
+# You can even evaluate math or call methods directly inside braces
+print(f"Next year, {name.upper()} will be {age + 1} years old.")</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>A Warning for Beginners:</strong></p>
+                    <p>While f-strings perform <strong>automatic type casting</strong> behind the scenes, you <strong>must still understand explicit type casting (<code>str()</code>) and basic string concatenation (<code>+</code>)</strong>. Standard exams (including AP CSP and CSA pseudocode) test your understanding of explicit data types and manual concatenation. Stick to explicit casting and <code>+</code> concatenation until you are completely comfortable managing variable types, then feel free to adopt f-strings for faster project development!</p>
+                </blockquote>
+
+                <h2>Conclusion Questions</h2>
+                <ol>
+                    <li>Write a Python code segment that prints the character length of a variable called <code>text</code>.</li>
+                    <li>Write a single string value containing escape characters that will print the words "Item" and "Price" separated by a tab indent, followed by a new line.</li>
+                    <li>Write a Python statement that takes the string <code>a = "This #problem ##should## be ea#sy"</code> and replaces every pound sign (<code>#</code>) with an empty string (<code>""</code>).</li>
+                    <li>Convert the following concatenation expression into an f-string:  
+                    <code>print("Player " + name + " scored " + str(score) + " points.")</code>
+                    Why does the f-string version omit the explicit <code>str()</code> conversion function?</li>
+                    <li>Work through <a href="https://codingbat.com/python/String-1" target="_blank">String 1 on CodingBat</a> for extra practice. We will go over any questions in class.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -126,7 +126,6 @@
                     </h2>
 
                     {% assign unit_counter = 0 %}
-                    {% assign lesson_counter = 0 %}
                     {% for unit in site.data.courses.ap_csp.units %}
                         {% if unit.published != false %}
                             {% assign unit_counter = unit_counter | plus: 1 %}
@@ -135,19 +134,9 @@
                                 
                                 {% for lesson in unit.lessons %}
                                     {% if lesson.published != false %}
-                                        {% assign lesson_counter = lesson_counter | plus: 1 %}
-                                        {% if lesson_counter < 10 %}
-                                            {% assign num_str = "00" | append: lesson_counter %}
-                                        {% elsif lesson_counter < 100 %}
-                                            {% assign num_str = "0" | append: lesson_counter %}
-                                        {% else %}
-                                            {% assign num_str = lesson_counter %}
-                                        {% endif %}
-
                                         {% if lesson.status == "coming_soon" %}
                                             <div class="lesson-card card-disabled" aria-disabled="true">
                                                 <div class="lesson-meta">
-                                                    <span class="lesson-number">Lesson {{ num_str }}</span>
                                                     <span class="badge-coming-soon">Coming Soon</span>
                                                 </div>
 
@@ -167,10 +156,6 @@
                                             </div>
                                         {% else %}
                                             <a href="{{ lesson.file }}" class="lesson-card">
-                                                <div class="lesson-meta">
-                                                    <span class="lesson-number">Lesson {{ num_str }}</span>
-                                                </div>
-
                                                 <h3>{{ lesson.title }}</h3>
                                                 
                                                 {% if lesson.description %}

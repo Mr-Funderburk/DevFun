@@ -32,37 +32,96 @@ units:
           - "Algorithmic Thinking"
         status: "published"
 
-  - title: "The Internet"
+  - title: "Python"
     lessons:
-      - title: "IP Addressing & DNS"
-        file: "ip-addressing-dns.html"
-        description: "Explore how packets travel across the internet, routers, IP protocols, and domain names."
-        topics:
-          - "Networking"
-          - "DNS"
-          - "Packets"
-        status: "coming_soon"
-
-  - title: "Intro to App Design"
-    lessons:
-      - title: "User Interfaces & Event-Driven Apps"
-        file: "app-design-basics.html"
-        description: "Design interactive layouts and respond to user actions with event listeners."
-        topics:
-          - "UI Design"
-          - "Events"
-        status: "coming_soon"
-
-  - title: "Variables & Logic"
-    lessons:
-      - title: "Variables & Conditionals"
-        file: "variables-logic.html"
-        description: "Store data in variables and use conditional statements to make decisions in code."
+      - title: "Variables & Data Types"
+        file: "variables-data-types.html"
+        description: "Store and manipulate data in code."
         topics:
           - "Variables"
+          - "Conventions"
+          - "Reserved Words"
+          - "Data Types"
+        status: "published"
+
+      - title: "Operators"
+        file: "operators.html"
+        description: "Symbols and their meanings."
+        topics:
+          - "Operators"
+          - "Operator Precedence"
+          - "Logical"
+        status: "published"
+
+      - title: "User Input"
+        file: "user-input.html"
+        description: "Take information from the user and process it."
+        topics:
+          - "User Input"
+          - "Data Manipulation"
+          - "Type Casting"
+        status: "published"
+
+      - title: "Conditionals"
+        file: "conditionals.html"
+        description: "How do you make a computer make a decision? The beginnings of making 'smart' programs!"
+        topics:
+          - "IF statements"
+          - "Branching"
           - "Conditionals"
-          - "Logic"
-        status: "coming_soon"
+        status: "published"
+
+      - title: "Boolean Logic"
+        file: "logic-gates.html"
+        description: "Deeper dive into conditions and boolean logic through logic gates."
+        topics:
+          - "Logic Gates"
+          - "Truth Tables"
+          - "Logical Operators"
+          - "DeMorgan's Law"
+        status: "published"
+
+      - title: "Conditionals Practice"
+        file: "conditionals-practice.html"
+        description: "Hands on practice with conditional statements in Python."
+        topics:
+          - "Practice"
+        status: "published"
+
+      - title: "Strings"
+        file: "strings.html"
+        description: "Working with Python Strings, methods, escape characters, and formatting."
+        topics:
+          - "Text Manipulation"
+          - "String Formatting"
+          - "Escape Characters"
+        status: "published"
+
+      - title: "Strings Practice"
+        file: "strings-practice.html"
+        description: "Hands on practice with strings in Python."
+        topics:
+          - "Practice"
+        status: "published"
+
+  - title: "Python Challenges"
+    lessons:
+      - title: "Vowel Counter"
+        file: "challenge-vowel-counter.html"
+        description: "Count vowels in a string."
+        topics:
+          - "Challege"
+          - "String Manipulation"
+        status: "published"
+        
+      - title: "Coin Dispenser"
+        file: "challenge-change.html"
+        description: "Python Coin Dispenser Change function exercise."
+        topics:
+          - "Challege"
+          - "String Manipulation"
+          - "Mathematics"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

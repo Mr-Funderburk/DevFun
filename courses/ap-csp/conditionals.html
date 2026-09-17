@@ -1,0 +1,417 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learn branching and decision-making logic using if, elif, and else statements in Python.">
+    <title>Conditionals in Python | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Conditionals in Python</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Conditionals & Branching in Python</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p><strong>Branching</strong> refers to any point in a program where a decision alters the flow of execution. Computers make decisions by evaluating expressions into binary states: <code>True</code> or <code>False</code> (Boolean values).</p>
+                
+                <p>Unlike human decisions, algorithm conditions must be concrete. An algorithm cannot evaluate a vague query like <em>"Should I wear a jacket today?"</em> until it is broken down into precise, measurable logic: <code>temperature &lt; 50</code>.</p>
+
+                <h2>The <code>if</code> Statement</h2>
+                <p>In Python, the <code>if</code> keyword initiates a decision branch. If the expression evaluates to <code>True</code>, the indented code block directly below it executes. If it evaluates to <code>False</code>, Python completely skips that block.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">light_status = "On"
+
+if light_status == "On":
+    print("The room is illuminated.")</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Syntax Checklist:</strong></p>
+                    <ul>
+                        <li><strong>Keyword:</strong> Starts with the lower-case <code>if</code> keyword.</li>
+                        <li><strong>Comparison Operator:</strong> Uses <code>==</code> to check equality (distinct from single <code>=</code> assignment).</li>
+                        <li><strong>Colon:</strong> Ends with a colon (<code>:</code>) to declare the beginning of a code block.</li>
+                        <li><strong>Indentation:</strong> The body of the block must be indented (4 spaces).</li>
+                    </ul>
+                </blockquote>
+
+                <h3>Comparison Operators Quick Reference</h3>
+                <p>Conditionals rely on relational operators to construct Boolean expressions. Given <code>x = 5</code>:</p>
+
+                <ul>
+                    <li><code>if x == 5:</code> &rarr; <code>True</code> (Is equal to)</li>
+                    <li><code>if x != 5:</code> &rarr; <code>False</code> (Is not equal to)</li>
+                    <li><code>if x &gt; 5:</code> &rarr; <code>False</code> (Greater than)</li>
+                    <li><code>if x &lt; 5:</code> &rarr; <code>False</code> (Less than)</li>
+                    <li><code>if x &gt;= 5:</code> &rarr; <code>True</code> (Greater than or equal to)</li>
+                    <li><code>if x &lt;= 5:</code> &rarr; <code>True</code> (Less than or equal to)</li>
+                </ul>
+
+                <h2>The <code>else</code> Statement</h2>
+                <p>When an <code>if</code> condition evaluates to <code>False</code>, Python skips its body. To create a fallback path that runs specifically when the condition fails, we attach an <code>else</code> block.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">light_status = "Off"
+
+if light_status == "On":
+    print("The room is illuminated.")
+else:
+    print("The room is dark.")</code></pre>
+                    </div>
+                </div>
+
+                <p>The <code>else</code> clause acts as a universal catch-all: it does <strong>not</strong> take a condition. It executes if and only if all preceding conditions in the chain evaluate to <code>False</code>.</p>
+
+                <h2>Chaining Conditions with <code>elif</code></h2>
+                <p>When dealing with scenarios with more than two potential states, running multiple independent <code>if</code> statements forces the CPU to evaluate every single condition—even after finding a match.</p>
+
+                <p>Using <code>elif</code> (short for <em>else if</em>) creates a mutually exclusive chain. As soon as Python finds a condition that evaluates to <code>True</code>, it executes that body and <strong>bypasses all remaining checks</strong> in the structure.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">day = "Monday"
+
+if day == "Saturday" or day == "Sunday":
+    print("It's the weekend!")
+elif day == "Monday":
+    print("Back to school!")
+elif day == "Friday":
+    print("Almost the weekend!")
+else:
+    print("Midweek grind.")</code></pre>
+                    </div>
+                </div>
+
+                <h2>Control Flow Structure Rules</h2>
+                <p>When assembling complex branching logic, keep these strict structural rules in mind:</p>
+                <ul>
+                    <li><strong>Required Opening:</strong> A branching structure must always begin with exactly one <code>if</code> statement.</li>
+                    <li><strong>Middle Chains:</strong> You may include zero or as many <code>elif</code> statements as necessary.</li>
+                    <li><strong>Optional Termination:</strong> You can include at most one <code>else</code> statement, and it must sit at the absolute end of the chain.</li>
+                </ul>
+
+                <h2>Complex Conditionals: Logical Operators</h2>
+                <p>In real-world applications, decisions rarely depend on a single condition. A program often needs to evaluate multiple variables simultaneously—such as checking both a user's password <em>and</em> two-factor authentication code. Python provides three <strong>logical operators</strong> to combine or invert Boolean expressions: <code>and</code>, <code>or</code>, and <code>not</code>.</p>
+
+                <h3>1. The <code>and</code> Operator</h3>
+                <p>The <code>and</code> operator requires <strong>every individual condition</strong> to evaluate to <code>True</code> for the overall statement to be <code>True</code>. If even one condition fails, the entire statement evaluates to <code>False</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">age = 16
+has_permit = True
+
+# Both conditions must be True to qualify
+if age >= 16 and has_permit:
+    print("Eligible for a driving test.")
+else:
+    print("Not eligible for a driving test.")</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. The <code>or</code> Operator</h3>
+                <p>The <code>or</code> operator requires <strong>at least one condition</strong> to evaluate to <code>True</code>. The overall expression will only evaluate to <code>False</code> if every condition listed fails.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">day = "Saturday"
+
+# Triggers if either condition evaluates to True
+if day == "Saturday" or day == "Sunday":
+    print("It's the weekend!")
+else:
+    print("It's a weekday.")</code></pre>
+                    </div>
+                </div>
+
+                <h3>3. The <code>not</code> Operator</h3>
+                <p>The <code>not</code> operator inverts (flips) the Boolean value of an expression. If a condition is <code>True</code>, applying <code>not</code> makes it <code>False</code>, and vice versa.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">is_logged_in = False
+
+# Triggers if is_logged_in is False (not False -> True)
+if not is_logged_in:
+    print("Please log in to continue.")</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Logical Operator Truth Table Summary:</strong></p>
+                    <ul>
+                        <li><code>True and True</code> &rarr; <code>True</code> | All other <code>and</code> combinations are <code>False</code>.</li>
+                        <li><code>False or False</code> &rarr; <code>False</code> | All other <code>or</code> combinations are <code>True</code>.</li>
+                        <li><code>not True</code> &rarr; <code>False</code> | <code>not False</code> &rarr; <code>True</code>.</li>
+                    </ul>
+                </blockquote>
+
+                <h2>Working Directly with Boolean Variables</h2>
+                <p>When a variable already holds a Boolean value (<code>True</code> or <code>False</code>), you do not need to explicitly compare it using <code>== True</code> or <code>== False</code>. Because an <code>if</code> statement automatically evaluates whether the expression after it is <code>True</code>, passing the Boolean variable by itself is sufficient.</p>
+
+                <h3>Implicit vs. Explicit Checks</h3>
+                <p>While both methods perform the exact same action, passing the variable directly is considered standard, clean Python style (often called <em>Pythonic</em>).</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">is_logged_in = True
+
+# Explicit Check (Redundant, but valid)
+if is_logged_in == True:
+    print("Welcome back!")
+
+# Implicit Check (Clean / Pythonic)
+if is_logged_in:
+    print("Welcome back!")</code></pre>
+                    </div>
+                </div>
+
+                <h3>Checking for <code>False</code> with <code>not</code></h3>
+                <p>Similarly, when testing if a Boolean variable is <code>False</code>, use the <code>not</code> operator instead of comparing to <code>== False</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">conditionals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">game_over = False
+
+# Explicit Check
+if game_over == False:
+    print("Keep playing!")
+
+# Implicit Check using 'not'
+if not game_over:
+    print("Keep playing!")</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Note for Beginners:</strong></p>
+                    <p>Using short hand like <code>if x:</code> or <code>if not x:</code> is optional. Writing <code>if x == True:</code> is completely valid syntax and <strong>will not cause your program to crash or error out</strong>. If spelling out <code>== True</code> helps you keep track of your logic while learning, feel free to use it! As you become more comfortable with Boolean expressions, using <code>if x:</code> will naturally become second nature.</p>
+                </blockquote>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following questions to solidify your understanding of branching and execution control. Provide your response in full, complete sentences or code segments as instructed.</p>
+                <ol>
+                    <li>Write a Python code segment that compares two integer variables (<code>num1</code> and <code>num2</code>). If the numbers are equal, print their product; otherwise, print their sum.</li>
+                    <li>Write a Python code segment that calculates the difference between <code>num1</code> and <code>num2</code> such that the printed output is <strong>always positive</strong> regardless of which number is larger. <span class="note">For full credit, this problem must use conditionals and not any built-in Python functions.</span></li>
+                    <li>Identify the only required keyword in a Python conditional structure, and explain what happens to subsequent <code>elif</code> blocks once a single condition in the structure evaluates to <code>True</code>. <span class="note">If you don't know what will happen, try it!</span></li>
+                    <li>Write a Python code segment that checks if a user's score is between 80 and 90 (inclusive) AND their attendance is greater than 90%. Print "Honors Eligible" if both conditions are met.</li>
+                    <li>Explain the output of the expression <code>not (5 > 2 or 10 == 10)</code> step-by-step using order of operations.</li>
+                    <li>Work through <a href="https://codingbat.com/python/Logic-1" target="_blank">Logic 1 on CodingBat</a> for extra practice. We will go over any questions in class.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

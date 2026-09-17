@@ -1,0 +1,215 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Python Vowel Counter function exercise.">
+    <title>Weekly Challenge: Vowel Counter | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Vowel Counter</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Vowel Counter</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>The English alphabet contains five vowels—<strong>A, E, I, O, and U</strong>. The remaining 21 letters are called consonants. Vowels act as the glue of our language; without them, most words would be unpronounceable! Because of this, vowels make up some of the most frequently used letters in written text.</p>
+                
+                <p>For your first weekly challenge, you will write a Python program that analyzes a string of text and calculates the total count of vowels present inside it.</p>
+
+                <h2>Program Requirements</h2>
+                
+                <h3>1. File Naming Convention</h3>
+                <p>Create a new Python file named <code>vowel_counter_lastname.py</code>, replacing <code>lastname</code> with your actual last name in <strong>all lowercase letters</strong>.</p>
+                <ul>
+                    <li><strong>Example:</strong> <code>vowel_counter_funderburk.py</code></li>
+                    <li><em>Note: If you have multiple last names, use the first last name listed in Cougar Campus.</em></li>
+                </ul>
+
+                <h3>2. Constant Definition</h3>
+                <p>At the top of your script (after any necessary import statements), define a constant named <code>NAME</code> containing your first and last name as a string:</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">vowel_counter_lastname.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">NAME = "Your First and Last Name"</code></pre>
+                    </div>
+                </div>
+
+                <h3>3. Required Function Specification</h3>
+                <p>You must write a function named <code>vowel_counter(text)</code> that adheres strictly to the following parameters:</p>
+                <ul>
+                    <li><strong>Function Name:</strong> <code>vowel_counter</code></li>
+                    <li><strong>Parameter:</strong> <code>text</code> (A string containing words without punctuation).</li>
+                    <li><strong>Behavior:</strong> The input string may contain both uppercase and lowercase letters. Your function must evaluate all vowels (A, E, I, O, U) regardless of letter case.</li>
+                    <li><strong>Return Value:</strong> Returns an <code>int</code> representing the total count of vowels found.</li>
+                </ul>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>CRITICAL: Exact Names Required</strong></p>
+                    <p>Automated grading scripts will evaluate your submission. Your file name, function name (<code>vowel_counter</code>), parameter name (<code>text</code>), and global variable name (<code>NAME</code>) must match the instructions <strong>EXACTLY</strong>. Misspelling any of these elements will cause autograding scripts to fail, resulting in a lower score!</p>
+                </blockquote>
+
+                <h2>Starter Code Template</h2>
+                <p>Use the following structure to begin your assignment:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">vowel_counter_lastname.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Global Name Variable
+NAME = "First Last"
+
+def vowel_counter(text):
+    # TODO: Calculate and return the total number of vowels in 'text'
+    pass
+
+# You can test your function locally below:
+print(vowel_counter("Python is fun")) # Should output 3</code></pre>
+                    </div>
+                </div>
+
+                <h2>Test Cases</h2>
+                <p>Verify your solution against these test cases before submitting your program. Your function's output must match the expected return values exactly.</p>
+
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Input String (<code>text</code>)</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>"Python is fun"</code></td>
+                            <td><code>3</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>"This CHALLENGE is EaSy"</code></td>
+                            <td><code>7</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>"queueing has FIVE vowels in a row"</code></td>
+                            <td><code>13</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>"Canterbury Cougars"</code></td>
+                            <td><code>6</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Submission Checklist</h2>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Is your file saved as <code>vowel_counter_lastname.py</code> using all lowercase letters?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Did you assign your real full name to the <code>NAME</code> variable at the top of the script?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Is your function named <code>vowel_counter</code> with a single parameter <code>text</code>?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Does your function <strong>return</strong> an integer value (rather than just printing it)?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Did you test all four cases provided in the table above?
+                        </label>
+                    </li>
+                </ul>
+
+                <p>Once verified, submit your completed <code>.py</code> file directly to the assignment portal.</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

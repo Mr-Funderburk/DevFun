@@ -1,0 +1,148 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Practice problems on Python conditionals, logical operators, and Boolean expressions.">
+    <title>Practice Problems: Conditionals | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Practice: Conditionals</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Practice Set: Python Conditionals</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Test your understanding of basic <code>if/else</code> statements, <code>elif</code> chains, compound conditions (<code>and</code>, <code>or</code>, <code>not</code>), and Boolean variable rules. Write Python code segments to solve each of the following scenarios.</p>
+
+                <hr>
+
+                <h2>Easy Problems</h2>
+
+                <h3>Problem 1: Even or Odd</h3>
+                <p>Write a code segment that takes an integer variable named <code>number</code>. If the number is even, print <code>"Even"</code>. Otherwise, print <code>"Odd"</code>. <em>(Hint: Use the modulus operator <code>%</code>)</em>.</p>
+
+                <h3>Problem 2: Passing Grade</h3>
+                <p>Write a code segment that evaluates an integer variable <code>score</code>. If <code>score</code> is 60 or higher, print <code>"Passed"</code>. If it is less than 60, print <code>"Needs Improvement"</code>.</p>
+
+                <h3>Problem 3: Clean Boolean Check</h3>
+                <p>Given a Boolean variable <code>is_logged_in = True</code>, write an <code>if/else</code> statement that prints <code>"Welcome back!"</code> if logged in, and <code>"Please sign in."</code> if not.</p>
+
+                <hr>
+
+                <h2>Medium Problems</h2>
+
+                <h3>Problem 4: Temperature Dress Code</h3>
+                <p>Write a code segment using an <code>if-elif-else</code> structure that checks a variable <code>temp</code> (integer) and prints a recommendation based on the following rules:</p>
+                <ul>
+                    <li>Below 50: Print <code>"Wear a heavy coat"</code></li>
+                    <li>50 to 75 (inclusive): Print <code>"Wear a light jacket"</code></li>
+                    <li>Above 75: Print <code>"Shorts weather!"</code></li>
+                </ul>
+
+                <h3>Problem 5: Movie Discount Eligibility</h3>
+                <p>A movie theater offers discounts for children and seniors. Given two variables, <code>age</code> (integer) and <code>has_student_id</code> (Boolean), print <code>"Discount Rate"</code> if the customer's age is <strong>under 12 OR 65 and older</strong>, OR if <code>has_student_id</code> is <code>True</code>. Otherwise, print <code>"Regular Price"</code>.</p>
+
+                <h3>Problem 6: Two-Factor Login Authenticator</h3>
+                <p>Given three variables: <code>username</code> (string), <code>password</code> (string), and <code>auth_code</code> (integer), write a single <code>if/else</code> condition using logical operators that prints <code>"Access Granted"</code> ONLY if:</p>
+                <ul>
+                    <li><code>username</code> equals <code>"admin"</code> <strong>AND</strong></li>
+                    <li><code>password</code> equals <code>"secret123"</code> <strong>AND</strong></li>
+                    <li><code>auth_code</code> equals <code>9999</code></li>
+                </ul>
+                <p>Otherwise, print <code>"Access Denied"</code>.</p>
+
+                <h3>Problem 7: Weekend Rain Checker</h3>
+                <p>Given the variables <code>day</code> (string) and <code>is_raining</code> (Boolean), write a code segment that prints <code>"Stay inside and read"</code> if it is the weekend (<code>"Saturday"</code> or <code>"Sunday"</code>) <strong>AND</strong> it is raining. Otherwise, print <code>"Go outside!"</code>.</p>
+
+                <hr>
+
+                <h2>Hard Problems</h2>
+
+                <h3>Problem 8: Roller Coaster Restrictions</h3>
+                <p>A theme park ride has strict safety standards. To ride, a guest must meet the following requirement:</p>
+                <ul>
+                    <li>They must be at least 48 inches tall.</li>
+                    <li><strong>AND</strong> they must either be 12 years or older <strong>OR</strong> accompanied by an adult (represented by a Boolean variable <code>with_adult</code>).</li>
+                </ul>
+                <p>Write a code segment using the variables <code>height</code>, <code>age</code>, and <code>with_adult</code> that prints <code>"Boarding permitted"</code> if eligible, and <code>"Cannot ride"</code> if not.</p>
+
+                <h3>Problem 9: DeMorgan's Simplification Challenge</h3>
+                <p>Consider this condition:</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">main.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">if not (score >= 70 and attendance >= 80):
+    print("Action required.")</code></pre>
+                    </div>
+                </div>
+                <p>Use <strong>DeMorgan's Laws</strong> to rewrite this <code>if</code> condition into an equivalent form without using the surrounding <code>not(...)</code> wrapper.</p>
+
+                <h3>Problem 10: Leap Year Determiner</h3>
+                <p>Write a Python program segment to determine whether an integer variable <code>year</code> represents a leap year. The rules for a leap year are:</p>
+                <ul>
+                    <li>The year must be evenly divisible by 4.</li>
+                    <li><strong>EXCEPT</strong> if it is also divisible by 100, it is <em>not</em> a leap year—<strong>UNLESS</strong> it is also evenly divisible by 400.</li>
+                </ul>
+                <p>Print <code>"Leap Year"</code> or <code>"Standard Year"</code> based on the value of <code>year</code>. <em>(Test case: 2000 was a leap year, 1900 was not, 2024 was a leap year).</em></p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,220 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Store and manipulate data in code.">
+    <title>Variables &amp; Data Types | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Variables &amp; Data Types</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Variables &amp; Data Types</span></h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>What are <span class="step-num">Variables?</span></h2>
+                <p>A <strong>variable</strong> is an abstract storage location paired with a descriptive symbolic name that contains a value. Think of a variable as a <strong>labeled box</strong> in memory where you can store data to reference and manipulate later.</p>
+                <p>The syntax for a Python variable is: <code>name = value</code></p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">data-types.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Declaring variables in Python: [variable_name] = [value]
+age = 15
+myAge = 21
+HerAge = 33
+the_dogs_age = 87</code></pre>
+                    </div>
+                </div>
+
+                <h2>Naming Rules</h2>
+                <p>While variables can be named <em>almost</em> anything, there are a few "hard" rules that you have to follow. Not following these rule will cause your program to error.</p>
+                <h3>Hard Rules</h3>
+                <blockquote>
+                    <ul style="margin-bottom: 0;">
+                        <li>Can only contain letters <code>(A-Z, a-z)</code>, numbers <code>(0-9)</code>, and underscores <code>(_)</code>.</li>
+                        <li>Cannot <strong>start</strong> with a number (e.g., <code>1st_name</code> is invalid).</li>
+                        <li><strong>No spaces allowed</strong> anywhere in the variable name.</li>
+                        <li>Case-sensitive (<code>age</code> and <code>Age</code> are two different variables).</li>
+                        <li>Cannot use <strong>Python's Reserved Words</strong>. (see the table below)</li>
+                    </ul>
+                </blockquote>
+                
+                <p>After the "hard" rules, we have some "soft" rules (or suggestions). There are a few that will be enforced in this class, but <strong>many</strong> more in <a href="https://peps.python.org/pep-0008/" target="_blank">Python's PEP 8 Style Guide</a>.</p>
+                <h3>Soft Rules</h3>
+                <blockquote>
+                    <ul style="margin-bottom: 0;">
+                        <li>Short, descriptive names. You should be able to tell what data the variable will hold just by the name.</li>
+                        <li><strong>Snake Case</strong>. This is the preferred method for Python, where every word is lowercase and separated by an underscore. Example: <code>my_awesome_variable</code></li>
+                        <li>Avoid single-letter variables (some exceptions will apply). Variables like <code>a</code> or <code>b</code> are not descriptive of the data they will contain.</li>
+                    </ul>
+                </blockquote>
+
+                <h3>Python Reserved Words</h3>
+                <p>These words are keywords in the Python language with special function. These words cannot be used as variable name.</p>
+                <div class="fake-table">
+                    <span><code>False</code></span>
+                    <span><code>def</code></span>
+                    <span><code>if</code></span>
+                    <span><code>raise</code></span>
+                    <span><code>None</code></span>
+                    <span><code>del</code></span>
+                    <span><code>import</code></span>
+                    <span><code>return</code></span>
+                    <span><code>True</code></span>
+                    <span><code>elif</code></span>
+                    <span><code>in</code></span>
+                    <span><code>try</code></span>
+                    <span><code>and</code></span>
+                    <span><code>else</code></span>
+                    <span><code>is</code></span>
+                    <span><code>while</code></span>
+                    <span><code>as</code></span>
+                    <span><code>except</code></span>
+                    <span><code>lambda</code></span>
+                    <span><code>with</code></span>
+                    <span><code>assert</code></span>
+                    <span><code>finally</code></span>
+                    <span><code>nonlocal</code></span>
+                    <span><code>yield</code></span>
+                    <span><code>break</code></span>
+                    <span><code>for</code></span>
+                    <span><code>not</code></span>
+                    <span><code>class</code></span>
+                    <span><code>from</code></span>
+                    <span><code>or</code></span>
+                    <span><code>continue</code></span>
+                    <span><code>global</code></span>
+                    <span><code>pass</code></span>
+                </div>
+
+                <h2>Data Types</h2>
+                <p>A <strong>data type</strong> is a classification that defines the kind of value a variable can hold.</p>
+                <blockquote class="quote">
+                    <h4>ELI5</h4>
+                    <p>A data type is a <em>label</em> that tells a computer what kind of inforation it is dealing with, ensureing the data is stored and processed correctly. Think of it like sorting real-world objects: You would handle sharp objects differently than building blocks.</p>
+                    <p>Under the hood, this classification is crucial because it dictates how much memory to set aside for the data and what operations are allowed.</p>
+                    <p>Python's variables are <strong>dynamically typed</strong>. Which means, Python doesn't require you to expressly state what type of data your variable holds. It will look at the data it is given and figure it out for you. However, many other languages require you to be specific. So it is important to build habits now: like taking into consideration what data the variable will hold.</p>
+                </blockquote>
+
+                <p>
+                    Python uses four basic built-in types: 
+                    <strong>Integers</strong> - <code>int</code>, 
+                    <strong>Floating-Points</strong> - <code>float</code>,
+                    <strong>Booleans</strong> - <code>bool</code>, and
+                    <strong>Strings</strong> - <code>str</code>
+                </p>
+
+                <h2>Conclusion Questions</h2>
+                <p>Copy the table below and finish it for your notes. Submit the finished table.</p>
+                <div class="table-responsive">
+                    <table>
+                        <caption>Python data types reference table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Data Type</th>
+                                <th scope="col">What is the Data Type?</th>
+                                <th scope="col">Examples</th>
+                                <th scope="col">Where would you use it?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Integer (int)</th>
+                                <td data-label="What is the Data Type?">[fill in definition]</td>
+                                <td data-label="Examples">[fill in examples]</td>
+                                <td data-label="Where would you use it?">[fill in real-world application]</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Float (float)</th>
+                                <td data-label="What is the Data Type?">[fill in definition]</td>
+                                <td data-label="Examples">[fill in examples]</td>
+                                <td data-label="Where would you use it?">[fill in real-world application]</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Boolean (bool)</th>
+                                <td data-label="What is the Data Type?">[fill in definition]</td>
+                                <td data-label="Examples">[fill in examples]</td>
+                                <td data-label="Where would you use it?">[fill in real-world application]</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">String (str)</th>
+                                <td data-label="What is the Data Type?">[fill in definition]</td>
+                                <td data-label="Examples">[fill in examples]</td>
+                                <td data-label="Where would you use it?">[fill in real-world application]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

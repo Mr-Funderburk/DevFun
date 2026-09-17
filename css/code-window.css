@@ -197,12 +197,14 @@
    Code Window Content Body with Line Numbers & Alternating Rows
    ========================================================================== */
 .code-window-body {
-  padding: 1.25rem 0;
+  /* padding: 1.25rem 0; */
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 0.98rem;
   line-height: 1.7;
 }
+
+.code-window-body code { border-radius: 0; padding: 0; }
 
 .code-window pre {
   margin: 0;

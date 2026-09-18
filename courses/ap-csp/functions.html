@@ -1,0 +1,350 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learning Python functions, parameters, arguments, return values, variable scope, and code modularity.">
+    <title>Functions in Python | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Functions</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Functions in Python</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction to Modular Code</h2>
+                <p>Up to this point, our code segments run linearly from top to bottom and execute exactly once. But what if you need to run the same sequence of instructions five, ten, or a hundred times throughout a program? Rewriting or copy-pasting the same code over and over makes programs messy, difficult to maintain, and prone to bugs.</p>
+
+                <p>To follow the software design principle known as <strong>DRY (Don't Repeat Yourself)</strong>, we package reusable code blocks into <strong>functions</strong>. A function is a named block of instructions designed to perform a specific task. Once defined, a function can be invoked (called) whenever and wherever it is needed.</p>
+
+                <h2>Defining and Calling a Function</h2>
+                <p>Every Python function begins with the keyword <code>def</code> (short for <em>define</em>), followed by the function name, parentheses <code>()</code>, and a colon <code>:</code>. The lines inside the function form its <strong>body</strong> and must be indented.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Defining the function
+def canterbury_honor_code():
+    print("I will act honorably respecting myself and others. I will not lie, cheat, steal, or plagiarize.")
+
+# Calling (executing) the function
+canterbury_honor_code()
+canterbury_honor_code() # Can be called as many times as needed!</code></pre>
+                    </div>
+                </div>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>Naming Conventions & Function Headers:</strong></p>
+                    <p>The function name and its parameter list together are called the <strong>function header</strong> (or function signature). Function names follow the exact same naming rules as variables: use only letters, numbers, and underscores, do not start with a number, avoid reserved keywords, and stick to <code>snake_case</code> in Python.</p>
+                </blockquote>
+
+                <h2>Parameters vs. Arguments</h2>
+                <p>Functions become much more powerful when they can accept dynamic inputs. We pass data into functions using <strong>parameters</strong> and <strong>arguments</strong>:</p>
+
+                <ul>
+                    <li><strong>Parameters:</strong> Variables defined inside the function header that act as placeholders for incoming data.</li>
+                    <li><strong>Arguments:</strong> The actual values or variables passed into the function when you call it.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># 'num1' and 'num2' are PARAMETERS
+def calc_two_nums(num1, num2):
+    if num1 == num2:
+        return "Doubled Sum: " + str(2 * (num1 + num2))
+    else:
+        return "Sum: " + str(num1 + num2)
+
+# '10' and '20' are ARGUMENTS passed into the function
+result_one = calc_two_nums(10, 20)
+print(result_one)  # Outputs: Sum: 30
+
+# Passing different arguments yields a different result
+result_two = calc_two_nums(5, 5)
+print(result_two)  # Outputs: Doubled Sum: 20</code></pre>
+                    </div>
+                </div>
+
+                <h2>Return Values vs. Printing</h2>
+                <p>A common point of confusion for beginner programmers is the difference between <code>print()</code> and <code>return</code>:</p>
+
+                <ul>
+                    <li><code>print()</code> displays text in the console for a human to read. It does <strong>not</strong> save or pass data back to the rest of your program.</li>
+                    <li><code>return</code> sends calculated data back to where the function was called so it can be stored in a variable, passed into another function, or evaluated in a logic statement.</li>
+                </ul>
+
+                <p>When a function encounters a <code>return</code> statement, execution of that function stops immediately. Any code written after a <code>return</code> inside the same execution path is unreachable and will never run.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def add_numbers(a, b):
+    return a + b
+    print("This line will NEVER run because it comes after return!")
+
+sum_val = add_numbers(3, 4) # sum_val holds 7
+print(sum_val * 2)          # Outputs: 14</code></pre>
+                    </div>
+                </div>
+
+                <p>If a function does not contain an explicit <code>return</code> statement, Python automatically returns a special value called <code>None</code>.</p>
+
+                <h2>Variable Scope: Local vs. Global</h2>
+                <p>Where a variable is created determines where it can be accessed. This concept is known as <strong>variable scope</strong>:</p>
+
+                <ul>
+                    <li><strong>Local Scope:</strong> Variables created inside a function (including parameters) exist <em>only</em> while that function is running. They cannot be read or modified outside the function.</li>
+                    <li><strong>Global Scope:</strong> Variables declared outside of all functions (at the main level of the file) can be read throughout the script.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def calculate_discount(price):
+    discount_rate = 0.20 # Local variable
+    return price * (1 - discount_rate)
+
+print(calculate_discount(100)) # Outputs: 80.0
+
+# ERROR: discount_rate does not exist outside the function!
+print(discount_rate) # NameError: name 'discount_rate' is not defined</code></pre>
+                    </div>
+                </div>
+
+                <h2>The <code>pass</code> Keyword</h2>
+                <p>In Python, empty blocks cause syntax errors because the compiler expects indented instructions after a colon. If you want to outline a function header before writing its internal logic, use the <code>pass</code> keyword as a temporary placeholder.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def get_student_grade(student_id):
+    # TODO: Connect to database and retrieve grade
+    pass # Keeps the program runnable without syntax errors</code></pre>
+                    </div>
+                </div>
+
+                <h2>Conclusion Questions</h2>
+
+                <h3>Question 1: Parameters vs. Arguments</h3>
+                <p>In your own words, explain the difference between a <strong>parameter</strong> and an <strong>argument</strong>. Identify the parameters and arguments in the following code snippet:</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def multiply(x, y):
+    return x * y
+
+total = multiply(4, 7)</code></pre>
+                    </div>
+                </div>
+
+                <h3>Question 2: Analyzing Code Execution</h3>
+                <p>Predict the exact console output generated by running the following program. Explain why line 8 produces the result it does.</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def display_score(score):
+    print("Your score is: " + score)
+
+def double_score(score):
+    return score * 2
+
+result1 = display_score(50)
+result2 = double_score(50)
+
+print("Result 1: " + result1)
+print("Result 2: " + result2)</code></pre>
+                    </div>
+                </div>
+
+                <h3>Question 3: Debugging Variable Scope</h3>
+                <p>The following program raises a <code>NameError</code> when executed. Identify which line causes the error, explain why it happens, and state how to fix it.</p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">functions.py</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def create_greeting(name):
+    greeting_text = "Hello, " + name + "!"
+    return greeting_text
+
+create_greeting("Alex")
+print(greeting_text)</code></pre>
+                    </div>
+                </div>
+
+                <h3>Question 4: Function Design Practice</h3>
+                <p>Write a Python function header and body for a function named <code>is_adult(age)</code>. The function should accept an integer parameter <code>age</code> and <strong>return</strong> <code>True</code> if the age is 18 or older, and <code>False</code> otherwise.</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

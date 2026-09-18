@@ -104,6 +104,39 @@ units:
           - "Practice"
         status: "published"
 
+      - title: "Modular Programming"
+        file: "functions.html"
+        description: "Learning Python functions, parameters, arguments, return values, variable scope, and code modularity."
+        topics:
+          - "Functions"
+          - "Parameters"
+          - "Arguments"
+          - "Scope"
+        status: "published"
+
+      - title: "Modular Programming Practice"
+        file: "functions-practice.html"
+        description: "Writing Python functions using boolean logic, arithmetic, and string manipulation."
+        topics:
+          - "Practice"
+        status: "published"
+
+      - title: "Collections"
+        file: "collections.html"
+        description: "Overview of Python collections: tuples, lists, dictionaries, and sets."
+        topics:
+          - "Tuples"
+          - "Lists"
+          - "Sets"
+        status: "published"
+
+      - title: "Collections Practice"
+        file: "collections-practice.html"
+        description: "Working with Python collections: lists, tuples, dictionaries, and sets."
+        topics:
+          - "Practice"
+        status: "published"
+
   - title: "Python Challenges"
     lessons:
       - title: "Vowel Counter"

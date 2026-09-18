@@ -1,0 +1,276 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Guided Practice - Working with Python collections: lists, tuples, dictionaries, and sets.">
+    <title>Guided Practice: Collections | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Guided Practice: Collections</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Guided Practice: Collections</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview</h2>
+                <p>In this guided practice, you will build Python functions that manipulate <strong>lists</strong>, <strong>tuples</strong>, <strong>dictionaries</strong>, and <strong>sets</strong> using indexing, membership checks (<code>in</code>), collection functions (<code>len()</code>), and built-in methods. Create a single Python file named <code>collections_practice_lastname.py</code> (replace <code>lastname</code> with your actual last name in lowercase) and implement all functions below.</p>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>GUIDED RULES:</strong></p>
+                    <p>1. Every function must <strong>RETURN</strong> a value. Do NOT use <code>print()</code> inside function bodies.<br>
+                    2. Do NOT use loops (<code>for</code> or <code>while</code>) in this practice—rely strictly on collection indexing, membership testing, set math, and built-in methods.</p>
+                </blockquote>
+
+                <h2>Function Practice Problems</h2>
+
+                <h3>1. <code>add_unique_item(cart, item)</code></h3>
+                <p>Write a function that accepts a list parameter <code>cart</code> and a string parameter <code>item</code>. If <code>item</code> is <strong>not</strong> already present in <code>cart</code>, append it to the list. Return the updated list <code>cart</code> regardless of whether an item was added.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections-practice.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example Execution
+items = ["apple", "banana"]
+result1 = add_unique_item(items, "cherry")
+# Returns: ["apple", "banana", "cherry"]
+
+result2 = add_unique_item(result1, "apple")
+# Returns: ["apple", "banana", "cherry"] (No duplicate added)</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. <code>get_coordinate_distance(point_a, point_b)</code></h3>
+                <p>Write a function that accepts two tuples, <code>point_a</code> and <code>point_b</code>, where each tuple contains two numbers representing 2D coordinates <code>(x, y)</code>. Return the sum of the horizontal distance between the x-values and the vertical distance between the y-values. <em>(Hint: Use <code>abs()</code> to calculate distance differences).</em></p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections-practice.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example Execution
+p1 = (2, 5)
+p2 = (6, 1)
+
+dist = get_coordinate_distance(p1, p2)</code></pre>
+                    </div>
+                </div>
+
+                <h3>3. <code>get_student_score(gradebook, student_name)</code></h3>
+                <p>Write a function accepting a dictionary parameter <code>gradebook</code> (mapping student names to integer scores) and a string parameter <code>student_name</code>. If the student exists in the gradebook, return their numeric score. If the student name is not in the dictionary, return the string <code>"Not Found"</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections-practice.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example Execution
+scores = {"Alice": 95, "Bob": 88, "Charlie": 72}
+
+print(get_student_score(scores, "Bob"))      # Returns: 88
+print(get_student_score(scores, "David"))    # Returns: "Not Found"</code></pre>
+                    </div>
+                </div>
+
+                <h3>4. <code>update_inventory_stock(inventory, item_name, quantity)</code></h3>
+                <p>Write a function accepting a dictionary <code>inventory</code>, a string <code>item_name</code>, and an integer <code>quantity</code>. If <code>item_name</code> already exists in the dictionary, add <code>quantity</code> to its current stock value. If it does not exist, add the new item key with its value set to <code>quantity</code>. Return the modified <code>inventory</code> dictionary.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections-practice.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example Execution
+store_stock = {"pencils": 10, "erasers": 5}
+
+# Updating an existing item
+update_inventory_stock(store_stock, "pencils", 15)
+# Returns: {"pencils": 25, "erasers": 5}
+
+# Adding a brand-new item
+update_inventory_stock(store_stock, "pens", 8)
+# Returns: {"pencils": 25, "erasers": 5, "pens": 8}</code></pre>
+                    </div>
+                </div>
+
+                <h3>5. <code>swap_list_extremes(items)</code></h3>
+                <p>Write a function accepting a list parameter <code>items</code>. If the list contains fewer than 2 items, return the list unchanged. If it contains 2 or more items, swap the position of the first item (index <code>0</code>) and the last item (index <code>-1</code> or <code>len(items) - 1</code>) and return the modified list.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections-practice.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example Execution
+numbers = [10, 20, 30, 40]
+result = swap_list_extremes(numbers)
+# Returns: [40, 20, 30, 10]
+
+single_item = [99]
+print(swap_list_extremes(single_item))
+# Returns: [99]</code></pre>
+                    </div>
+                </div>
+
+                <h2>Submission Checklist</h2>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Is your script saved as <code>collections_practice_lastname.py</code>?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Does every function <strong>return</strong> its output rather than printing it?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Have you executed test cases in your local environment to verify exact outputs?
+                        </label>
+                    </li>
+                </ul>
+
+                <p>Upload your finished Python file to Cougar Campus when complete!</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

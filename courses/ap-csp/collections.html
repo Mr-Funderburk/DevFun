@@ -1,0 +1,409 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Overview of Python collections: tuples, lists, dictionaries, and sets.">
+    <title>Python Collections | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Python Collections</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Python Collections</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview</h2>
+                <p>A collection is an aggregate set of data. Collections are objects that group multiple elements into a single unit. Common real-world examples include a deck of playing cards (each card is distinct, but together they form a deck), contacts on your phone, or an email inbox.</p>
+                <p>Python provides four general-purpose, built-in collections: <strong>tuple</strong>, <strong>list</strong>, <strong>dict</strong> (dictionary), and <strong>set</strong>.</p>
+
+                <blockquote>
+                    <p><strong>Core Concepts: Mutability</strong></p>
+                    <ul>
+                        <li><strong>Mutable:</strong> Able to be changed after creation.</li>
+                        <li><strong>Immutable:</strong> Cannot be changed after creation.</li>
+                    </ul>
+                    <p>Strings are immutable. When you reassign a string variable, Python creates a new string in memory rather than modifying the existing one. Immutable data types are generally faster and safer, while mutable data types offer flexibility.</p>
+                </blockquote>
+
+                <h2>Tuple</h2>
+                <p>A tuple is an <strong>ordered</strong>, <strong>indexed</strong>, and <strong>immutable</strong> collection that <strong>allows duplicate values</strong>. Tuples are defined using parentheses <code>()</code>.</p>
+                
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">domestic = ("cat", "dog")
+animal_tuple = (domestic, "eagle", "cow")
+
+print(animal_tuple)
+# Output: (('cat', 'dog'), 'eagle', 'cow')
+
+# Accessing items via zero-based indexing
+print(animal_tuple[1])
+# Output: eagle</code></pre>
+                    </div>
+                </div>
+
+                <p>Since tuples are <em>immutable</em>, items cannot be added, removed, or changed once defined. Like strings, Python supports negative indexing on tuples to count backward from the end (e.g., <code>[-1]</code> accesses the last item).</p>
+
+                <h2>List</h2>
+                <p>A list is an <strong>ordered</strong>, <strong>indexed</strong>, and <strong>mutable</strong> collection that <strong>allows duplicate values</strong>. Lists are defined using square brackets <code>[]</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># == List Example == #
+domestic = ["cat", "dog"]
+animal_list = [domestic, "eagle", "cow"]
+
+print(animal_list)
+# Output: [['cat', 'dog'], 'eagle', 'cow']
+
+# Modifying elements in a list
+animal_list[1] = "hawk"
+print(animal_list)
+# Output: [['cat', 'dog'], 'hawk', 'cow']</code></pre>
+                    </div>
+                </div>
+
+                <p>Because lists are <em>mutable</em>, elements can be dynamically altered throughout program execution. Use tuples when data should remain constant and secure; use lists when data needs to change.</p>
+
+                <h3>Essential List Methods</h3>
+                <p>Python provides built-in methods to modify list elements directly without replacing the entire collection:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">inventory = ["shield", "potion"]
+
+# .append(item) - Adds an item to the end of the list
+inventory.append("sword")
+print(inventory)  # Output: ['shield', 'potion', 'sword']
+
+# .remove(value) - Removes the first matching item by value
+inventory.remove("potion")
+print(inventory)  # Output: ['shield', 'sword']
+
+# .pop(index) - Removes and returns an item at a given index (defaults to last)
+last_item = inventory.pop()
+print(last_item)   # Output: sword
+print(inventory)   # Output: ['shield']</code></pre>
+                    </div>
+                </div>
+
+                <h2>Dict (Dictionary)</h2>
+                <p>A dictionary stores data in key-value pairs. Dictionaries are <strong>ordered</strong> (as of Python 3.7+), <strong>mutable</strong>, and <strong>do not allow duplicate keys</strong>. Dictionaries are defined using curly braces <code>{}</code> with colon-separated key-value pairs.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># == Dictionary Example == #
+animal_dict = {
+    "domestic": ["cat", "dog"],
+    "wild": ["tiger", "penguin"],
+    "favorite": "eagle"
+}
+
+print(animal_dict["wild"])
+# Output: ['tiger', 'penguin']
+
+# Adding a new key-value pair or updating an existing one
+animal_dict["mascot"] = "cougar"
+print(animal_dict["mascot"])
+# Output: cougar</code></pre>
+                    </div>
+                </div>
+
+                <p>Instead of integer indexes, dictionaries use unique keys to access values. Keys must be an <em>immutable</em> type (like strings, integers, or tuples containing only immutable types).</p>
+
+                <h2>Set</h2>
+                <p>A set is an <strong>unordered</strong>, <strong>unindexed</strong>, and <strong>mutable</strong> collection that <strong>does not allow duplicate values</strong>. Sets are defined using curly braces <code>{}</code>. To create an empty set, you must use <code>set()</code>, as <code>{}</code> defaults to an empty dictionary.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># == Set Example == #
+domestic = {"dog", "cat", "fish"}
+wild = {"wolf", "tiger", "fish"}
+
+# Set Mathematical Operations
+print(domestic | wild)  # Union: {'cat', 'tiger', 'fish', 'wolf', 'dog'}
+print(domestic & wild)  # Intersection: {'fish'}
+print(domestic - wild)  # Difference: {'cat', 'dog'}
+print(domestic ^ wild)  # Symmetric Difference: {'tiger', 'wolf', 'dog', 'cat'}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Common Collection Tools</h2>
+
+                <h3>1. Collection Size with <code>len()</code></h3>
+                <p>The built-in <code>len()</code> function counts the total number of items stored inside any Python collection.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">my_tuple = (10, 20, 30)
+my_dict = {"a": 1, "b": 2}
+
+print(len(my_tuple))  # Output: 3
+print(len(my_dict))   # Output: 2 (counts key-value pairs)</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. Membership Operators (<code>in</code> and <code>not in</code>)</h3>
+                <p>You can check if an item exists within a collection without writing loops by using the <code>in</code> and <code>not in</code> boolean operators.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collections.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">guests = ["Alice", "Bob", "Charlie"]
+user = "David"
+
+if user not in guests:
+    print("Access denied.")
+
+# Works with dictionary keys directly:
+credentials = {"admin": "secret123"}
+if "admin" in credentials:
+    print("User found.")</code></pre>
+                    </div>
+                </div>
+
+                <h2>Collection Comparison</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Collection Comparison Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Collection</th>
+                                <th scope="col">Mutable</th>
+                                <th scope="col">Ordered</th>
+                                <th scope="col">Indexed</th>
+                                <th scope="col">Duplicates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Collection"><code>tuple</code></td>
+                                <td data-label="Mutable">No</td>
+                                <td data-label="Ordered">Yes</td>
+                                <td data-label="Indexed">Yes</td>
+                                <td data-label="Duplicates">Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Collection"><code>list</code></td>
+                                <td data-label="Mutable">Yes</td>
+                                <td data-label="Ordered">Yes</td>
+                                <td data-label="Indexed">Yes</td>
+                                <td data-label="Duplicates">Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Collection"><code>dict</code></td>
+                                <td data-label="Mutable">Yes</td>
+                                <td data-label="Ordered">Yes</td>
+                                <td data-label="Indexed">No (key-based)</td>
+                                <td data-label="Duplicates">Values only</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Collection"><code>set</code></td>
+                                <td data-label="Mutable">Yes</td>
+                                <td data-label="Ordered">No</td>
+                                <td data-label="Indexed">No</td>
+                                <td data-label="Duplicates">No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Check Your Understanding</h2>
+                <ol>
+                    <li>Create a Python list containing five of your favorite foods. Append a 6th food to the list using <code>.append()</code>.</li>
+                    <li>Create a tuple containing the names of the planets in our solar system, and print the total number of planets using <code>len()</code>.</li>
+                    <li>Create a dictionary mapping at least three U.S. Bill of Rights amendments (e.g., <code>"1st"</code>) to their summary descriptions.</li>
+                    <li>Write a conditional block (<code>if/else</code>) using the <code>in</code> operator to test if <code>"cat"</code> exists inside a set named <code>pets = {"dog", "parrot", "fish"}</code>.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

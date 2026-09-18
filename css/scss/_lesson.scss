@@ -240,6 +240,11 @@ ol {
             font-size: 1rem;
             font-weight: 700;
             text-align: left;
+            display: block;
+
+            @media screen and (min-width: $breakpoint-small) {
+                display: table-caption;
+            }
         }
 
         th, td {

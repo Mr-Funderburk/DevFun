@@ -62,11 +62,11 @@
         margin: 5px; 
         @media screen and (min-width: $breakpoint-medium) { margin-left: 15px; }
 
-        &::before {
+        &::marker {
             content: "⋆ ";
             color: $accent-green;
             position: relative;
-            bottom: 3px;
+            bottom: 6px;
         }
     }
 }

@@ -1,0 +1,412 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Guided Practice - Writing Python functions using boolean logic, arithmetic, and string manipulation.">
+    <title>Guided Practice: Functions | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Guided Practice: Functions</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Guided Practice: Functions</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview</h2>
+                <p>In this guided practice, you will write a series of Python functions that focus on boolean evaluations, arithmetic logic, and string manipulation. Create a single Python file named <code>functions_practice_lastname.py</code> (replacing <code>lastname</code> with your actual last name in lowercase) and implement all twelve functions below.</p>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>CRITICAL REQUIREMENT:</strong></p>
+                    <p>Every function in this exercise must <strong>RETURN</strong> a value using the <code>return</code> keyword. Do <strong>NOT</strong> use <code>print()</code> inside your function definitions unless you are testing your function calls outside of them.</p>
+                </blockquote>
+
+                <h2>Function Practice Problems</h2>
+
+                <h3>1. <code>can_alarm_ring(is_weekend, is_holiday)</code></h3>
+                <p>We want to sleep in! The alarm clock should NOT ring if it is the weekend or if we are on holiday. Create a function that accepts two boolean parameters, <code>is_weekend</code> and <code>is_holiday</code>, and returns <code>True</code> if the alarm rings, or <code>False</code> if it should stay silent.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>can_alarm_ring(False, False)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>can_alarm_ring(True, False)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>can_alarm_ring(False, True)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>2. <code>cat_and_dog_silent(cat_meowing, dog_barking)</code></h3>
+                <p>We have a cat and a dog. We are at peace if both pets are silent, or if both pets are making noise at the same time. Create a function that accepts two boolean parameters, <code>cat_meowing</code> and <code>dog_barking</code>, and returns <code>True</code> if we are at peace, or <code>False</code> otherwise.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cat_and_dog_silent(False, False)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>cat_and_dog_silent(True, True)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>cat_and_dog_silent(True, False)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3. <code>quadruple_even(a, b)</code></h3>
+                <p>Given two integer parameters, <code>a</code> and <code>b</code>, return their sum. However, if both integers are even numbers (divisible by 2), return <strong>four times</strong> their sum.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>quadruple_even(3, 5)</code></td>
+                            <td><code>8</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>quadruple_even(2, 4)</code></td>
+                            <td><code>24</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>quadruple_even(2, 3)</code></td>
+                            <td><code>5</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>4. <code>diff_fifty(n)</code></h3>
+                <p>Given an integer parameter <code>n</code>, return the absolute difference between <code>n</code> and 50. Exception: If <code>n</code> is strictly greater than 50, return <strong>triple</strong> the absolute difference.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>diff_fifty(40)</code></td>
+                            <td><code>10</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>diff_fifty(50)</code></td>
+                            <td><code>0</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>diff_fifty(60)</code></td>
+                            <td><code>30</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>5. <code>stadium_lights(game_on, hour)</code></h3>
+                <p>The outdoor stadium lights should turn on if a game is currently happening (<code>game_on</code> is <code>True</code>) AND the current time in hours (0 through 23) is before 8 AM (<code>hour &lt; 8</code>) or after 6 PM (<code>hour &gt; 18</code>). Return <code>True</code> if the lights should be turned on, and <code>False</code> otherwise.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>stadium_lights(True, 20)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>stadium_lights(True, 12)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>stadium_lights(False, 22)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>6. <code>sum_or_twenty(a, b)</code></h3>
+                <p>Given two integer parameters, <code>a</code> and <code>b</code>, return <code>True</code> if either integer is 20, or if their sum equals 20. Return <code>False</code> otherwise.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>sum_or_twenty(20, 5)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>sum_or_twenty(12, 8)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>sum_or_twenty(10, 5)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>7. <code>near_target(n, target)</code></h3>
+                <p>Given an integer <code>n</code> and a target value <code>target</code>, return <code>True</code> if <code>n</code> is within 5 units (inclusive) of <code>target</code> in either direction. <em>(Hint: Use the built-in <code>abs()</code> function to compute absolute difference).</em></p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>near_target(98, 100)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>near_target(106, 100)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>near_target(45, 50)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>8. <code>opposite_signs(a, b, both_negative)</code></h3>
+                <p>Given two numbers <code>a</code> and <code>b</code>, return <code>True</code> if one number is positive and the other is negative. However, if the boolean parameter <code>both_negative</code> is <code>True</code>, return <code>True</code> only if both <code>a</code> and <code>b</code> are negative.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>opposite_signs(5, -3, False)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>opposite_signs(-2, -4, True)</code></td>
+                            <td><code>True</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>opposite_signs(-2, -4, False)</code></td>
+                            <td><code>False</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>9. <code>add_super(text)</code></h3>
+                <p>Given a string <code>text</code>, return a new string where <code>"super "</code> is added to the beginning. However, if the string already begins with <code>"super "</code>, return the original string unchanged.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>add_super("hero")</code></td>
+                            <td><code>"super hero"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>add_super("super star")</code></td>
+                            <td><code>"super star"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>add_super("fast")</code></td>
+                            <td><code>"super fast"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>10. <code>drop_character(text, idx)</code></h3>
+                <p>Given a non-empty string <code>text</code> and a valid zero-based integer index <code>idx</code>, return a new string where the character at position <code>idx</code> has been removed using string slicing.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>drop_character("python", 2)</code></td>
+                            <td><code>"pyhon"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>drop_character("robot", 0)</code></td>
+                            <td><code>"obot"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>drop_character("code", 3)</code></td>
+                            <td><code>"cod"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>11. <code>swap_ends(text)</code></h3>
+                <p>Given a string <code>text</code>, return a new string where the first and last characters have exchanged places. If the string length is 1 or less, return the string unchanged.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>swap_ends("apple")</code></td>
+                            <td><code>"eppla"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>swap_ends("hi")</code></td>
+                            <td><code>"ih"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>swap_ends("z")</code></td>
+                            <td><code>"z"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>12. <code>repeat_prefix(text)</code></h3>
+                <p>Given a string <code>text</code>, take the first 2 characters of the string and return a new string that repeats those 2 characters 4 times. If the input string length is less than 2, repeat whatever characters are present 4 times.</p>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%;">Function Call</th>
+                            <th style="width: 40%;">Expected Return Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>repeat_prefix("Python")</code></td>
+                            <td><code>"PyPyPyPy"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>repeat_prefix("A")</code></td>
+                            <td><code>"AAAA"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>repeat_prefix("CS")</code></td>
+                            <td><code>"CSCSCSCS"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Submission Checklist</h2>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Is your file saved as <code>functions_practice_lastname.py</code> using all lowercase letters?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Did you define a global variable named <code>NAME</code> with your full name at the top of the file?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Are all twelve function names written exactly as specified in the exercise headings?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Does every single function <strong>return</strong> a value instead of just printing it?
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Have you tested every function against all provided test cases in your local environment?
+                        </label>
+                    </li>
+                </ul>
+
+                <p>When completed, submit your finished Python file to the assignment portal on Cougar Campus.</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

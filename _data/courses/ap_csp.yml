@@ -128,14 +128,14 @@ units:
           - "Tuples"
           - "Lists"
           - "Sets"
-        status: "published"
+        status: "coming_soon"
 
       - title: "Collections Practice"
         file: "collections-practice.html"
         description: "Working with Python collections: lists, tuples, dictionaries, and sets."
         topics:
           - "Practice"
-        status: "published"
+        status: "coming_soon"
 
   - title: "Python Challenges"
     lessons:

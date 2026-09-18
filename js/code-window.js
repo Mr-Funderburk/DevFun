@@ -130,9 +130,9 @@
         });
       });
     }
+    return b;
   }
 
   processAllCodeWindows();
-  initCopyButtons();
-  disableCopy();
+  if (!disableCopy()) initCopyButtons();
 })();

@@ -1,0 +1,416 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Iteration in Python: for loops, for-each loops, while loops, range(), break, and continue.">
+    <title>Iteration | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Iteration</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Iteration</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview</h2>
+                <p>When programming, you will frequently need to repeat a block of code multiple times. While functions eliminate duplicated code across different parts of a program, <strong>iteration</strong> (looping) allows a single block of code to run repeatedly based on a condition or collection size.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">repetitive_code.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Manual printing without loops becomes unmanageable quickly:
+all_fruit = ["apple", "avocado", "blackberry", "blueberry", "cherry", "strawberry"]
+
+print(all_fruit[0])
+print(all_fruit[1])
+print(all_fruit[2])
+# ... manual lines required for every single element!</code></pre>
+                    </div>
+                </div>
+
+                <p>Using loops cuts down on repetitive code, simplifies maintenance, and dynamically adapts when items are added or removed from data collections.</p>
+
+                <blockquote>
+                    <p><strong>Core Concepts: Three Loop Structures</strong></p>
+                    <ul>
+                        <li><strong>For-Each (Enhanced For):</strong> Direct iteration through each element in a collection.</li>
+                        <li><strong>Standard For:</strong> Index-driven or range-driven iteration using numerical steps.</li>
+                        <li><strong>While:</strong> Condition-driven iteration that repeats as long as a boolean expression evaluates to <code>True</code>.</li>
+                    </ul>
+                </blockquote>
+
+                <h2>1. For-Each Loop (Enhanced For)</h2>
+                <p>Python's primary loop structure is designed to iterate through collections directly. A temporary variable holds the value of the current element for each cycle through the collection.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">for_each.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">all_fruit = ["apple", "avocado", "blackberry", "blueberry", "cherry"]
+
+# Syntax: for [temporary variable] in [collection]:
+for fruit in all_fruit:
+    print(fruit)
+
+# Iteration 1: fruit = "apple"
+# Iteration 2: fruit = "avocado"
+# Iteration 3: fruit = "blackberry" ...</code></pre>
+                    </div>
+                </div>
+
+                <p>The temporary variable (<code>fruit</code>) is local to the loop body and automatically updates to point to the next item in sequence until the entire collection has been traversed.</p>
+                <p><strong>Remember:</strong> Since this temporary variable has a <em>local scope</em>, when the for each loop is done, the temporary variable is no longer accessable.</p>
+
+                <h2>2. The <code>range()</code> Function</h2>
+                <p>Before using index-based loops, you need to understand the built-in <code>range()</code> generator. It produces sequence values based on up to three integer arguments:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">range_syntax.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">range(stop)              # Starts at 0, counts up to (stop - 1)
+range(start, stop)       # Starts at start, counts up to (stop - 1)
+range(start, stop, step) # Starts at start, increments/decrements by step</code></pre>
+                    </div>
+                </div>
+
+                <ul>
+                    <li><strong>stop (Required):</strong> The ending boundary. The stopping point is <em>exclusive</em> (it counts up to, but never includes, this value).</li>
+                    <li><strong>start (Optional):</strong> The initial integer. Defaults to <code>0</code> if omitted.</li>
+                    <li><strong>step (Optional):</strong> The amount added or subtracted per iteration. Defaults to <code>1</code> if omitted.</li>
+                </ul>
+
+                <h2>3. Standard For Loop</h2>
+                <p>Combining <code>for</code> with <code>range()</code> creates a standard numeric loop. In Python, the loop counter is conventionally named <code>i</code> (short for index or iteration).</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">standard_for.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">all_fruit = ["apple", "avocado", "blackberry", "blueberry", "cherry"]
+
+# Accessing list elements using zero-based indexing via range(len(...))
+for i in range(len(all_fruit)):
+    print(all_fruit[i])</code></pre>
+                    </div>
+                </div>
+
+                <h3>Advanced Range Operations</h3>
+                <p>By adjusting start, stop, and step parameters, you can traverse collections in reverse or skip elements:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">range_traversals.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example 1: Reverse Traversal
+# Starts at last index (len - 1), ends at -1 (exclusive, so stops at 0), step is -1
+for i in range(len(all_fruit) - 1, -1, -1):
+    print(all_fruit[i])
+
+# Example 2: Skip Every Other Item
+# Starts at index 0, ends at len (exclusive), step is 2
+for i in range(0, len(all_fruit), 2):
+    print(all_fruit[i])</code></pre>
+                    </div>
+                </div>
+
+                <h2>4. While Loop</h2>
+                <p>A <code>while</code> loop executes repeatedly as long as its conditional statement remains <code>True</code>. You must ensure the loop state changes within the body to prevent an infinite loop.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">while_loops.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Incorrect: Infinite Loop (i is never updated)
+i = 3
+while i < 10:
+    print(13 + i)  # Never stops because i remains 3!
+
+# Correct: Condition state updates each iteration
+i = 3
+while i < 10:
+    print(13 + i)
+    i += 1  # Increment ensures i reaches 10 to exit</code></pre>
+                    </div>
+                </div>
+
+                <h3>Forever Loops</h3>
+                <p>While the above examples showcase situations where you do not want your loops to continue forever, there are instances when you <em>do</em> want your code to run forever (or at least until the user picks to stop).</p>
+                <p>This could include a game (the game continues to run until the user stops it), or an application (a paint program on your computer runs until you close it), and many others.</p>
+                <p>We can use a <code>while</code> loop for this and set our condition to <code>True</code>. Since <code>True</code> is always <code>True</code>, the code will run forever! Just be sure there is <em>some way</em> to end your program! (Keep reading to find out how!)</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">while_loops.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">while True:
+    # execute some code forever!
+                        </code></pre>
+                    </div>
+                </div>
+
+                <h2>Choosing the Right Loop</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Loop Comparison Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Loop Type</th>
+                                <th scope="col">When to Use</th>
+                                <th scope="col">Key Characteristic</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Loop Type"><code>for each</code></td>
+                                <td data-label="When to Use">Traversing a collection directly without needing index positions.</td>
+                                <td data-label="Key Characteristic">Cleanest syntax; automatically stops at collection end.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Loop Type"><code>standard for</code></td>
+                                <td data-label="When to Use">Known iteration count, reverse steps, or index-specific operations.	</td>
+                                <td data-label="Key Characteristic">Uses numerical indices; controlled by <code>range()</code> limits.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Loop Type"><code>while</code></td>
+                                <td data-label="When to Use">Unknown number of iterations (e.g., waiting for user input, game loops).	</td>
+                                <td data-label="Key Characteristic">Repeats purely based on boolean condition state.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Loop Control: <code>break</code> and <code>continue</code></h2>
+                <p>Python provides two control flow statements to alter loop execution dynamically:</p>
+
+                <ul>
+                    <li><strong><code>break</code>:</strong> Immediately terminates the loop block completely.</li>
+                    <li><strong><code>continue</code>:</strong> Skips the remainder of the current iteration and jumps directly to the next iteration cycle.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">loop_controls.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Example 1: Exiting early with break
+numbers = [3, 7, 12, 5, 20]
+for num in numbers:
+    if num > 10:
+        print("First number over 10 found:", num)
+        break  # Exits loop immediately
+
+# Example 2: Skipping cycles with continue
+for num in range(1, 6):
+    if num == 3:
+        continue  # Skips printing 3
+    print(num)    # Output: 1, 2, 4, 5</code></pre>
+                    </div>
+                </div>
+
+                <p>It is important to point out as well that the <code>return</code> keyword in a function will stop a loop as well.</p>
+
+                <h2>Check Your Understanding</h2>
+                <ol>
+                    <li>What sequence of numbers is generated by <code>range(2, 10, 3)</code>?</li>
+                    <li>Write a <code>for-each</code> loop that prints every string in a list named <code>cities</code> in uppercase using <code>.upper()</code>.</li>
+                    <li>Convert a standard index-based loop into a <code>while</code> loop that counts down from <code>10</code> to <code>1</code>.</li>
+                    <li>Explain the difference between what happens when <code>break</code> is triggered versus when <code>continue</code> is triggered inside a loop.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

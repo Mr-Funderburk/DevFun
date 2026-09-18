@@ -193,6 +193,8 @@
   color: #5af78e;
 }
 
+#noCopy .copy-code-btn { display: none !important; }
+
 /* ==========================================================================
    Code Window Content Body with Line Numbers & Alternating Rows
    ========================================================================== */

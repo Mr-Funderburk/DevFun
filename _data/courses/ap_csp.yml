@@ -137,6 +137,23 @@ units:
           - "Practice"
         status: "coming_soon"
 
+      - title: "Iteration"
+        file: "iteration.html"
+        description: "Iteration in Python: for loops, for-each loops, while loops, range(), break, and continue."
+        topics:
+          - "For Loop"
+          - "For Each Loop"
+          - "While Loop"
+          - "Forever Loop"
+        status: "coming_soon"
+
+      - title: "Iteration Practice"
+        file: "iteration-practice.html"
+        description: "Hands-on practice exercises for Python iteration, loops, range(), and loop control statements."
+        topics:
+          - "Practice"
+        status: "coming_soon"
+
   - title: "Python Challenges"
     lessons:
       - title: "Vowel Counter"

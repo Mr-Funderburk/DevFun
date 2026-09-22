@@ -172,6 +172,15 @@ units:
           - "String Manipulation"
           - "Mathematics"
         status: "published"
+        
+      - title: "Triangle"
+        file: "challenge-triangle.html"
+        description: "Telemetry Engine: Spatial Mesh Validator using Python strings, conditional logic, and list processing."
+        topics:
+          - "Challege"
+          - "String Manipulation"
+          - "Mathematics"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

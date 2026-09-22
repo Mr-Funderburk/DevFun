@@ -1,4 +1,5 @@
 ---
+course: game_1
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +17,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 
-    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/timer.js" defer></script>
 </head>
 <body>
 
@@ -29,14 +31,14 @@
             <div class="container">
                 <div class="hero-text">
                     <nav class="breadcrumb">
-                        <a href="/DevFun/index.html">Home</a>
+                        <a href="../../index.html">Home</a>
                         <span class="separator">/</span>
-                        <a href="/DevFun/index.html#courses">Courses</a>
+                        <a href="../../index.html#courses">Courses</a>
                         <span class="separator">/</span>
-                        <span>Game Development I</span>
+                        <span>Game 1</span>
                     </nav>
 
-                    <h1>Game Development <span>I</span></h1>
+                    <h1>Game Development I</span></h1>
 
                     <p class="hero-description">Games aren't just played—they are carefully engineered systems of rules, feedback loops, and player psychology. In this course, you will transition from a game consumer to a game designer. You will start by deconstructing board games and building your own physical tabletop game, then shift into digital development using <strong>GameMaker Studio</strong> to bring 2D interactive worlds to life.</p>
 
@@ -54,7 +56,6 @@
                         <li><strong>Skill Level:</strong> Foundational</li>
                         <li><strong>Prerequisites:</strong> None</li>
                     </ul>
-                    <p>&nbsp;</p>
 
                     <a href="../../resources.html?course=game-dev" class="btn btn-primary">Course Resources &nbsp; →</a>
                 </div>
@@ -62,13 +63,20 @@
         </section>
 
         <div class="container">
+
             <div class="course-content-grid">
                 <aside class="course-sidebar">
                     <div class="sidebar-widget">
                         <h3>Jump to Unit</h3>
                         
                         <ul>
-                            <li><a href="#unit1">Unit 1</a></li>
+                            {% assign unit_nav_counter = 0 %}
+                            {% for unit in site.data.courses.game_1.units %}
+                                {% if unit.published != false %}
+                                    {% assign unit_nav_counter = unit_nav_counter | plus: 1 %}
+                                    <li><a href="#unit{{ unit_nav_counter }}">Unit {{ unit_nav_counter }}: {{ unit.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </aside>
@@ -79,24 +87,64 @@
                         Course Lessons
                     </h2>
 
-                    <div class="lesson-container">
-                        <h2 class="unit-number" id="unit1"><span>//</span> Unit 1</h2>
-                        
-                        <a href="lesson-001.html" class="lesson-card">
-                            <h3>What is a Game?</h3>
-                            
-                            <p class="lesson-description">Explore how we define a game and why humans play games.</p>
-                            
-                            <div class="lesson-topics">
-                                <span>Game Theory</span>
+                    {% assign unit_counter = 0 %}
+                    {% for unit in site.data.courses.game_1.units %}
+                        {% if unit.published != false %}
+                            {% assign unit_counter = unit_counter | plus: 1 %}
+                            <div class="lesson-container">
+                                <h2 class="unit-number" id="unit{{ unit_counter }}"><span>//</span> Unit {{ unit_counter }}: {{ unit.title }}</h2>
+                                
+                                {% for lesson in unit.lessons %}
+                                    {% if lesson.published != false %}
+                                        {% if lesson.status == "coming_soon" %}
+                                            <div class="lesson-card card-disabled" aria-disabled="true">
+                                                <div class="lesson-meta">
+                                                    <span class="badge-coming-soon">Coming Soon</span>
+                                                </div>
+
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ lesson.file }}" class="lesson-card">
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                        </a>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </section>
             </div>
         </div>
     </main>
 
     {% include footer.html %}
+
+    
 </body>
 </html>

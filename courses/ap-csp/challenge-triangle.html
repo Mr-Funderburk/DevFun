@@ -1,0 +1,134 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weekly Challenge - Telemetry Engine: Spatial Mesh Validator using Python strings, conditional logic, and list processing.">
+    <title>Weekly Challenge: Telemetry Engine | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Telemetry Engine</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Telemetry Engine - Spatial Mesh Validator</h1>
+                <p class="lesson-subtitle">Apply string parsing, type casting, and multi-way branch conditionals to build a drone spatial geometry analyzer.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Background Scenario</h2>
+                <p>You are developing a spatial mapping module for autonomous drones. Before deploying a three-node communications relay, the navigation engine must verify that the relative distances between three relay positions satisfy the <strong>Triangle Inequality Theorem</strong>:</p>
+
+                <p style="text-align: center;">
+                    <code>(a + b &gt; c) &nbsp;&amp;&amp;&nbsp; (a + c &gt; b) &nbsp;&amp;&amp;&nbsp; (b + c &gt; a)</code>
+                </p>
+
+                <p>If the distances fail this test, the positions cannot form a valid closed boundary. If the boundary is valid, the system classifies the geometry of the relay zone to optimize signal routing.</p>
+
+                <h2>Classification Rules</h2>
+                <p>Your program must evaluate three side lengths (a, b, c) in sequence using the following logic hierarchy:</p>
+
+                <ul>
+                    <li><strong>Invalid Boundary:</strong> The distances fail the Triangle Inequality Theorem &rightarrow; Return <code>"Not a Triangle"</code></li>
+                    <li><strong>Equilateral:</strong> All three side lengths are strictly equal (a = b = c) &rightarrow; Return <code>"Equilateral"</code></li>
+                    <li><strong>Isosceles:</strong> Exactly two side lengths are equal (a = b or a = c or b = c) &rightarrow; Return <code>"Isosceles"</code></li>
+                    <li><strong>Scalene:</strong> All three side lengths are completely different (a &ne; b &ne; c) &rightarrow; Return <code>"Scalene"</code></li>
+                </ul>
+
+                <h3>Required Function Specification</h3>
+                <p>You must write a function named <code>triangle(sides)</code> that adheres strictly to the following parameters:</p>
+                <ul>
+                    <li><strong>Function Name:</strong> <code>triangle</code></li>
+                    <li><strong>Parameter:</strong> <code>sides</code> - The parameter <code>sides</code> will be a single string containing three comma-separated integer distances (e.g., <code>"15,15,20"</code>).</li>
+                    <li><strong>Behavior:</strong> Compute the type of triangle.</li>
+                    <li><strong>Return Value:</strong> Your function must return one of the four exact string values: <code>"Not a Triangle"</code>, <code>"Equilateral"</code>, <code>"Isosceles"</code>, or <code>"Scalene"</code>.</li>
+                </ul>
+
+                <blockquote style="padding-bottom: 0;">
+                    <p><strong>CRITICAL: Exact Names Required</strong></p>
+                    <p>Automated grading scripts will evaluate your submission. Your file name, function name (<code>change</code>), parameter name (<code>amount</code>), and global variable name (<code>NAME</code>) must match the instructions <strong>EXACTLY</strong>. Misspelling any of these elements will cause autograding scripts to fail, resulting in a lower score!</p>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                <p>Your solution must pass all boundary conditions listed below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Input String (<code>sides</code>)</th>
+                            <th>Expected Return String</th>
+                            <th>Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>"15,15,22"</code></td>
+                            <td><code>"Isosceles"</code></td>
+                            <td>Valid geometry; two side lengths are equal (15 == 15).</td>
+                        </tr>
+                        <tr>
+                            <td><code>"10,10,10"</code></td>
+                            <td><code>"Equilateral"</code></td>
+                            <td>Valid geometry; all three side lengths are equal.</td>
+                        </tr>
+                        <tr>
+                            <td><code>"12,16,20"</code></td>
+                            <td><code>"Scalene"</code></td>
+                            <td>Valid geometry; all three side lengths are distinct.</td>
+                        </tr>
+                        <tr>
+                            <td><code>"5,8,20"</code></td>
+                            <td><code>"Not a Triangle"</code></td>
+                            <td>Invalid geometry (5 + 8 &lt; 20). Cannot form a closed shape.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

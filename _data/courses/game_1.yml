@@ -1,0 +1,13 @@
+id: "game_1"
+title: "Game Development I"
+breadcrumb: "Game 1"
+
+units:
+  - title: "Game Theory"
+    lessons:
+      - title: "What is a Game?"
+        file: "what-is-a-game.html"
+        description: "Explore how we define a game and why humans play games."
+        topics:
+          - "Game Theory"
+        status: "published"

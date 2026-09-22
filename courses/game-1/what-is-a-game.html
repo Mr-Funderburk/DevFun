@@ -1,0 +1,176 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Understanding play spectrums, game definitions, information structures, sum-of-payoffs, and dominant strategies.">
+    <title>What is a Game? & Light Game Theory | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>What is a Game?</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>What is a Game? & Light Game Theory</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Play Continuum</h2>
+                <p>Before designing mechanics or writing code, we need to understand what separates a game from other forms of play and interactive media. Consider your own player history: <em>What is the best game experience you’ve ever had? What is the most frustrating?</em></p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/e5jDspIC4hY?si=6qmaNAWpP-vHkHjq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                <p>Interactive experiences exist on a spectrum defined by rules, goals, agency, and conflict:</p>
+
+                <blockquote style="text-align: center; font-weight: 600;">
+                    Toy &nbsp;&rightarrow;&nbsp; Puzzle &nbsp;&rightarrow;&nbsp; Competition &nbsp;&rightarrow;&nbsp; Game
+                </blockquote>
+
+                <ul>
+                    <li><strong>Toy:</strong> An open-ended object with no explicit goals or win conditions. Play is driven entirely by player curiosity (e.g., LEGO bricks, <em>The Sims</em> sandbox mode).</li>
+                    <li><strong>Puzzle:</strong> Has a clear goal and an optimal solution, but lacks active opposition. Once solved, it offers minimal replayability unless variables change (e.g., Sudoku, Rubik's Cube).</li>
+                    <li><strong>Competition:</strong> Relies heavily on physical skill, execution, and athleticism rather than purely systemic or mental choices (e.g., Basketball, Tennis).</li>
+                    <li><strong>Game:</strong> An interactive system bounded by rules, requiring meaningful decision-making, player agency, and conflict toward a specific outcome or goal.</li>
+                </ul>
+
+                <h2>Information Availability</h2>
+                <p>How information is revealed or hidden dictates player decision-making, emotional tension, and cognitive strain.</p>
+
+                <h3>Perfect Information</h3>
+                <p>All players know the complete state of the game board and every possible move at all times. There are no secrets, no hidden cards, and no element of luck.</p>
+                <ul>
+                    <li><strong>Examples:</strong> Chess, Checkers, Go, Connect 4.</li>
+                    <li><strong>Player Psychology:</strong> Fosters pure responsibility and mastery. Losses are attributable entirely to player strategy rather than chance.</li>
+                    <li><strong>Design Risk (Analysis Paralysis):</strong> Because choices can be calculated, players faced with high cognitive load may freeze trying to project multiple turns ahead.</li>
+                    <li><strong>Design Mitigation:</strong> Introduce strict time constraints (chess clocks) or spatial boundaries.</li>
+                </ul>
+
+                <h3>Imperfect / Hidden Information</h3>
+                <p>Players possess incomplete data. Information can be hidden by the system (e.g., fog of war, shuffled decks) or by opponents (e.g., hands of cards, secret roles).</p>
+                <ul>
+                    <li><strong>Examples:</strong> Poker, Battleship, Clue, <em>Among Us</em>.</li>
+                    <li><strong>Player Psychology:</strong> Shifts strategy from pure calculation to deduction, bluffing, risk assessment, and reading human behavior.</li>
+                    <li><strong>Design Value:</strong> Generates suspense and drama while giving weaker players a competitive chance by preventing total calculation.</li>
+                </ul>
+
+                <blockquote>
+                    <p><strong>💡 Class Demo & Discussion: Sticky Note Tic-Tac-Toe</strong></p>
+                    <p>Standard Tic-Tac-Toe is a perfect information game. Now imagine playing by ranking your 9 moves on private sticky notes numbered 1 to 5, then playing turn-by-turn simultaneously using Rock-Paper-Scissors to decide turn order when moves overlap. Hiding information fundamentally transforms player emotion from mechanical calculation to prediction and suspense.</p>
+                </blockquote>
+
+                <h2>Sum-of-Payoffs: Zero-Sum vs. Non-Zero-Sum</h2>
+                <p>The payoff structure defines the nature of conflict, cooperation, and social alliance in a game system.</p>
+
+                <h3>Zero-Sum Games</h3>
+                <p>A strictly competitive framework where one player's gain is exactly equal to another player's loss ($+1 + (-1) = 0$). Resources in the system remain fixed.</p>
+                <ul>
+                    <li><strong>Examples:</strong> Chess, Poker (for money), Fighting games, Tic-Tac-Toe.</li>
+                    <li><strong>Player Feeling:</strong> Direct confrontation, high tension, and cutthroat rivalry.</li>
+                    <li><strong>Design Note:</strong> In multi-player zero-sum environments, defeated players may feel targeted or bitter (e.g., "king-making" scenarios where a losing player decides who wins).</li>
+                </ul>
+
+                <h3>Non-Zero-Sum Games</h3>
+                <p>The total value in the system can expand (positive-sum) or shrink (negative-sum). Players can win together, lose together, or execute mutually beneficial trades.</p>
+                <ul>
+                    <li><strong>Cooperative Games:</strong> <em>Pandemic</em>, <em>Flash Point</em>, <em>Overcooked</em> (Players win or lose as a team).</li>
+                    <li><strong>Trade & Diplomacy Games:</strong> <em>Catan</em>, <em>Risk</em> (Trading resources helps both parties progress while leaving non-trading players behind).</li>
+                    <li><strong>Player Feeling:</strong> Camaraderie, negotiation drama, shared panic, or strategic relief. Modern board games heavily rely on non-zero-sum structures to soften direct aggression.</li>
+                </ul>
+
+                <h2>Dominant Strategies & Game Balance</h2>
+                <p>A <strong>dominant strategy</strong> is a choice or tactic that yields the highest payoff regardless of what opponents do. If a dominant strategy exists, player choice becomes illusory and the game becomes "solved" or uninteresting.</p>
+
+                <p>Designers employ several core mechanics to break dominant strategies and maintain systemic balance:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Technique</th>
+                            <th>How It Works</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Triangular Balance</strong></td>
+                            <td>Rock-Paper-Scissors relationship where every option beats one choice but loses to another.</td>
+                            <td>Spears beat Cavalry, Cavalry beats Infantry, Infantry beats Spears.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dynamic Costs</strong></td>
+                            <td>Increases the resource cost of an action if it is overused or repeatedly selected.</td>
+                            <td>Auction mechanics or escalating mana costs for powerful abilities.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlled Randomness</strong></td>
+                            <td>Inputs or outputs are subject to probability, forcing players to adapt rather than execute rote scripts.</td>
+                            <td>Drawing random card hands in <em>Dominion</em> or <em>UNO</em>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Asymmetry</strong></td>
+                            <td>Gives players distinct win conditions, abilities, or resource constraints.</td>
+                            <td><em>Root</em>, <em>Cosmic Encounter</em>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Trust & Traitor Mechanics (The Prisoner's Dilemma)</h2>
+                <p>When game rules incentivize individual self-interest over mutual cooperation, social tension naturally emerges. Consider the classic game theory paradox:</p>
+
+                <p>Two suspects are arrested. If both stay silent, each gets 1 year. If one betrays the other while the second stays silent, the betrayer goes free and the silent partner gets 5 years. If both betray each other, both receive 3 years.</p>
+
+                <ul>
+                    <li><strong>The Paradox:</strong> Rational self-interest (snitching) leads to a worse collective outcome than mutual cooperation.</li>
+                    <li><strong>Design Application:</strong> Games like <em>Secret Hitler</em>, <em>Betrayal at House on the Hill</em>, and <em>Dead of Winter</em> leverage this paradox to create social deception, temporary truces, and paranoia.</li>
+                    <li><strong>Interactive Exploration:</strong> Explore interactive payoff structures directly via <a href="https://ncase.me/trust/" target="_blank" rel="noopener noreferrer">The Evolution of Trust</a>.</li>
+                </ul>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

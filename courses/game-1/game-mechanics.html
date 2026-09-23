@@ -1,0 +1,290 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Understanding components, mechanics, dynamics, aesthetics, action selection systems, and game design scope.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>The Anatomy of a Game & Mechanics Deep-Dive | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Anatomy of a Game</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>The Anatomy of a Game & Mechanics Deep-Dive</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Components vs. Rules vs. Mechanics</h2>
+                <p>When novice game designers pitch a game, they frequently start with theme (<em>"It’s about space pirates!"</em>) or components (<em>"There’s a massive board with custom cards!"</em>). However, professional game design requires thinking in terms of interactive systems and systemic actions.</p>
+
+                <p>To analyze and build games effectively, we separate a game system into four primary structural layers:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Components vs. Rules vs. Mechanics Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Layer</th>
+                                <th scope="col">Definition</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Layer">Components</td>
+                                <td data-label="Definition">The physical or visual nouns of the game.</td>
+                                <td data-label="Example">Dice, grid board, plastic pawns, cards.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Layer">Mechanics</td>
+                                <td data-label="Definition">The systemic verbs and actions available to the player.</td>
+                                <td data-label="Example">Drafting, spatial programming, push-your-luck.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Layer">Dynamics</td>
+                                <td data-label="Definition">The run-time behaviors that emerge when players interact with mechanics.</td>
+                                <td data-label="Example">King-making, backstabbing, turtling (defensive play).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Layer">Aesthetics</td>
+                                <td data-label="Definition">The overarching emotional responses invoked in the player.</td>
+                                <td data-label="Example">Tension, paranoia, power fantasy, comedy.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>The Game Designer's Mechanics Catalog</h2>
+                <p>Equipping yourself with a curated mechanics catalog provides the vocabulary required to articulate design choices precisely. Instead of stating <em>"You move your piece,"</em> game designers ask, <em>"Is it roll-and-move, point-to-point, or spatial programming?"</em></p>
+
+                <h3>1. Movement & Spatial Systems</h3>
+                <p>These systems dictate how players navigate physical or digital space on their turn.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Movement & Spatial Systems Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Mechanic</th>
+                                <th scope="col">What It Means</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Roll-and-Move</td>
+                                <td data-label="What It Means">Random movement dictated strictly by dice or spinners. High luck, low agency.</td>
+                                <td data-label="Example">Monopoly, Sorry!, Chutes and Ladders</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Grid Movement</td>
+                                <td data-label="What It Means">Moving pieces along a square, hexagonal, or offset grid space by space.</td>
+                                <td data-label="Example">Chess, Flash Point, Checkers</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Point-to-Point Movement</td>
+                                <td data-label="What It Means">Moving along designated nodes or tracks connected by explicit routes.</td>
+                                <td data-label="Example">Pandemic, Ticket to Ride, Clue</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Movement Programming</td>
+                                <td data-label="What It Means">Secretly queuing up a sequence of movement commands before executing them in order.</td>
+                                <td data-label="Example">RoboRally</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Tile Placement</td>
+                                <td data-label="What It Means">Expanding the board dynamically by playing new terrain or path tiles during play.</td>
+                                <td data-label="Example">Carcassonne, Betrayal at House on the Hill</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. Action Selection Systems</h3>
+                <p>These mechanics govern how players choose and execute their choices on a turn.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Action Selection Systems Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Mechanic</th>
+                                <th scope="col">What It Means</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Action-Point Allowance</td>
+                                <td data-label="What It Means">Players receive a fixed budget of points each turn (e.g., 4 AP) to split across available actions.</td>
+                                <td data-label="Example">Flash Point, Pandemic</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Worker Placement</td>
+                                <td data-label="What It Means">Placing limited physical tokens onto specific board spaces to claim that action exclusively.</td>
+                                <td data-label="Example">Lords of Waterdeep, Agricola</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Simultaneous Action</td>
+                                <td data-label="What It Means">All players choose actions in secret at the same time, then reveal and resolve simultaneously.</td>
+                                <td data-label="Example">RoboRally, Rock-Paper-Scissors</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Drafting / Card Selection</td>
+                                <td data-label="What It Means">Choosing one card/action from a shared pool or passing hand, leaving remaining options for others.</td>
+                                <td data-label="Example">Sushi Go!, 7 Wonders</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Role / Phase Selection</td>
+                                <td data-label="What It Means">One player chooses an action category for the turn, and all players perform a version of it.</td>
+                                <td data-label="Example">Puerto Rico, Race for the Galaxy</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3. Resource & Card Systems</h3>
+                <p>How players acquire, store, and manage engine power and tools over time.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Resource & Card Systems</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Mechanic</th>
+                                <th scope="col">What It Means</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Hand Management</td>
+                                <td data-label="What It Means">Gaining value by strategically optimizing when to play, hold, or discard cards.</td>
+                                <td data-label="Example">UNO, Storm Chasers, Poker</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Set Collection</td>
+                                <td data-label="What It Means">Gathering specific combinations of matching items or cards to earn points or actions.</td>
+                                <td data-label="Example">Ticket to Ride, Rummikub, Go Fish</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Deck / Engine Building</td>
+                                <td data-label="What It Means">Starting with a weak deck/pool and purchasing better cards during play to customize your engine</td>
+                                <td data-label="Example">Dominion, Clank!</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Trading & Negotiation</td>
+                                <td data-label="What It Means">A player-driven economy where resources are bartered through direct verbal agreements</td>
+                                <td data-label="Example">Catan, Monopoly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>4. Conflict, Luck & Social Mechanics</h3>
+                <p>Mechanics that drive player-versus-player interaction, risk taking, and social dynamics.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Conflict, Luck & Social Mechanics</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Mechanic</th>
+                                <th scope="col">What It Means</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Push-Your-Luck</td>
+                                <td data-label="What It Means">Deciding whether to take a safe reward or gamble for a bigger payout at the risk of losing everything.</td>
+                                <td data-label="Example">Storm Chasers, Zombie Dice, Blackjack</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Rubber-Banding (Catch-Up)</td>
+                                <td data-label="What It Means">Systems giving advantages to losing players or penalties to leaders to keep games competitive.</td>
+                                <td data-label="Example">Sorry! (bumping), Mario Kart (blue shell)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Area Control / Majority</td>
+                                <td data-label="What It Means">Whoever maintains the most pieces or influence in a designated zone controls it and earns rewards.</td>
+                                <td data-label="Example">Risk, Small World</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Hidden Roles / Bluffing</td>
+                                <td data-label="What It Means">Players hold secret identities, objectives, or information they must protect or lie about</td>
+                                <td data-label="Example">Among Us, The Resistance, Poker</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Mechanic">Take-That / Direct Conflict</td>
+                                <td data-label="What It Means">Actions specifically designed to directly attack, steal from, or hinder an opponent.</td>
+                                <td data-label="Example">Exploding Kittens, UNO (Draw 4)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <p><strong>🛠️ Project Scope Constraint: The 1+1 Rule</strong></p>
+                    <p>Avoid "kitchen sink design" (attempting to combine 5 or 6 mechanics into your first prototype). When designing your game for this course, adhere strictly to the <strong>1+1 Rule</strong>:</p>
+                    <ul>
+                        <li><strong>1 Primary Mechanic:</strong> The core engine driving your main loop (e.g., <em>Worker Placement</em>).</li>
+                        <li><strong>1 Supporting Mechanic:</strong> A secondary layer that adds strategic flavor or player tension (e.g., <em>Push-Your-Luck</em>).</li>
+                    </ul>
+                </blockquote>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

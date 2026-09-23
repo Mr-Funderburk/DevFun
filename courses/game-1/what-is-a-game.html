@@ -7,20 +7,25 @@ course: game_1
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Game Development 1 - Understanding play spectrums, game definitions, information structures, sum-of-payoffs, and dominant strategies.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+
     <title>What is a Game? & Light Game Theory | Game Development 1</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/code-window.css">
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
 
-    <script src="/js/prism.min.js" defer></script>
-    <script src="/js/prism-gml.js" defer></script>
-    <script src="/js/code-window.js" defer></script>
-    <script src="/js/main.js" defer></script>
-    <script src="/js/lesson.js" defer></script>
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
 </head>
 <body>
 
@@ -103,7 +108,7 @@ course: game_1
                 <p>The payoff structure defines the nature of conflict, cooperation, and social alliance in a game system.</p>
 
                 <h3>Zero-Sum Games</h3>
-                <p>A strictly competitive framework where one player's gain is exactly equal to another player's loss ($+1 + (-1) = 0$). Resources in the system remain fixed.</p>
+                <p>A strictly competitive framework where one player's gain is exactly equal to another player's loss (<code>1 + (-1) = 0</code>). Resources in the system remain fixed.</p>
                 <ul>
                     <li><strong>Examples:</strong> Chess, Poker (for money), Fighting games, Tic-Tac-Toe.</li>
                     <li><strong>Player Feeling:</strong> Direct confrontation, high tension, and cutthroat rivalry.</li>
@@ -123,37 +128,40 @@ course: game_1
 
                 <p>Designers employ several core mechanics to break dominant strategies and maintain systemic balance:</p>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Technique</th>
-                            <th>How It Works</th>
-                            <th>Example</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Triangular Balance</strong></td>
-                            <td>Rock-Paper-Scissors relationship where every option beats one choice but loses to another.</td>
-                            <td>Spears beat Cavalry, Cavalry beats Infantry, Infantry beats Spears.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dynamic Costs</strong></td>
-                            <td>Increases the resource cost of an action if it is overused or repeatedly selected.</td>
-                            <td>Auction mechanics or escalating mana costs for powerful abilities.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlled Randomness</strong></td>
-                            <td>Inputs or outputs are subject to probability, forcing players to adapt rather than execute rote scripts.</td>
-                            <td>Drawing random card hands in <em>Dominion</em> or <em>UNO</em>.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Asymmetry</strong></td>
-                            <td>Gives players distinct win conditions, abilities, or resource constraints.</td>
-                            <td><em>Root</em>, <em>Cosmic Encounter</em>.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table>
+                        <caption>Dominant Stragegies Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Technique</th>
+                                <th scope="col">How it Works</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Technique">Triangular Balance</td>
+                                <td data-label="How it Works">Rock-Paper-Scissors relationship where every option beats one choice but loses to another.</td>
+                                <td data-label="Example">Spears beat Cavalry, Cavalry beats Infantry, Infantry beats Spears.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Technique">Dynamic Costs</td>
+                                <td data-label="How it Works">Increases the resource cost of an action if it is overused or repeatedly selected.</td>
+                                <td data-label="Example">Auction mechanics or escalating mana costs for powerful abilities.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Technique">Controlled Randomness</td>
+                                <td data-label="How it Works">Inputs or outputs are subject to probability, forcing players to adapt rather than execute rote scripts.</td>
+                                <td data-label="Example">Drawing random card hands in Dominion or UNO.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Technique">Asymmetry</td>
+                                <td data-label="How it Works">Gives players distinct win conditions, abilities, or resource constraints.</td>
+                                <td data-label="Example">Root, Cosmic Encounter.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2>Trust & Traitor Mechanics (The Prisoner's Dilemma)</h2>
                 <p>When game rules incentivize individual self-interest over mutual cooperation, social tension naturally emerges. Consider the classic game theory paradox:</p>

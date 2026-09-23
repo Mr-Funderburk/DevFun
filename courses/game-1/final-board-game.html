@@ -1,0 +1,184 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Final assembly, component manufacturing, rulebook layout, packaging checklist, and build expectations for the board game project.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Final Assembly & Project Deliverables | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Final Assembly</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Final Assembly & Project Deliverables</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Final Production Sprint</h2>
+                <p>Your paper prototype has been battle-tested, your playtest data is compiled, and your core loop is locked. Now it is time to transition from messy testing scraps to a high-fidelity physical product. During this final workshop phase, your goal is physical fabrication, visual legibility, and professional presentation.</p>
+
+                <blockquote>
+                    <h4>Rules Lock Notice:</h4>
+                    <p>Do <strong>not</strong> introduce brand-new mechanics or overhaul core systems at this stage without thorough testing! Your focus must shift entirely toward component durability, rulebook clarity, packaging art, and complete build organization.</p>
+                </blockquote>
+
+                <h2>Master Deliverables Checklist</h2>
+                <p>To earn full credit, your submission must be packaged cleanly as a retail-ready, self-contained product. Audit your build against this master checklist before turning in your box:</p>
+
+                <ul>
+                    <li>
+                        <strong>1. The Official Rulebook (Printed & Included inside box)</strong>
+                        <ul>
+                            <li><strong>Component Manifest:</strong> An exact itemized count of every card, tile, pawn, die, and token inside the box.</li>
+                            <li><strong>Setup Guide:</strong> Step-by-step setup instructions featuring a labeled board layout diagram.</li>
+                            <li><strong>Core Loop Explanation:</strong> Clear, bulleted turn sequence (e.g., Step 1: Draw &rarr; Step 2: Action &rarr; Step 3: End Turn).</li>
+                            <li><strong>Win Conditions & End Game:</strong> Explicit criteria for how the game ends and how points or victory are calculated.</li>
+                            <li><strong>FAQ / Edge Cases:</strong> Clarifications for common player questions identified during blind playtesting.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <strong>2. The Game Board or Play Surface</strong>
+                        <ul>
+                            <li>Durable, rigid construction (mounted chipboard, heavy cardstock, custom interlocking tiles, or cloth mat).</li>
+                            <li>High contrast and legibility (spaces, paths, and card slots must be easily readable from across a table).</li>
+                            <li>Clear visual iconography (use standardized icons rather than long paragraphs of text on the board).</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <strong>3. Complete Playing Components</strong>
+                        <ul>
+                            <li><strong>Cards:</strong> Cut evenly with consistent back art/color (players should not be able to mark or identify cards from the back).</li>
+                            <li><strong>Tokens & Trackers:</strong> Cleanly cut resource markers, victory point chips, or custom health trackers.</li>
+                            <li><strong>Player Pawns / Miniatures:</strong> Distinct pieces representing each player or character.</li>
+                            <li><strong>Randomizers:</strong> All necessary dice, spinners, or custom decks included.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <strong>4. Decorated & Labeled Game Box</strong>
+                        <ul>
+                            <li><strong>Front Cover:</strong> Project title, original theme artwork, and key game metrics (Player Count, Target Age, Session Length).</li>
+                            <li><strong>Back Cover:</strong> The 2-sentence elevator pitch summary, component list, and a teaser visual of the game set up.</li>
+                            <li><strong>Storage Organization:</strong> Include small plastic bags, tuck boxes, or dividers to keep components organized during transit.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <strong>5. Self-Contained Playability Standard</strong>
+                        <ul>
+                            <li>Your game box must contain <strong>100% of the tools required to play</strong>. A player should not need to supply outside pens, paper, dice, or phone timers unless explicitly approved in your original brief.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2>Last-Minute Expectations & Quality Reminders</h2>
+
+                <h3>1. The Durability Standard</h3>
+                <p>Can your game survive 10 consecutive play sessions? Paper components should be glued to cardstock or laminated. Game boards made of thin printer paper will tear during handling—mount them to poster board or cardboard.</p>
+
+                <h3>2. Visual Hierarchy & Contrast</h3>
+                <p>Text on cards and boards must be legible under normal classroom lighting. Avoid dark text on dark backgrounds or overly decorative script fonts that slow down reading. If a player has to hold a card 2 inches from their face to read it, reformat the layout!</p>
+
+                <h3>3. The Lawsuit Test Final Verification</h3>
+                <p>Ensure all placeholder art borrowed from commercial games or copyrighted franchises during paper prototyping has been replaced with original graphics, royalty-free assets, or custom sketches.</p>
+
+                <h2>Pro-Tips for Final Workshop Assembly</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Uniqueness Standard Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Production Problem</th>
+                                <th scope="col">Quick Classroom Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" data-label="Production Problem">Hand-cut paper cards feel flimsy and hard to shuffle</td>
+                                <td data-label="Quick Classroom Solution">Slide paper printouts into standard clear plastic card sleeves backed by regular playing cards for instant rigidity.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Production Problem">Printed board art bubbles or peels off cardboard</td>
+                                <td data-label="Quick Classroom Solution">Use spray adhesive or full-sheet sticker paper instead of liquid glue stick to mount board graphics cleanly.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Production Problem">Loose components get lost inside the box</td>
+                                <td data-label="Quick Classroom Solution">Use re-sealable zip bags or folded cardstock tuck boxes for cards, dice, and small tokens.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Production Problem">Game board won't lay flat</td>
+                                <td data-label="Quick Classroom Solution">Cut board backing into 2 or 4 folding panels and connect them along the back seam using durable duct tape or bookbinding tape.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Final Pre-Submission Self-Audit</h2>
+
+                <blockquote>
+                    <p><b>Run this 30-second final check right before handing in your box:</b></p>
+                    <ol>
+                        <li>Pack everything into the box and shake it gently. Do components spill out or damage each other?</li>
+                        <li>Open the rulebook to the Component Manifest. Count every physical piece in the box to ensure zero missing tokens.</li>
+                        <li>Hand your box to someone outside your group. Can they identify the title, player count, and game duration within 5 seconds?</li>
+                    </ol>
+                </blockquote>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

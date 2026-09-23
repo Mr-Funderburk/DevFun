@@ -1,0 +1,168 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Conducting blind playtests, silent observation techniques, peer feedback collection, and analyzing anonymous playtest responses.">
+    <title>The "Blind" Playtest Lab | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Blind Playtest Lab</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>The "Blind" Playtest Lab</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview & The True Test of Design</h2>
+                <p>Up to this point, you have been sitting at the table with your playtesters, explaining rules on the fly, answering questions, and steering players back on track. Today, that safety net disappears. Welcome to <strong>The "Blind" Playtest Lab</strong>.</p>
+
+                <p>In commercial game publishing, your physical game box will be shipped to players around the world. You will not be standing in their living room to teach them how to play. Your prototype, components, and written rule sheet must speak entirely for themselves.</p>
+
+                <h2>The Golden Rule: Silence is Golden</h2>
+                <p>During today's blind playtest sessions, game creators must follow one non-negotiable command:</p>
+
+                <blockquote class="warning">
+                    <h4>THE CREATOR IS NOT ALLOWED TO TALK!</h4>
+                    <p>You cannot teach rules, answer questions, point out missed actions, or defend your design choices while peers play your game. If players misinterpret a rule and play incorrectly, <strong>let them play it wrong</strong> and take notes. Their confusion is your most valuable diagnostic data!</p>
+                </blockquote>
+
+                <h2>Step-by-Step Lab Execution</h2>
+
+                <h3>1. Station Setup</h3>
+                <p>Set out your prototype at your assigned desk station before play begins. Ensure your table includes:</p>
+                <ul>
+                    <li>The complete game board or play surface layout</li>
+                    <li>All physical components, cards, tokens, and dice neatly organized</li>
+                    <li>Your printed/handwritten working rule sheet placed right in the center</li>
+                </ul>
+
+                <h3>2. Rotation & Silent Observation</h3>
+                <p>Students will rotate in groups to play assigned games. As peers play your prototype, pull up a chair, sit back with a notepad, and observe silently.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Observation Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">What to Watch For</th>
+                                <th scope="col">What It Tells You About Your Design</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="What to Watch For">Rulebook Navigation</td>
+                                <td data-label="What It Tells You About Your Design">Which specific section or heading do players re-read multiple times? That section needs clearer phrasing or a visual diagram.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="What to Watch For">Setup Time</td>
+                                <td data-label="What It Tells You About Your Design">Do players spend more than 3 minutes trying to figure out initial component layout? Simplified setup steps are required.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="What to Watch For">Hesitation & Friction</td>
+                                <td data-label="What It Tells You About Your Design">Where do players freeze or look confused during a turn? Identify which mechanic caused the cognitive bottleneck.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="What to Watch For">"House Rules" Creation</td>
+                                <td data-label="What It Tells You About Your Design">If players misread a rule and invent their own interpretation, observe if their accidental rule made the game better or worse!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3. Anonymous Google Form Feedback</h3>
+                <p>At the end of each play session, every tester must complete the official <strong>Playtest Review Google Form</strong> before moving to the next station.</p>
+
+                <blockquote>
+                    <p><strong>Form Link & Feedback Policy:</strong></p>
+                    <p>Access the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeR4EZkkUtZZSZ2oRmNRpjb8BwZ-VzkhcEr2pnO0y6Lpg2uvw/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Blind Playtest Evaluation Form (Google Form)</a>.</p>
+                    <p>All reviewer submissions are <strong>100% anonymous</strong> to ensure honest, raw feedback. Response summaries will be compiled and handed back to creators after class so you can evaluate peer consensus objectively.</p>
+                </blockquote>
+
+                <h2>What's on the Playtest Review Form?</h2>
+                <p>When reviewing a peer's prototype on the Google Form, you will evaluate four core areas:</p>
+                <ul>
+                    <li><strong>Rulebook Clarity:</strong> Was the game setup and turn structure easy to understand without teacher/creator intervention?</li>
+                    <li><strong>Agency & Fun Factor:</strong> Did you feel like your choices mattered, or was the game overly dependent on luck?</li>
+                    <li><strong>Confusion Log:</strong> Which exact rule or component caused the most debate or confusion at the table?</li>
+                    <li><strong>The Single Fix:</strong> What is one actionable change the designer should make to improve balance or fun?</li>
+                </ul>
+
+                <h2>Observation Cheat Sheet for Creators</h2>
+                <p>Keep a physical paper log or digital document open while observing. Divide your notes into three columns:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Observation Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rule Confusion</th>
+                                <th scope="col">Component Issues</th>
+                                <th scope="col">Pacing / Downtime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" data-label="Rule Confusion">Misread card #4</td>
+                                <td data-label="Component Issues">Ran out of coins</td>
+                                <td data-label="Pacing / Downtime">Turn 3 took 4 mins</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Rule Confusion">Forgot draw phase</td>
+                                <td data-label="Component Issues">Dice colors ambiguous</td>
+                                <td data-label="Pacing / Downtime">Player 2 was bored</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

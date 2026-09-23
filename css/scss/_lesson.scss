@@ -396,6 +396,8 @@ blockquote {
             color: inherit;
         }
     }
+
+    p:last-child { margin-bottom: 0; }
 }
 
 /* ==========================================================================
@@ -877,3 +879,11 @@ blockquote {
 }
 
 .test-cases td { text-align: left; }
+
+
+.warning {
+    border-left: 4px solid #ef4444; 
+    background: rgba(239, 68, 68, 0.05);
+
+    h4 { color: #dc2626; }
+}

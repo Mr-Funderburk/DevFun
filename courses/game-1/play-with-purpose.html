@@ -1,0 +1,141 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Deconstructing games through hands-on play audits, evaluating agency, core loops, and systemic tension.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+
+    <title>"Play with Purpose" Lab | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Play with Purpose Lab</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>"Play with Purpose" Lab: Game Deconstruction</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview & Lab Objectives</h2>
+                <p>Over the next several class sessions (~4 days), you will transition from playing games passively for entertainment to analyzing them actively as a game designer. During this lab, your group will play designated tabletop games while performing a structured mechanics audit.</p>
+                <p>Each game was picked due to their variance in mechanics. Here's an overview of the games we will play:</p>
+                <ul>
+                    <li><strong><em>Sorry!</em></strong>
+                        <ul>
+                            <li>Classic board game style where players are playing against each other to race to the end. The mechanics and rules are simple and the game has been established for a long time. While playing the game, think about how the Sorry! mechanic makes you feel when you are the one that has to go back to start. How does it feel when you use it to get further ahead? Do these feeling dictate how you approach your turn?</li>
+                        </ul>
+                    </li>
+                    <li><strong><em>Storm Chasers</em></strong>
+                        <ul>
+                            <li>In this chaotic game of chasing storms and collecting data, every player plays at the same time! This is a rare mechanic in a board game. Focus on how the turns evolved as you got more comfortable playing at the same time. What strategy did you come up with while playing as the storm?</li>
+                        </ul>
+                    </li>
+                    <li><strong><em>Life</em></strong>
+                        <ul>
+                            <li>Much like <em>Sorry!</em>, most people have played the game of <em>Life</em>. This classic board game has you traversing the board using a spinner with the goal of getting the most money before you retire. Unlike <em>Monopoly</em>, this game has a set end point and doesn't necessarily pit you against the other people you're playing with. Everyone kind of just plays their game, and the winner is found out at the end of the game. While you're playing, consider the spinner as a mode of movement (compared to dice movement like in <em>Monopoly</em>).</li>
+                        </ul>
+                    </li>
+                    <li><strong><em>Flash Point</em></strong>
+                        <ul>
+                            <li><em>Flash Point</em> is the only cooperative game that we will play. While you're playing, think about the interactions that you have with your teammates. How important was communication? Or did you just let everyone take their turn? How did you feel about winning (or losing) together?</li>
+                        </ul>
+                    </li>
+                    <li><strong><em>RoboRally</em></strong>
+                        <ul>
+                            <li>This board game may require more thought and planning than the others. While playing, think about the impact of pre-planning your moves. Did you make a left turn when you meant to turn right? How difficult was it to keep in mind the <strong>state</strong> of your robot? What about the interactions between your robot and the other player's robots? What strategies did you come up with?</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <blockquote>
+                    <p><strong>📄 Worksheet Download:</strong></p>
+                    <p>Access the official <a href="https://docs.google.com/document/d/14CRZP6EImGUGZZ9aui1husl8nZDPHAz4MJYlMwfsCSs/copy" target="_blank" rel="noopener noreferrer">Play-with-Purpose Audit Sheet (Google Doc)</a>. Print copies or keep a digital copy ready for each game session.</p>
+                </blockquote>
+
+                <h2>The Deconstruction Matrix (Audit Breakdown)</h2>
+                <p>For every game played during this lab series, your team must complete a Mechanic Analysis Sheet covering five diagnostic pillars:</p>
+
+                <h3>1. Core Loop</h3>
+                <p>Identify the foundational 3-step loop a player repeats on almost every turn. What is the fundamental heartbeat of play?</p>
+                <ul>
+                    <li><em>Example (RoboRally):</em> Draw Cards &rarr; Program Sequence &rarr; Execute Moves</li>
+                    <li><em>Example (Flash Point):</em> Spend Action Points &rarr; Roll for Fire Spread &rarr; Replenish POIs</li>
+                </ul>
+
+                <h3>2. Primary Engine</h3>
+                <p>Pinpoint the single main mechanic driving the entire game system from our Mechanics Catalog (e.g., <em>Worker Placement</em>, <em>Grid Movement</em>, <em>Push-Your-Luck</em>, <em>Spatial Programming</em>).</p>
+
+                <h3>3. The Agency Test</h3>
+                <p>Evaluate how much of a player's success comes from <strong>Skill / Strategy</strong> versus <strong>Luck / RNG</strong>.</p>
+                <ul>
+                    <li><strong>Rating Scale:</strong> Rate on a scale of 1 (Pure Luck / No Decisions) to 10 (Pure Skill / Zero Luck).</li>
+                    <li><strong>Justification:</strong> Support your rating with concrete evidence from gameplay mechanics (e.g., dice dependency, card draws, hidden information).</li>
+                </ul>
+
+                <h3>4. Tension Points</h3>
+                <p>Identify the exact moment in a turn or round when players feel maximum stress, anticipation, or excitement. Name the precise mechanic responsible for triggering that emotional response.</p>
+
+                <h3>5. Flaw Hunting</h3>
+                <p>Locate the most boring, tedious, or frustrating rule or mechanism in the game. As a game designer, propose one specific rule change or mechanic modification to fix it.</p>
+
+                <h2>Lab Instructions & Guidelines</h2>
+                <ul>
+                    <li><strong>Group Formation:</strong> Divide into small groups of 3-4 players.</li>
+                    <li><strong>Play Session:</strong> Spend 30-40 minutes actively playing the assigned game of the day.</li>
+                    <li><strong>Active Auditing:</strong> Pause periodically or document observation notes immediately following your session to complete the Mechanic Analysis Sheet.</li>
+                    <li><strong>Synthesis:</strong> Prepare to defend your group's agency rating and proposed flaw fix during class debriefs.</li>
+                </ul>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

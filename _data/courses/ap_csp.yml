@@ -128,7 +128,7 @@ units:
           - "Tuples"
           - "Lists"
           - "Sets"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Collections Practice"
         file: "collections-practice.html"

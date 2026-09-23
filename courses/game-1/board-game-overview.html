@@ -1,0 +1,231 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Major board game design project guide, brief requirements, originality guidelines, playtesting roadmap, and rubric.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+
+    <title>Major Project: Original Board Game Design | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Board Game Project</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Major Project: Original Board Game Design</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Project Overview & Objective</h2>
+                <p>Now that you have analyzed game mechanics, evaluated player agency, and deconstructed board game structures, you are ready to step into the role of lead designer. For this core unit project, you will design, prototype, playtest, and manufacture a complete, unique, and fully functional tabletop game.</p>
+
+                <p>Your finished project must exist as a standalone physical product, complete with a custom board/play surface, components, rulebook, and decorated packaging.</p>
+
+                <h2>Phase 1: The Design Brief (Approval Gate)</h2>
+                <p>Before cutting cardboard or creating artwork, you must draft and submit a <strong>1-Page Design Brief</strong>. You cannot move forward into physical prototyping without formal teacher approval on this document.</p>
+
+                <h3>Required Brief Contents</h3>
+                <ul>
+                    <li><strong>Title & High Concept:</strong> A 2-sentence "elevator pitch" summarizing your game's theme, setting, and core premise.</li>
+                    <li><strong>Player Constraints:</strong> Target player count (e.g., 2-4 players) and target session length (e.g., 15-30 minutes).</li>
+                    <li><strong>Core Mechanics (The 1+1 Rule):</strong>
+                        <ul>
+                            <li><em>1 Primary Mechanic:</em> The core engine driving your game (e.g., Worker Placement).</li>
+                            <li><em>1 Supporting Mechanic:</em> A secondary system adding strategic flavor (e.g., Push-Your-Luck).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Target Aesthetic (Emotional Goal):</strong> The specific feeling or dynamic you want players to experience (e.g., <em>"Tense paranoia," "Raucous racing," "Quiet spatial efficiency"</em>).</li>
+                    <li><strong>Core Loop Outline:</strong> A clear, 3-step breakdown of what a player does on their turn.</li>
+                </ul>
+
+                <h2>The "Uniqueness Standard" (The Lawsuit Test)</h2>
+                <p>To ensure original systemic design rather than simple re-skins, your game must pass <strong>The Lawsuit Test</strong>:</p>
+
+                <blockquote class="quote">
+                    <p>If a board game publisher released this commercially tomorrow, would they get sued for copyright/trademark infringement or blatant plagiarism?</p>
+                </blockquote>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Uniqueness Standard Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">What is Allowed?</th>
+                                <th scope="col">What is Forbidden?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Category">Mechanics & Systems</td>
+                                <td data-label="What is Allowed?">Remixing & Adapting: Combining standard mechanics (grid movement, drafting, dice rolls) in new, interesting ways.</td>
+                                <td data-label="What is Forbidden?">Direct Cloning: Copying an entire mechanics loop without structural changes (e.g., changing Monopoly properties to planets, but keeping spaces, jail, and bankruptcy identical).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Category">Components</td>
+                                <td data-label="What is Allowed?">Standard Verbs: Using universal items like standard 6-sided dice, playing card decks, spinners, or pawns.</td>
+                                <td data-label="What is Forbidden?">Distinctive Assets: Copying hyper-specific proprietary components or thematic mechanics (e.g., copying the exact tile-placement mechanics and art of Carcassonne or Operation).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Category">Theme & Setting</td>
+                                <td data-label="What is Allowed?">Original Lore: Creating your own original world, narrative, or aesthetic backdrop.</td>
+                                <td data-label="What is Forbidden?">IP Infringement: Using existing commercial franchises (e.g., Star Wars, Marvel, Pokémon) unless explicitly approved for a satire project.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Phase 2: Prototyping Roadmap (Paper First!)</h2>
+                <p>Great games are built through iteration, not immediate polish. Follow this step-by-step roadmap during production:</p>
+
+                <ul>
+                    <li><strong>Step 1: Low-Fidelity Paper Prototype (~4 classes)</strong><br>Build using index cards, paper scraps, blank chips, marker drawings, and placeholder tokens borrowed from other games. <em>Rule: Zero artwork allowed. Focus 100% on verifying if the core loop is fun and balanced.</em></li>
+                    <li><strong>Step 2: Internal & Peer Playtesting</strong><br>Run your game with group members and classmates. Fail fast, iterate quickly, and modify rules live during testing sessions. This should be done in sections with Step 1. (e.g., you finished how your turn works, have your peers test <em>just</em> that part of your prototype. Did they get confused? What can improve? Test the game by yourself. Try having your parents try it.)</li>
+                    <li><strong>Step 3: The "Blind" Playtest (~2-4 classes)</strong><br>Your game will be played by the rest of the class following your rulebook only; You will not be able to speak/clarify during this playtest. Take notes of how your peers interpreted the rules and the turns. Did they get confused? What can be improved?</li>
+                    <li><strong>Step 4: Final High-Fidelity Construction (~4-6 classes)</strong><br>Build the polished, final physical assets only after your rules and systemic mechanics are fully locked.</li>
+                </ul>
+
+                <h2>Final Physical Deliverables Checklist</h2>
+                <p>Your final submission must be packaged cleanly as a complete product, including:</p>
+
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            <strong>1. Game Board / Play Area:</strong> A durable, cleanly rendered, and legible play space (mounted board, custom tiles, or cloth mat).
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            <strong>2. Complete Playing Components:</strong> All cards, tokens, dice, miniatures, or trackers required to play without needing outside items.
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            <strong>3. Official Rulebook:</strong> A structured printed document containing:
+                            <ul style="margin-left: 30px;">
+                                <li>Component Manifest (itemized list of box contents)</li>
+                                <li>Setup instructions (with visual layout diagram)</li>
+                                <li>Turn structure & core loop explanation</li>
+                                <li>Win / End conditions</li>
+                                <li>Edge-case clarifications / FAQ section</li>
+                            </ul>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            <strong>4. Decorated Game Box:</strong> A physical container (shoebox, chipboard box, custom mailer) that houses all components, featuring custom front box art, title, player count/time specifications, and a back-of-box summary.
+                        </label>
+                    </li>
+                </ul>
+
+                <h2>Assessment & Grading Rubric</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Grading Rubric Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Criteria</th>
+                                <th scope="col">Outstanding (A)</th>
+                                <th scope="col">Proficient (B-C)</th>
+                                <th scope="col">Needs Work (D-F)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Criteria">Mechanics & Systems (30%)</td>
+                                <td data-label="Outstanding (A)">Core loop provides meaningful agency. The primary and secondary mechanics interact seamlessly with no runaway dominant strategies.</td>
+                                <td data-label="Proficient (B-C)">Mechanics functional but basic. Minor balance issues or moments where choices feel non-impactful.</td>
+                                <td data-label="Needs Work (D-F)">Game is either completely broken, purely luck-based with zero agency, or an unplayable deadlock.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Criteria">Uniqueness & Innovation (20%)</td>
+                                <td data-label="Outstanding (A)">Passes the Lawsuit Test easily. Mechanics are remixed creatively or offer a fresh take on standard play patterns.</td>
+                                <td data-label="Proficient (B-C)">Slightly too similar to existing titles, but has enough distinct rules or thematic shifts to feel somewhat separate.</td>
+                                <td data-label="Needs Work (D-F)">Pure reskin or clone of an existing game (e.g., "Star Wars Monopoly" or "Zombie Sorry!").</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Criteria">Rulebook & Playability (20%)</td>
+                                <td data-label="Outstanding (A)">Rulebook survived the "Blind Playtest." Layout is clear, illustrated, and free of contradictions. The presentation of the rulebook is well created.</td>
+                                <td data-label="Proficient (B-C)">Playable, but rulebook requires verbal clarification during edge cases or ambiguous situations.</td>
+                                <td data-label="Needs Work (D-F)">Missing rulebook, or rules are unreadable, leading to frequent game-breaking confusion.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Criteria">Components & Packaging (20%)</td>
+                                <td data-label="Outstanding (A)">Includes durable board, complete component set, and fully decorated/branded game box. Professional presentation.</td>
+                                <td data-label="Proficient (B-C)">All components present, but box or board art is incomplete, fragile, or lacks thematic cohesion.</td>
+                                <td data-label="Needs Work (D-F)">Components missing; game delivered in a ziplock bag or plain unformatted cardboard box or no containment at all.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Criteria">Process & Iteration (10%)</td>
+                                <td data-label="Outstanding (A)">Clear evidence of low-fidelity testing, rule modifications based on peer feedback, and active playtest logging.</td>
+                                <td data-label="Proficient (B-C)">Built paper prototype, but made minimal systemic changes before building final assets.</td>
+                                <td data-label="Needs Work (D-F)">Skipped paper prototyping entirely; jumped straight to final art without testing rules first.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <p><strong>Deliverable for Next Class:</strong></p>
+                    <p>Use remaining class time to brainstorm concept ideas drawing from games we've analyzed. You must have your <strong>"Elevator Pitch"</strong> ready to showcase to the class by next class! Slides/documents/sketches are not required, but may help you visualize the concept. Feel free to add these to your pitch, but don't spend a lot of time on this as the purpose is to iterate quickly.</p>
+                </blockquote>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

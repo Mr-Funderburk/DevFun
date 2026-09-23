@@ -11,3 +11,67 @@ units:
         topics:
           - "Game Theory"
         status: "published"
+        
+      - title: "Game Mechanics"
+        file: "game-mechanics.html"
+        description: "Understanding components, mechanics, dynamics, aesthetics, action selection systems, and game design scope."
+        topics:
+          - "Game Theory"
+          - "Game Mechanics"
+          - "Game Components"
+        status: "published"
+
+      - title: "Play With a Purpose"
+        file: "play-with-purpose.html"
+        description: "Deconstructing games through hands-on play audits, evaluating agency, core loops, and systemic tension."
+        topics:
+          - "Game Theory"
+          - "Game Mechanics"
+          - "Game Components"
+        status: "published"
+
+  - title: "Board Game Creation"
+    lessons:
+      - title: "Board Game Project Overview"
+        file: "board-game-overview.html"
+        description: "Major board game design project guide, brief requirements, originality guidelines, playtesting roadmap, and rubric."
+        topics:
+          - "Game Theory"
+          - "Game Mechanics"
+          - "Game Components"
+        status: "published"
+
+      - title: "Elevator Pitch"
+        file: "elevator-pitch.html"
+        description: "Presenting original board game elevator pitches, conducting structured peer critiques, and evaluating game mechanics."
+        topics:
+          - "Peer Feedback"
+          - "Public Speaking"
+        status: "published"
+
+      - title: "Paper Prototyping"
+        file: "prototyping.html"
+        description: "Paper prototyping, rapid low-fidelity iteration, peer playtesting techniques, and draft rulebook creation."
+        topics:
+          - "Peer Feedback"
+          - "Iterative Design"
+          - "Playtesting"
+          - "Low-Fidelity"
+        status: "published"
+
+      - title: "Playing Prototypes"
+        file: "playing-prototypes.html"
+        description: "Conducting blind playtests, silent observation techniques, peer feedback collection, and analyzing anonymous playtest responses."
+        topics:
+          - "Peer Feedback"
+          - "Playtesting"
+        status: "published"
+
+      - title: "Final Board Game"
+        file: "final-board-game.html"
+        description: "Final assembly, component manufacturing, rulebook layout, packaging checklist, and build expectations for the board game project."
+        topics:
+          - "Peer Feedback"
+          - "Iterative Design"
+          - "Playtesting"
+        status: "published"

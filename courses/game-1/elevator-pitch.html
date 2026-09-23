@@ -1,0 +1,163 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Presenting original board game elevator pitches, conducting structured peer critiques, and evaluating game mechanics.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Pitch & Peer Feedback Lab | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Pitch & Feedback Lab</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Elevator Pitches & Peer Feedback Lab</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Overview & Lab Goals</h2>
+                <p>In professional game development, pitching an idea is as important as designing it. A great designer must communicate a game's core loop concisely, defend mechanical choices, and actively integrate constructive critique. Today, every student will present their <strong>1-Page Design Brief Elevator Pitch</strong> and participate as an active critic for peer concepts.</p>
+
+                <blockquote>
+                    <p><strong>Dual-Sided Grading Structure:</strong></p>
+                    <p>You are graded on <strong>both sides</strong> of this pitch session:</p>
+                    <ul>
+                        <li><strong>Presenter Grade (50%):</strong> Clarity of concept, adherence to the 1+1 Rule, Lawsuit Test readiness, and openness to feedback.</li>
+                        <li><strong>Evaluator Grade (50%):</strong> Active engagement, asking targeted/insightful questions, and offering actionable suggestions to peers.</li>
+                    </ul>
+                </blockquote>
+
+                <h2>The 2-Minute Pitch Structure</h2>
+                <p>When presenting your original board game concept to the class, deliver your pitch within a strict 2-minute window using this three-part structure:</p>
+
+                <ol>
+                    <li><strong>The Hook & High Concept (30 Seconds):</strong> Introduce the title, thematic premise, target player count, and session length (e.g., 2–4 players, 20 minutes).</li>
+                    <li><strong>The Engine & Core Loop (60 Seconds):</strong> Explain your <strong>1 Primary Mechanic</strong> and <strong>1 Supporting Mechanic</strong>. Walk through the 3-step loop a player performs on their turn.</li>
+                    <li><strong>The Target Aesthetic & Uniqueness (30 Seconds):</strong> Describe the primary emotion you want players to feel (e.g., high-stakes paranoia) and highlight why it passes <em>The Lawsuit Test</em>.</li>
+                </ol>
+
+                <h2>Peer Evaluator's Question Guide</h2>
+                <p>As an audience member, your job is not just to listen passively—you are acting as a development consultant. Use these category prompts to ask sharp, insightful questions after each pitch:</p>
+
+                <h3>1. Mechanics & System Interaction</h3>
+                <ul>
+                    <li><em>"How exactly does your secondary mechanic support your primary mechanic on a typical turn?"</em></li>
+                    <li><em>"What stops a player from abusing [Specific Action] every single turn?"</em></li>
+                    <li><em>"How do players interact directly—is there player-versus-player conflict or indirect competition?"</em></li>
+                </ul>
+
+                <h3>2. Agency, Balance & Strategy</h3>
+                <ul>
+                    <li><em>"Where does the main tension come from—is it player choice, hidden information, or luck/dice?"</em></li>
+                    <li><em>"If a player falls behind early in the game, do they have a realistic path to recover, or is there a runaway leader issue?"</em></li>
+                    <li><em>"What prevents the game from ending in a draw or an endless stalemate?"</em></li>
+                </ul>
+
+                <h3>3. Scope, Time & Practicality</h3>
+                <ul>
+                    <li><em>"You estimated a 20-minute play time—which specific mechanic keeps turns moving quickly?"</em></li>
+                    <li><em>"How complex is the board setup? Will players spend more time placing components than playing?"</em></li>
+                    <li><em>"How many components does a player need to track at any given moment?"</em></li>
+                    <li><em>"There's a lot of mechanics in your game—do you believe you will be able to get the entire game complete by the deadline?"</em></li>
+                </ul>
+
+                <h3>4. Innovation & The Lawsuit Test</h3>
+                <ul>
+                    <li><em>"This sounds similar to [Existing Game]. What is the single biggest choice players make in your game that they can't make in that one?"</em></li>
+                    <li><em>"How does your theme connect organically to the actions players take on their turn?"</em></li>
+                </ul>
+
+                <h2>Constructive Feedback Framework: Praise, Probe, Propose</h2>
+                <p>When offering verbal or written feedback during pitch debriefs, follow the <strong>3P Framework</strong> to ensure your critique is constructive and actionable:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Peer Feedback Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Step</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Example Sentence Starter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Step">1. Praise</td>
+                                <td data-label="Action">Highlight a strong mechanic, creative theme, or clear design decision.</td>
+                                <td data-label="Example Sentence Starter"><em>"I really like how your core loop uses..."</em></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Step">2. Probe</td>
+                                <td data-label="Action">Identify a potential edge case, balance risk, or point of rule confusion.	</td>
+                                <td data-label="Example Sentence Starter"><em>"I'm wondering what happens when a player..."</em></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Step">3. Propose</td>
+                                <td data-label="Action">Suggest a low-fidelity tweak or supporting mechanic fix.</td>
+                                <td data-label="Example Sentence Starter"><em>	"To keep the game within 20 minutes, you might consider..."</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <p>While it is not your job to fix your peer's game, offering suggestions can help them to identify the problem and come up with solutions they like.</p>
+                    <p>Also, this game may not be a genre that you particularly enjoy. <em>"I just don't like [specific mechanic]."</em> is not a valid response. We're looking for flaws or concepts that the presenter hasn't thought about—not to simply tear down their ideas. Every negative <strong>must</strong> be followed with a reason!</p>
+                    <p>As the presenter, take all criticisms with grace. You may not agree with the critique, and that's okay. You do not have to accept their criticism. You will have to reflect on the things your peers say, however. So be sure you're paying attention and seriously considering their input.</p>
+                </blockquote>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

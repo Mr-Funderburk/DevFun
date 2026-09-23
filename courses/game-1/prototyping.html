@@ -1,0 +1,154 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Paper prototyping, rapid low-fidelity iteration, peer playtesting techniques, and draft rulebook creation.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+
+    <title>Paper Prototyping & Iterative Playtesting | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Paper Prototyping</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Paper Prototyping & Iterative Playtesting</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Golden Rule: Function Over Aesthetics ("Ugly is Better")</h2>
+                <p>Welcome to the physical build phase! The most dangerous mistake a novice game designer can make right now is spending hours drawing intricate card art, coloring game boards, or crafting custom plastic pieces. Your prototype should be quick, functional, and frankly—<strong>ugly</strong>.</p>
+
+                <blockquote>
+                    <p><strong>Why High-Fidelity Art Too Early Kills Good Design:</strong></p>
+                    <p>If you spend 3 hours drawing artwork for a card that turns out to break game balance, you will naturally hesitate to throw it away. If that same card took 10 seconds to write on an index card, you can tear it up, tweak the numbers, and write a new one instantly without emotional attachment.</p>
+                </blockquote>
+
+                <h3>Acceptable Prototype Stand-Ins</h3>
+                <p>Do not manufacture final components yet. Assemble your low-fidelity prototype using placeholder materials:</p>
+                <ul>
+                    <li><strong>Cards:</strong> Cut-up paper, index cards, or sticky notes written in Sharpie or pencil.</li>
+                    <li><strong>Tokens & Pawns:</strong> Borrowed pieces from existing classroom games (meeples, coins, poker chips, plastic cubes, buttons).</li>
+                    <li><strong>Board & Terrain:</strong> Hand-drawn grid lines on printer paper, poster board scraps, or index card tiles taped together.</li>
+                    <li><strong>Dice & Randomness:</strong> Standard 6-sided dice, numbered spinners, or simple card draws.</li>
+                </ul>
+
+                <h2>The Micro-Playtest Loop: Test Early, Test Often</h2>
+                <p>You do not need a completed 30-minute game to start testing! Professional designers perform <strong>micro-tests</strong> on individual sub-systems before playing a full game from start to finish.</p>
+
+                <p>Have peers come over to your table constantly to test isolated slices of your design:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Playtest Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">What You're Testing</th>
+                                <th scope="col">How to Micro-Test It</th>
+                                <th scope="col">What to Watch For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="What You're Testing">Movement Engine</td>
+                                <td data-label="How to Micro-Test It">Set up some number of board spaces (e.g., 3-5) and test 5 consecutive turns of movement.</td>
+                                <td data-label="What to Watch For">Does moving feel dynamic, or is it predictable and slow?</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="What You're Testing">Combat / Conflict</td>
+                                <td data-label="How to Micro-Test It">Run 3 rounds of player vs. player combat without setting up the rest of the board.</td>
+                                <td data-label="What to Watch For">Are outcomes clear? Is there too much luck or calculation freeze?</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="What You're Testing">Card / Deck Drafting</td>
+                                <td data-label="How to Micro-Test It">Deal 5 test hands and execute card actions with a single peer.</td>
+                                <td data-label="What to Watch For">Do cards interact cleanly, or are text descriptions confusing?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>The Importance of Peer Feedback</h2>
+                <p>Peer feedback is the single most critical element of this production phase. You cannot accurately evaluate your own game's mechanics because you already know how everything is <em>supposed</em> to work in your head.</p>
+
+                <h3>How to Conduct a Quick Peer Test Session</h3>
+                <ol>
+                    <li><strong>Call over a peer:</strong> Ask a classmate to sit down for 3 to 5 minutes to test a specific mechanic or 2 full turns of your core loop.</li>
+                    <li><strong>Observe silently:</strong> Watch where they hesitate, look confused, or ask for clarification. Do not step in immediately—let them try to figure it out.</li>
+                    <li><strong>Ask targeted questions:</strong> Instead of asking <em>"Was that fun?"</em> ask <em>"What was the most obvious move on your turn?"</em> or <em>"Did you feel like you had choices?"</em></li>
+                    <li><strong>Modify on the fly:</strong> Keep a pencil and eraser handy. If a number or rule is clearly broken, change it live on the index card right in front of them and test it again!</li>
+                </ol>
+
+                <h2>Drafting Your Working Rule Sheet</h2>
+                <p>Alongside your physical paper prototype, you must begin drafting your official rule page. This document will eventually evolve into your final rulebook.</p>
+
+                <blockquote>
+                    <p><strong>Rule Sheet Drafting Guidelines:</strong></p>
+                    <ul>
+                        <li><strong>Incomplete sentences & bullets are fine:</strong> Focus on recording rules rapidly rather than writing polished prose.</li>
+                        <li><strong>Use diagrams and sketches:</strong> Draw rough board layouts or turn flowcharts right on the page if it helps explain a concept.</li>
+                        <li><strong>The Standalone Threshold:</strong> Your rule sheet must be clear enough that a classmate can pick it up, read it without you speaking, and understand the basic turn flow.</li>
+                    </ul>
+                </blockquote>
+
+                <h3>Suggested Working Rule Sheet Structure</h3>
+                <ul>
+                    <li><strong>Objective / Win Condition:</strong> How does a player win? (e.g., <em>First to 10 victory points</em> or <em>Last player standing</em>).</li>
+                    <li><strong>Setup (Bullet List):</strong> How many cards/tokens does each player receive to start?</li>
+                    <li><strong>Turn Structure (3-Step Loop):</strong> Step 1: Draw &rarr; Step 2: Action &rarr; Step 3: Cleanup.</li>
+                    <li><strong>Key Actions & Rules:</strong> Brief definitions of what specific spaces, cards, or dice rolls do.</li>
+                </ul>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

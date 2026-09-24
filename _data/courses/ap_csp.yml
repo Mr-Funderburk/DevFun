@@ -135,7 +135,7 @@ units:
         description: "Working with Python collections: lists, tuples, dictionaries, and sets."
         topics:
           - "Practice"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Iteration"
         file: "iteration.html"

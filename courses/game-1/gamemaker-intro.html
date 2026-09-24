@@ -1,0 +1,404 @@
+---
+course: game_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Development 1 - Introduction to GameMaker IDE interface, sprites, objects, event-driven logic, visual coding, and building your first playable mini-game.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Intro to GameMaker Engine & First Project | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Game Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Intro to GameMaker</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Intro to GameMaker Engine</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Navigating the GameMaker Interface</h2>
+                <p>Welcome to digital game creation! GameMaker is a flexible engine capable of building top-tier 2D games (like <em>Undertale</em>, <em>Hotline Miami</em>, and <em>Katana Zero</em>). Every game engine relies on a <strong>Graphical User Interface (GUI)</strong>—the buttons, windows, and panels you interact with using your mouse and keyboard.</p>
+
+                <p>Before writing code or placing objects, let's break down the major sections of the default GameMaker layout:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>GameMaker Interface Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">GUI Region</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Primary Purpose & Functions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" data-label="GUI Region">Menu Bar</td>
+                                <td data-label="Location">Top Edge</td>
+                                <td data-label="Primary Purpose & Functions">Contains drop-down menus for project management (<code>File</code>), undo/redo actions (<code>Edit</code>), and global engine settings.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="GUI Region">Quick Toolbar</td>
+                                <td data-label="Location">Below Menu Bar</td>
+                                <td data-label="Primary Purpose & Functions">Provides instant action buttons: Run (F5), Debug (F6), Stop, Clean, Game Options, and Zoom controls. Hover over any icon to see its tooltips and keybind shortcuts.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="GUI Region">Inspector Panel</td>
+                                <td data-label="Location">Left Side</td>
+                                <td data-label="Primary Purpose & Functions">Displays and edits properties for whichever asset or room item is currently selected.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="GUI Region">Workspace</td>
+                                <td data-label="Location">Center Area</td>
+                                <td data-label="Primary Purpose & Functions">The main canvas where visual code blocks, event windows, sprite editors, and room layouts open for editing.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="GUI Region">Asset Browser</td>
+                                <td data-label="Location">Right Side</td>
+                                <td data-label="Primary Purpose & Functions">The file cabinet for your game. Organizes all raw assets into folders (Sprites, Objects, Rooms, Sounds, Scripts).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <h4>Pro Tip: Customizing Workspace Layouts</h4>
+                    <p>Almost every dock panel in GameMaker can be expanded, collapsed, or detached. You can rebind hotkeys anytime via <code>File &gt; Preferences &gt; Keybinds</code>.</p>
+                </blockquote>
+
+                <h2>First Project: "Bomb Sweeper"</h2>
+                <p>To put interface knowledge into practice, you will construct a fast-paced survival mini-game: bombs will spawn randomly around the screen, ticking down toward detonation. The player must move quickly to collect and defuse them before time runs out!</p>
+
+                <h2>Step 1: Creating Game Sprites</h2>
+                <p><strong>Sprites</strong> are the 2D visual representations of entities in your game. At this stage, game developers use simple geometric shapes ("programmer art") to verify gameplay logic before drawing final art assets.</p>
+
+                <h3>Naming Conventions Standards</h3>
+                <p>To keep large projects organized, every asset type requires a consistent prefix:</p>
+                <ul>
+                    <li><strong>Sprites:</strong> Prefix with <code>spr</code> (e.g., <code>spr_player</code> or <code>spr_player</code>)</li>
+                    <li><strong>Objects:</strong> Prefix with <code>obj</code> (e.g., <code>obj_bomb</code> or <code>obj_bomb</code>)</li>
+                    <li><strong>Rooms:</strong> Prefix with <code>rm</code> (e.g., <code>rmLevel1</code> or <code>rm_level1</code>)</li>
+                </ul>
+
+                <blockquote>
+                    <h4>Formatting Style: camelCase vs. snake_case</h4>
+                    <p>You may use <code>camelCase</code> (e.g., <code>sprPlayerShip</code>) or <code>snake_case</code> (e.g., <code>spr_player_ship</code>). Pick one convention and stick to it consistently across your entire project! The examples and code segments given to you in this course will be <code>snake_case</code>.</p>
+                </blockquote>
+
+                <h3>Creating <code>spr_player</code> and <code>spr_bomb</code></h3>
+                <ol>
+                    <li>In the <strong>Asset Browser</strong> (right panel), right-click and create a new <strong>Group</strong> called <code>Sprites</code>.<br>Depending on your version, default groups may or may not already exist. If this group already exists, you can skip this step. The groups you create in the future will depend on your project and your preference. However, to begin, we will separate each of our game object types.</li>
+                    <li>Right-click the <code>Sprites</code> folder group and select <strong>Create &gt; Sprite</strong>.</li>
+                    <li>Rename the sprite to <code>spr_player</code> in the top Inspector field.</li>
+                    <li>Change the resolution dimensions to <strong>32 x 32</strong> pixels.</li>
+                    <li>Click <strong>Edit Image</strong> to open the drawing editor. Use the circle/shape tool to fill a 32x32 colored shape (top-down view representation).</li>
+                    <li>Repeat this process to create a second sprite named <code>spr_bomb</code> (32x32 pixels, drawn in a distinct red or black color).</li>
+                </ol>
+
+                <h2>Step 2: Building Interactive Objects</h2>
+                <p>While sprites are static images, <strong>Objects</strong> contain the logic, collisions, and instructions that bring games to life.</p>
+
+                <h3>1. Player Object (<code>obj_player</code>)</h3>
+                <ol>
+                    <li>In the <strong>Asset Browser</strong> (right panel), right-click and create a new <strong>Group</strong> called <code>Objects</code>.</li>
+                    <li>Right-click the <code>Objects</code> folder &gt; <strong>Create &gt; Object</strong>. Name it <code>obj_player</code>.</li>
+                    <li>Assign <code>spr_player</code> as its active sprite in the Object Editor preview box.</li>
+                    <li>Click <strong>Add Event</strong> &gt; Select <strong>Step &gt; Step</strong>. (The Step event runs continuously on every single frame of the game—typically 60 times per second).</li>
+                    <li>GameMaker Studio supports both <strong>visual-</strong> and <strong>text-based</strong> coding. For this course, the examples will be done using the text-based code.</li>
+                    <li>Add the code below to the <code>Step</code> event.</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_player > Step</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {  // left
+	//x = x - 5;
+	x -= 5;
+}
+
+if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {  // right
+	//x = x + 5;
+	x += 5;
+}
+
+if (keyboard_check(vk_up) || keyboard_check(ord("W"))) {  // up
+	//y = y - 5;
+	y -= 5;
+}
+
+if (keyboard_check(vk_down) || keyboard_check(ord("S"))) {  // down
+	//y = y + 5;
+	y += 5;
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Let's break down this code:</h4>
+                    <p>Lines 1, 6, 11, and 16 are all asking the question "Is this key pressed down on the keyboard?". If the answer is 'yes', then the code below the line <em>executes</em> (or runs). If the answer was no, the code below is skipped.</p>
+                    <p>Each body of the <code>if</code> blocks have two code segments, one of which is commented out. They both do the same thing, with the non-commented line being a short-hand way to write the commented out line. It's up to you which method you like best. The important part is consistency! Pick a method and stick with it!</p>
+                    <p>Take a minute to notice the syntax of the code here. The <strong>condition</strong> of the <code>if</code> statement is in parentheses <code>()</code>. The two pipes (<code>|</code>) mean <em>or</em>. Each <code>if</code> statement uses the curly braces <code>{}</code> to indicate what code belongs to that statement. Finally, each <strong>statement</strong> (or single line of code) ends with a semicolon (<code>;</code>)—kind of like how we end each sentence with a period to show we are done with that sentence.</p>
+                </blockquote>
+
+                <h3>2. Bomb Object (<code>obj_bomb</code>)</h3>
+                <ol>
+                    <li>Create a new object named <code>obj_bomb</code> and assign the <code>spr_bomb</code> sprite.</li>
+                    <li><strong>Add Event &gt; Create</strong>. Add the code below to create an <strong>Alarm</strong> (GameMaker's built-in timer).</li>
+                </ol>
+                
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_bomb > Create</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">alarm[0] = 60 * 5;</code></pre>
+                    </div>
+                </div>
+
+                <ol start="3">
+                    <li><strong>Add Event > Alarm > Alarm 0</strong> This event is what happens when the timer expires. Add the code below that will use GameMaker's built-in effects to create three explosions. Then, it will set a second timer.</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_bomb > Alarm 0</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">effect_create_depth(depth, ef_explosion, x, y, 2, c_gray);
+effect_create_depth(depth - 1, ef_explosion, x, y, 1, c_orange);
+effect_create_depth(depth - 2, ef_explosion, x, y, 0, c_red);
+
+alarm[1] = 15;</code></pre>
+                    </div>
+                </div>
+
+                <blockquote>
+                    <h4>GameMaker Documentation</h4>
+                    <p>GameMaker has really good documentation which you can find here: <a href="https://manual.gamemaker.io/" target="_blank">GameMaker Documentation</a></p>
+                    <p>Another way you can get to the documentation is to hold <code>Ctrl</code> or <code>Cmd</code> on the keyboard and the click on a function in GameMaker. This will take you to the documentation on that function. Try it with <code>effect_create_depth()</code>.</p>
+                    <p>Alternatively, you can click on top of a function and press <code>F1</code> on your keyboard. (If you're on a laptop, you may need to hold the <code>fn</code> key as well.)</p>
+                </blockquote>
+
+                <ol start="4">
+                    <li><strong>Add Event &gt; Alarm &gt; Alarm 1</strong> Use the code below to restart the game.</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_bomb > Alarm 1</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">room_restart();</code></pre>
+                    </div>
+                </div>
+
+                <ol start="5">
+                    <li><strong>Add Event &gt; Collision &gt; obj_player</strong> Use the code below to "defuse" the bomb (we're just going to destroy that <em>instance</em> of the object).</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_bomb > Collision > obj_player</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">instance_destroy();</code></pre>
+                    </div>
+                </div>
+
+                <h3>3. Spawner Object (<code>obj_spawner</code>)</h3>
+                <ol>
+                    <li>Create an object named <code>obj_spawner</code>. Leave its sprite unassigned (appears as a gray <code>?</code>).</li>
+                    <li><strong>Add Event &gt; Create:</strong> Add code to set an alarm (Alarm 0) for 30 frames. <span class="note">See if you can do this without looking! Do you remember the code to set a new alarm?</span></li>
+                    <li><strong>Add Event &gt; Alarm &gt; Alarm 0</strong> When <strong>Alarm 0</strong> goes off, we will create a new instance of <code>obj_bomb</code> and place it randomly on the screen.</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">obj_spawner > Alarm 0</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">GML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-gml">// get a random place in the room and store in temporary variables
+temp_x = irandom_range(64, room_width - 64);
+temp_y = irandom_range(64, room_height - 64);
+
+// create a new instance of obj_bomb
+instance_create_layer(temp_x, temp_y, "Instances", obj_bomb);
+
+// reset the timer so another bomb will spawn after a delay
+alarm[0] = 180;</code></pre>
+                    </div>
+                </div>
+
+                <h2>Step 3: Room Setup & Playtesting</h2>
+                <ol>
+                    <li>Double-click <code>Room1</code> in the Asset Browser under the <code>Rooms</code> folder.</li>
+                    <li>Drag 1 instance of <code>obj_player</code> into the room viewport.</li>
+                    <li>Drag 1 instance of <code>obj_spawner</code> into the room viewport.</li>
+                    <li>Press <strong>F5</strong> (or click the green Play button) to build and run your game! Test moving around to catch bombs before their fuse timers trigger an explosion restart.</li>
+                </ol>
+
+                <h2>Project Export Instructions</h2>
+                <p>To submit your project for grading, export it as a compressed GameMaker project archive file (<code>.yyz</code>):</p>
+                <ol>
+                    <li>Navigate to the top Menu Bar: <code>File &gt; Export Project &gt; YYZ</code>.</li>
+                    <li>Save the file using the naming convention: <code>lastname-bomb-sweeper.yyz</code>.</li>
+                    <li>Upload your completed <code>.yyz</code> file to the course assignment portal.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

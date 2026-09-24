@@ -75,3 +75,12 @@ units:
           - "Iterative Design"
           - "Playtesting"
         status: "published"
+
+  - title: "Electronic Gaming"
+    lessons:
+      - title: "GameMaker Studio Introduction"
+        file: "gamemaker-intro.html"
+        description: "Major board game design project guide, brief requirements, originality guidelines, playtesting roadmap, and rubric."
+        topics:
+          - "GameMaker Studio"
+        status: "coming_soon"

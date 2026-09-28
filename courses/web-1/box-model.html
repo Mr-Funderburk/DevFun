@@ -1,0 +1,313 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Master the CSS Box Model, understand margins, borders, padding, and content, apply a universal global reset, and inspect element dimensions with Chrome DevTools.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>The CSS Box Model | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>The CSS Box Model</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>The CSS Box Model</h1>
+            </header>
+
+            <!-- Box Model Example -->
+            <div style="width: 600px; margin: 10px auto; padding: 5px 10px; background-color: #fb923c;">
+                <span>Margin (Transparent outer gap pushes neighbors away)</span>
+                <div style="width: 95%; margin: 10px auto; padding: 5px 10px; background-color: #4ade80;">
+                    <span>Border (Visible boundary stroke around box)</span>
+                    <div>
+                        <span>Padding (Inner cushion around content)</span>
+                        <div>
+                            <span>Element (Text, Image, Video, etc.)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h2>Every Element is a Box</h2>
+                <p>In web design, every single HTML element on your screen—whether it's an <code>&lt;h1&gt;</code>, a <code>&lt;p&gt;</code>, an <code>&lt;img&gt;</code>, or an <code>&lt;article&gt;</code>—is treated by the browser as a rectangular box. CSS controls layout and positioning by wrapping four distinct layers around these boxes.</p>
+
+                <p>Understanding how these four layers calculate total size is the foundation of web layout architecture.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">box-model-diagram.txt</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Diagram</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code>+-------------------------------------------------------+
+|  MARGIN (Transparent outer gap pushes neighbors away) |
+|  +-------------------------------------------------+  |
+|  |  BORDER (Visible boundary stroke around box)    |  |
+|  |  +-------------------------------------------+  |  |
+|  |  |  PADDING (Inner cushion around content)   |  |  |
+|  |  |  +-------------------------------------+  |  |  |
+|  |  |  |  CONTENT (Text, Image, Video, etc.) |  |  |  |
+|  |  |  +-------------------------------------+  |  |  |
+|  |  +-------------------------------------------+  |  |
+|  +-------------------------------------------------+  |
++-------------------------------------------------------+</code></pre>
+                    </div>
+                </div>
+
+                <h2>Deconstructing the Four Layers</h2>
+                <ul>
+                    <li><strong>Content:</strong> The raw material (text, image, nested tags) where custom <code>width</code> and <code>height</code> reside.</li>
+                    <li><strong>Padding:</strong> Clear inner spacing around content. Padding adopts whatever <code>background-color</code> is applied to the element box.</li>
+                    <li><strong>Border:</strong> A visible outline wrapping around the padding and content layers (e.g., <code>2px solid white</code>).</li>
+                    <li><strong>Margin:</strong> Outer space surrounding the border. Margins push adjacent sibling elements away to create separation. Margins are always completely transparent!</li>
+                </ul>
+
+                <h2>The Box Sizing Nightmare &amp; Global Reset</h2>
+                <p>By default, browsers calculate an element's total width using <code>box-sizing: content-box</code>. Under this default rule, if you set a box to <code>width: 300px</code>, then add <code>padding: 20px</code> and <code>border: 5px solid white</code>, the actual rendering width on screen becomes:</p>
+
+                <p><code>300px (content) + 40px (left/right padding) + 10px (left/right border) = 350px total width!</code></p>
+
+                <p>This default behavior makes layout calculations unpredictable and prone to breaking alignment. To fix this across every website you build, professional developers use a **Global CSS Reset** at the top of every stylesheet.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">style.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Why use `box-sizing: border-box`?</h4>
+                    <p>The universal selector (<code>*</code>) applies these rules to every single tag on your page. Setting <code>box-sizing: border-box</code> forces the browser to calculate padding and border <em>inside</em> the defined width. If you request a 300px wide box, it stays <strong>exactly 300px wide</strong>, regardless of how much padding or border you add!</p>
+                </blockquote>
+
+                <h2>Inspecting Boxes with Chrome DevTools</h2>
+                <p>Google Chrome features a built-in visualizer that displays exact box dimensions in real-time:</p>
+                <ol>
+                    <li>Right-click any element on a webpage and pick <strong>Inspect</strong>.</li>
+                    <li>Look at the right side of the DevTools panel (click the <strong>Computed</strong> tab or scroll to the bottom of the <strong>Styles</strong> tab).</li>
+                    <li>You will see a live diagram displaying the exact pixel counts for <strong>Content</strong>, <strong>Padding</strong>, <strong>Border</strong>, and <strong>Margin</strong>.</li>
+                </ol>
+
+                <p>When hovering over elements on screen, Chrome uses color highlights:</p>
+                <ul>
+                    <li><strong style="color: #38bdf8;">Blue / Soft Blue:</strong> Content box</li>
+                    <li><strong style="color: #4ade80;">Green:</strong> Padding layer</li>
+                    <li><strong style="color: #facc15;">Yellow / Light Gold:</strong> Border line</li>
+                    <li><strong style="color: #fb923c;">Orange:</strong> Margin layer</li>
+                </ul>
+
+                <h2>Case Study: Analyzing Real-World Layouts</h2>
+                <p>Let's conduct a case study analyzing how popular web applications use padding and margins to create readable interfaces.</p>
+
+                <blockquote>
+                    <h4>Guided Case Study Steps</h4>
+                    <ol>
+                        <li>Navigate to a major web portal (such as <a href="https://github.com" target="_blank">GitHub</a> or <a href="https://news.ycombinator.com" target="_blank">Hacker News</a>).</li>
+                        <li>Open DevTools (<kbd>F12</kbd> or <kbd>Right-Click</kbd> &rarr; <strong>Inspect</strong>) and select an article card or navigation container.</li>
+                        <li>Observe the Computed tab to identify how much padding separates text from card borders, and how much margin separates cards from each other.</li>
+                        <li>In the <strong>Styles</strong> panel, locate the active <code>margin</code> or <code>padding</code> rule and uncheck its checkbox to disable it.</li>
+                    </ol>
+                </blockquote>
+
+                <p><strong>What Happens When Disabled?</strong> Disabling padding causes text content to press directly against container borders, making elements look cluttered. Disabling margins causes adjacent cards and sections to collapse into each other without vertical spacing.</p>
+
+                <h2>Practice Exercise: Box Model Playground</h2>
+                <p>Now it's time to build a structured set of product cards to practice controlling inner padding vs outer margins!</p>
+
+                <p>In your <code>web-1/learning/</code> directory, create a file called <code>box-model.html</code> and link it to a stylesheet named <code>box-style.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">box-model.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Box Model Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="box-style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Featured Feature Cards&lt;/h1&gt;
+        
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Card Title One&lt;/h2&gt;
+            &lt;p&gt;Testing internal padding and external margin controls on card blocks.&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class="card"&gt;
+            &lt;h2&gt;Card Title Two&lt;/h2&gt;
+            &lt;p&gt;Notice how the margin creates breathing space between card containers.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now style your cards inside <code>box-style.css</code> using exact Box Model properties:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">box-style.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Step 1: Add Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+/* Step 2: Custom Card Sizing & Spacing */
+.card {
+    background-color: #1e293b;
+    border: 2px solid #38bdf8;
+    
+    /* Inner space between card border and text */
+    padding: 24px;
+    
+    /* Outer space pushing bottom card down */
+    margin-bottom: 20px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Challenge Steps:</h3>
+                <ol>
+                    <li>Open <code>box-model.html</code> in Chrome and open DevTools to view the Computed panel for each <code>.card</code> element.</li>
+                    <li>Experiment with shorthand padding properties (e.g., <code>padding: 10px 20px;</code> for top/bottom vs left/right).</li>
+                    <li>Try adding individual side borders (e.g., <code>border-left: 6px solid #4ade80;</code>) to turn the cards into callout boxes.</li>
+                    <li>Comment out <code>box-sizing: border-box;</code> in your CSS file, set a fixed <code>width: 300px;</code> on <code>.card</code>, and re-inspect it in DevTools to see how the total calculated box dimensions change!</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

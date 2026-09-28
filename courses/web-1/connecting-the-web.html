@@ -1,0 +1,203 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Master HTML attributes using anchor links and images, and learn the difference between relative and absolute paths.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Connecting the Web | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Connecting the Web</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Connecting the Web</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Supercharging Tags with Attributes</h2>
+                <p>Up until now, every HTML element we've written works automatically. An <code>&lt;h1&gt;</code> makes big bold text, and a <code>&lt;p&gt;</code> creates a text paragraph. But what if we want to tell a tag <em>where</em> to go or <em>which</em> image file to display?</p>
+                <p>That's where <strong>attributes</strong> come in. Attributes are key-value pairs written inside the opening tag that provide extra instructions or settings to the browser. They always follow this syntax: <code>name="value"</code>.</p>
+
+                <blockquote>
+                    <h4>Anatomy of an Attribute</h4>
+                    <p><code>&lt;element attribute="value"&gt;Content&lt;/element&gt;</code></p>
+                    <p>Notice that attributes live inside the opening angle bracket (<code>&lt;...&gt;</code>), before the closing bracket.</p>
+                </blockquote>
+
+                <h2>Setting Up Your Images Folder</h2>
+                <p>Before adding images to our pages, we must organize our files according to our web rules. Keeping project files organized keeps path references clean and prevents broken links.</p>
+                
+                <ol>
+                    <li>Open your main <code>web-1</code> folder.</li>
+                    <li>Navigate into the <code>learning</code> folder.</li>
+                    <li>Create a new folder inside <code>learning</code> called <code>images</code> (all lowercase, no spaces!).</li>
+                </ol>
+
+                <p>Your folder path should now look like this: <code>web-1/learning/images/</code>.</p>
+
+                <h2>Relative vs. Absolute Linking</h2>
+                <p>When linking to another webpage or loading an image, we need to tell the browser where to find that file using a file path. There are two ways to write paths:</p>
+
+                <h3>1. Absolute Paths</h3>
+                <p>An absolute path is a full web address (URL) pointing to a resource somewhere on the internet. It includes the complete address protocol (like <code>https://</code>).</p>
+                <p><strong>Example:</strong> <code>https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png</code></p>
+                <p><em>Use case:</em> Linking off your website to an external site like Google, YouTube, or Wikipedia.</p>
+
+                <h3>2. Relative Paths (Our Primary Method)</h3>
+                <p>A relative path points to a file relative to the location of the current file you are working on inside your project folder.</p>
+                <p><strong>Example:</strong> <code>images/logo.png</code></p>
+                <p><em>Use case:</em> Linking to other pages or displaying images within your own website.</p>
+
+                <blockquote class="code-explanation">
+                    <h4>Why Preference Relative Paths?</h4>
+                    <p>Relative paths ensure your website works everywhere—whether running on your local computer, stored on a flash drive, or uploaded to a live web server. If you use absolute paths to your local hard drive, nobody else on the web will be able to see your images or open your pages!</p>
+                </blockquote>
+
+                <h2>1. The Anchor Tag (<code>&lt;a&gt;</code>)</h2>
+                <p>The anchor tag creates hyperlinks to other web pages or files. On its own, <code>&lt;a&gt;Click Here&lt;/a&gt;</code> won't do anything because it doesn't know where to link! It requires the <code>href</code> (Hypertext REFerence) attribute.</p>
+
+                <p><strong>Absolute Link (External Website):</strong></p>
+                <p><code>&lt;a href="https://www.wikipedia.org" target="_blank"&gt;Visit Wikipedia&lt;/a&gt;</code></p>
+                <p><em>Note: Adding <code>target="_blank"</code> tells the browser to open the link in a brand-new tab.</em></p>
+
+                <p><strong>Relative Link (Internal Page):</strong></p>
+                <p><code>&lt;a href="common-elements.html"&gt;Common HTML Elements&lt;/a&gt;</code></p>
+
+                <h2>2. The Image Tag (<code>&lt;img&gt;</code>)</h2>
+                <p>The image tag embeds pictures directly into your web page. The <code>&lt;img&gt;</code> tag is a <strong>void element</strong>—it does not have or need a closing tag.</p>
+                <p>It requires two critical attributes to work correctly:</p>
+
+                <ul>
+                    <li><code>src</code> (Source): The file path pointing to the image location.</li>
+                    <li><code>alt</code> (Alternative Text): A textual description of the image for screen readers (accessibility) or to display if the image fails to load.</li>
+                </ul>
+
+                <p><strong>Relative Image (Local File):</strong></p>
+                <p><code>&lt;img src="images/banner.jpg" alt="A scenic mountain view at sunset"&gt;</code></p>
+
+                <p><strong>Absolute Image (Online Web URL):</strong></p>
+                <p><code>&lt;img src="https://picsum.photos/400/200" alt="Random decorative photo from the web"&gt;</code></p>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a new file named <code>links-and-images.html</code>. Download or save any small image file into your new <code>images</code> folder (e.g., name it <code>avatar.png</code> or <code>sample.jpg</code>). <strong>Important:</strong> Make sure you are not just downloading the image and leaving it in your downloads! Get in the habit of giving your images meaningful names (using 'mountain-pass.jpg' instead of leaving 'user3241-u22244.jpg' or whatever nonsense name it has by default). Make sure you bring it into the correct folder!</p>
+                <p>Add the following code to your file and test it out in your web browser:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">links-and-images.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Attributes: Links &amp;amp; Images&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Working with Attributes&lt;/h1&gt;
+
+    &lt;h2&gt;Navigation (Relative Links)&lt;/h2&gt;
+    &lt;p&gt;
+        &lt;a href="boilerplate.html"&gt;Lesson 1: Boilerplate&lt;/a&gt; | 
+        &lt;a href="common-elements.html"&gt;Lesson 2: Common Elements&lt;/a&gt;
+    &lt;/p&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2&gt;External Links (Absolute Links)&lt;/h2&gt;
+    &lt;p&gt;Check out &lt;a href="https://developer.mozilla.org" target="_blank"&gt;MDN Web Docs&lt;/a&gt; for HTML reference.&lt;/p&gt;
+
+    &lt;h2&gt;Local Image (Relative Path)&lt;/h2&gt;
+    &lt;p&gt;Here is an image stored inside our local &lt;code&gt;learning/images/&lt;/code&gt; folder:&lt;/p&gt;
+    &lt;img src="images/avatar.png" alt="Student profile avatar icon"&gt;
+    &lt;!-- Change the src above to whatever image you downloaded! --&gt;
+
+    &lt;h2&gt;Online Image (Absolute Path)&lt;/h2&gt;
+    &lt;p&gt;Here is an image hosted externally on the web:&lt;/p&gt;
+    &lt;img src="https://picsum.photos/300/150" alt="Placeholder image from online source"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise</h2>
+                <p>Try applying what you've learned to build an interactive mini-portfolio page:</p>
+                <ol>
+                    <li>Save a picture of your favorite animal or hobby into your <code>web-1/learning/images/</code> folder.</li>
+                    <li>Add that image to your <code>links-and-images.html</code> page using a relative path and don't forget a descriptive <code>alt</code> attribute.</li>
+                    <li>Turn an image into a clickable button! Hint: Wrap an <code>&lt;img&gt;</code> tag inside an <code>&lt;a&gt;...&lt;/a&gt;</code> link tag: 
+                        <br><code>&lt;a href="https://google.com"&gt;&lt;img src="images/avatar.png" alt="Google link"&gt;&lt;/a&gt;</code>
+                    </li>
+                    <li>Add relative back-links at the bottom of your <code>common-elements.html</code> and <code>boilerplate.html</code> pages so you can navigate across all your lessons seamlessly!</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

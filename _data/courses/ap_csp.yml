@@ -160,26 +160,28 @@ units:
         file: "challenge-vowel-counter.html"
         description: "Count vowels in a string."
         topics:
-          - "Challege"
-          - "String Manipulation"
+          - "Challenge"
         status: "published"
         
       - title: "Coin Dispenser"
         file: "challenge-change.html"
         description: "Python Coin Dispenser Change function exercise."
         topics:
-          - "Challege"
-          - "String Manipulation"
-          - "Mathematics"
+          - "Challenge"
         status: "published"
         
       - title: "Triangle"
         file: "challenge-triangle.html"
         description: "Telemetry Engine: Spatial Mesh Validator using Python strings, conditional logic, and list processing."
         topics:
-          - "Challege"
-          - "String Manipulation"
-          - "Mathematics"
+          - "Challenge"
+        status: "published"
+        
+      - title: "Orbital Guidance"
+        file: "challenge-orbital-guidance.html"
+        description: "Orbital Trajectory Guidance: String Parsing, Slope Formulas, and Range Validation in Python."
+        topics:
+          - "Challenge"
         status: "published"
 
   - title: "Create PT Prep"

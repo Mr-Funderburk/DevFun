@@ -1,4 +1,5 @@
 ---
+course: web_1
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -6,25 +7,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DevFun - Computer Science and Development Courses by Stephen 'Mr. Fun' Funderburk">
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
     
-    <title>DevFun | Web Development I</title>
+    <title>Web Development 1 | DevFun</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/DevFun/css/main.css">
-    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+    <link rel="stylesheet" href="/css/main.css">
 
-    <script src="/DevFun/js/prism.min.js" defer></script>
-    <script src="/DevFun/js/prism-gml.js" defer></script>
-    <script src="/DevFun/js/code-window.js" defer></script>
-    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </head>
 <body>
+
     {% include header.html %}
 
     <main>
@@ -36,10 +35,10 @@
                         <span class="separator">/</span>
                         <a href="../../index.html#courses">Courses</a>
                         <span class="separator">/</span>
-                        <span>Web Development I</span>
+                        <span>Web 1</span>
                     </nav>
 
-                    <h1>Web Development <span>I</span></h1>
+                    <h1>Web Development I</span></h1>
 
                     <p class="hero-description">Build a solid foundation in modern web development. Learn how to structure web documents with semantic HTML5, design responsive layouts with CSS3 & Flexbox, and deploy static sites to the web.</p>
 
@@ -57,7 +56,6 @@
                         <li><strong>Skill Level:</strong> Foundational</li>
                         <li><strong>Prerequisites:</strong> None</li>
                     </ul>
-                    <p>&nbsp;</p>
 
                     <a href="../../resources.html?course=web-dev" class="btn btn-primary">Course Resources &nbsp; →</a>
                 </div>
@@ -65,13 +63,20 @@
         </section>
 
         <div class="container">
+
             <div class="course-content-grid">
                 <aside class="course-sidebar">
                     <div class="sidebar-widget">
                         <h3>Jump to Unit</h3>
                         
                         <ul>
-                            <li><a href="#unit1">Unit 1</a></li>
+                            {% assign unit_nav_counter = 0 %}
+                            {% for unit in site.data.courses.web_1.units %}
+                                {% if unit.published != false %}
+                                    {% assign unit_nav_counter = unit_nav_counter | plus: 1 %}
+                                    <li><a href="#unit{{ unit_nav_counter }}">Unit {{ unit_nav_counter }}: {{ unit.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </aside>
@@ -82,24 +87,64 @@
                         Course Lessons
                     </h2>
 
-                    <div class="lesson-container">
-                        <h2 class="unit-number" id="unit1"><span>//</span> Unit 1</h2>
-                        
-                        <a href="lesson-001.html" class="lesson-card">
-                            <h3>Demystifying the Web</h3>
-                            
-                            <p class="lesson-description">HTML5 Fundamentals &amp; Web Mechanics.</p>
-                            
-                            <div class="lesson-topics">
-                                <span>Boilerplate</span>
+                    {% assign unit_counter = 0 %}
+                    {% for unit in site.data.courses.web_1.units %}
+                        {% if unit.published != false %}
+                            {% assign unit_counter = unit_counter | plus: 1 %}
+                            <div class="lesson-container">
+                                <h2 class="unit-number" id="unit{{ unit_counter }}"><span>//</span> Unit {{ unit_counter }}: {{ unit.title }}</h2>
+                                
+                                {% for lesson in unit.lessons %}
+                                    {% if lesson.published != false %}
+                                        {% if lesson.status == "coming_soon" %}
+                                            <div class="lesson-card card-disabled" aria-disabled="true">
+                                                <div class="lesson-meta">
+                                                    <span class="badge-coming-soon">Coming Soon</span>
+                                                </div>
+
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ lesson.file }}" class="lesson-card">
+                                                <h3>{{ lesson.title }}</h3>
+                                                
+                                                {% if lesson.description %}
+                                                    <p class="lesson-description">{{ lesson.description }}</p>
+                                                {% endif %}
+                                                
+                                                {% if lesson.topics and lesson.topics.size > 0 %}
+                                                    <div class="lesson-topics">
+                                                        {% for topic in lesson.topics %}
+                                                            <span>{{ topic }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                        </a>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </section>
             </div>
         </div>
     </main>
 
     {% include footer.html %}
+
+    
 </body>
 </html>

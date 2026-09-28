@@ -1,0 +1,55 @@
+id: "web_1"
+title: "Web Development I"
+breadcrumb: "Web 1"
+
+units:
+  - title: "The Basics"
+    lessons:
+      - title: "Demystifying the Web"
+        file: "demystifying-the-web.html"
+        description: "Web pages aren't magic; they are just plain text files telling browsers what to display."
+        topics:
+          - "Boilerplate"
+          - "Bare-Bones"
+        status: "published"
+        
+      - title: "Common Elements"
+        file: "common-elements.html"
+        description: "Learn essential HTML elements for text formatting, headings, and lists."
+        topics:
+          - "Tags"
+          - "Elements"
+        status: "published"
+        
+      - title: "Connecting the Web"
+        file: "connecting-the-web.html"
+        description: "Master HTML attributes using anchor links and images, and learn the difference between relative and absolute paths."
+        topics:
+          - "Attributes"
+          - "Links"
+          - "Images"
+        status: "published"
+        
+      - title: "Semantic HTML"
+        file: "semantic.html"
+        description: "Learn how semantic HTML tags structure web pages, why they matter for accessibility and SEO, and how parent-child element relationships work."
+        topics:
+          - "Semantic Tags"
+        status: "published"
+        
+      - title: "Introduction to CSS"
+        file: "intro-to-css.html"
+        description: "Learn how external CSS works, master CSS syntax, style pages with colors and borders, and use CSS debugging to visualize semantic HTML layout tags."
+        topics:
+          - "CSS"
+          - "External CSS"
+        status: "published"
+        
+      - title: "Box Model"
+        file: "box-model.html"
+        description: "Master the CSS Box Model, understand margins, borders, padding, and content, apply a universal global reset, and inspect element dimensions with Chrome DevTools."
+        topics:
+          - "CSS Box Model"
+          - "Global Reset"
+          - "DevTools"
+        status: "published"

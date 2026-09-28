@@ -1,0 +1,234 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Web pages aren't magic; they are just plain text files telling browsers what to display.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Demystifying the Web | Game Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Demystifying the Web</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Demystifying the Web</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Demonstration</h2>
+                <p>Go to any popular website like <a href="https://www.youtube.com/" target="_blank">YouTube</a>, <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>, or <a href="https://time.com/" target="_blank">TIME</a>. Then right-click on the web page and select <em>Inspect</em>.
+                This allows us to see the <strong>Document Object Model (DOM)</strong> tree and we can edit the page locally.
+                Change one of the headlines to something like <em>"Canterbury Declares Every Friday a Free Pizza Day!"</em></p>
+                
+                <blockquote>
+                    <h4>The Web Isn't Solid Stone</h4>
+                    <p>It's just text documents sending instructions to a browser. <strong>Today, you start writing those instructions.</strong></p>
+                </blockquote>
+
+                <h2>Your Workbench</h2>
+                <p>Before writing a single tag, we need to establish our <em>root</em> folder for the course. This will help with the majority of broken images and dead links while we're getting started.</p>
+                <p><strong>Golden Rules of Web Files:</strong></p>
+                
+                <ol>
+                    <li>Everything lives inside a dedicated class folder (e.g., <code>web-dev-1</code>).</li>
+                    <li><strong>NO SPACES</strong> or special characters in file/folder names (use hyphens: <code>my-first-site</code>).</li>
+                    <li>Everything must be <strong>lowercase</strong>.</li>
+                    <li>The main entry page of any project is <strong>always</strong> named <code>index.html</code>.</li>
+                </ol>
+
+                <p>On your <strong>Desktop</strong> or in your <strong>Documents</strong> (your choice), create a new folder called <code>web-1</code>. Every file you create or use for this class should reside in this folder!</p>
+                <p>Create a new folder inside of this <code>web-1</code> folder called <code>learning</code>. We will start in this folder, just creating some basic pages to help you learn. Then we will branch out to other projects which will have their own folders.</p>
+
+                <h2>Integrated Development Environment (IDE)</h2>
+                <p>While web development doesn't <em>need</em> a dedicated program to create web pages, it certainly helps! You <em>could</em> create all of your web pages using any text editor that comes with your Operating System (OS). (This is the way I started!) However, times have changed and there are a lot of free editors out there that can help with productivity while making your web pages.</p>
+                <p>The one I'm going to suggest for this course is <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>. It's a light weight, modular code editor that will serve well for HTML and CSS editing. However, you're welcome to use a plain text editor, <a href="https://www.sublimetext.com/" target="_blank">Sublime Text</a>, <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>, or any other editor you'd like for this course.</p>
+
+                <h2>Boilerplate / Bare-Bones</h2>
+
+                <p>All of our web pages will start out the same. So let's create an example and talk about what's happening. Start by creating a new file in the <strong>learning</strong> folder we just created. Let's call it <code>boilerplate.html</code>. Note the extension: <code>.html</code>. Be sure you write that as well. A file extension tells your system what type of file it is and how it should be handled. In this case, we're telling our system that it will be a <b>H</b>yper<b>t</b>ext <b>M</b>arkup <b>L</b>anguage document (the one that builds a web page). Without this extension, your computer will probably just treat it as a standard text document and will not be able to be seen by your browser.</p>
+                <p>Add the following code to your page, save it, and then open it in your web browser (or VS Code's Integrated Browser).</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">boilerplate.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;My name is [Student Name] and I am building a website from scratch.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <h3>Congratulations! You just created your first web page!</h3>
+
+                <blockquote class="code-explanation">
+                    <h4>So What's Going On Here?</h4>
+                    <ul>
+                        <li><code>&lt;!DOCTYPE html&gt;</code> is telling the browser (the program you use to view web pages, like Chrome, Edge, Firefox, or Safari), that this page contains markup for HTML 5.</li>
+                        <li><code>&lt;html&gt;</code> is the parent wrapper holding everying.</li>
+                        <li><code>&lt;head&gt;</code> is information <strong>about</strong> the page (invisible information like metadata, style, script, and font links, and the title of your page).</li>
+                        <li><code>&lt;body&gt;</code> is everything the user actually sees on the screen.</li>
+                    </ul>
+                </blockquote>
+
+                <h2>Elements & Tags</h2>
+                <p>All of the elements (paragraphs, images, headers, etc.) on our page are created using <em>tags</em>. It's important to understand the anatomy of a tag as you will be writing a lot of them in this class!</p>
+                <p>Every tag starts with a <strong>less than sign</strong> (<code>&lt;</code>), then the <strong>name of the element</strong>, and finally a <strong>greater than sign</strong> (<code>&gt;</code>). Most tags require a closing tag as well which is written the exact same, only has a forward slash (<code>/</code>) before the element name.</p>
+                <p>Most HTML tags work like a set of bookends. Always remember to close what you open!</p>
+                <p>Let's look at the <code>h1</code> element we used in our boilerplate. The <code>h1</code> element is the largest heading. The convention is for each page to have one and only one of these. This should be the main heading of the page and tell the user, <em>"what is the page about?"</em> The <code>h1</code> tag then is formed with the less than sign, the name h1, and then a greater than sign. The closing tag is exactly the same with the forward slash before the h1. Between the open and closing tags of the h1 is what we want the heading to say. The paragraph (<code>p</code>) element is formed the same way.</p>
+
+                <h2>Nesting Elements</h2>
+                <p>Elements can exist inside of other elements as well. For example, we can create a paragraph, then decide that we want some of the words inside that paragraph to be <strong>bold</strong>. To accomplish this, we will add a <code>strong</code> tag before the word(s) we want to be bold and then close the strong tag when we're done. Try making your name bold.</p>
+                <p>Make sure you close tags in the reverse order that they are opened! <code>&lt;p&gt;my &lt;strong&gt;AWESOME&lt;/strong&gt; paragraph&lt;/p&gt;</code></p>
+
+                <h2>Breaking It</h2>
+                <p>Unlike coding languages, HTML doesn't show error screens—the browser just tries its best to guess what you meant. This can make debugging tricky.</p>
+                <p>Try <strong>deleting a closing tag</strong>, <strong>misspell a tag</strong> (<code>boddy</code> instead of <code>body</code>), or <strong>move some text outside of the closing <code>body</code> tag</strong>. What happens?</p>
+                <p>Nothing! (Mostly) So take a deep breath and don't fear errors or mistakes!</p>
+
+                <h2>Code Formatting</h2>
+                <p>HTML treats multiples spaces as a single space and doesn't require any formatting to work. However, look at the next two examples and tell me which code you would rather work with:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">boilerplate.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;My name is [Student Name] and I am building a website from scratch.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p style="font-size: 2rem; text-align: center;">OR</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">boilerplate.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;My First Web Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;p&gt;My name is [Student Name] and I am building a website from scratch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Both files will run <em>exactly</em> the same. However, updating and working on the second would be a <strong>nightmare</strong>!</p>
+                <p>Therefore, you will be asked to keep your code formatted correctly. Indentation shows ownership of elements. Notice how we indent the <code>h1</code> element because it <em>belongs</em> to the <code>body</code> element. Try to keep your code as neat and tidy as you can. These indentations can help you find issues in your page!</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

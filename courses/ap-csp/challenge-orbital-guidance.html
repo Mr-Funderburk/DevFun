@@ -1,0 +1,156 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Assignment - Orbital Trajectory Guidance: String Parsing, Slope Formulas, and Range Validation in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Orbital Guidance | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Orbital Guidance</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Orbital Guidance — Descent Corridor Validator</h1>
+                <p class="lesson-subtitle">Parse delimited telemetry data, compute 2D vector slopes, and evaluate double-threshold tolerance ranges for atmospheric entry.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>You are serving as Flight Dynamics Lead for a deep-space research mission to Mars. Your planetary lander is approaching the upper atmosphere of Mars and must execute a precise entry corridor maneuver to land safely inside Jezero Crater. If the descent vector is too steep, friction will burn up the spacecraft; if it is too shallow, the probe will skip off the atmosphere back into deep space.</p>
+
+                <p>Before firing the atmospheric entry thrusters, your automated guidance engine must parse real-time telemetry, compute the slope of approach to both the <strong>start</strong> and <strong>end</strong> of the atmospheric landing gate, and confirm that <em>both</em> trajectory vectors fall strictly within target tolerances.</p>
+
+                <h2>Mathematical Specifications</h2>
+                <p>To determine if the trajectory is safe, calculate the slope (<em>m</em>) between the spacecraft position (<em>x<sub>p</sub></em>, <em>y<sub>p</sub></em>) and a target gate position (<em>x<sub>t</sub></em>, <em>y<sub>t</sub></em>) using the coordinate slope formula:</p>
+
+                <blockquote class="code-explanation">
+                    m = (y<sub>t</sub> - y<sub>p</sub>) / (x<sub>t</sub> - x<sub>p</sub>)
+                </blockquote>
+
+                <p>Both trajectory slopes (from the probe to the gate start position, and from the probe to the gate end position) must satisfy the safe corridor tolerance condition:</p>
+
+                <ul>
+                    <li><strong>Target Tolerance Range:</strong> Slope <em>m</em> must be between <strong>-1.50</strong> and <strong>-0.60</strong> (inclusive).</li>
+                    <li><strong>Mathematical Condition:</strong> <code>-1.50 &le; m &le; -0.60</code></li>
+                </ul>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Naming & Coding Requirements:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>check_descent_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>check_decent_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable named <code>NAME</code> near the top of the file containing your full name as a string:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>check_descent(probe_data)</code> that accepts one parameter: <code>probe_data</code>.</li>
+                        <li><strong>Input Format:</strong> <code>probe_data</code> will be a single string containing four pipe-delimited (<code>|</code>) segments:
+                            <br><code>"ProbeName|X_probe,Y_probe|X_start,Y_start|X_end,Y_end"</code></li>
+                        <li><strong>Return Outputs:</strong> Your function must return one of the two exact formatted string values:
+                            <ul>
+                                <li><code>"&lt;ProbeName&gt;, Entry Corridor Approved!"</code> (if <strong>both</strong> slopes are within <code>-1.50</code> to <code>-0.60</code> inclusive)</li>
+                                <li><code>"&lt;ProbeName&gt;, Abort Trajectory!"</code> (if either or both slopes fall outside tolerance)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                <table class="truth-table test-cases">
+                    <thead>
+                        <tr>
+                            <th>Input Telemetry String (<code>probe_data</code>)</th>
+                            <th>Expected Return String</th>
+                            <th>Mathematical Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>"AresOne|20,160|120,40|170,20"</code></td>
+                            <td><code>"AresOne, Entry Corridor Approved!"</code></td>
+                            <td>
+                                <em>m<sub>start</sub></em> = (40 &minus; 160) / (120 &minus; 20) = &minus;1.20<br>
+                                <em>m<sub>end</sub></em> = (20 &minus; 160) / (170 &minus; 20) = &minus;0.93<br>
+                                Both slopes are inside [&minus;1.50, &minus;0.60].
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>"Phoenix|10,200|110,50|160,20"</code></td>
+                            <td><code>"Phoenix, Entry Corridor Approved!"</code></td>
+                            <td>
+                                <em>m<sub>start</sub></em> = (50 &minus; 200) / (110 &minus; 10) = &minus;1.50 (Exact boundary!)<br>
+                                <em>m<sub>end</sub></em> = (20 &minus; 200) / (160 &minus; 10) = &minus;1.20<br>
+                                Both slopes are inside [&minus;1.50, &minus;0.60].
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>"Valkyrie|50,200|90,40|150,20"</code></td>
+                            <td><code>"Valkyrie, Abort Trajectory!"</code></td>
+                            <td>
+                                <em>m<sub>start</sub></em> = (40 &minus; 200) / (90 &minus; 50) = &minus;4.00 (Too steep!)<br>
+                                <em>m<sub>end</sub></em> = (20 &minus; 200) / (150 &minus; 50) = &minus;1.80 (Too steep!)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>"Curiosity|40,180|140,80|240,110"</code></td>
+                            <td><code>"Curiosity, Abort Trajectory!"</code></td>
+                            <td>
+                                <em>m<sub>start</sub></em> = (80 &minus; 180) / (140 &minus; 40) = &minus;1.00 (Valid)<br>
+                                <em>m<sub>end</sub></em> = (110 &minus; 180) / (240 &minus; 40) = &minus;0.35 (Too shallow!)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

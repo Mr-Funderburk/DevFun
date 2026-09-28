@@ -1,0 +1,211 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn how semantic HTML tags structure web pages, why they matter for accessibility and SEO, and how parent-child element relationships work.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Semantic HTML &amp; Layout | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Semantic HTML &amp; Layout</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Semantic HTML &amp; Structure</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>What Does "Semantic" Mean?</h2>
+                <p>In linguistics, <em>semantics</em> is the study of meaning. In web development, <strong>semantic HTML tags</strong> are tags that clearly describe their meaning to both the browser and the developer.</p>
+                <p>For example, tags like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;img&gt;</code> are semantic because they tell us what content is inside them. On the other hand, non-semantic tags say nothing about their content—they just act as generic containers.</p>
+
+                <blockquote>
+                    <h4>Meaning Over Appearance</h4>
+                    <p>When you look at a web page in a browser, semantic structural tags (like <code>&lt;header&gt;</code> or <code>&lt;main&gt;</code>) don't look like anything special on their own. They don't add borders, colors, or fancy fonts automatically. So why use them?</p>
+                </blockquote>
+
+                <h2>Why Semantic Tags Matter</h2>
+                <p>Even though semantic tags don't change how your page looks right away, they are essential for three major reasons:</p>
+
+                <ol>
+                    <li>
+                        <strong>Accessibility (Screen Readers):</strong> Visually impaired users use screen readers to navigate web pages. Semantic tags act as landmarks, allowing screen readers to jump straight to the navigation menu, the main article, or the footer.
+                    </li>
+                    <li>
+                        <strong>Search Engine Optimization (SEO):</strong> Search engines like Google crawl web pages to understand what they are about. Semantic tags help search engines identify your page's primary content vs. secondary links or disclaimers.
+                    </li>
+                    <li>
+                        <strong>Code Readability &amp; Organization:</strong> Working on team projects or reading your own code months later becomes much easier when layout sections are clearly labeled rather than being a confusing mess of generic blocks.
+                    </li>
+                </ol>
+
+                <h2>Understanding the Parent-Child Relationship</h2>
+                <p>Before building a full layout, we need to talk about how elements relate to each other inside the Document Object Model (DOM) tree. Web page elements nest inside one another like Russian nesting dolls.</p>
+
+                <ul>
+                    <li><strong>Parent Element:</strong> An element that contains other elements inside its opening and closing tags.</li>
+                    <li><strong>Child Element:</strong> An element direct inside another element.</li>
+                    <li><strong>Sibling Elements:</strong> Elements that share the exact same parent element.</li>
+                </ul>
+
+                <p>Let's look at an example:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">family-tree-example.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;article&gt;
+    &lt;h2&gt;Project Title&lt;/h2&gt;
+    &lt;p&gt;This is a short description of the project.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Analyzing the Hierarchy</h4>
+                    <ul>
+                        <li><code>&lt;article&gt;</code> is the <strong>parent</strong> to both <code>&lt;h2&gt;</code> and <code>&lt;p&gt;</code>.</li>
+                        <li><code>&lt;h2&gt;</code> and <code>&lt;p&gt;</code> are <strong>children</strong> of <code>&lt;article&gt;</code>.</li>
+                        <li><code>&lt;h2&gt;</code> and <code>&lt;p&gt;</code> are <strong>siblings</strong> to each other because they sit on the same nesting level inside the same parent.</li>
+                    </ul>
+                </blockquote>
+
+                <p><strong>Rule of Indentation:</strong> Whenever you place a child tag inside a parent tag, always indent it by pressing <kbd>Tab</kbd> (or 4 spaces). This visually shows the parent-child relationship in your code editor!</p>
+
+                <h2>Core Structural Tags</h2>
+                <p>Here are the fundamental semantic elements used to construct modern web pages:</p>
+
+                <ul>
+                    <li><code>&lt;header&gt;</code> — Introductory content for a page or section, typically holding logos, main site titles, and navigation bar elements.</li>
+                    <li><code>&lt;nav&gt;</code> — Dedicated wrapper for primary navigation links.</li>
+                    <li><code>&lt;main&gt;</code> — Holds the central, unique content of the web page. There should only be <strong>one</strong> <code>&lt;main&gt;</code> tag per HTML page!</li>
+                    <li><code>&lt;article&gt;</code> — A self-contained, independent piece of content that could stand on its own (like a blog post, news article, or product card).</li>
+                    <li><code>&lt;footer&gt;</code> — Sits at the bottom of a page or section and contains copyright information, contact details, or secondary site links.</li>
+                </ul>
+
+                <h2>Check for Understanding: The Fan Page Challenge</h2>
+                <p>It's time to build your first structured web page! You will create a single-page <strong>"Fan Page"</strong> dedicated to your favorite video game, movie, band, sport, or hobby.</p>
+                <p>In your <code>web-1/learning/</code> folder, create a new file called <code>fan-page.html</code>. Your page must strictly follow the semantic layout structure shown below:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">layout-wireframe.txt</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Wireframe</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code>+-------------------------------------------------------+
+|  HEADER: Site Title + Navigation (2 links)            |
++-------------------------------------------------------+
+|  MAIN CONTENT:                                        |
+|  +-------------------------------------------------+  |
+|  | ARTICLE 1: Project Title + Image + Paragraph    |  |
+|  +-------------------------------------------------+  |
+|  +-------------------------------------------------+  |
+|  | ARTICLE 2: Project Title + Image + Paragraph    |  |
+|  +-------------------------------------------------+  |
++-------------------------------------------------------+
+|  FOOTER: Copyright Notice                             |
++-------------------------------------------------------+</code></pre>
+                    </div>
+                </div>
+
+                <h3>Project Requirements Checklist:</h3>
+                <ol>
+                    <li>Start with standard HTML <code>boilerplate</code> code (including doctype, html, head, title, and body tags).</li>
+                    <li>
+                        <strong>Header Section (<code>&lt;header&gt;</code>):</strong>
+                        <ul>
+                            <li>An <code>&lt;h1&gt;</code> tag displaying your Fan Page title.</li>
+                            <li>A <code>&lt;nav&gt;</code> element containing at least two anchor links (<code>&lt;a&gt;</code> tags). One link should jump back to <code>common-elements.html</code> using a relative path, and the other can point to an external fan site using an absolute URL.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Main Content Section (<code>&lt;main&gt;</code>):</strong>
+                        <ul>
+                            <li>Contains two distinct <code>&lt;article&gt;</code> tags as direct children.</li>
+                            <li><strong>Article 1:</strong> Must contain an <code>&lt;h2&gt;</code> title, an <code>&lt;img&gt;</code> (saved in your <code>learning/images/</code> folder using a relative path and proper <code>alt</code> description), and a descriptive <code>&lt;p&gt;</code> paragraph.</li>
+                            <li><strong>Article 2:</strong> Must contain a second <code>&lt;h2&gt;</code> title, a second <code>&lt;img&gt;</code> tag, and a descriptive <code>&lt;p&gt;</code> paragraph.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Footer Section (<code>&lt;footer&gt;</code>):</strong>
+                        <ul>
+                            <li>A copyright notice wrapped in a <code>&lt;p&gt;</code> or <code>&lt;small&gt;</code> tag (e.g., <code>&amp;copy; 2026 Fan Page Project</code>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Code Formatting:</strong> Make sure all child elements are neatly indented inside their parent elements!</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

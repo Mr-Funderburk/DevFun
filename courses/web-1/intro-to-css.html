@@ -1,0 +1,281 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn how external CSS works, master CSS syntax, style pages with colors and borders, and use CSS debugging to visualize semantic HTML layout tags.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Intro to External CSS | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Intro to External CSS</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Intro to External CSS</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Invisible Power: Disabling CSS</h2>
+                <p>HTML builds the skeleton of a web page, but <strong>Cascading Style Sheets (CSS)</strong> gives it life. Without CSS, even multi-billion dollar websites look like standard text files written in 1995.</p>
+                <p>Let's perform a live experiment to see just how much heavy lifting CSS actually does behind the scenes.</p>
+
+                <blockquote>
+                    <h4>Interactive Demonstration: Strip Away the Styles</h4>
+                    <ol>
+                        <li>Open any major website in Google Chrome (e.g., <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> or <a href="https://time.com" target="_blank">TIME</a>).</li>
+                        <li>Right-click anywhere on the page and select <strong>Inspect</strong> to open Developer Tools.</li>
+                        <li>Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Windows) or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Mac) to open the Command Menu.</li>
+                        <li>Type <code>Block</code> and select <strong>Show Network Request Blocking</strong>.</li>
+                        <li>Click the <strong>+</strong> button, enter <code>*.css</code>, click <strong>Add</strong>, and refresh the page!</li>
+                    </ol>
+                </blockquote>
+
+                <p>Notice how instantly flat, raw, and unstyled the web page becomes? That raw outline is pure HTML! Everything else—layouts, colors, spacing, alignment, and fonts—is controlled entirely by CSS.</p>
+
+                <h2>Connecting an External Stylesheet</h2>
+                <p>While CSS can be written directly inside HTML tags, professional web developers almost exclusively use <strong>External CSS</strong>. This involves placing all styling rules in a standalone <code>.css</code> file and linking it to HTML pages.</p>
+
+                <p>To connect an external stylesheet, add a <code>&lt;link&gt;</code> element inside the <code>&lt;head&gt;</code> tag of your HTML document:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">index.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;head&gt;
+    &lt;title&gt;My Styled Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>The <code>&lt;link&gt;</code> element is a void tag (no closing tag needed) and relies on two essential attributes:</p>
+                <ul>
+                    <li><code>rel="stylesheet"</code>: Tells the browser that the linked document is a CSS style sheet.</li>
+                    <li><code>href="css/style.css"</code>: Specifies the relative path to your CSS file. (Usually kept in a dedicated folder)</li>
+                </ul>
+
+                <h2>Anatomy of a CSS Rule</h2>
+                <p>CSS follows a specific syntax structured around target selection and declaration blocks. A single styling rule consists of three core components:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">style.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">h1 {
+    color: #38bdf8;
+    background-color: #151d32;
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Breaking Down the Syntax</h4>
+                    <ul>
+                        <li><strong>Selector (<code>h1</code>):</strong> Tells the browser <em>which HTML element(s)</em> to style. In this case, all <code>&lt;h1&gt;</code> headers on the page.</li>
+                        <li><strong>Property (<code>color</code>, <code>background-color</code>):</strong> Defines <em>what aspect</em> of the element you want to change (e.g., text color, background fill).</li>
+                        <li><strong>Value (<code>#38bdf8</code>, <code>#151d32</code>):</strong> Specifies <em>how</em> the property should be changed.</li>
+                        <li><strong>Declaration Block (<code>{ ... }</code>):</strong> Curly braces contain one or more property-value pairs. Each declaration MUST end with a <strong>semicolon (<code>;</code>)</strong>!</li>
+                    </ul>
+                </blockquote>
+
+                <h2>Starting Small: Colors &amp; Borders</h2>
+                <p>Let's explore three fundamental CSS properties that allow us to customize elements right out of the gate:</p>
+
+                <h3>1. Font Color (<code>color</code>)</h3>
+                <p>Controls the foreground color of text content inside an element.</p>
+                <p><code>p { color: white; }</code></p>
+
+                <h3>2. Background Color (<code>background-color</code>)</h3>
+                <p>Fills the box behind an element with a solid color. You can use standard color names (<code>red</code>, <code>blue</code>), Hexadecimal codes (<code>#ff0000</code>), or RGB values (<code>rgb(255, 0, 0)</code>).</p>
+                <p><code>body { background-color: #0b1020; }</code></p>
+
+                <h3>3. Borders (<code>border</code>)</h3>
+                <p>Draws a bounding line around an element. The <code>border</code> property requires three values in order: <strong>width</strong>, <strong>style</strong>, and <strong>color</strong>.</p>
+                <p><code>h2 { border: 2px solid #7ee787; }</code></p>
+
+                <h2>Visualizing Layouts with CSS Debugging</h2>
+                <p>In our last lesson, we learned about semantic layout tags like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>. Remember how we said they don't look like anything on screen by default?</p>
+                <p>We can use background colors and temporary borders to "debug" our web page layouts. Adding distinct styles to semantic containers reveals where each box sits on the screen and how elements nest inside one another!</p>
+
+                <p>Create a new folder in <code>web-1/learning/</code> called <code>css</code>. Create a file called <code>fan-page.css</code> inside your <code>web-1/learning/css/</code> folder and add the following CSS to style your previous <code>fan-page.html</code> file:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">fan-page.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* General Page Styling */
+body {
+    background-color: #0b1020;
+    color: #f4f7fb;
+}
+
+/* Header & Navigation Layout Visualizer */
+header {
+    background-color: #151d32;
+    border: 2px solid #6d7cff;
+}
+
+/* Main Content Area */
+main {
+    background-color: #11182b;
+    border: 2px dashed #38bdf8;
+}
+
+/* Individual Articles */
+article {
+    background-color: #1b2640;
+    border: 2px solid #7ee787;
+}
+
+/* Footer Section */
+footer {
+    background-color: #151d32;
+    border-top: 3px solid #fbbf24;
+}</code></pre>
+                    </div>
+                </div>
+
+                <p>Once linked, refresh <code>fan-page.html</code> in your browser. Every invisible semantic block is now clearly visible with its own colored border and bounding box!</p>
+
+                <h2>Check for Understanding: "Research a Tag" Assignment</h2>
+                <p>Now that we can structure and style basic web pages, it's time to expand our HTML tag vocabulary! You will be assigned <strong>one tag or tag group</strong> from the research list below.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Sample Tag Assignment List</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">HTML Tag(s)</th>
+                                <th scope="col">Primary Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><code>&lt;blockquote&gt;</code></th>
+                                <td>Used for long, indented block quotations.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>&lt;code&gt;</code></th>
+                                <td>Displays inline computer code snippets in a monospaced font.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>&lt;mark&gt;</code></th>
+                                <td>Highlights text with a default yellow background.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>&lt;details&gt;</code> &amp; <code>&lt;summary&gt;</code></th>
+                                <td>Creates interactive, native drop-down accordions without JavaScript.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>&lt;figure&gt;</code> &amp; <code>&lt;figcaption&gt;</code></th>
+                                <td>Wraps images or diagrams along with formal captions.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code></th>
+                                <td>Embeds native media playback controls directly on a page.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Presentation Expectations:</h3>
+                <p>For our next class meeting, be prepared for a <strong>60-second lightning presentation</strong> covering your assigned tag:</p>
+                <ol>
+                    <li><strong>Explain:</strong> What does your tag do, and when should a developer use it?</li>
+                    <li><strong>Demonstrate:</strong> Showcase a working code example of your tag on your screen and walk us through how to implement it.</li>
+                    <li><strong>Class Reference Activity:</strong> During presentations, every student will add each presented tag into their own <code>common-elements.html</code> page to serve as a personal HTML cheat sheet for the rest of the term!</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

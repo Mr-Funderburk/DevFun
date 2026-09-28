@@ -1,0 +1,237 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn essential HTML elements for text formatting, headings, and lists.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Common Elements | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Common Elements</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Common Elements</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Heading Hierarchy</h2>
+                <p>You already know <code>&lt;h1&gt;</code> is the main title of a web page. HTML gives us six levels of headings: <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>. As the number goes up, the structural importance (and default size) goes down.</p>
+                <ul>
+                    <li><code>&lt;h1&gt;</code> — Main Page Heading (Limit to one per page)</li>
+                    <li><code>&lt;h2&gt;</code> — Major Section Headers</li>
+                    <li><code>&lt;h3&gt;</code> — Sub-sections inside an <code>h2</code></li>
+                    <li><code>&lt;h4&gt;</code> to <code>&lt;h6&gt;</code> — Lower-level sub-headings</li>
+                </ul>
+                <p><strong>Rule of Thumb:</strong> Never skip heading levels just to change font size! Don't jump from an <code>&lt;h2&gt;</code> straight to an <code>&lt;h4&gt;</code>. Treat headings like a book outline.</p>
+
+                <h2>Text Formatting Tags</h2>
+                <p>We've used <code>&lt;strong&gt;</code> to make text bold and visually important. Here are three more tags for refining your text:</p>
+                <ul>
+                    <li><code>&lt;em&gt;</code> — <strong>Emphasis tag</strong>. Renders text in <em>italics</em> and signals to screen readers to stress that word.</li>
+                    <li><code>&lt;mark&gt;</code> — <strong>Highlight tag</strong>. Renders a bright <mark>yellow background</mark> behind text to indicate relevance or focus.</li>
+                    <li><code>&lt;small&gt;</code> — <strong>Side-comment tag</strong>. Makes text slightly smaller—perfect for copyright notices, legal disclaimers, or fine print.</li>
+                </ul>
+
+                <h2>Lists: Unordered &amp; Ordered</h2>
+                <p>Web content relies heavily on lists. HTML provides two main list types. Both require child <code>&lt;li&gt;</code> (List Item) tags inside them to represent each item.</p>
+
+                <h3>Unordered Lists (<code>&lt;ul&gt;</code>)</h3>
+                <p>Use when item order does not matter (like a grocery list or feature list). Renders bullet points by default.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">common-elements.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Bananas&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h3>Ordered Lists (<code>&lt;ol&gt;</code>)</h3>
+                <p>Use when sequence or order matters (like step-by-step instructions or top 10 rankings). Renders numbers by default.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">common-elements.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;ol&gt;
+    &lt;li&gt;Preheat oven&lt;/li&gt;
+    &lt;li&gt;Bake for 20 mins&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2>Dividers &amp; Line Breaks</h2>
+                <p>Sometimes you need to control spacing or create section breaks without wrapping text in new paragraphs:</p>
+                <ul>
+                    <li><code>&lt;hr&gt;</code> — <strong>Horizontal Rule</strong>. Creates a thematic break across the page (a thin horizontal line). It is a <em>void element</em> (no closing tag needed!).</li>
+                    <li><code>&lt;br&gt;</code> — <strong>Line Break</strong>. Forces text onto a new line inside a paragraph without starting an entirely new paragraph block. It is also a void element.</li>
+                </ul>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a new file named <code>common-elements.html</code>. Add the following code and test it out in your web browser:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">common-elements.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Common HTML Elements&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;The Developer's Handbook&lt;/h1&gt;
+    &lt;p&gt;Learning web development requires &lt;em&gt;patience&lt;/em&gt;, practice, and curiosity.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    &lt;h2&gt;Top Hobbies&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Coding HTML pages&lt;/li&gt;
+        &lt;li&gt;Playing video games&lt;/li&gt;
+        &lt;li&gt;&lt;mark&gt;Learning new skills&lt;/mark&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;Morning Routine&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Turn off alarm&lt;/li&gt;
+        &lt;li&gt;Drink a glass of water&lt;/li&gt;
+        &lt;li&gt;Open VS Code&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p&gt;Line 1 of text&lt;br&gt;Line 2 directly below it!&lt;/p&gt;
+
+    &lt;small&gt;&amp;copy; 2026 Web Development 1 Student. All rights reserved.&lt;/small&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Self-Closing / Void Tags</h4>
+                    <p>Notice how <code>&lt;hr&gt;</code> and <code>&lt;br&gt;</code> don't have closing tags like <code>&lt;/hr&gt;</code>? Tags that cannot hold content inside them are called <strong>void elements</strong> and don't require a closing tag.</p>
+                </blockquote>
+
+                <h2>Challenge: Uncover the Mystery Tags</h2>
+                <p>There are several other useful HTML elements that don't need attributes to function, but we haven't covered them yet! Your task is to research and add at least <strong>three</strong> of the following unmentioned tags into your <code>common-elements.html</code> file:</p>
+
+                <ol>
+                    <li>Find a tag used to represent <strong>deleted/strikethrough text</strong> (great for showing discounts or edits).</li>
+                    <li>Find a tag used to represent <strong>inserted/underlined text</strong>.</li>
+                    <li>Find a pair of tags used to render <sub>subscript</sub> (like chemical formulas: H<sub>2</sub>O) and <sup>superscript</sup> (like exponents: 10<sup>2</sup>).</li>
+                    <li>Find a tag used to display <code>computer code snippets</code> inside a standard paragraph block.</li>
+                </ol>
+
+                <p>Add these new elements to your page, save, and refresh your browser to see what they look like in action!</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

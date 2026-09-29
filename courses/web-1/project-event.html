@@ -1,0 +1,189 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Project Brief: Create a single-page event promotional landing page using semantic HTML, class-based CSS design, modifier classes, and interactive hover states.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Project: Event Page | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Project: Event Page</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Project: Event Page</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Project Overview</h2>
+                <p>This project synthesizes everything you have learned in class so far: clean file architecture, semantic HTML structure, the CSS Box Model, class-based component design, and interactive pseudo-class states.</p>
+
+                <p>You will create a high-impact, single-page <strong>promotional landing page for an event of your choice</strong>. Choose an event topic that excites you, such as:</p>
+
+                <ul>
+                    <li><strong>Esports / Gaming Tournament</strong> (e.g., <em>Retro Arcade Showdown</em> or <em>Valorant Campus Clash</em>)</li>
+                    <li><strong>Local Concert or Music Festival</strong> (e.g., <em>Indie Rock Night</em> or <em>Summer Beats Fest</em>)</li>
+                    <li><strong>Food Truck &amp; Culinary Festival</strong> (e.g., <em>Street Eats &amp; Brews Expo</em>)</li>
+                    <li><strong>Charity Fundraiser or Community Run</strong> (e.g., <em>5K Rescue Paws Marathon</em>)</li>
+                </ul>
+
+                <h2>Technical Requirements Checklist</h2>
+                <p>Review the technical requirements below to ensure your landing page satisfies every grading criteria:</p>
+
+                <h3>1. File &amp; Semantic HTML Structure</h3>
+                <ul>
+                    <li>
+                        <strong>Clean File Architecture:</strong> Create a dedicated project folder and image assets directory using strict <code>kebab-case</code> naming (e.g., <code>projects/event-page/img/event-banner.jpg</code>).
+                    </li>
+                    <li>
+                        <strong>Semantic Tag Blueprint:</strong> Structure your code cleanly with semantic tags including <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>.
+                    </li>
+                    <li>
+                        <strong>Strict Indentation:</strong> Maintain clean parent-child nesting throughout <code>index.html</code> (2 or 4 spaces per nesting level).
+                    </li>
+                    <li>
+                        <strong>Heading Hierarchy:</strong> Include exactly <strong>one</strong> main <code>&lt;h1&gt;</code> tag for the primary event title, <code>&lt;h2&gt;</code> tags for major section titles, and <code>&lt;h3&gt;</code> tags for sub-cards or individual items.
+                    </li>
+                    <li>
+                        <strong>Structured List Component:</strong> Include at least one <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> list detailing event rules, a schedule, ticket tiers, or featured speakers/performers.
+                    </li>
+                </ul>
+
+                <h3>2. CSS Classes &amp; Component Design</h3>
+                <ul>
+                    <li>
+                        <strong>External Stylesheet:</strong> Link an external stylesheet (e.g., <code>style.css</code>) inside the HTML <code>&lt;head&gt;</code>. Internal style blocks or inline style attributes are prohibited.
+                    </li>
+                    <li>
+                        <strong>Class-Based Styling:</strong> Style reusable UI cards and layout components using clean CSS class selectors.
+                    </li>
+                    <li>
+                        <strong>Modifier Classes:</strong> Include at least one modifier class applied to a specific component to alter its visual layout or accent colors (e.g., <code>&lt;article class="card card-featured"&gt;</code> or <code>&lt;div class="info-box info-featured"&gt;</code>).
+                    </li>
+                </ul>
+
+                <h3>3. Interactive Elements &amp; Accessibility</h3>
+                <ul>
+                    <li>
+                        <strong>Interactive Hover States:</strong> Write distinct CSS <code>:hover</code> pseudo-class rules for all interactive links/buttons <em>and</em> at least one non-button container element (e.g., changing background color, border highlight, or box-shadow on card mouseover).
+                    </li>
+                    <li>
+                        <strong>Descriptive Image Alt Text:</strong> Provide detailed, descriptive <code>alt</code> text for every image element (e.g., <code>alt="Crowd cheering at outdoor indie music stage during sunset"</code>).
+                    </li>
+                </ul>
+
+                <h2>Project Point Breakdown Rubric</h2>
+                <p>Grades will be awarded based on the technical evaluation matrix below:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Grading Rubric Matrix</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Criteria</th>
+                                <th scope="col">Requirement Overview</th>
+                                <th scope="col">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">File Architecture &amp; Paths</th>
+                                <td>Correct <code>kebab-case</code> folder structure, relative image pathing, and valid external CSS link.</td>
+                                <td>15 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Semantic Tag Architecture</th>
+                                <td>Complete usage of <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code> with clean parent-child indentation.</td>
+                                <td>25 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Heading &amp; List Hierarchy</th>
+                                <td>Strict heading levels (single <code>&lt;h1&gt;</code>, section <code>&lt;h2&gt;</code>, card <code>&lt;h3&gt;</code>) plus an organized <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code> list.</td>
+                                <td>20 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Component &amp; Modifier Classes</th>
+                                <td>Structured CSS class selectors featuring at least one functional modifier class (e.g. <code>.ticket-card-featured</code>).</td>
+                                <td>20 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Interactive Hover States &amp; Alt Text</th>
+                                <td>Custom <code>:hover</code> states for links/buttons and card containers, along with descriptive <code>alt</code> text on all images.</td>
+                                <td>20 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Step-by-Step Submission Instructions</h2>
+                <ol>
+                    <li>
+                        <strong>Directory Creation:</strong> Create a root project directory named <code>projects/event-landing/</code>. Inside, create an <code>img/</code> subfolder for your event image assets.
+                    </li>
+                    <li>
+                        <strong>Image Setup:</strong> Download relevant high-quality images, save them inside <code>img/</code> using lowercase <code>kebab-case</code> filenames (e.g., <code>concert-stage.jpg</code>), and add descriptive <code>alt</code> text in HTML.
+                    </li>
+                    <li>
+                        <strong>Markup Construction:</strong> Create <code>index.html</code>. Build out the landing page sections adhering to the strict heading hierarchy and semantic HTML requirements.
+                    </li>
+                    <li>
+                        <strong>Component Styling:</strong> Create <code>style.css</code>. Style your layout, apply a modifier class to bring visual hierarchy to a featured section, and craft smooth <code>:hover</code> transitions.
+                    </li>
+                    <li>
+                        <strong>Interactive Testing:</strong> Open your browser, move your cursor across links and cards to verify hover animations, and inspect elements to confirm no box-model overlaps exist.
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,110 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Practice Your Positioning Skills!">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Positioning Practice | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Positioning Practice</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Practice Your Positioning Skills!</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2><span class="step-num">1.</span> Notification Bell Counter</h2>
+                <p><strong>Goal:</strong> Create a button with a floating numeric alert badge on its top-right corner.</p>
+                <ul>
+                    <li><strong>HTML Task:</strong> Create a hyperlink (<code>&lt;a href="#" class="messages-button"&gt;Messages&lt;/a&gt;</code>) containing a badge span (<code>&lt;span class="badge"&gt;3&lt;/span&gt;</code>).</li>
+                    <li><strong>CSS Task:</strong>
+                        <ol>
+                            <li>Set <code>.messages-button</code> to have a relative position.</li>
+                            <li>Set <code>.badge</code> to have an absolute position with a top and right offset of -8px.</li>
+                            <li>Style the badge into a small red circle with white centered text.</li>
+                            <li>Apply extra styles to make the link look like a button. Be sure to add the pseudo-classes as well (<code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:focus</code>, <code>:active</code>)</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <h2><span class="step-num">2.</span> Image Banner Text Overlay</h2>
+                <p><strong>Goal:</strong> Darken the bottom of an image and overlay a title cleanly across it.</p>
+                <ul>
+                    <li><strong>HTML Task:</strong> Create a <code>div</code> with a banner class applied. Inside the <code>div</code>, add an image of your choice, but make sure the image takes up the entire width and height of the banner div you just created. Then, create an <code>h2</code> with the class <code>banner-title</code>. Add any title text you would like.</li>
+                    <li><strong>CSS Task:</strong>
+                        <ol>
+                            <li>Set the <code>banner</code> class's position to relative and add the declaration <code>overflow: hidden;</code> to hide any part of the image that doesn't fit into the <code>div</code>. Give the <code>div</code> a specified <code>height</code>.</li>
+                            <li>Set the <code>banner-title</code> to have an absolute position with the bottom, left, and right properties set to zero.</li>
+                            <li>Give the <code>banner-title</code> a semi-transparent background color using <code>rgba(0, 0, 0, 0.75);</code>. Change the text color to white and increase the padding.</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <h2><span class="step-num">3.</span> Back-to-Top Button</h2>
+                <p><strong>Goal:</strong> Create a floating "Back to Top" link that stays in the bottom right corner of the screen, regardless of if the user scrolls the page. Add styles to the link to make it <em>pretty</em>.</p>
+
+                <h2><span class="step-num">4.</span> Floating Header</h2>
+                <ul>
+                    <li><strong>HTML Task:</strong> Create a header on your page the is <em>not</em> at the top of your screen.</li>
+                    <li><strong>CSS Task:</strong>
+                        <ol>
+                            <li>Set the position of the header to <code>sticky</code>. When the header reaches the top, it should stick to the top of the viewport. Ensure that there is ample space added at the bottom of your page to allow the page to scroll down.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

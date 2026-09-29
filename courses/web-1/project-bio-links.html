@@ -1,0 +1,206 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Project Brief: Create a Bio Link page using semantic HTML, relative image paths, absolute external links, and the CSS Box Model.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Project: Bio Link Page | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Project: Bio Link Page</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Project: Bio Link Page</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Project Overview</h2>
+                <p>It's time to put your HTML and CSS skills into practice! In this project, you will build a personalized single-page <strong>"Bio Link" page</strong> showcasing <strong>5 key things that make up your life</strong>—such as hobbies, favorite places, family, games, or passions.</p>
+
+                <p>This assignment directly tests your understanding of <strong>semantic HTML markup</strong> and the <strong>CSS Box Model</strong> (padding, borders, margins, and sizing). Your page will act as a digital hub containing photos, descriptions, and outgoing web links for each topic.</p>
+
+                <blockquote class="code-explanation">
+                    <h4>Example Topic Ideas</h4>
+                    <p>Unsure what topics to pick? Here are five real-world examples:</p>
+                    <ul>
+                        <li><strong>Family &amp; Friends</strong> — A section about your household or pet.</li>
+                        <li><strong>Gaming (e.g., Path of Exile)</strong> — A section about your favorite video game.</li>
+                        <li><strong>Culinary / Food</strong> — A section highlighting favorite dishes or cooking experiences.</li>
+                        <li><strong>Swimming &amp; SCUBA</strong> — A section sharing your outdoor or athletic activities.</li>
+                        <li><strong>Coding &amp; Web Development</strong> — A section reflecting on your journey building websites!</li>
+                    </ul>
+                </blockquote>
+
+                <h2>Core Requirements Checklist</h2>
+                <p>Ensure your project submission fulfills every item listed below:</p>
+
+                <ol>
+                    <li>
+                        <strong>Header Section:</strong> A page header containing a main title (e.g., <em>"My Bio Links"</em> or <em>"Things That Define Me"</em>) alongside your full name.
+                    </li>
+                    <li>
+                        <strong>At Least 5 Life Topics:</strong> Create 5 distinct content cards/sections. Each topic <strong>must contain all four</strong> of the following elements:
+                        <ul>
+                            <li><strong>Heading:</strong> An <code>&lt;h2&gt;</code> tag naming the activity or subject.</li>
+                            <li><strong>Paragraph:</strong> An explanatory <code>&lt;p&gt;</code> describing why this topic is meaningful to you.</li>
+                            <li><strong>Relative Image Link:</strong> A local image file loaded from your project folder using a relative path (e.g., <code>src="img/path-of-exile.jpg"</code>).</li>
+                            <li><strong>Absolute External Link:</strong> An outgoing hyperlink opening an official external website related to the topic (e.g., <code>href="https://www.pathofexile.com"</code>).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Semantic HTML5 Markup:</strong> Use semantic structural tags such as <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>. Avoid wrapping your entire page in generic <code>&lt;div&gt;</code> tags!
+                    </li>
+                    <li>
+                        <strong>External Stylesheet:</strong> All styles must be written in an external stylesheet (e.g., <code>bio-links.css</code>) linked inside your HTML <code>&lt;head&gt;</code> tag. Inline style attributes are not permitted.
+                    </li>
+                </ol>
+
+                <h2>Grading Focus: The CSS Box Model</h2>
+                <p>Because this project focuses heavily on spacing mechanics, grading will center on your mastery of the CSS Box Model. A page with squished text or overlapping borders will lose points—use Box Model rules deliberately to refine your layout:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Box Model Problem &amp; Solution Guide</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Layout Problem</th>
+                                <th scope="col">Diagnosis</th>
+                                <th scope="col">CSS Box Model Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Text squished directly against card edges</th>
+                                <td>Missing inner space</td>
+                                <td>Add <code>padding</code> inside the card container.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cards jammed tightly against each other</th>
+                                <td>Missing outer space</td>
+                                <td>Add <code>margin-bottom</code> or flex <code>gap</code> to separate sections.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Images overflowing past section borders</th>
+                                <td>Unrestricted element sizing</td>
+                                <td>Set <code>max-width: 100%; height: auto;</code> on images.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Card width bursting unexpectedly when padding is added</th>
+                                <td>Default box model sizing</td>
+                                <td>Apply universal <code>box-sizing: border-box;</code> reset rule!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Project Point Breakdown Rubric</h2>
+                <p>Your submission will be evaluated according to four main criteria:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Grading Rubric</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Criteria</th>
+                                <th scope="col">Expectation</th>
+                                <th scope="col">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Box Model Application</th>
+                                <td>Proper use of padding inside containers, clear margins separating elements, and controlled image widths. No text touching borders.</td>
+                                <td>35 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Required Content &amp; Links</th>
+                                <td>5 complete topics with headings, paragraphs, relatively linked images (<code>img/</code>), and absolute links (<code>https://</code>).</td>
+                                <td>30 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">HTML Semantics &amp; Structure</th>
+                                <td>Valid semantic tags (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>) without broken tags or unclosed attributes.</td>
+                                <td>20 pts</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">External CSS &amp; Visual Design</th>
+                                <td>All styles defined in external <code>.css</code> file. Clean color choices, visible hover states, and clear typography hierarchy.</td>
+                                <td>15 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Step-by-Step Submission Instructions</h2>
+                <ol>
+                    <li>
+                        <strong>Create Project Folder:</strong> In your local directory, create a folder named <code>projects/bio-link/</code>.
+                    </li>
+                    <li>
+                        <strong>Image Folder Setup:</strong> Create an <code>img/</code> subfolder inside your project directory. Download 5 topic images and place them inside.
+                    </li>
+                    <li>
+                        <strong>Build HTML &amp; CSS:</strong> Create <code>index.html</code> and <code>style.css</code>. Link your stylesheet and construct your 5 sections using relative image paths and absolute external web links.
+                    </li>
+                    <li>
+                        <strong>DevTools Box Model Check:</strong> Right-click your elements in the browser and choose <strong>Inspect</strong>. Hover over elements in the DevTools Elements panel to check padding (green highlight) and margin (orange highlight)!
+                    </li>
+                    <li>
+                        <strong>Verify Links:</strong> Click all 5 external links to ensure they open the intended website, and verify that all local images render without broken image icons.
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

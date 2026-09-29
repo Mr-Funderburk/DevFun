@@ -1,0 +1,189 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Major Course Project: Build a cohesive 6-page personal website showcasing HTML5 structure, CSS design continuity, flexbox layouts, positioning, and advanced CSS features.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Major Project: 6-Page Personal Website | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Major Project: Personal Website</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Major Project: 6-Page Personal Website</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Project Objective</h2>
+                <p>It is time to pull together everything you have learned in Web Development 1 into a complete, multi-page website! Your task is to build a cohesive, <strong>6-page personal website</strong> that demonstrates semantic HTML5 layout structure, CSS design continuity, Flexbox grid positioning, and custom styling techniques.</p>
+
+                <blockquote class="code-explanation">
+                    <h4>The "B" vs. "A" Grade Benchmark</h4>
+                    <p>The code showcased in class provides a solid baseline for a <strong>"B" grade</strong>. To earn an <strong>"A" grade</strong>, you must expand beyond basic layouts by creating customized visual styles, richer content sections, and successfully researching and implementing a brand-new CSS property not covered in the starter template.</p>
+                </blockquote>
+
+                <h2>Grading Standards &amp; Requirements</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Project Evaluation Criteria</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">Baseline Requirements ("B" Grade Level)</th>
+                                <th scope="col">Excellence &amp; Customization ("A" Grade Level)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Page Count &amp; Structure</th>
+                                <td>1 Homepage (<code>index.html</code>) plus 5 distinct topic sub-pages (e.g., Family, Games, Programming, Motorcycles, SCUBA, or topics of your choice).</td>
+                                <td>Distinct layout variations per page, interactive image galleries, rich lists, or custom tabular data layouts.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Design Continuity</th>
+                                <td>All 6 pages share matching navigation bars, header banners, font stacks, and a consistent primary color palette.</td>
+                                <td>Polished custom typography, unique color accents, refined margin/padding rhythm, and subtle visual depth.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Navigation &amp; Links</th>
+                                <td>Functional working navigation across all headers. Correct relative linking between internal pages, plus at least one external absolute link.</td>
+                                <td>External links open cleanly in a new tab (<code>target="_blank"</code>), with active page state styling on the navigation bar.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Content &amp; Assets</th>
+                                <td>Completes all content areas with descriptive text and functional non-broken images in an <code>/images</code> folder.</td>
+                                <td>Original written copy with zero raw placeholder text, custom image captions, and well-structured sub-headings.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CSS Research Challenge</th>
+                                <td>Uses default baseline CSS starter styles without adding new properties.</td>
+                                <td>Researches, implements, and comments on <strong>at least one new CSS property</strong> not present in the starter code. Prepared for a 30-sec explanation.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Required File &amp; Folder Directory Structure</h2>
+                <p>Your submission folder must be strictly organized. Ensure relative paths accurately target images and stylesheets across all sub-pages:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">project-folder-structure</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Folder Tree</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-markdown">about-me/
+├── index.html            (Homepage)
+├── family.html           (Topic Page 1)
+├── games.html            (Topic Page 2)
+├── programming.html      (Topic Page 3)
+├── motorcycles.html      (Topic Page 4)
+├── scuba.html            (Topic Page 5)
+├── css/
+│   └── about-me.css      (Shared global stylesheet)
+└── images/
+    ├── hero-banner.jpg
+    ├── family.jpg
+    ├── games.jpg
+    └── ... (all website image assets)</code></pre>
+                    </div>
+                </div>
+
+                <p class="note"><strong>Note:</strong> This project should reside in your <code>projects</code> folder.</p>
+
+                <h2>Understanding Relative vs. Absolute Links</h2>
+                <p>Your project must demonstrate two distinct types of hyperlinks:</p>
+                <ul>
+                    <li><strong>Relative Internal Links:</strong> Used to navigate between pages inside your project folder without specifying a domain name.</li>
+                    <li><strong>Absolute External Links:</strong> Used to point to external websites on the internet. Must include the full URL protocol and open in a new browser window/tab.</li>
+                </ul>
+
+                <h2>Leveling Up to an "A": The New CSS Property Challenge</h2>
+                <p>To reach an <strong>"A" grade</strong>, you must research and implement at least one property we have not discussed in class. You must place an explanatory CSS comment directly above your implementation and be ready to explain it in 30 seconds during class evaluation.</p>
+
+                <p>Here are several ideas for new properties you can research and include:</p>
+
+                <ul>
+                    <li><strong>box-shadow</strong></li>
+                    <li><strong>transition</strong></li>
+                    <li><strong>transform</strong></li>
+                    <li><strong>filter</strong></li>
+                    <li><strong>gradients</strong></li>
+                </ul>
+
+                <h2>Final Submission Checklist</h2>
+                <p>Before compressing your project for turn-in, double check every item on this checklist:</p>
+
+                <ol>
+                    <li><strong>Root Folder Organization:</strong> Contains <code>index.html</code>, 5 distinct sub-page HTML files, a <code>/css</code> subfolder with your stylesheet, and an <code>/images</code> subfolder with all image files.</li>
+                    <li><strong>Navigation Test:</strong> Every nav link works seamlessly from every page with no broken relative pathways or 404 errors.</li>
+                    <li><strong>Image Check:</strong> All images load properly, utilize descriptive <code>alt</code> text, and maintain proportions without squishing or stretching.</li>
+                    <li><strong>Absolute External Link:</strong> Contains at least one external hyperlink using <code>target="_blank"</code> to open in a new browser tab.</li>
+                    <li><strong>CSS Comment Requirement:</strong> Contains a clear comment directly above your newly researched CSS property explaining what it does.</li>
+                    <li><strong>ZIP Archive:</strong> Compress your entire root directory into a single <code>.zip</code> file and upload it to the submission portal.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

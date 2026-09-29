@@ -1,0 +1,460 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Master CSS positioning (static, relative, absolute, sticky) and z-index layering for floating badges, sticky headers, and overlapping elements.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>CSS Positioning &amp; z-index | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>CSS Positioning &amp; z-index</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>CSS Positioning &amp; z-index</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Precision Layout Control</h2>
+                <p>Flexbox excels at arranging elements side-by-side or stacked in rows and columns. However, when you need elements to <strong>overlap</strong>, pin notification badges onto icons, or lock a navigation header to the top of the viewport during scrolling, you need the CSS <code>position</code> property.</p>
+
+                <p>The <code>position</code> property unlocks four direction offset properties: <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>.</p>
+
+                <h2><span class="step-num">1.</span> The Four Core Position Types</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>CSS Position Property Overview</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Position Value</th>
+                                <th scope="col">In Normal Flow?</th>
+                                <th scope="col">Positioned Relative To...</th>
+                                <th scope="col">Common Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><code>static</code></th>
+                                <td>Yes</td>
+                                <td>Default document flow (offsets ignored)</td>
+                                <td>Standard body text, headings, block containers.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>relative</code></th>
+                                <td>Yes</td>
+                                <td>Its own normal default position</td>
+                                <td>Minor visual offsets &amp; acting as anchor parents for absolute children.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>absolute</code></th>
+                                <td>No (Removed)</td>
+                                <td>Nearest ancestor with a position other than static</td>
+                                <td>Floating badges, tooltip boxes, modal close buttons.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>sticky</code></th>
+                                <td>Yes</td>
+                                <td>Relative until scroll threshold, then locks to viewport</td>
+                                <td>Sticky nav bars, table headers, persistent announcements.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Static Positioning (The Default)</h3>
+                <p>Every element defaults to <code>position: static;</code>. Static elements follow the natural page flow from top to bottom. Setting offset values like <code>top: 20px;</code> or <code>left: 10px;</code> on a static element will have <strong>no effect</strong>.</p>
+
+                <h3>Relative Positioning</h3>
+                <p>An element with <code>position: relative;</code> remains in the natural page flow, meaning the space it originally occupied is preserved. You can nudge it away from its starting point using <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code> without affecting sibling elements around it.</p>
+
+                <blockquote class="code-explanation">
+                    <h4>The Parent-Child Anchor Trick</h4>
+                    <p>The primary power of <code>position: relative;</code> is to serve as an <strong>anchor point (containing block)</strong> for child elements styled with <code>position: absolute;</code>!</p>
+                </blockquote>
+
+                <h3>Absolute Positioning</h3>
+                <p>An element with <code>position: absolute;</code> is completely pulled out of the normal page flow. It leaves no gap behind, allowing other elements to collapse into its former space.</p>
+
+                <p>It places itself relative to its <strong>nearest positioned ancestor</strong> (any ancestor element with <code>position: relative</code>, <code>absolute</code>, or <code>sticky</code>). If no positioned ancestor exists, it anchors itself to the top-level <code>&lt;body&gt;</code> element.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">absolute-anchor.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Parent card acts as the coordinate boundary */
+.card {
+    position: relative; 
+    width: 300px;
+    padding: 20px;
+}
+
+/* Child badge floats in the top right corner of .card */
+.badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h3>Sticky Positioning</h3>
+                <p>An element with <code>position: sticky;</code> behaves like <code>relative</code> while scrolling normally, but "sticks" in place like a fixed element once it reaches a specified offset threshold (such as <code>top: 0;</code>).</p>
+
+                <p><em>Note: A sticky element stays pinned only within the vertical boundary of its parent container.</em></p>
+
+                <h2 class="step-num">2. Controlling the 3D Depth: <code>z-index</code></h2>
+                <p>When elements overlap, CSS renders them in the order they appear in HTML (elements lower in the markup render on top). The <code>z-index</code> property lets you explicitly control vertical stacking order along the Z-axis (towards or away from the viewer).</p>
+
+                <ul>
+                    <li><code>z-index</code> only works on <strong>positioned elements</strong> (elements with <code>relative</code>, <code>absolute</code>, or <code>sticky</code>). It has no effect on <code>position: static</code> elements.</li>
+                    <li>Higher integers stack on top of lower integers (e.g., <code>z-index: 10;</code> renders above <code>z-index: 1;</code>).</li>
+                    <li>Negative values (e.g., <code>z-index: -1;</code>) push elements behind the default text and background flow.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">z-index-stacking.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">.background-decor {
+    position: absolute;
+    z-index: 1; /* Rendered underneath content */
+}
+
+.modal-overlay {
+    position: absolute;
+    z-index: 100; /* High stack order to stay on top of all page elements */
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Putting It Together: Product Card &amp; Sticky Bar</h2>
+                <p>In your <code>web-1/learning/</code> folder, create <code>position.html</code> and link it to <code>position.css</code> to build a floating card badge, stacked avatar icons, and sticky navigation bar.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">position.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS Positioning Demo&lt;/title&gt;
+    &lt;link rel="stylesheet" href="position.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Sticky Navigation Bar --&gt;
+    &lt;header class="sticky-nav"&gt;
+        &lt;div class="nav-content"&gt;
+            &lt;span class="brand"&gt;PositionLab&lt;/span&gt;
+            &lt;span class="status-pill"&gt;Sticky Active&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class="content-wrapper"&gt;
+        &lt;h1&gt;Overlapping &amp; Positioning Demo&lt;/h1&gt;
+
+        &lt;!-- Relative Card Container --&gt;
+        &lt;article class="product-card"&gt;
+            &lt;!-- Absolute Badge Floating Top-Right --&gt;
+            &lt;span class="badge-featured"&gt;HOT ITEM&lt;/span&gt;
+
+            &lt;img src="https://picsum.photos/400/220" alt="Product thumbnail" class="card-img"&gt;
+
+            &lt;div class="card-body"&gt;
+                &lt;h2&gt;Developer Gear Pack&lt;/h2&gt;
+                &lt;p&gt;Master absolute positioning anchors and sticky element scroll targets.&lt;/p&gt;
+
+                &lt;!-- Stacked Overlapping Avatars using z-index --&gt;
+                &lt;div class="avatar-stack"&gt;
+                    &lt;div class="avatar avatar-1"&gt;A&lt;/div&gt;
+                    &lt;div class="avatar avatar-2"&gt;B&lt;/div&gt;
+                    &lt;div class="avatar avatar-3"&gt;C&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now write the positioning and stacking rules in <code>position.css</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">position.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    min-height: 180vh; /* Extra scroll distance to demonstrate sticky navbar */
+}
+
+/* 1. Sticky Navigation Bar */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50; /* Ensure nav sits above scrolling cards */
+    background-color: #0f172a;
+    border-bottom: 2px solid #38bdf8;
+    padding: 16px 24px;
+}
+
+.nav-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 800;
+    color: #f8fafc;
+}
+
+.status-pill {
+    background-color: #0f2b48;
+    color: #38bdf8;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper h1 {
+    margin-bottom: 24px;
+}
+
+/* 2. Relative Card Anchor */
+.product-card {
+    position: relative; /* Anchor point for absolute badge! */
+    background-color: #151d32;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    width: 340px;
+    overflow: visible; /* Allows floating badge to overhang edges */
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* 3. Absolute Badge Floating top-right */
+.badge-featured {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    z-index: 10;
+    background-color: #f43f5e;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h2 {
+    color: #f8fafc;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.card-body p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+/* 4. Overlapping Avatar Stack with z-index */
+.avatar-stack {
+    display: flex;
+}
+
+.avatar {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1e293b;
+    border: 2px solid #0b1020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Shift avatar positions left to create overlap */
+.avatar-1 {
+    z-index: 3;
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.avatar-2 {
+    z-index: 2;
+    margin-left: -12px; /* Pull left under avatar 1 */
+    background-color: #818cf8;
+    color: #0f172a;
+}
+
+.avatar-3 {
+    z-index: 1;
+    margin-left: -12px; /* Pull left under avatar 2 */
+    background-color: #f472b6;
+    color: #0f172a;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Test your positioning knowledge with these practical exercises:</p>
+
+                <ol>
+                    <li>
+                        <strong>Build an Unread Notification Dot:</strong> Create a bell icon or button (<code>position: relative</code>) and place a small red circle (<code>position: absolute</code>) over the top-right corner using <code>top: -4px; right: -4px;</code>.
+                    </li>
+                    <li>
+                        <strong>Create a Floating Back-to-Top Button:</strong> Create a link styled as a circular arrow button and position it in the bottom-right corner of the window using absolute positioning inside a container or sticky positioning.
+                    </li>
+                    <li>
+                        <strong>Fix a Stacking Order Bug:</strong> Remove <code>position: relative;</code> from <code>.product-card</code> in your practice project. Observe where the <code>.badge-featured</code> element jumps to when its parent container loses its positioning status!
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

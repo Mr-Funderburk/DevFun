@@ -18,14 +18,14 @@ course: web_1
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/code-window.css">
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
 
-    <script src="/js/prism.min.js" defer></script>
-    <script src="/js/prism-gml.js" defer></script>
-    <script src="/js/code-window.js" defer></script>
-    <script src="/js/main.js" defer></script>
-    <script src="/js/lesson.js" defer></script>
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
 </head>
 <body>
 
@@ -59,55 +59,13 @@ course: web_1
                 <h1>The CSS Box Model</h1>
             </header>
 
-            <!-- Box Model Example -->
-            <div style="width: 600px; margin: 10px auto; padding: 5px 10px; background-color: #fb923c;">
-                <span>Margin (Transparent outer gap pushes neighbors away)</span>
-                <div style="width: 95%; margin: 10px auto; padding: 5px 10px; background-color: #4ade80;">
-                    <span>Border (Visible boundary stroke around box)</span>
-                    <div>
-                        <span>Padding (Inner cushion around content)</span>
-                        <div>
-                            <span>Element (Text, Image, Video, etc.)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="lesson-content">
                 <h2>Every Element is a Box</h2>
                 <p>In web design, every single HTML element on your screen—whether it's an <code>&lt;h1&gt;</code>, a <code>&lt;p&gt;</code>, an <code>&lt;img&gt;</code>, or an <code>&lt;article&gt;</code>—is treated by the browser as a rectangular box. CSS controls layout and positioning by wrapping four distinct layers around these boxes.</p>
 
                 <p>Understanding how these four layers calculate total size is the foundation of web layout architecture.</p>
 
-                <div class="code-window">
-                    <div class="code-window-header">
-                        <div class="code-window-left">
-                            <div class="window-dots dots-mac">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <span class="window-filename">box-model-diagram.txt</span>
-                        </div>
-                        <div class="code-window-right">
-                            <span class="code-lang-badge">Diagram</span>
-                        </div>
-                    </div>
-                    <div class="code-window-body">
-                        <pre><code>+-------------------------------------------------------+
-|  MARGIN (Transparent outer gap pushes neighbors away) |
-|  +-------------------------------------------------+  |
-|  |  BORDER (Visible boundary stroke around box)    |  |
-|  |  +-------------------------------------------+  |  |
-|  |  |  PADDING (Inner cushion around content)   |  |  |
-|  |  |  +-------------------------------------+  |  |  |
-|  |  |  |  CONTENT (Text, Image, Video, etc.) |  |  |  |
-|  |  |  +-------------------------------------+  |  |  |
-|  |  +-------------------------------------------+  |  |
-|  +-------------------------------------------------+  |
-+-------------------------------------------------------+</code></pre>
-                    </div>
-                </div>
+                <img src="img/box-model.png" alt="The Box Model" style="border-radius: 16px; width: 90%; max-width: 900px; object-fit: contain; margin: 0 auto;">
 
                 <h2>Deconstructing the Four Layers</h2>
                 <ul>

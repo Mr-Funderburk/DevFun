@@ -1,0 +1,568 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn CSS pseudo-class states like :hover, :focus, :visited, and :active, and master element display modes including block, inline, inline-block, and none.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>CSS States &amp; Display | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+
+    <style>
+        .state-example {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            margin: 24px 0 32px;
+            padding: 16px;
+            background: var(--surface, #151d32);
+            border: 1px solid var(--border, #28324a);
+            border-radius: 8px;
+        }
+
+        .state-example > div:first-child {
+            display: flex;
+            flex: 0 0 180px;
+        }
+
+        #stateExample:link,
+        #stateExample:visited {
+            display: flex;
+            width: 100%;
+            min-height: 64px;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            background: #c084fc;
+            color: #171326;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+        }
+
+        #stateExample:hover {
+            background: #a855f7;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        #stateExample:focus-visible {
+            outline: 3px solid #fbbf24;
+            outline-offset: 3px;
+        }
+
+        #stateExample:active {
+            background: #7e22ce;
+            color: #fff;
+            transform: translateY(1px);
+        }
+
+        #stateExampleDesc {
+            flex: 1;
+            align-self: center;
+            min-width: 0;
+            color: var(--text, #f4f7fb);
+            line-height: 1.6;
+        }
+
+        #stateExampleDesc::before {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--blue, #38bdf8);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            content: attr(data-state) " state";
+        }
+
+        .state-example[data-state="hover"] #stateExampleDesc::before {
+            color: #7ee787;
+        }
+
+        .state-example[data-state="focus"] #stateExampleDesc::before {
+            color: #fbbf24;
+        }
+
+        .state-example[data-state="active"] #stateExampleDesc::before {
+            color: #fb7185;
+        }
+
+        @media (max-width: 600px) {
+            .state-example {
+                flex-direction: column;
+            }
+
+            .state-example > div:first-child {
+                flex-basis: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>CSS States &amp; Display</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>CSS States &amp; Display</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Bringing Web Pages to Life with States</h2>
+                <p>So far, all our styles have been static. But web pages are interactive! Users hover over buttons, click links, and navigate through forms using their keyboard.</p>
+                <p>In CSS, a <strong>pseudo-class</strong> is a keyword added to a selector that specifies a special state of the targeted element. Pseudo-classes begin with a <strong>colon (<code>:</code>)</strong> and allow you to apply styles dynamically based on user actions.</p>
+
+                <h2>Link States: The LVHA Rule</h2>
+                <p>Hyperlinks (<code>&lt;a&gt;</code> tags) have four primary interaction states. To ensure your styles work correctly without getting overridden by cascading conflicts, always define link states in the **LVHA** order:</p>
+
+                <ol>
+                    <li><code>:link</code> — A normal, unvisited link that the user has not clicked yet.</li>
+                    <li><code>:visited</code> — A link that the user has already visited in their current browser history.</li>
+                    <li><code>:hover</code> — Triggers when the user moves their mouse cursor over the link.</li>
+                    <li><code>:active</code> — Triggers at the exact moment the link is being clicked down.</li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">link-states.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* 1. Unvisited Link */
+a:link {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* 2. Visited Link */
+a:visited {
+    color: #a855f7;
+}
+
+/* 3. Mouse Hover */
+a:hover {
+    color: #facc15;
+    text-decoration: underline;
+}
+
+/* 4. Active Click */
+a:active {
+    color: #ef4444;
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Memory Trick: Lord Vader's Handle's Awesome (LVHA)</h4>
+                    <p>If you write <code>a:hover</code> before <code>a:visited</code>, the visited style will override the hover effect whenever a user visits that link! Stick strictly to <strong>:link &rarr; :visited &rarr; :hover &rarr; :active</strong>.</p>
+                </blockquote>
+
+                <div class="state-example">
+                    <div><a href="#" id="stateExample">Try Me!</a></div>
+                    <div id="stateExampleDesc" data-state="link" role="status" aria-live="polite">The :link pseudo-class styles a link that has not been visited yet. This is the link's default state.</div>
+                </div>
+
+                <h2>Hover &amp; Focus Beyond Links</h2>
+                <p>Pseudo-classes aren't just for hyperlinks! You can apply <code>:hover</code> and <code>:focus</code> to buttons, cards, images, and form inputs to create responsive feedback.</p>
+
+                <h3>Keyboard Accessibility: The <code>:focus</code> State</h3>
+                <p>When users press the <kbd>Tab</kbd> key to navigate a web page, the browser moves focus from one interactive element to another. The <code>:focus</code> pseudo-class styles the active element receiving keyboard input.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">interactive-elements.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Hover state on article cards */
+.card {
+    background-color: #1e293b;
+    border: 2px solid #334155;
+}
+
+.card:hover {
+    border-color: #38bdf8;
+    background-color: #0f172a;
+}
+
+/* Focus state for keyboard accessibility */
+button:focus,
+a:focus {
+    outline: 3px solid #facc15;
+    outline-offset: 2px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>The CSS <code>display</code> Property</h2>
+                <p>Every HTML element has a default layout behavior that determines how it sits alongside other elements on the screen. The <code>display</code> property allows you to change an element's structural rendering mode.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Core CSS Display Options</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Display Value</th>
+                                <th scope="col">Flow Behavior</th>
+                                <th scope="col">Width / Height &amp; Margins</th>
+                                <th scope="col">Default HTML Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><code>block</code></th>
+                                <td>Starts on a <strong>new line</strong> and stretches to fill 100% of available width.</td>
+                                <td>Respects custom <code>width</code>, <code>height</code>, <code>padding</code>, and top/bottom <code>margin</code>.</td>
+                                <td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>, <code>&lt;article&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>inline</code></th>
+                                <td>Sits <strong>side-by-side</strong> on the same line without breaking to a new line.</td>
+                                <td><strong>Ignores</strong> custom <code>width</code> and <code>height</code>! Ignores top/bottom <code>margin</code>.</td>
+                                <td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>inline-block</code></th>
+                                <td>Sits <strong>side-by-side</strong> on the same line like <code>inline</code>.</td>
+                                <td><strong>Respects</strong> custom <code>width</code>, <code>height</code>, <code>padding</code>, and <code>margin</code> like <code>block</code>!</td>
+                                <td><code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;img&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>none</code></th>
+                                <td>Completely <strong>removes</strong> the element from the page layout.</td>
+                                <td>Hides content and frees up its screen space completely.</td>
+                                <td>Used for dynamic popups, dropdowns, and mobile menus.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>Why `inline-block` is Essential for Buttons and Links</h4>
+                    <p>By default, <code>&lt;a&gt;</code> tags are <code>display: inline</code>, which means browsers ignore top and bottom padding/margins! Converting navigation links to <code>display: inline-block</code> allows you to add custom padding, turning small text links into large, clickable navigation buttons.</p>
+                </blockquote>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a new file named <code>states-and-display.html</code> and link it to a stylesheet named <code>states.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">states-and-display.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Interactive States &amp;amp; Display Modes&lt;/title&gt;
+    &lt;link rel="stylesheet" href="states.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Interactive Navigation&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="index.html" class="nav-link"&gt;Home&lt;/a&gt;
+            &lt;a href="fan-page.html" class="nav-link"&gt;Fan Page&lt;/a&gt;
+            &lt;a href="box-model.html" class="nav-link"&gt;Box Model&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section class="card-grid"&gt;
+            &lt;article class="interactive-card"&gt;
+                &lt;h2&gt;Interactive Card One&lt;/h2&gt;
+                &lt;p&gt;Hover or focus on this box to see dynamic background feedback.&lt;/p&gt;
+                &lt;button class="btn btn-action"&gt;Click Me&lt;/button&gt;
+            &lt;/article&gt;
+
+            &lt;article class="interactive-card"&gt;
+                &lt;h2&gt;Interactive Card Two&lt;/h2&gt;
+                &lt;p&gt;Uses display inline-block buttons with custom spacing.&lt;/p&gt;
+                &lt;button class="btn btn-action"&gt;Explore&lt;/button&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now write the corresponding CSS in <code>states.css</code> using pseudo-classes and custom display modes:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">states.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    padding: 24px;
+}
+
+/* 1. Navigation Links using inline-block */
+.nav-link {
+    display: inline-block; /* Allows vertical padding & height */
+    padding: 10px 18px;
+    margin-right: 8px;
+    background-color: #1e293b;
+    color: #38bdf8;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 2px solid transparent;
+}
+
+/* Link States (LVHA) */
+.nav-link:visited {
+    color: #cbd5e1;
+}
+
+.nav-link:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.nav-link:active {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+.nav-link:focus {
+    outline: 2px solid #facc15;
+    outline-offset: 3px;
+}
+
+/* 2. Interactive Block Cards */
+.interactive-card {
+    display: block;
+    background-color: #151d32;
+    border: 2px solid #334155;
+    padding: 24px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* Hover feedback on non-link containers */
+.interactive-card:hover {
+    border-color: #4ade80;
+    background-color: #192642;
+}
+
+/* 3. Button Component */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-action {
+    background-color: #4ade80;
+    color: #052e16;
+}
+
+.btn-action:hover {
+    background-color: #22c55e;
+}
+
+.btn-action:active {
+    background-color: #15803d;
+    color: #ffffff;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Test your knowledge of interactive pseudo-classes and display behavior with these hands-on challenges:</p>
+
+                <ol>
+                    <li>
+                        <strong>Build an Interactive Navigation Bar:</strong> Take your navigation links inside <code>header</code> and style them so they sit side-by-side using <code>display: inline-block</code>. Add distinct <code>:hover</code> background fills and <code>:active</code> color changes when clicked!
+                    </li>
+                    <li>
+                        <strong>The Keyboard Accessibility Check:</strong> Put your mouse away! Press <kbd>Tab</kbd> on your keyboard to navigate through your page. Write a <code>:focus</code> selector in CSS that highlights active links with a high-contrast yellow outline.
+                    </li>
+                    <li>
+                        <strong>Create a "Hidden Alert" Toggle Test:</strong> Add a paragraph with class <code>.secret-banner</code> that has <code>display: none;</code> by default. Create a rule so when you hover over its parent container, the paragraph changes to <code>display: block;</code>!
+                    </li>
+                    <li>
+                        <strong>Card Accent Shifting:</strong> Add a left border (e.g., <code>border-left: 6px solid #334155;</code>) to your article cards. Write a <code>:hover</code> rule that shifts that border color to bright green (<code>#4ade80</code>) whenever the mouse floats over the card.
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+    <script>
+        const stateExample = document.getElementById('stateExample');
+        const stateExampleContainer = stateExample.closest('.state-example');
+        const stateExampleDesc = document.getElementById('stateExampleDesc');
+        let isHoveringStateExample = false;
+        let isActivatingStateExample = false;
+
+        function updateStateExample() {
+            let state = 'link';
+            let description = "The :link pseudo-class styles a link that has not been visited yet. This is the link's default state.";
+
+            if (isActivatingStateExample) {
+                state = 'active';
+                description = 'The :active pseudo-class applies for the brief moment the link is being pressed.';
+            } else if (isHoveringStateExample) {
+                state = 'hover';
+                description = 'The :hover pseudo-class applies while the pointer is over the link.';
+            } else if (stateExample.matches(':focus')) {
+                state = 'focus';
+                description = 'The :focus pseudo-class applies when the link receives keyboard focus, such as when reached with Tab.';
+            }
+
+            stateExampleContainer.dataset.state = state;
+            stateExampleDesc.dataset.state = state;
+            stateExampleDesc.textContent = description;
+        }
+
+        stateExample.addEventListener('pointerenter', () => {
+            isHoveringStateExample = true;
+            updateStateExample();
+        });
+        stateExample.addEventListener('pointerleave', () => {
+            isHoveringStateExample = false;
+            isActivatingStateExample = false;
+            updateStateExample();
+        });
+        stateExample.addEventListener('focus', updateStateExample);
+        stateExample.addEventListener('blur', updateStateExample);
+        stateExample.addEventListener('pointerdown', () => {
+            isActivatingStateExample = true;
+            updateStateExample();
+        });
+        document.addEventListener('pointerup', () => {
+            isActivatingStateExample = false;
+            updateStateExample();
+        });
+        stateExample.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                isActivatingStateExample = true;
+                updateStateExample();
+            }
+        });
+        stateExample.addEventListener('keyup', event => {
+            if (event.key === 'Enter') {
+                isActivatingStateExample = false;
+                updateStateExample();
+            }
+        });
+        stateExample.addEventListener('click', event => event.preventDefault());
+    </script>
+</body>
+</html>

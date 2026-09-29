@@ -223,6 +223,7 @@
   line-height: 1.7;
   white-space: pre;
   display: block;
+  width: max-content;
   min-width: 100%;
 }
 

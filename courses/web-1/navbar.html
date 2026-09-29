@@ -1,0 +1,337 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn how to build clean, accessible, modern CSS navigation bars using semantic HTML tags and Flexbox.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Modern CSS Navigation Bars | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Modern CSS Navigation Bars</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Modern CSS Navigation Bars</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Backbone of Site Structure</h2>
+                <p>Every web application and site relies on navigation. Modern CSS allows us to construct clean, accessible navigation bars with minimal effort using semantic HTML tags, Flexbox, and state transitions.</p>
+
+                <h2>1. Semantic Structure First</h2>
+                <p>Before styling, we need semantic HTML markup. Screen readers and search engine crawlers rely on explicit HTML tags to understand page navigation structure:</p>
+
+                <ul>
+                    <li><code>&lt;header&gt;</code> — Top-level banner wrapper for page branding and main controls.</li>
+                    <li><code>&lt;nav&gt;</code> — Tells assistive technologies that this block contains core navigation links.</li>
+                    <li><code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> — Organizes links into an accessible list structure.</li>
+                    <li><code>aria-current="page"</code> — An accessible attribute marking which page the user is currently viewing.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">semantic-nav.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;header class="site-header"&gt;
+    &lt;div class="nav-container"&gt;
+        &lt;!-- Brand Logo --&gt;
+        &lt;a href="#" class="brand-logo"&gt;Dev&lt;span class="logo-accent"&gt;Launch&lt;/span&gt;&lt;/a&gt;
+
+        &lt;!-- Main Navigation --&gt;
+        &lt;nav aria-label="Main Navigation"&gt;
+            &lt;ul class="nav-list"&gt;
+                &lt;li&gt;&lt;a href="#" class="nav-link active" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="nav-link"&gt;Courses&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="nav-link"&gt;Community&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="nav-link btn-nav"&gt;Get Started&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2>2. Styling with Modern CSS &amp; Flexbox</h2>
+                <p>Building a modern navbar requires solving three main design tasks:</p>
+
+                <ol>
+                    <li><strong>Clearing Default List Formatting:</strong> Removing list bullets (<code>list-style: none</code>), default padding, and margins from <code>&lt;ul&gt;</code>.</li>
+                    <li><strong>Alignment with Flexbox:</strong> Pushing the logo to the left and navigation links to the right using <code>justify-content: space-between</code> and <code>align-items: center</code>.</li>
+                    <li><strong>Consistent Spacing with <code>gap</code>:</strong> Using CSS <code>gap</code> instead of manual horizontal margins to keep space uniform between items.</li>
+                </ol>
+
+                <blockquote class="code-explanation">
+                    <h4>Why Sticky Header Positioning Matters</h4>
+                    <p>Adding <code>position: sticky; top: 0;</code> keeps the navigation fixed to the top of the viewport when scrolling, giving users instant access to site links from anywhere on the page.</p>
+                </blockquote>
+
+                <h2>3. Micro-Interactions &amp; Active Indicators</h2>
+                <p>A great navigation bar feels alive. Using smooth <code>transition</code> effects, active link highlighting, and keyboard <code>:focus-visible</code> indicators creates a polished user experience.</p>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a file named <code>navbar.html</code> and link it to <code>navbar.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">navbar.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Modern CSS Navigation Bar&lt;/title&gt;
+    &lt;link rel="stylesheet" href="navbar.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;div class="nav-container"&gt;
+            &lt;a href="#" class="brand-logo"&gt;Dev&lt;span class="logo-accent"&gt;Launch&lt;/span&gt;&lt;/a&gt;
+
+            &lt;nav aria-label="Main Navigation"&gt;
+                &lt;ul class="nav-list"&gt;
+                    &lt;li&gt;&lt;a href="#" class="nav-link active" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#" class="nav-link"&gt;Courses&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#" class="nav-link"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#" class="nav-link"&gt;Community&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#" class="nav-link btn-nav"&gt;Get Started&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class="content"&gt;
+        &lt;h1&gt;Welcome to DevLaunch&lt;/h1&gt;
+        &lt;p&gt;Scroll down to observe the sticky navbar behavior in action!&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now write the complete navigation styles in <code>navbar.css</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">navbar.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    min-height: 150vh; /* Extra height to test sticky scrolling */
+}
+
+/* 1. Header Layout & Sticky Position */
+.site-header {
+    background-color: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 2. Logo Styling */
+.brand-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+.logo-accent {
+    color: #38bdf8;
+}
+
+/* 3. Navigation List (Flexbox & Gap Spacing) */
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+/* 4. Navigation Links */
+.nav-link {
+    display: inline-block;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover & Focus Keyboard States */
+.nav-link:hover {
+    color: #ffffff;
+    background-color: #1e293b;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 2px;
+}
+
+/* Active Page State */
+.nav-link.active {
+    color: #38bdf8;
+    background-color: #0f2b48;
+    font-weight: 600;
+}
+
+/* Call-To-Action Nav Button */
+.nav-link.btn-nav {
+    background-color: #38bdf8;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.nav-link.btn-nav:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+/* Main Content Padding */
+.content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Reinforce your understanding of navigation structure and Flexbox alignment with these challenges:</p>
+
+                <ol>
+                    <li>
+                        <strong>Create an Animated Underline Indicator:</strong> Instead of a background color on <code>:hover</code>, remove <code>background-color</code> and use a bottom border (<code>border-bottom: 2px solid #38bdf8</code>) to create a subtle bottom accent indicator for active and hovered links.
+                    </li>
+                    <li>
+                        <strong>Add a Status Pill Badge:</strong> Add a small <code>&lt;span class="badge"&gt;New&lt;/span&gt;</code> inside one of your <code>&lt;li&gt;</code> navigation items. Style it with a small background color, rounded borders, and compact padding to look like a status tag!
+                    </li>
+                    <li>
+                        <strong>Build a "Glassmorphism" Header:</strong> Replace the header background color in CSS with a translucent color and backdrop blur effect:
+                        <br>
+                        <code>background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px);</code>
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

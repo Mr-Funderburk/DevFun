@@ -1,0 +1,399 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Learn the power of CSS classes, class naming rules, combining multiple classes, chaining selectors, and how CSS specificity determines which styles win.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>CSS Classes &amp; Specificity | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>CSS Classes &amp; Specificity</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>CSS Classes &amp; Specificity</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Power of Targeted Styling</h2>
+                <p>Up until now, we've styled our pages using <strong>element selectors</strong> like <code>p</code>, <code>h1</code>, or <code>article</code>. While element selectors work great for setting baseline styles, they have a major limitation: they style <em>every single matching tag on the page</em>.</p>
+                <p>What if you want one specific paragraph to be a highlighted alert callout, while leaving all other paragraphs alone? That's where <strong>CSS Classes</strong> come in.</p>
+
+                <blockquote>
+                    <h4>Why Classes Are the Workhorse of Web Development</h4>
+                    <p>Classes give you surgical precision. Instead of forcing every <code>&lt;button&gt;</code> or <code>&lt;p&gt;</code> tag to look identical, classes allow you to create reusable style recipes that can be applied to <em>any</em> HTML element whenever you need them.</p>
+                </blockquote>
+
+                <h2>Class Syntax &amp; Naming Conventions</h2>
+                <p>Using a class requires two parts: assigning the class attribute in HTML, and selecting it with a <strong>dot (<code>.</code>)</strong> in CSS.</p>
+
+                <p><strong>1. HTML Syntax:</strong> Add the <code>class</code> attribute to an element.</p>
+                <p><code>&lt;p class="alert-box"&gt;This is an urgent message!&lt;/p&gt;</code></p>
+
+                <p><strong>2. CSS Syntax:</strong> Use a period (<code>.</code>) before the class name to target it.</p>
+                <p><code>.alert-box { background-color: #ef4444; color: white; }</code></p>
+
+                <h3>Strict Naming Rules for Classes</h3>
+                <ul>
+                    <li><strong>No Spaces:</strong> Spaces in an HTML <code>class</code> attribute are used to separate multiple class names!</li>
+                    <li><strong>Use Kebab-Case:</strong> Use lowercase letters and separate words with hyphens (e.g., <code>card-title</code>, <code>btn-primary</code>, <code>site-footer</code>).</li>
+                    <li><strong>Do Not Start with Numbers:</strong> Class names should begin with a letter (e.g., use <code>card-1</code> instead of <code>1-card</code>).</li>
+                    <li><strong>Name by Purpose, Not Appearance:</strong> Choose names based on what the element <em>is</em> or <em>does</em> (e.g., <code>.status-success</code> instead of <code>.green-text</code>). If you change the design from green to blue later, <code>.green-text</code> won't make sense!</li>
+                </ul>
+
+                <h2>Multi-Class Magic: Combining Styles</h2>
+                <p>HTML elements are not limited to just one class. You can apply <strong>multiple classes</strong> to a single tag by separating their names with spaces inside the <code>class=""</code> attribute!</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">buttons-example.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!-- Base button structure + variant modifiers --&gt;
+&lt;button class="btn btn-success"&gt;Save Changes&lt;/button&gt;
+&lt;button class="btn btn-danger btn-large"&gt;Delete Account&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>The Modular Component Pattern</h4>
+                    <p>Notice how <code>.btn</code> can handle shared baseline styles (padding, borders, border-radius), while <code>.btn-success</code> or <code>.btn-danger</code> handles the background color, and <code>.btn-large</code> handles text sizing. This keeps your CSS lean, reusable, and modular!</p>
+                </blockquote>
+
+                <h2>CSS Specificity: More Specific = More Important</h2>
+                <p>When multiple CSS rules target the exact same element with conflicting styles, how does the browser decide which rule wins? It calculates a priority score called <strong>Specificity</strong>.</p>
+
+                <p>Think of specificity as a point system. The rule with the most specific target wins the tug-of-war:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>CSS Specificity Hierarchy (Least to Most Specific)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Selector Type</th>
+                                <th scope="col">Example</th>
+                                <th scope="col">Specificity Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Element Tag</th>
+                                <td><code>p { color: white; }</code></td>
+                                <td>Lowest Priority</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Class Selector</th>
+                                <td><code>.highlight { color: yellow; }</code></td>
+                                <td><strong>Medium Priority (Overrides Tags)</strong></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ID Selector</th>
+                                <td><code>#main-title { color: gold; }</code></td>
+                                <td>High Priority (Overrides Classes)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Inline Style Attribute</th>
+                                <td><code>style="color: red;"</code></td>
+                                <td>Highest Priority (Avoid Using!)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note"><em>Inline Styles</em> will be covered later in this course and <em>IDs</em> are covered in Web Development 2.</p>
+
+                <h3>Rule 1: Classes Always Beat Tag Selectors</h3>
+                <p>If you have <code>p { color: white; }</code> and <code>.special { color: gold; }</code>, any paragraph with <code>class="special"</code> will be <strong>gold</strong> because a class is more specific than a general HTML tag rule.</p>
+
+                <h3>Rule 2: The Cascading Tie-Breaker</h3>
+                <p>If two rules have the <em>exact same specificity level</em> (e.g., two class selectors targeting the same element), the <strong>last rule written in your CSS file wins</strong>. This is the "Cascading" nature of Cascading Style Sheets!</p>
+
+                <h2>Chaining Selectors: Contextual Specificity</h2>
+                <p>You don't always need to create a new class to target something specific. You can also increase priority and narrow down your styling targets by <strong>chaining selectors together</strong> (also known as <em>descendant selectors</em>).</p>
+
+                <p>When you separate tag names or class names with a space in CSS, you are telling the browser: <em>"Only apply these styles if the rightmost element is nested inside all the elements that come before it."</em></p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">chaining-example.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* General Rule: Applies to ALL &lt;strong&gt; tags everywhere on the page */
+strong {
+    color: #f87171; /* Light Red */
+}
+
+/* Chained / Contextual Rule: Specific to nested elements */
+p span strong {
+    color: #38bdf8; /* Light Blue */
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>How Chaining Wins the Specificity Tug-of-War</h4>
+                    <p>Why does <code>p span strong</code> override the general <code>strong</code> rule?</p>
+                    <ul>
+                        <li><code>strong</code> has a specificity score of <strong>1 tag</strong>.</li>
+                        <li><code>p span strong</code> has a specificity score of <strong>3 tags combined</strong> (1 + 1 + 1).</li>
+                    </ul>
+                    <p>Because 3 tags are more specific than 1 tag, <code>p span strong</code> gets higher priority! Furthermore, it restricts the blue color so it <strong>only</strong> applies to bold text inside a <code>&lt;span&gt;</code> that is sitting inside a <code>&lt;p&gt;</code> paragraph. A <code>&lt;strong&gt;</code> inside an <code>&lt;h1&gt;</code> or a <code>&lt;div&gt;</code> will remain red!</p>
+                </blockquote>
+
+                <h3>Chaining Classes with Tags</h3>
+                <p>You can also chain classes together with tag selectors or other classes to target precise contexts without affecting other parts of your website:</p>
+
+                <ul>
+                    <li><code>.card h2</code> — Targets only <code>&lt;h2&gt;</code> headings that are inside an element with <code>class="card"</code>.</li>
+                    <li><code>article.featured</code> (no space) — Targets <code>&lt;article&gt;</code> tags that specifically have the <code>featured</code> class attached directly to them.</li>
+                    <li><code>.sidebar .btn</code> — Targets buttons inside a sidebar section, ignoring buttons anywhere else on the page.</li>
+                </ul>
+
+                <h2>Classes vs. IDs: What's the Difference?</h2>
+                <p>While an <strong>ID</strong> (e.g. <code>#header</code>) can also target elements, IDs are strictly unique—you can only use a specific ID <em>once per HTML page</em>. In contrast, <strong>classes can be used dozens or hundreds of times</strong> across the same document.</p>
+                <p><strong>Best Practice:</strong> Use classes for almost all of your CSS styling. Save IDs primarily for JavaScript functionality and page anchor links!</p>
+                <p><strong>Important:</strong> For this course, we will not be using IDs. IDs will be introduced in Web Development 2.</p>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a file named <code>class-styles.html</code> and link it to a stylesheet named <code>classes.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">class-styles.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Styling with Classes &amp;amp; Chained Selectors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="classes.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Notification Center&lt;/h1&gt;
+
+        &lt;p&gt;General paragraph with standard &lt;strong&gt;red bold text&lt;/strong&gt;.&lt;/p&gt;
+
+        &lt;p&gt;
+            Paragraph containing a span with 
+            &lt;span&gt;&lt;strong&gt;contextual blue bold text&lt;/strong&gt;&lt;/span&gt;!
+        &lt;/p&gt;
+
+        &lt;!-- Alert Banners using multi-class modular styling --&gt;
+        &lt;div class="alert alert-info"&gt;
+            &lt;p&gt;System update scheduled for midnight.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class="alert alert-success"&gt;
+            &lt;p&gt;Your project changes were saved successfully!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class="alert alert-warning alert-large"&gt;
+            &lt;p&gt;Warning: Storage limit is reaching capacity.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now style your alerts and nested elements inside <code>classes.css</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">classes.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    padding: 24px;
+}
+
+/* Base Tag Rule (Lowest Priority) */
+strong {
+    color: #f87171;
+}
+
+/* Chained Descendant Rule (3 Tags = Overrides 'strong' alone) */
+p span strong {
+    color: #38bdf8;
+}
+
+/* Tag Level Selector */
+p {
+    color: #94a3b8;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+/* 1. Base Class: Shared structure for ALL alerts */
+.alert {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 6px solid;
+    border-radius: 4px;
+    background-color: #1e293b;
+}
+
+/* Overriding element 'p' color specifically inside alerts */
+.alert p {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+/* 2. Modifier Classes: Color variants */
+.alert-info {
+    border-color: #38bdf8;
+    background-color: #0f2b48;
+}
+
+.alert-success {
+    border-color: #4ade80;
+    background-color: #062d1b;
+}
+
+.alert-warning {
+    border-color: #facc15;
+    background-color: #3a2e05;
+}
+
+/* 3. Utility Modifier: Sizing variation */
+.alert-large {
+    padding: 28px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Put class flexibility, selector chaining, and specificity concepts to work by completing the following challenges:</p>
+
+                <ol>
+                    <li>
+                        <strong>Experiment with Chained Overrides:</strong> In your <code>class-styles.html</code>, add a <code>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Test Text&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;</code> block. Write a chained selector in CSS (e.g., <code>div p strong</code>) that gives it a green background. Compare its priority against a simple <code>strong</code> selector in DevTools.
+                    </li>
+                    <li>
+                        <strong>Build a Badge Component:</strong> Create three <code>&lt;span&gt;</code> elements with class <code>badge</code>. Create modifier classes <code>badge-primary</code>, <code>badge-secondary</code>, and <code>badge-outline</code> to give each badge a unique color background and border.
+                    </li>
+                    <li>
+                        <strong>Test Specificity Overrides:</strong> Write a baseline rule in CSS targeting <code>p</code> with <code>color: red;</code>. Then write a class <code>.text-custom</code> with <code>color: blue;</code>. Apply the class to a paragraph. Which color wins in the browser? (Inspect the element in DevTools to see the red rule crossed out!).
+                    </li>
+                    <li>
+                        <strong>Create a Featured Card Modifier:</strong> Return to your <code>fan-page.html</code> file from earlier lessons. Write a chained selector <code>.featured h2</code> to change only the title styling inside featured articles!
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,481 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Master CSS Flexbox layout: container vs items, main and cross axes, justify-content, align-items, flex-wrap, gap, and child flex sizing.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Everything Flexbox! | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Everything Flexbox!</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Everything Flexbox!</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Mastering One-Dimensional Layouts</h2>
+                <p>Before Flexbox (Flexible Box Layout), aligning elements side-by-side or centering things vertically required tricky hacks using <code>float</code>, <code>display: inline-block</code>, or complex calculated margins. Flexbox revolutionized CSS layout by providing a predictable, powerful way to distribute space and align items along a single axis.</p>
+
+                <blockquote>
+                    <h4>The Golden Rule of Flexbox</h4>
+                    <p>Flexbox works on a <strong>Parent-Child relationship</strong>. You apply <code>display: flex</code> to a <strong>Flex Container</strong> (the parent element), and its direct child elements automatically become <strong>Flex Items</strong>.</p>
+                </blockquote>
+
+                <h2>1. The Two Axes &amp; <code>flex-direction</code></h2>
+                <p>Flexbox operates on two distinct imaginary lines: the <strong>Main Axis</strong> and the <strong>Cross Axis</strong>.</p>
+
+                <ul>
+                    <li><strong>Main Axis:</strong> The primary direction flex items flow (left-to-right by default). Controlled by <code>justify-content</code>.</li>
+                    <li><strong>Cross Axis:</strong> The perpendicular line running across the main axis (top-to-bottom by default). Controlled by <code>align-items</code>.</li>
+                </ul>
+
+                <p>You can change the orientation of these axes using the <code>flex-direction</code> property on the flex container:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Flex Direction Values</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property Value</th>
+                                <th scope="col">Main Axis Direction</th>
+                                <th scope="col">Cross Axis Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><code>row</code> (Default)</th>
+                               <td>Horizontal (Left &rarr; Right)</td>
+                                <td>Vertical (Top &darr; Bottom)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>row-reverse</code></th>
+                                <td>Horizontal (Right &rarr; Left)</td>
+                                <td>Vertical (Top &darr; Bottom)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>column</code></th>
+                                <td>Vertical (Top &darr; Bottom)</td>
+                                <td>Horizontal (Left &rarr; Right)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>column-reverse</code></th>
+                                <td>Vertical (Bottom &uarr; Top)</td>
+                                <td>Horizontal (Left &rarr; Right)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2. Main Axis Alignment: <code>justify-content</code></h2>
+                <p>The <code>justify-content</code> property determines how extra space is distributed along the <strong>Main Axis</strong>.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Justify Content Options</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Value</th>
+                                <th scope="col">Visual Behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><code>flex-start</code> (Default)</th>
+                                <td>Packs items tight against the start of the main axis.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>flex-end</code></th>
+                                <td>Packs items tight against the end of the main axis.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>center</code></th>
+                                <td>Centers items together in the middle of the container.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>space-between</code></th>
+                                <td>Pushes first and last items to the edges, evenly spacing items in between.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>space-around</code></th>
+                                <td>Gives every item equal space around both its left and right sides.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><code>space-evenly</code></th>
+                                <td>Distributes empty space identically between items and container edges.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3. Cross Axis Alignment: <code>align-items</code> &amp; <code>align-self</code></h2>
+                <p>To control alignment perpendicular to your main axis (e.g., vertical alignment in a standard row), use <code>align-items</code> on the container.</p>
+
+                <ul>
+                    <li><code>stretch</code> (Default) — Stretches items to fill the height/width of the container cross-axis.</li>
+                    <li><code>center</code> — Centers items vertically along the cross-axis.</li>
+                    <li><code>flex-start</code> — Aligns items to the top (or start) of the cross-axis.</li>
+                    <li><code>flex-end</code> — Aligns items to the bottom (or end) of the cross-axis.</li>
+                    <li><code>baseline</code> — Aligns items so that their text baseline lines up cleanly.</li>
+                </ul>
+
+                <blockquote class="code-explanation">
+                    <h4>Overriding Individual Items with <code>align-self</code></h4>
+                    <p>Want a single flex item to break away from its siblings? Apply <code>align-self</code> directly to a child item! For example, <code>.special-item { align-self: flex-end; }</code> will move only that item to the bottom, ignoring the parent's <code>align-items</code> setting.</p>
+                </blockquote>
+
+                <h2>4. Multi-Line Flex: <code>flex-wrap</code> &amp; <code>gap</code></h2>
+                <p>By default, flex containers force all children onto a single row (<code>flex-wrap: nowrap</code>), squishing items if space runs out. To allow flex items to wrap onto new lines when the container shrinks, use <code>flex-wrap: wrap</code>.</p>
+
+                <p>Combine wrapping with <code>gap</code> to manage clean gutters between items without margins:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">wrapping-grid.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to drop to a new line */
+    gap: 24px;       /* Adds 24px space between both rows and columns */
+    justify-content: center;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>5. Flex Item Sizing: Grow, Shrink &amp; Basis</h2>
+                <p>Flex items are dynamic! You can control how child items expand or shrink to fill empty space using three key properties on the child selectors:</p>
+
+                <ol>
+                    <li><strong><code>flex-grow</code>:</strong> Determines how much an item grows relative to its siblings when space is available (e.g. <code>1</code> means grow equally, <code>2</code> means grow twice as fast).</li>
+                    <li><strong><code>flex-shrink</code>:</strong> Determines how much an item shrinks if there isn't enough space (default is <code>1</code>). Set to <code>0</code> to prevent an item from shrinking!</li>
+                    <li><strong><code>flex-basis</code>:</strong> The initial base size of the item before extra space is distributed (e.g. <code>250px</code> or <code>20%</code>).</li>
+                </ol>
+
+                <p><strong>The <code>flex</code> Shorthand:</strong> Combine these into a single property: <code>flex: &lt;grow&gt; &lt;shrink&gt; &lt;basis&gt;</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">flex-shorthand.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Equal width flexible columns */
+.col {
+    flex: 1; /* Equivalent to: flex: 1 1 0% */
+}
+
+/* Fixed sidebar, fluid main content */
+.sidebar {
+    flex: 0 0 280px; /* Don't grow, don't shrink, stay 280px wide */
+}
+
+.main-content {
+    flex: 1; /* Take up all remaining space */
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Putting It Together</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a file named <code>flexbox-demo.html</code> and link it to <code>flexbox.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">flexbox-demo.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Flexbox Feature Layout&lt;/title&gt;
+    &lt;link rel="stylesheet" href="flexbox.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="page-wrapper"&gt;
+        &lt;header class="hero-section"&gt;
+            &lt;h1&gt;Responsive Flexbox Layouts&lt;/h1&gt;
+            &lt;p&gt;Mastering alignment, spacing, and sizing.&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;!-- App Layout with Sidebar + Content --&gt;
+        &lt;div class="app-container"&gt;
+            &lt;aside class="sidebar"&gt;
+                &lt;h3&gt;Sidebar Navigation&lt;/h3&gt;
+                &lt;ul class="sidebar-links"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/aside&gt;
+
+            &lt;main class="main-content"&gt;
+                &lt;h2&gt;Feature Grid&lt;/h2&gt;
+                
+                &lt;!-- Flex Wrapping Card Container --&gt;
+                &lt;div class="card-grid"&gt;
+                    &lt;article class="card"&gt;
+                        &lt;h3&gt;Feature One&lt;/h3&gt;
+                        &lt;p&gt;Flex item with flex-grow enabled to distribute space evenly.&lt;/p&gt;
+                    &lt;/article&gt;
+
+                    &lt;article class="card featured-card"&gt;
+                        &lt;span class="badge"&gt;Popular&lt;/span&gt;
+                        &lt;h3&gt;Feature Two&lt;/h3&gt;
+                        &lt;p&gt;Overridden using custom align-self alignment!&lt;/p&gt;
+                    &lt;/article&gt;
+
+                    &lt;article class="card"&gt;
+                        &lt;h3&gt;Feature Three&lt;/h3&gt;
+                        &lt;p&gt;Wraps cleanly onto the next line when screen size shrinks.&lt;/p&gt;
+                    &lt;/article&gt;
+                &lt;/div&gt;
+            &lt;/main&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now write the complete Flexbox stylesheet inside <code>flexbox.css</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">flexbox.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    padding: 24px;
+}
+
+/* 1. Perfect Centering with Flexbox */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 160px;
+    background-color: #1e293b;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* 2. Main App Container (Sidebar + Main Content Row) */
+.app-container {
+    display: flex;
+    gap: 24px;
+}
+
+/* Fixed Sidebar */
+.sidebar {
+    flex: 0 0 240px; /* Don't grow, don't shrink, fix width to 240px */
+    background-color: #151d32;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.sidebar-links {
+    list-style: none;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-links a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* Fluid Main Content Area */
+.main-content {
+    flex: 1; /* Takes up all remaining horizontal space */
+    background-color: #151d32;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.main-content h2 {
+    margin-bottom: 16px;
+}
+
+/* 3. Responsive Wrapping Card Grid */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: stretch; /* Cards in a row share equal height */
+}
+
+.card {
+    flex: 1 1 200px; /* Grow equally, shrink if needed, target 200px base */
+    background-color: #1e293b;
+    border: 2px solid #334155;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Badge positioned inside flex card */
+.badge {
+    align-self: flex-start; /* Keeps badge contained to its text width */
+    background-color: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.featured-card {
+    border-color: #38bdf8;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Put your Flexbox superpowers to the test with these practical exercises:</p>
+
+                <ol>
+                    <li>
+                        <strong>The Holy Grail Centering Trick:</strong> Create a full-screen hero box (<code>min-height: 100vh</code>) and use <code>display: flex</code>, <code>justify-content: center</code>, and <code>align-items: center</code> to perfectly center a login card in the dead middle of the screen both horizontally and vertically.
+                    </li>
+                    <li>
+                        <strong>Build a 3-Column Pricing Table:</strong> Create three pricing cards side-by-side using Flexbox. Make the middle "Pro" card taller and highlight it using <code>align-self: center</code> or <code>transform: scale(1.05)</code>!
+                    </li>
+                    <li>
+                        <strong>Flex Direction Toggle Challenge:</strong> Turn the <code>.app-container</code> in your example into a column on small screens by adding a media query rule, or practice changing <code>flex-direction: row</code> to <code>flex-direction: column</code> to see how <code>justify-content</code> and <code>align-items</code> swap roles!
+                    </li>
+                    <li>
+                        <strong>Equal-Height Card Equalizer:</strong> Create three cards with different amounts of text (one short sentence, one long paragraph). Notice how Flexbox's default <code>align-items: stretch</code> keeps all three cards at identical heights automatically!
+                    </li>
+                </ol>
+
+                <blockquote>
+                    <h4>Want Some More Practice?</h4>
+                    <p>Try <a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy</a>! A game for learning CSS flexbox</p>
+                </blockquote>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

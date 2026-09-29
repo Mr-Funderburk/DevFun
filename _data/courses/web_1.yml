@@ -3,7 +3,7 @@ title: "Web Development I"
 breadcrumb: "Web 1"
 
 units:
-  - title: "The Basics"
+  - title: "Basic HTML"
     lessons:
       - title: "Demystifying the Web"
         file: "demystifying-the-web.html"
@@ -37,6 +37,8 @@ units:
           - "Semantic Tags"
         status: "published"
         
+  - title: "Basic CSS"
+    lessons:
       - title: "Introduction to CSS"
         file: "intro-to-css.html"
         description: "Learn how external CSS works, master CSS syntax, style pages with colors and borders, and use CSS debugging to visualize semantic HTML layout tags."
@@ -52,4 +54,88 @@ units:
           - "CSS Box Model"
           - "Global Reset"
           - "DevTools"
+        status: "published"
+        
+      - title: "Project: Bio Links"
+        file: "project-bio-links.html"
+        description: "Create a Bio Link page using semantic HTML, relative image paths, absolute external links, and the CSS Box Model."
+        topics:
+          - "Project"
+        status: "published"
+        
+      - title: "CSS Classes"
+        file: "classes.html"
+        description: "Learn the power of CSS classes, class naming rules, combining multiple classes, and how CSS specificity determines which styles win."
+        topics:
+          - "Classes"
+          - "Priority"
+        status: "published"
+        
+      - title: "States & Display"
+        file: "states-display.html"
+        description: "Learn CSS pseudo-class states like :hover, :focus, :visited, and :active, and master element display modes including block, inline, inline-block, and none."
+        topics:
+          - "State"
+          - "Display"
+          - "Pseudo-classes"
+        status: "published"
+        
+      - title: "Project: Event Page"
+        file: "project-event.html"
+        description: "Create a single-page event promotional landing page using semantic HTML, class-based CSS design, modifier classes, and interactive hover states."
+        topics:
+          - "Project"
+        status: "published"
+        
+  - title: "Diving Deeper"
+    lessons:
+      - title: "Flexbox"
+        file: "flexbox.html"
+        description: "Master CSS Flexbox layout: container vs items, main and cross axes, justify-content, align-items, flex-wrap, gap, and child flex sizing."
+        topics:
+          - "Display"
+          - "Flexbox"
+          - "Positioning"
+        status: "published"
+        
+      - title: "Navbar"
+        file: "navbar.html"
+        description: "Learn how to build clean, accessible, modern CSS navigation bars using semantic HTML tags and Flexbox."
+        topics:
+          - "Flexbox"
+          - "Navigation"
+        status: "published"
+        
+      - title: "Mobile-First and Responsive Design"
+        file: "mobile-responsive.html"
+        description: "Learn Responsive Web Design, the viewport meta tag, mobile-first design theory, responsive images, media query syntax, element toggling, and build a 6-card grid layout."
+        topics:
+          - "Mobile-First"
+          - "Responsive Design"
+          - "Responsive Images"
+          - "Media Queries"
+        status: "published"
+        
+      - title: "CSS Positioning"
+        file: "positioning.html"
+        description: "Master CSS positioning (static, relative, absolute, sticky) and z-index layering for floating badges, sticky headers, and overlapping elements."
+        topics:
+          - "Static Positioning"
+          - "Absolute Positioning"
+          - "Sticky Positioning"
+          - "z-index"
+        status: "published"
+        
+      - title: "Positioning Practice"
+        file: "positioning-practice.html"
+        description: "Practice your CSS Positioning Skills!"
+        topics:
+          - "Practice"
+        status: "published"
+        
+      - title: "Project: About Me"
+        file: "project-about-me.html"
+        description: "Build a cohesive 6-page personal website showcasing HTML5 structure, CSS design continuity, flexbox layouts, positioning, and advanced CSS features."
+        topics:
+          - "Project"
         status: "published"

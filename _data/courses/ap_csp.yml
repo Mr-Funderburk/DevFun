@@ -88,6 +88,13 @@ units:
           - "Practice"
         status: "published"
 
+      - title: "Rubber Ducky Debugging"
+        file: "rubber-ducky.html"
+        description: "Hands on practice with conditional statements in Python."
+        topics:
+          - "Rubber Ducky, You're the One!"
+        status: "published"
+
       - title: "Strings"
         file: "strings.html"
         description: "Working with Python Strings, methods, escape characters, and formatting."

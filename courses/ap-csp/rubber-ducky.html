@@ -1,0 +1,207 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Guide - Rubber Ducky Debugging: Learn the psychological and technical methodology of verbal debugging with your new lab companion.">
+    <title>Rubber Ducky Debugging | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Rubber Ducky Debugging</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Rubber Ducky Debugging</h1>
+                <p class="lesson-subtitle">Meet your new Tier-1 Tech Support engineer and master the industry's most powerful problem-solving technique.</p>
+            </header>
+
+            <div class="lesson-content">
+                
+                <div style="background: var(--bg-alt, #f0f7ff); border-left: 4px solid #0066cc; padding: 18px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+                    <h3 style="margin-top: 0; color: #004499; font-size: 1.15em;">🦆 Meet Your New Lab Partner!</h3>
+                    <p style="margin-bottom: 0;">The yellow rubber duck you received today is now a permanent part of your computer science toolkit. Keep it on your desk during lab time, take it home with you, and never write code without it nearby. Before asking a peer or teacher for help when your program crashes, you must explain your problem to your duck first.</p>
+                </div>
+
+                <h2>The Origin Story</h2>
+                <p>The concept of <strong>Rubber Ducky Debugging</strong> was popularized in the landmark 1999 software engineering book <em>The Pragmatic Programmer</em> by Andrew Hunt and David Thomas. Story has it that a legendary programmer carried a rubber duck around and forced fellow developers to explain their code line-by-line to the duck before allowing them to ask for assistance.</p>
+                
+                <p>Today, software engineers at tech giants like Google, Microsoft, and NASA keep rubber ducks, action figures, or desk mascots next to their monitors for the exact same reason.</p>
+
+                <h2>The Psychology: Why Does It Work?</h2>
+                <p>When you encounter a bug, your brain often falls into a mental trap called <strong>cognitive bias</strong>. You read what you <em>intended</em> the code to do rather than what the code <em>actually says</em>. Your mind fills in the blanks automatically because you wrote it!</p>
+
+                <p>Explaining code out loud forces a fundamental cognitive shift:</p>
+
+                <ul>
+                    <li><strong>Automatic vs. Deliberate Processing:</strong> Thinking in your head happens at high speeds and skips over assumptions. Speaking aloud forces your brain into slow, deliberate processing (moving from System 1 to System 2 thinking).</li>
+                    <li><strong>Externalizing the Logic:</strong> Translating code into plain spoken English requires you to re-evaluate every operator, variable assignment, and condition.</li>
+                    <li><strong>Finding the Discrepancy:</strong> The exact moment you say, <em>"And here, this variable stores the highest score..."</em> and look down at your screen, you'll suddenly notice: <code>score = highest</code> instead of <code>highest = score</code>. The "Aha!" moment happens before you even finish your sentence.</li>
+                </ul>
+
+                <h2>The 5-Step Rubber Ducky Protocol</h2>
+                <p>When your code isn't producing the expected output or throws an error, follow this exact sequence:</p>
+
+                <div style="display: grid; gap: 16px; margin: 24px 0;">
+                    <div style="background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="background: #0066cc; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+                        <div>
+                            <strong style="font-size: 1.05em; display: block; margin-bottom: 4px;">Place the Duck in Line-of-Sight</strong>
+                            Set your duck directly next to your screen or keyboard where you can look it in the eye.
+                        </div>
+                    </div>
+
+                    <div style="background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="background: #0066cc; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+                        <div>
+                            <strong style="font-size: 1.05em; display: block; margin-bottom: 4px;">State the Goal to the Duck</strong>
+                            Explain to your duck what the function or program is <em>supposed</em> to do. (e.g., <em>"Okay duck, this function takes a string of comma-separated numbers and checks if they form a valid triangle."</em>)
+                        </div>
+                    </div>
+
+                    <div style="background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="background: #0066cc; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+                        <div>
+                            <strong style="font-size: 1.05em; display: block; margin-bottom: 4px;">Read Every Line Out Loud</strong>
+                            Read your code to the duck line-by-line. Do not summarize or skim! Read every parameter, variable name, and operator verbatim.
+                        </div>
+                    </div>
+
+                    <div style="background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="background: #0066cc; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</span>
+                        <div>
+                            <strong style="font-size: 1.05em; display: block; margin-bottom: 4px;">Explain the Expected vs. Actual Result</strong>
+                            Tell the duck what value a variable <em>should</em> hold at that line versus what value it <em>actually</em> holds when you run the program.
+                        </div>
+                    </div>
+
+                    <div style="background: var(--card-bg, #ffffff); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="background: #0066cc; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</span>
+                        <div>
+                            <strong style="font-size: 1.05em; display: block; margin-bottom: 4px;">Acknowledge the Duck's Wisdom</strong>
+                            When you catch your own mistake mid-sentence, thank the duck for its patience and fix your code.
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Try It Right Now!</h2>
+                <p>Place your duck next to your screen and read the Python code snippet below out loud to your duck, line by line. Explain to your duck what each line does. Can you spot why this function fails to find the maximum number?</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">buggy_max.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">def find_highest_value(numbers):
+    highest = numbers[0]
+    
+    for num in numbers:
+        # Explain this condition to your duck line-by-line!
+        if num > highest:
+            num = highest  # <--- Look closely here when speaking to your duck!
+            
+    return highest
+
+# Test run:
+scores = [42, 88, 19, 95, 63]
+print(find_highest_value(scores))  # Output is 42 instead of 95!</code></pre>
+                    </div>
+                </div>
+
+                <p>When you read <code>num = highest</code> out loud to your duck (<em>"If num is greater than highest, set num equal to highest..."</em>), your brain immediately recognizes that you are overwriting your current number instead of updating the <code>highest</code> variable! The correct logic is <code>highest = num</code>.</p>
+
+                <h2>Classroom Rule of Escalation</h2>
+                <p>To build independence and strong problem-solving habits in our computer science lab, we use the <strong>Three-Tier Technical Support Hierarchy</strong>:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Support Tier</th>
+                            <th>Target Resource</th>
+                            <th>Action Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tier 1</strong></td>
+                            <td><strong>Your Rubber Duck 🦆</strong></td>
+                            <td>Mandatory first step. Read your code and error messages out loud line-by-line to your duck.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tier 2</strong></td>
+                            <td><strong>Lab Partner / Classmate 👥</strong></td>
+                            <td>If the duck couldn't solve it after 3 minutes, ask a classmate to listen to your explanation.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tier 3</strong></td>
+                            <td><strong>Teacher 👨‍🏫</strong></td>
+                            <td>If both Tier 1 and Tier 2 fail, raise your hand. The teacher will ask: <em>"What did the duck say when you read line X?"</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

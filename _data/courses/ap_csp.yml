@@ -145,7 +145,7 @@ units:
           - "For Each Loop"
           - "While Loop"
           - "Forever Loop"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Iteration Practice"
         file: "iteration-practice.html"

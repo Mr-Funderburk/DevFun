@@ -190,6 +190,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Orbital Guidance"
+        file: "challenge-orbital-guidance.html"
+        description: "Tactical Radio Dispatch: Character Phonetic Encoding in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

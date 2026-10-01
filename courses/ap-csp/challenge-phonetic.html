@@ -1,0 +1,152 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Tactical Radio Dispatch: String Iteration, Dictionaries, and Character Phonetic Encoding in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Tactical Radio Dispatch | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Tactical Radio Dispatch</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Tactical Radio Dispatch — Phonetic Telemetry Relay</h1>
+                <p class="lesson-subtitle">Build a low-bandwidth message encoder using dictionary lookups, string tokenization, and character formatting.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>During arctic scientific expeditions, voice radio communications often suffer from high atmospheric interference and signal degradation. To ensure critical dispatch coordinates and messages are transmitted without error, radio operators rely on standardized phonetic spelling alphabets. By replacing individual letters with distinct code words (such as <em>Alpha</em> for <strong>A</strong> or <em>Bravo</em> for <strong>B</strong>), operators eliminate ambiguity across noisy radio channels.</p>
+
+                <p>Your task is to build an automated <strong>Tactical Radio Encoder</strong> for the dispatch terminal. Your software must parse plain-text text messages, translate every letter into its official phonetic code word in uppercase, hyphenate the code words within each word, and preserve word boundaries with spaces.</p>
+
+                <h2>Official Phonetic Lookup Reference</h2>
+                <p>Your program must map all 26 English letters to their exact code words shown below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Letter</th>
+                            <th>Code Word</th>
+                            <th>Letter</th>
+                            <th>Code Word</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>A</code></td><td>Alpha</td><td><code>N</code></td><td>November</td></tr>
+                        <tr><td><code>B</code></td><td>Bravo</td><td><code>O</code></td><td>Oscar</td></tr>
+                        <tr><td><code>C</code></td><td>Charlie</td><td><code>P</code></td><td>Papa</td></tr>
+                        <tr><td><code>D</code></td><td>Delta</td><td><code>Q</code></td><td>Quebec</td></tr>
+                        <tr><td><code>E</code></td><td>Echo</td><td><code>R</code></td><td>Romeo</td></tr>
+                        <tr><td><code>F</code></td><td>Foxtrot</td><td><code>S</code></td><td>Sierra</td></tr>
+                        <tr><td><code>G</code></td><td>Golf</td><td><code>T</code></td><td>Tango</td></tr>
+                        <tr><td><code>H</code></td><td>Hotel</td><td><code>U</code></td><td>Uniform</td></tr>
+                        <tr><td><code>I</code></td><td>India</td><td><code>V</code></td><td>Victor</td></tr>
+                        <tr><td><code>J</code></td><td>Juliet</td><td><code>W</code></td><td>Whiskey</td></tr>
+                        <tr><td><code>K</code></td><td>Kilo</td><td><code>X</code></td><td>Xray</td></tr>
+                        <tr><td><code>L</code></td><td>Lima</td><td><code>Y</code></td><td>Yankee</td></tr>
+                        <tr><td><code>M</code></td><td>Mike</td><td><code>Z</code></td><td>Zulu</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Specifications & Rules:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>phonetic_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>phonetic_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>phonetic(msg)</code> that takes a single parameter <code>msg</code> (a plain-text string).</li>
+                        <li><strong>Encoding Specifications:</strong>
+                            <ul>
+                                <li>All code words in the return string must be in <strong>ALL CAPS</strong>.</li>
+                                <li>Phonetic words within the same plain-text word must be separated by a hyphen (<code>-</code>).</li>
+                                <li>Spaces between words in the original message must be preserved as spaces in the encoded string.</li>
+                                <li><strong>No trailing hyphens</strong> should exist at the end of words or at the end of the final returned string.</li>
+                                <li>Your function should handle upper and lowercase input seamlessly (e.g., both <code>'a'</code> and <code>'A'</code> map to <code>"ALPHA"</code>).</li>
+                                <li>You may assume inputs contain only English letters and spaces (no numbers or punctuation).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                <p>Verify your solution against the expected output formatting below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Input Message (<code>msg</code>)</th>
+                            <th>Expected Return String</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>"Canterbury Cougars"</code></td>
+                            <td><code>"CHARLIE-ALPHA-NOVEMBER-TANGO-ECHO-ROMEO-BRAVO-UNIFORM-ROMEO-YANKEE CHARLIE-OSCAR-UNIFORM-GOLF-ALPHA-ROMEO-SIERRA"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>"Coding is fun"</code></td>
+                            <td><code>"CHARLIE-OSCAR-DELTA-INDIA-NOVEMBER-GOLF INDIA-SIERRA FOXTROT-UNIFORM-NOVEMBER"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>"Radio Relay"</code></td>
+                            <td><code>"ROMEO-ALPHA-DELTA-INDIA-OSCAR ROMEO-ECHO-LIMA-ALPHA-YANKEE"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

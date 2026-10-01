@@ -191,8 +191,8 @@ units:
           - "Challenge"
         status: "published"
         
-      - title: "Orbital Guidance"
-        file: "challenge-orbital-guidance.html"
+      - title: "Tactical Radio Dispatch"
+        file: "challenge-phonetic.html"
         description: "Tactical Radio Dispatch: Character Phonetic Encoding in Python."
         topics:
           - "Challenge"

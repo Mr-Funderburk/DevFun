@@ -205,7 +205,7 @@ units:
         description: "Tactical Radio Dispatch: Character Phonetic Encoding in Python."
         topics:
           - "Challenge"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

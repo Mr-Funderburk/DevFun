@@ -1,0 +1,395 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Milestone Project 1 - Iterations, Collections, Validations, and more!">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Milestone Project 1 | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Milestone Project 1</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Milestone Project 1</span></h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Test your skills so far with iteration, collections, logic, and more! Complete the following mini-projects.</p>
+
+                <h2><span class="step-num">1.</span> RPG Battle Simulator & Combat Log</h2>
+                <p>Students build an interactive text-based battle simulator where a player fights a monster turn-by-turn. They manage player inventory, log damage dealt in each round to a list, and analyze combat statistics after the battle finishes.</p>
+
+                <h3>Project Milestones:</h3>
+                <ol>
+                    <li><strong>Pre-Battle Countdown</strong><br>Use a standard <code>for</code> loop with a negative step counter to countdown from 3 to 1.</li>
+                    <li><strong>Main Combat Loop</strong><br>Create a <code>while</code> loop that continues as long as both <code>player_hp > 0</code> and <code>monster_hp > 0</code>. Each round:
+                        <ul>
+                            <li>Prompt the player to attack or use an item.</li>
+                            <li>Calculate random damage and subtract it from the monster or player.</li>
+                            <li>Track round numbers using a simple vounter variable.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Inventory Display</strong><br>If the player chooses to view their inventory, it should iterate through the collection using a standard <code>for</code> loop, printing the slot number with the item name.</li>
+                    <li><strong>Post-Battle Damage Analysis</strong><br>Store every damage value dealt to the monster in a list called <code>damage_history</code>. After the main loop concludes, iterate through the history to compute:
+                        <ul>
+                            <li>Total damage dealt</li>
+                            <li>Average damage dealt</li>
+                            <li>Highest single hit</li>
+                            <li>Number of critical hits (hits over 17 damage)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Starter Code</h3>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">milestone-1-battle-sim.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+# initial setup
+player_hp = 100
+monster_hp = 120
+inventory = ["Health Potion", "Shield"]
+damage_history = []
+
+# create a countdown message that says "Preparing for battle...", "3", "2", "1", "Battle Start!"
+#   each on their own lines using a loop. End the statement with a new line.
+
+
+# MAIN BATTLE LOOP
+round_num = 1
+
+# create a loop that will run until either the player's hp or the monster's hp is zero (or less)
+
+
+    # print the round number "--- Round [round number] ---"
+
+
+    # print the player's hp & the monster's hp
+
+
+    # PLAYER'S TURN
+    # allow the user to choose between (1) attacking and (2) viewing their inventory
+
+
+    # if the user picked (1) attacking, do a random amount of damage between 8 and 25 (be sure to take away from
+    #   the monster's hp and add it to the damage_history list!). Print out the amount of damage the player did.
+
+    # if the user picked (2) viewing inventory, print out "Your Inventory" and each item in their inventory
+    #   prefixed with "\tSlot " and the slot number, then the item in that slot.
+
+    # if the user has a health potion in their inventory, ask them if they want to use it. If they choose yes,
+    #   increase their hp by 50 and remove the potion from their inventory.
+    #   (this should be skipped if they don't have a potion)
+
+
+
+    # MONSTER TURN
+    # the monster should do a random amount of damage between 5 and 15 (be sure to take away from
+    #   the player's hp!). Print out the amount of damage the monster did.
+    # NOTE: this should only happen if the monster has hp!
+
+
+
+    # increment the round number
+
+
+
+# POST BATTLE RECAP
+print("\n--- Battle is over ---")
+
+# if the player's hp is greater than zero, the player won; otherwise, the monster won.
+#   Print either "Victory!" or "Defeat!"
+
+
+total_damage = 0
+average_damage = 0
+highest_damage = 0
+crit_count = 0
+
+# calculate the total damage and the average damage delt by the player.
+# keep track of the highest damage hit the player made
+# we will say that a hit by the player was a critical hit if the damage was over 17. Count how many times
+#   the player critically hit.
+
+
+print(f"Total Hits Dealt: {len(damage_history)}")
+print(f"Total Damage Dealt: {total_damage}")
+print(f"Average Damage Dealt: {average_damage}")
+print(f"Highest Single Hit: {highest_damage}")
+print(f"Critical Hits (18+ dmg): {crit_count}")</code></pre>
+                    </div>
+                </div>
+
+                <h2><span class="step-num">2.</span> Steps Tracker</h2>
+
+                <p>Students will build an app that prompts a user to log their daily step counts for a week, validates their inputs, stores the values in a list, and generates a formatted health report.</p>
+
+                <h3>Project Milestones:</h3>
+                <ol>
+                    <li><strong>7-Day Data Collection Loop</strong><br>Prompt the user for seven days of step data.</li>
+                    <li><strong>Input Validation Loop</strong><br>Inside the daily loop, nest a <code>while</code> loop that forces the user to re-enter a step count if they enter a negative number or non-numeric input.</li>
+                    <li><strong>Daily Summary Output</strong><br>Store all valid step counts in a <code>step_log</code> list. Use a standard <code>for</code> loop to print each day's steps alongside a visual status label:
+                        <ul>
+                            <li><code>[GOAL MET]</code> if steps are <code>STEP_GOAL</code> or more.</li>
+                            <li><code>[BELOW TARGET]</code> if steps are under <code>STEP_GOAL</code>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Weekly Performance Metrics</strong><br>Iterate through <code>step_log</code> to calculate and output:
+                        <ul>
+                            <li>Total weekly steps.</li>
+                            <li>Average daily steps.</li>
+                            <li>Days the <code>STEP_GOAL</code> was reached.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">milestone-1-steps-tracker.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">step_log = []
+STEP_GOAL = 10000
+
+print("=== Steps Tracker ===\n")
+
+# create a loop that will repeat for each day of the week
+# continuously do the following until the input is valid:
+#   during each iteration, prompt the user for the number of steps for that day.
+#   validate the user input using the `.isdigit()` method.
+#     if the input is a valid digit, typecast to an integer and add it to the step_log.
+#       the input is valid at this point
+#     otherwise, print "Invalid input. Please enter a positive integer."
+
+
+print("\n=== Weekly Step Report ===")
+
+# create a loop for each item in the step log
+# get the number of steps for that entry
+#   if the number of steps was greater than or equal to the STEP_GOAL, set a `status` variable to [GOAL MET]
+#   otherwise, set the `status` variable to [BELOW TARGET]
+# print the day number: the number of steps, and the status for that day
+
+
+total_steps = 0
+days_met = 0
+average_steps = 0
+
+# go through the step_log and keep track of how many days they met their goal and add up all of their steps
+
+
+# calculate the average number of steps the user made through the week
+
+
+print("\n=== Performance Summary ===")
+print(f"Total Steps: {total_steps}")
+print(f"Average Daily Steps: {average_steps}")
+print(f"Days Target Reached: {days_met} / 7")</code></pre>
+                    </div>
+                </div>
+
+                <h2><span class="step-num">3.</span> Smart ATM & Transaction History Manager</h2>
+
+                <p>Students build a banking terminal program that enforces a 3-attempt PIN login, maintains a running account balance, processes deposits and withdrawals using a transaction history list, and prints itemized statements.</p>
+
+                <h3>Project Milestones:</h3>
+                <ol>
+                    <li><strong>Security PIN Verification</strong><br>Allow the user up to 3 attempts to enter a correct <code>PIN</code> using a <code>for</code> loop. If they fail all 3 tries, terminate the program with an account lock message.</li>
+                    <li><strong>Interactive Menu System</strong><br>Once authenticated, launch a <code>while</code> loop that displays a menu:
+                        <ol>
+                            <li>Deposit Funds</li>
+                            <li>Withdraw Funds</li>
+                            <li>Print Statement</li>
+                            <li>Exit</li>
+                        </ol>
+                    </li>
+                    <li><strong>Transaction Log Display</strong><br>Store <strong>deposits</strong> as positive floats (e.g., <code>100.0</code>) and <strong>withdrawals</strong> as negative floats (<code>-25.50</code>) in a <code>transactions</code> list. When option 3 is selected, iterate through <code>transactions</code> using a <code>for</code> loop to print each itemized transaction with its index number.</li>
+                    <li><strong>Audit & Security Summary</strong><br>Add an advanced audit feature to option 3 that iterates through <code>transactions</code> to calculate:
+                        <ul>
+                            <li>Total amount deposited</li>
+                            <li>Total amount withdrawn.</li>
+                            <li>Number of withdrawals greater than $100.00.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">milestone-1-atm.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">CORRECT_PIN = "4321"
+transactions = [500.00, -20.00]
+balance = 480.00
+
+authenticated = False
+
+# create a loop that will prompt the user for their PIN using the prompt: "Enter 4-digit PIN (Attempt [num]/3):"
+# The user has only 3 attempts to correctly enter their PIN.
+# if the PIN is entered correctly, print "Access Granted!" and change authenticated to True.
+# otherwise, print "Incorrect PIN."
+
+
+# if the user did not correctly enter their PIN, print "Too many failed attempts. Account locked."
+# and end the program using `exit()`
+
+
+choice = ""
+
+# create a loop that will run until the user selects "4"
+
+
+    print("\n=== PYTHON DIGITAL BANK ===")
+    print(f"Current Balance: ${balance}")
+    print("1. Deposit Funds")
+    print("2. Withdraw Funds")
+    print("3. Print Account Statement")
+    print("4. Exit")
+    choice = input("Select an option (1-4): ")
+
+    # if their choice is "1", prompt the user for how much they would like to deposit.
+    #   verify the amount is more that zero.
+    #   if it is, add the deposit to their transactions, adjust their balance, and print
+    #     "Successfully deposited $[amount]"
+
+
+    # else if their choice is "2", prompt the user for how much they would like to withdraw.
+    #   ensure the amount is more than zero and less than or equal to their current balance.
+    #     if it is, add the withdrawal to their transactions, adjust their balance, and print
+    #       "Successfully withdrew $[amount]"
+    #   if not, print "Invalid or insufficient funds."
+
+
+    # else if their choice is "3", print "\n--- Itemized Statement ---", then go through each of their transactions
+    #   printing "Tx #[transaction number]: [DEPOSIT/WITHDRAW]  [+/-]$[transaction amount]"
+
+
+        total_deposited = 0.0
+        total_withdrawn = 0.0
+        large_withdrawals = 0
+
+        # for each transaction, keep track of the total amount deposited, the total amount withdrawn, and how many
+        #   large withdrawals the user had. We will say a withdraw is large if it was over $100.0.
+
+
+        print("\n--- Account Audit ---")
+        print(f"Total Deposited: ${total_deposited}")
+        print(f"Total Withdrawn: ${total_withdrawn}")
+        print(f"Large Withdrawals ($100+): {large_withdrawals}")
+
+print("\nThank you for using Python Digital Bank. Goodbye!")
+</code></pre>
+                    </div>
+                </div>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -170,6 +170,13 @@ units:
           - "Formatting Strings"
         status: "coming_soon"
 
+      - title: "Milestone Project 1"
+        file: "milestone-project-1.html"
+        description: "Iterations, Collections, Validations, and more!"
+        topics:
+          - "Milestone Project"
+        status: "coming_soon"
+
   - title: "Python Challenges"
     lessons:
       - title: "Vowel Counter"

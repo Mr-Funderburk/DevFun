@@ -1,0 +1,428 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Randomness in Python: Generating random numbers, selecting items from collections, and building computer simulations using the random module.">
+    <title>Randomness & Simulations | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Randomness &amp; Simulations</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Randomness &amp; Computer Simulations</h1>
+                <p class="lesson-subtitle">Learn how to import Python's <code>random</code> module to generate pseudo-random numbers, make random selections from collections, and model real-world events.</p>
+            </header>
+
+            <div class="lesson-content">
+                
+                <h2>1. Introduction to Pseudo-Randomness</h2>
+                <p>Computers are inherently deterministic machines—given the exact same input and sequence of instructions, they will always produce the exact same output. So how can a computer generate a "random" number?</p>
+                
+                <p>Python uses a <strong>Pseudo-Random Number Generator (PRNG)</strong>. PRNGs use mathematical algorithms starting from an initial value (called a <strong>seed</strong>) to produce sequences of numbers that appear completely random for practical purposes.</p>
+
+                <p>To use randomness in Python, you must first import the standard <code>random</code> module at the very top of your program:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">import_example.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+# All random functions are accessed using dot notation:
+# random.randint(), random.choice(), etc.</code></pre>
+                    </div>
+                </div>
+
+                <h2>2. Generating Random Numbers</h2>
+                <p>Depending on your application (e.g., rolling dice vs. generating continuous probability floats), Python provides three primary numeric functions:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Loop Comparison Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Function</th>
+                                <th scope="col">Data Type</th>
+                                <th scope="col">Description & Range</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Function"><code>random.randint(a, b)</code></td>
+                                <td data-label="Data Type">Integer</td>
+                                <td data-label="Description & Range">Returns a random integer in range [a, b] (inclusive on both ends).</td>
+                                <td data-label="Example"><code>random.randint(1, 6) &rarr; 1, 2, 3, 4, 5, or 6</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Function"><code>random.random()</code></td>
+                                <td data-label="Data Type">Float</td>
+                                <td data-label="Description & Range">Returns a floating-point number in range [0.0, 1.0].</td>
+                                <td data-label="Example"><code>random.random() &rarr; 0.734102...</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Function"><code>random.uniform(a, b)</code></td>
+                                <td data-label="Data Type">Float</td>
+                                <td data-label="Description & Range">Returns a random float in range [a, b].</td>
+                                <td data-label="Example"><code>random.uniform(5.0, 10.0) &rarr; 7.4281...</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">numeric_random.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+# Simulate rolling a standard 6-sided die
+die_roll = random.randint(1, 6)
+print(f"You rolled a {die_roll}")
+
+# Probability check (30% chance of critical hit)
+crit_chance = random.random()
+if crit_chance &lt; 0.30:
+    print("CRITICAL HIT!")
+else:
+    print("Normal attack.")
+
+# Generate temperature readout between 97.0 and 103.0 Fahrenheit
+temp = random.uniform(97.0, 103.0)
+print(f"Patient temperature: {temp}°F")</code></pre>
+                    </div>
+                </div>
+
+                <h2>3. Random Choices from Collections</h2>
+                <p>When working with lists, tuples, or strings, you often need to select items at random or rearrange their order.</p>
+
+                <h3>A. Selecting a Single Element: <code>random.choice()</code></h3>
+                <p>Passes a collection to <code>random.choice()</code> and returns one random item. Throws an <code>IndexError</code> if the collection is empty.</p>
+
+                <h3>B. Selecting Multiple Elements: Replacement vs. Unique</h3>
+                <ul>
+                    <li><strong><code>random.choices(population, k=N)</code> (With Replacement):</strong> Picks <code>N</code> items. The same item can be picked multiple times (like rolling a die multiple times).</li>
+                    <li><strong><code>random.sample(population, k=N)</code> (Without Replacement):</strong> Picks <code>N</code> unique items. No item is repeated (like drawing cards from a deck).</li>
+                </ul>
+
+                <h3>C. Shuffling in Place: <code>random.shuffle()</code></h3>
+                <p>Randomly reorders the elements of a mutable list directly in memory. <strong>Returns <code>None</code>.</strong></p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">collection_random.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+students = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona"]
+
+# 1. Pick 1 student to present first
+presenter = random.choice(students)
+print(f"First presenter: {presenter}")
+
+# 2. Pick 3 distinct team leaders (No duplicates!)
+leaders = random.sample(students, k=3)
+print(f"Team Leaders: {leaders}")
+
+# 3. Simulate 5 coin flips (Duplicates allowed!)
+coin_sides = ["Heads", "Tails"]
+flips = random.choices(coin_sides, k=5)
+print(f"Coin Flips: {flips}")
+
+# 4. Shuffle a deck / list in place
+deck = ["Ace", "King", "Queen", "Jack", "10"]
+random.shuffle(deck)
+print(f"Shuffled Deck: {deck}")</code></pre>
+                    </div>
+                </div>
+
+                <h2>4. Advanced Topic: Reproducibility with <code>random.seed()</code></h2>
+                <p>Because PRNG algorithms calculate the next random number based on the previous state, setting the starting point—the <strong>seed</strong>—produces identical results every time the program runs. This is essential for:</p>
+                <ul>
+                    <li><strong>Debugging:</strong> Testing code against predictable "random" data.</li>
+                    <li><strong>Procedural Generation:</strong> Creating identical video game worlds using a world seed (e.g., Minecraft, No Man's Sky).</li>
+                    <li><strong>Scientific Research:</strong> Ensuring experiments can be replicated by other researchers.</li>
+                </ul>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">seed_demo.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+# Setting seed to 42
+random.seed(42)
+print(random.randint(1, 100))  # Always outputs 82
+print(random.randint(1, 100))  # Always outputs 15
+
+# Re-setting the exact same seed resets the sequence
+random.seed(42)
+print(random.randint(1, 100))  # Outputs 82 again!</code></pre>
+                    </div>
+                </div>
+
+                <h2>Quick Tip: Formatting Decimals in F-Strings</h2>
+                <p>When working with functions like <code>random.uniform()</code> or calculating percentages in simulations, Python often returns floating-point numbers with many decimal places (e.g., <code>98.643182049...</code>). You can clean up your output using <strong>f-string format specifiers</strong>.</p>
+
+                <p>By adding a colon (<code>:</code>) followed by <code>.nf</code> inside an f-string expression, you tell Python to round the display output to <code>n</code> decimal places without altering the underlying numeric value:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>String Formatting Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Format Specifier</th>
+                                <th scope="col">Meaning</th>
+                                <th scope="col">Example Value</th>
+                                <th scope="col">Formatted Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"data-label="Format Specifier"><code>{val:.1f}</code></td>
+                                <td data-label="Meaning">Round float to 1 decimal place</td>
+                                <td data-label="Example Value"><code>98.6432</code></td>
+                                <td data-label="Formatted Output"><code>"98.6"</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Format Specifier"><code>{val:.2f}</code></td>
+                                <td data-label="Meaning">Round float to 2 decimal places</td>
+                                <td data-label="Example Value"><code>16.6666</code></td>
+                                <td data-label="Formatted Output"><code>"16.67"</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Format Specifier"><code>{val:.0f}</code></td>
+                                <td data-label="Meaning">Round to 0 decimal places (nearest whole number)</td>
+                                <td data-label="Example Value"><code>7.89</code></td>
+                                <td data-label="Formatted Output"><code>"8"</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Format Specifier"><code>{val:,.2f}</code></td>
+                                <td data-label="Meaning">Add thousand separators (commas) + 2 decimal places</td>
+                                <td data-label="Example Value"><code>1250000.5</code></td>
+                                <td data-label="Formatted Output"><code>"1,250,000.50"</code></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"data-label="Format Specifier"><code>{val:.1%}</code></td>
+                                <td data-label="Meaning">Convert float ratio to percentage + 1 decimal place</td>
+                                <td data-label="Example Value"><code>0.1667</code></td>
+                                <td data-label="Formatted Output"><code>"16.7%"</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">formatting_examples.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+# Generate a float with many decimal places
+temp = random.uniform(97.0, 103.0)  # e.g., 98.643182049
+win_rate = 1 / 6                    # 0.16666666666666666
+
+# Clean display formatting:
+print(f"Patient temperature: {temp:.1f}°F")   # Output: Patient temperature: 98.6°F
+print(f"Probability: {win_rate:.2f}")         # Output: Probability: 0.17
+print(f"Win Rate: {win_rate:.1%}")            # Output: Win Rate: 16.7%
+
+# Combining commas and decimal places for large numbers
+score = 1250000.75
+print(f"High Score: {score:,.2f} pts")        # Output: High Score: 1,250,000.75 pts</code></pre>
+                    </div>
+                </div>
+
+                <h2>5. Computer Simulations (AP CSP Big Idea)</h2>
+                <p>In Computer Science, <strong>simulations</strong> use mathematical models and pseudo-random numbers to emulate real-world systems. Simulations allow scientists to test hypotheses without the expense, time, or danger of physical experiments.</p>
+
+                <p>The program below models rolling two 6-sided dice 10,000 times to calculate the empirical probability of rolling a sum of <code>7</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">dice_simulation.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">import random
+
+SIMULATION_RUNS = 10000
+sevens_count = 0
+
+for _ in range(SIMULATION_RUNS):
+    die1 = random.randint(1, 6)
+    die2 = random.randint(1, 6)
+    
+    if die1 + die2 == 7:
+        sevens_count += 1
+
+percentage = (sevens_count / SIMULATION_RUNS) * 100
+print(f"Total Sevens Rolled: {sevens_count} / {SIMULATION_RUNS}")
+print(f"Experimental Probability: {percentage:.2f}% (Theoretical: 16.67%)")</code></pre>
+                    </div>
+                </div>
+
+                <h2>Common Pitfalls Summary</h2>
+                <ul>
+                    <li><strong>Assigning <code>random.shuffle()</code> to a variable:</strong> <code>my_list = random.shuffle(my_list)</code> sets <code>my_list</code> to <code>None</code>! Call <code>random.shuffle(my_list)</code> on its own line.</li>
+                    <li><strong>Sampling more items than exist:</strong> Calling <code>random.sample(my_list, k=10)</code> on a list with only 5 items raises a <code>ValueError</code>. Use <code>random.choices()</code> if replacement is allowed.</li>
+                    <li><strong>Forgetting <code>import random</code>:</strong> Always verify your import statement is present at line 1.</li>
+                </ul>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

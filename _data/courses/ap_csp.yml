@@ -159,6 +159,15 @@ units:
         description: "Hands-on practice exercises for Python iteration, loops, range(), and loop control statements."
         topics:
           - "Practice"
+        status: "published"
+
+      - title: "Randomness & Formatting"
+        file: "random.html"
+        description: "Randomness in Python: Generating random numbers, selecting items from collections, and building computer simulations using the random module."
+        topics:
+          - "Random Numbers"
+          - "Random Choice"
+          - "Formatting Strings"
         status: "coming_soon"
 
   - title: "Python Challenges"

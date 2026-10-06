@@ -168,7 +168,7 @@ units:
           - "Random Numbers"
           - "Random Choice"
           - "Formatting Strings"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Milestone Project 1"
         file: "milestone-project-1.html"

@@ -72,8 +72,8 @@ course: ap_csp
                     <li><strong>Main Combat Loop</strong><br>Create a <code>while</code> loop that continues as long as both <code>player_hp > 0</code> and <code>monster_hp > 0</code>. Each round:
                         <ul>
                             <li>Prompt the player to attack or use an item.</li>
-                            <li>Calculate random damage and subtract it from the monster or player.</li>
-                            <li>Track round numbers using a simple vounter variable.</li>
+                            <li>Calculate random damage between 8 and 25, inclusive, and subtract it from the monster or player.</li>
+                            <li>Track round numbers using a simple counter variable.</li>
                         </ul>
                     </li>
                     <li><strong>Inventory Display</strong><br>If the player chooses to view their inventory, it should iterate through the collection using a standard <code>for</code> loop, printing the slot number with the item name.</li>

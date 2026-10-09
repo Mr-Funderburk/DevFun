@@ -1,0 +1,434 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Master 2D web layouts with CSS Grid: grid containers, fr units, repeat(), minmax(), column/row spanning, and responsive bento grids.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>CSS Grid Layout | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>CSS Grid Layout</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>CSS Grid Layout</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Power of Two-Dimensional Layouts</h2>
+                <p>In previous lessons, we mastered <strong>Flexbox</strong>, which is designed for <em>one-dimensional layouts</em> (aligning items along a single row OR a single column). But what happens when you need to align items horizontally AND vertically at the same time—like a magazine layout, photo wall, or app dashboard?</p>
+
+                <p>Welcome to <strong>CSS Grid Layout</strong>. CSS Grid is a true <em>two-dimensional layout engine</em> that lets you construct complex rows and columns simultaneously with incredible precision.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Flexbox vs. CSS Grid Comparison</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Layout System</th>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">Design Approach</th>
+                                <th scope="col">Best Used For...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Flexbox</th>
+                                <td>1D (Rows <em>or</em> Columns)</td>
+                                <td>Content-First (Items flow naturally)</td>
+                                <td>Navbars, button groups, stacked card lists, alignment within cards.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CSS Grid</th>
+                                <td>2D (Rows <em>and</em> Columns)</td>
+                                <td>Layout-First (Structure defined upfront)</td>
+                                <td>Full page frameworks, photo walls, dashboards, magazine bento grids.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2><span class="step-num">1.</span> Setting Up the Grid Container</h2>
+                <p>Just like Flexbox, CSS Grid operates on a parent-child relationship. Turning a parent element into a <strong>Grid Container</strong> automatically turns all direct child elements into <strong>Grid Items</strong>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">grid-setup.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px; /* Defines 3 columns, each 200px wide */
+    grid-template-rows: 150px 150px;         /* Defines 2 rows, each 150px tall */
+    gap: 20px;                               /* 20px spacing between all cells */
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2><span class="step-num">2.</span> Sizing Units: The Fractional Unit (<code>fr</code>)</h2>
+                <p>Hardcoding pixel values like <code>200px</code> creates rigid layouts that break on small screens. CSS Grid introduces a powerful flexible unit: the <strong>Fractional Unit (<code>fr</code>)</strong>.</p>
+
+                <p>One <code>fr</code> represents <em>one fraction of the available free space</em> inside the grid container:</p>
+
+                <ul>
+                    <li><code>grid-template-columns: 1fr 1fr 1fr;</code> — 3 equal columns, each taking 1/3 of the container width.</li>
+                    <li><code>grid-template-columns: 1fr 2fr;</code> — 2 columns: column two is <strong>twice as wide</strong> as column one.</li>
+                    <li><code>grid-template-columns: 250px 1fr;</code> — Fixed 250px sidebar, while the second column stretches to fill all remaining space!</li>
+                </ul>
+
+                <h2><span class="step-num">3.</span> Grid Shorthands: <code>repeat()</code> &amp; <code>minmax()</code></h2>
+                <p>Writing out <code>1fr 1fr 1fr 1fr</code> gets tedious. CSS gives us helper functions to write cleaner code:</p>
+
+                <h3>The <code>repeat()</code> Function</h3>
+                <p>Repeats a track sizing pattern a specified number of times:</p>
+                <p><code>grid-template-columns: repeat(4, 1fr);</code> <em>/* Creates 4 equal columns */</em></p>
+
+                <h3>The Responsive Magic: <code>auto-fit</code> + <code>minmax()</code></h3>
+                <p>Want a fully responsive grid that automatically adjusts the number of columns based on screen width—<strong>without writing a single media query</strong>? Combine <code>auto-fit</code> with <code>minmax()</code>!</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">responsive-grid.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">.responsive-gallery {
+    display: grid;
+    /* Fit as many columns as possible, but never let a column shrink below 250px! */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <blockquote class="code-explanation">
+                    <h4>How `auto-fit` + `minmax()` Works</h4>
+                    <p>On a large desktop screen, the container fits four 250px columns side-by-side. As you shrink the browser window, columns automatically drop off and wrap onto new rows, while remaining cards expand to fill the empty space smoothly!</p>
+                </blockquote>
+
+                <h2><span class="step-num">4.</span> Spanning Items Across Columns &amp; Rows</h2>
+                <p>Grid items don't have to sit inside a single cell! You can tell a grid item to stretch across multiple columns or rows using <code>grid-column</code> and <code>grid-row</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">item-spanning.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Span an item across 2 column tracks */
+.feature-card {
+    grid-column: span 2;
+}
+
+/* Span an item across 2 row tracks */
+.tall-card {
+    grid-row: span 2;
+}
+
+/* Explicit line positioning: Start at line 1, end at line 3 */
+.header-card {
+    grid-column: 1 / 3;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Putting It Together: The Bento Dashboard Grid</h2>
+                <p>In your <code>web-1/learning/</code> folder, create a new file named <code>grid-dashboard.html</code> and link it to <code>grid-dashboard.css</code>.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">grid-dashboard.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CSS Bento Grid Dashboard&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/grid-dashboard.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main class="dashboard-wrapper"&gt;
+        &lt;header class="header"&gt;
+            &lt;h1&gt;Interactive Bento Grid&lt;/h1&gt;
+            &lt;p&gt;Combining 2D Grid layouts with item column/row spanning.&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;div class="bento-grid"&gt;
+            &lt;!-- Feature Item 1: Spans 2 Columns --&gt;
+            &lt;article class="card card-wide"&gt;
+                &lt;span class="tag"&gt;Featured Project&lt;/span&gt;
+                &lt;h2&gt;Web Development 1 Masterclass&lt;/h2&gt;
+                &lt;p&gt;Spans across 2 columns to create an asymmetric hero element.&lt;/p&gt;
+            &lt;/article&gt;
+
+            &lt;!-- Feature Item 2: Spans 2 Rows --&gt;
+            &lt;article class="card card-tall"&gt;
+                &lt;span class="tag"&gt;Stats&lt;/span&gt;
+                &lt;h2&gt;Progress Metric&lt;/h2&gt;
+                &lt;p&gt;Spans across 2 vertical rows to anchor the right edge.&lt;/p&gt;
+            &lt;/article&gt;
+
+            &lt;!-- Standard Grid Items --&gt;
+            &lt;article class="card"&gt;
+                &lt;h3&gt;Module 1&lt;/h3&gt;
+                &lt;p&gt;HTML Semantics&lt;/p&gt;
+            &lt;/article&gt;
+
+            &lt;article class="card"&gt;
+                &lt;h3&gt;Module 2&lt;/h3&gt;
+                &lt;p&gt;Box Model &amp;amp; Flexbox&lt;/p&gt;
+            &lt;/article&gt;
+
+            &lt;article class="card"&gt;
+                &lt;h3&gt;Module 3&lt;/h3&gt;
+                &lt;p&gt;CSS Grid 2D Architecture&lt;/p&gt;
+            &lt;/article&gt;
+
+            &lt;article class="card"&gt;
+                &lt;h3&gt;Module 4&lt;/h3&gt;
+                &lt;p&gt;Responsive Breakpoints&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+
+                <p>Now write the accompanying CSS Grid layout in <code>grid-dashboard.css</code>:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">grid-dashboard.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    font-family: sans-serif;
+    padding: 32px 16px;
+}
+
+.dashboard-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    color: #38bdf8;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #94a3b8;
+}
+
+/* 1. Mobile-First Grid Setup (1 Column by default) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Standard Bento Cards */
+.card {
+    background-color: #151d32;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+}
+
+.card h3 {
+    color: #f8fafc;
+    margin-bottom: 6px;
+}
+
+.card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #0f2b48;
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+/* 2. Desktop Grid Breakpoint (3 Columns + Custom Item Spanning) */
+@media (min-width: 768px) {
+    .bento-grid {
+        /* Explicit 3-column 2D grid structure */
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Wide card spans across 2 columns */
+    .card-wide {
+        grid-column: span 2;
+        background-color: #1b2845;
+        border-color: #38bdf8;
+    }
+
+    /* Tall card spans down across 2 rows */
+    .card-tall {
+        grid-row: span 2;
+        background-color: #1a233a;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise &amp; Challenges</h2>
+                <p>Put CSS Grid concepts into action with these hands-on layout challenges:</p>
+
+                <ol>
+                    <li>
+                        <strong>Build a 12-Column Layout System:</strong> Set up a container with <code>grid-template-columns: repeat(12, 1fr);</code>. Create a main content box that spans 8 columns (<code>grid-column: span 8;</code>) and a sidebar that spans 4 columns (<code>grid-column: span 4;</code>).
+                    </li>
+                    <li>
+                        <strong>Construct a Photo Wall Gallery:</strong> Create a gallery with 6 images using <code>repeat(auto-fit, minmax(200px, 1fr))</code>. Pick two images and make them span across 2 columns to give the gallery a dynamic magazine look!
+                    </li>
+                    <li>
+                        <strong>DevTools Grid Inspection:</strong> Open Google Chrome DevTools (<kbd>F12</kbd>), click on the <code>.bento-grid</code> container in the Elements panel, and toggle the <strong>Grid overlay button</strong>. Inspect the numbered grid line numbers on your screen!
+                    </li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -139,3 +139,10 @@ units:
         topics:
           - "Project"
         status: "published"
+        
+      - title: "CSS Grids"
+        file: "grids.html"
+        description: "Master 2D web layouts with CSS Grid: grid containers, fr units, repeat(), minmax(), column/row spanning, and responsive bento grids."
+        topics:
+          - "Grid"
+        status: "published"

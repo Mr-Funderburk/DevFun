@@ -177,6 +177,17 @@ units:
           - "Milestone Project"
         status: "published"
 
+  - title: "Algorithms & Number Systems"
+    lessons:
+      - title: "Searching, Sorting & Efficiency"
+        file: "search-sort-efficiency.html"
+        description: "Search & Sorting Algorithms: Linear vs Binary search, sorting methods (Bubble, Insertion, Selection, Merge, Quick), Big-O Notation, and Algorithmic Efficiency."
+        topics:
+          - "Searching Collections"
+          - "Sorting Collections"
+          - "Algorithmic Efficiency"
+        status: "coming_soon"
+
   - title: "Python Challenges"
     lessons:
       - title: "Vowel Counter"
@@ -213,6 +224,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Cargo Manifest"
+        file: "challenge-cargo-manifest.html"
+        description: "Deep Space Logistics: String Tokenization, Dictionaries, and Payload Accumulation in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

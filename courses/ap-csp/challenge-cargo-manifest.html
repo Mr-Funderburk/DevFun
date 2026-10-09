@@ -1,0 +1,162 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Deep Space Logistics: String Tokenization, Dictionaries, and Payload Accumulation in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Deep Space Logistics | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Deep Space Logistics</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Deep Space Logistics — Cargo Manifest Evaluator</h1>
+                <p class="lesson-subtitle">Parse arbitrary-length manifest streams, match cargo keywords against weight tables, and validate spacecraft payload thresholds.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>As Automated Cargo Specialist for NASA's Artemis Lunar Logistics Division, you oversee automated supply launches to the Lunar Gateway Station. Spacecraft payload limits are strictly governed by orbital mechanics: exceeding maximum mass capacity prevents orbit insertion, while launching an empty or unrecognizable payload wastes multi-million-dollar rocket boosters.</p>
+
+                <p>Before launching a supply rocket, your automated guidance system receives a single telemetry manifest string. Your program must parse the mission header and maximum capacity threshold, process a comma-separated stream of item keywords of unknown length, calculate total cargo mass using official supply weights, and declare whether the payload is approved or overweight.</p>
+
+                <h2>Official Cargo Weight Reference Table</h2>
+                <p>Your software must cross-reference item keywords against the official supply mass values (in kg) below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Cargo Keyword</th>
+                            <th>Supply Category</th>
+                            <th>Unit Mass (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>OXYGEN</code></td><td>Life Support</td><td>15</td></tr>
+                        <tr><td><code>WATER</code></td><td>Life Support</td><td>10</td></tr>
+                        <tr><td><code>RATIONS</code></td><td>Life Support</td><td>5</td></tr>
+                        <tr><td><code>FUEL</code></td><td>Propulsion</td><td>25</td></tr>
+                        <tr><td><code>SOLAR</code></td><td>Power Systems</td><td>20</td></tr>
+                        <tr><td><code>BATTERY</code></td><td>Power Systems</td><td>12</td></tr>
+                        <tr><td><code>EQUIPMENT</code></td><td>Scientific Hardware</td><td>30</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Specifications & Rules:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>cargo_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>cargo_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>evaluate_cargo(manifest_data)</code> that accepts one parameter <code>manifest_data</code>.</li>
+                        <li><strong>Input String Format:</strong> <code>manifest_data</code> is a single pipe-delimited (<code>|</code>) string formatted as:
+                            <br><code>"MissionName|MaxCapacity|Item1, Item2, Item3, ..."</code></li>
+                        <li><strong>Parsing & Processing Specifications:</strong>
+                            <ul>
+                                <li>The list of item keywords is of <strong>unknown length</strong> (may contain 0, 1, or many items).</li>
+                                <li>Item keywords must be case-insensitive (e.g., <code>'oxygen'</code>, <code>'Oxygen'</code>, and <code>'OXYGEN'</code> all equal 15 kg).</li>
+                                <li>Surrounding whitespace around item names or mission headers must be trimmed cleanly.</li>
+                                <li>Unrecognized keywords (e.g., <code>'JUNK'</code>, <code>'DEBRIS'</code>) have a mass of 0 kg and should be ignored.</li>
+                                <li>Duplicate item keywords in a manifest must each be counted toward total mass.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Return Output Requirements:</strong> Your function must return one of the exact formatted string values:
+                            <ul>
+                                <li><code>"&lt;MissionName&gt;, Empty Manifest!"</code> (if total valid cargo weight is 0 kg)</li>
+                                <li><code>"&lt;MissionName&gt;, Manifest Approved: &lt;total_weight&gt; kg"</code> (if total valid cargo weight &le; <code>MaxCapacity</code>)</li>
+                                <li><code>"&lt;MissionName&gt;, Manifest Overweight: &lt;total_weight&gt; kg"</code> (if total valid cargo weight &gt; <code>MaxCapacity</code>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                <p>Verify your solution against the expected output formatting below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Input Manifest String (<code>manifest_data</code>)</th>
+                            <th>Expected Return String</th>
+                            <th>Calculation & Logic Breakdown</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>"Artemis-1|60|OXYGEN, WATER, RATIONS, FUEL"</code></td>
+                            <td><code>"Artemis-1, Manifest Approved: 55 kg"</code></td>
+                            <td>15 + 10 + 5 + 25 = 55 kg. (55 &le; 60) &rarr; Approved.</td>
+                        </tr>
+                        <tr>
+                            <td><code>"Ares-2|55|OXYGEN, WATER, RATIONS, FUEL"</code></td>
+                            <td><code>"Ares-2, Manifest Approved: 55 kg"</code></td>
+                            <td>15 + 10 + 5 + 25 = 55 kg. (55 &le; 55 Exact Boundary) &rarr; Approved.</td>
+                        </tr>
+                        <tr>
+                            <td><code>"Gateway-1|54|OXYGEN, WATER, RATIONS, FUEL"</code></td>
+                            <td><code>"Gateway-1, Manifest Overweight: 55 kg"</code></td>
+                            <td>15 + 10 + 5 + 25 = 55 kg. (55 &gt; 54) &rarr; Overweight.</td>
+                        </tr>
+                        <tr>
+                            <td><code>"Rover-X|100|JUNK, TRASH, SCRAP"</code></td>
+                            <td><code>"Rover-X, Empty Manifest!"</code></td>
+                            <td>No valid keywords match weight reference table (0 kg).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

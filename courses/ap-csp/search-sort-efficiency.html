@@ -1,0 +1,735 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Search & Sorting Algorithms: Linear vs Binary search, sorting methods (Bubble, Insertion, Selection, Merge, Quick), Big-O Notation, and Algorithmic Efficiency.">
+    <title>Search &amp; Sorting Algorithms | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+
+    <style>
+        /* Custom styles for interactive search visualizers */
+        .visualizer-card {
+            background: #11182b;
+            border: 1px solid #28324a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .visualizer-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .visualizer-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .visualizer-btn:hover {
+            background: #004499;
+        }
+        .visualizer-btn:disabled {
+            background: #a0a0a0;
+            cursor: not-allowed;
+        }
+        .visualizer-status {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: var(--text-muted, #555);
+            margin-left: auto;
+        }
+        .array-container {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            min-height: 80px;
+            padding: 20px;
+            padding-top: 40px;
+            background: #1b2640;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .array-box {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #6d7cff;
+            border-radius: 6px;
+            background: #004499;
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .array-box .box-index {
+            position: absolute;
+            top: -20px;
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .array-box.checking {
+            border-color: #f0a500;
+            background: #6d7cff;
+            transform: scale(1.08);
+        }
+        .array-box.eliminated {
+            opacity: 0.3;
+            background: #e0e0e0;
+            border-color: #aaa;
+            color: #666;
+        }
+        .array-box.found {
+            border-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+            transform: scale(1.15);
+        }
+        .array-box.pointer-low, .array-box.pointer-high {
+            border-bottom: 4px solid #0066cc;
+        }
+        .sort-code-accordion {
+            margin: 12px 0 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .sort-code-accordion > summary {
+            padding: 12px 16px;
+            background: var(--background-light);
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .sort-code-accordion > summary:hover {
+            background: var(--surface-hover);
+        }
+        .sort-code-accordion[open] > summary {
+            border-bottom: 1px solid var(--border);
+        }
+        .sort-code-accordion .code-window {
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Search &amp; Sorting Algorithms</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Searching, Sorting, &amp; Algorithmic Efficiency</h1>
+                <p class="lesson-subtitle">Understand how computers locate and organize data, evaluate search strategies, and measure algorithmic performance using Big-O notation.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2><span class="step-num">1.</span> Searching Algorithms</h2>
+                <p>Searching is one of the most fundamental operations in computer science. Given a dataset and a target value, a <strong>search algorithm</strong> determines whether the target exists in the dataset and returns its location (index).</p>
+
+                <h3>A. Linear Search (Sequential Search)</h3>
+                <p><strong>Linear Search</strong> starts at the very beginning of a collection (index <code>0</code>) and inspects every item one by one in sequential order until it finds the target or reaches the end of the collection.</p>
+                <ul>
+                    <li><strong>Requirement:</strong> Works on <strong>any</strong> dataset (sorted or unsorted).</li>
+                    <li><strong>Worst-Case Steps:</strong> If the list has <code>N</code> items, Linear Search may need up to <code>N</code> checks.</li>
+                </ul>
+
+                <!-- Interactive Linear Search Widget -->
+                <div class="visualizer-card">
+                    <h4>Interactive Visualizer: Linear Search</h4>
+                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong>77</strong> in an unsorted list.</p>
+                    <div class="visualizer-controls">
+                        <button class="visualizer-btn" id="runLinearBtn" onclick="runLinearSearch()">Start Linear Search</button>
+                        <button class="visualizer-btn" style="background:#6c757d;" onclick="resetLinearSearch()">Reset</button>
+                        <span class="visualizer-status" id="linearStatus">Status: Ready</span>
+                    </div>
+                    <div class="array-container" id="linearArray"></div>
+                </div>
+
+                <h3>B. Binary Search</h3>
+                <p><strong>Binary Search</strong> uses a divide-and-conquer strategy. It inspects the <em>middle element</em> of a collection. If the middle element is larger than the target, the algorithm discards the entire upper half. If it's smaller, it discards the lower half. It repeats this halving process until the target is located.</p>
+                <ul>
+                    <li><strong>Requirement:</strong> Data <strong>MUST BE SORTED</strong> beforehand! Binary Search will fail on unsorted data.</li>
+                    <li><strong>Worst-Case Steps:</strong> Every check cuts the search space in half. For <code>N</code> items, it takes at most <code>log<sub>2</sub>(N)</code> steps.</li>
+                </ul>
+
+                <!-- Interactive Binary Search Widget -->
+                <div class="visualizer-card">
+                    <h4>Interactive Visualizer: Binary Search</h4>
+                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong>77</strong> in a sorted list.</p>
+                    <div class="visualizer-controls">
+                        <button class="visualizer-btn" id="runBinaryBtn" onclick="runBinarySearch()">Start Binary Search</button>
+                        <button class="visualizer-btn" style="background:#6c757d;" onclick="resetBinarySearch()">Reset</button>
+                        <span class="visualizer-status" id="binaryStatus">Status: Ready</span>
+                    </div>
+                    <div class="array-container" id="binaryArray"></div>
+                </div>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">search_implementations.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Linear Search Implementation
+def linear_search(data, target):
+    for i in range(len(data)):
+        if data[i] == target:
+            return i  # Return index position where target was found
+    return -1  # Target not found
+
+# Binary Search Implementation (Requires sorted data!)
+def binary_search(data, target):
+    low = 0
+    high = len(data) - 1
+    
+    while low <= high:
+        mid = (low + high) // 2
+        if data[mid] == target:
+            return mid  # Found!
+        elif data[mid] < target:
+            low = mid + 1  # Discard lower half
+        else:
+            high = mid - 1  # Discard upper half
+            
+    return -1  # Target not found</code></pre>
+                    </div>
+                </div>
+
+                <h2><span class="step-num">2.</span> Introduction to Sorting Methods</h2>
+                <p>Because fast search algorithms like Binary Search require sorted data, organizing datasets efficiently is a core problem in software engineering. Sorting algorithms rearrange elements into ascending or descending order.</p>
+
+                <blockquote>
+                    <p><strong>AP CSP Course Requirement Note</strong></p>
+                    <p>You are expected to understand how all sorting algorithms below work conceptually (especially the <strong>Divide and Conquer</strong> strategy). However, on exams and assignments, you will only be asked to trace or write simpler sorts like Bubble or Selection. You will <strong>NOT</strong> be required to write Merge Sort or Quick Sort code from memory.</p>
+                </blockquote>
+
+                <h3>A. Simple / Iterative Sorts</h3>
+                <ul>
+                    <li>
+                        <strong>Bubble Sort:</strong> Iteratively steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. Larger elements "bubble" to the end of the list with each pass.
+                        <details class="sort-code-accordion">
+                            <summary>Show Bubble Sort Python code</summary>
+                            <div class="code-window">
+                                <div class="code-window-header">
+                                    <div class="code-window-left">
+                                        <div class="window-dots dots-mac">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <span class="window-filename">bubble_sort.py</span>
+                                    </div>
+                                    <div class="code-window-right">
+                                        <span class="code-lang-badge">Python</span>
+                                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                            </svg>
+                                            <span>Copy code</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-window-body">
+                                    <pre><code class="language-python">def bubble_sort(values):
+    n = len(values)
+    for end in range(n - 1, 0, -1):
+        swapped = False
+        for i in range(end):
+            if values[i] &gt; values[i + 1]:
+                values[i], values[i + 1] = values[i + 1], values[i]
+                swapped = True
+        if not swapped:
+            break
+    return values</code></pre>
+                                </div>
+                            </div>
+                        </details>
+                    </li>
+                    <li>
+                        <strong>Selection Sort:</strong> Divides the array into a sorted and unsorted region. Repeatedly scans the unsorted region to find the minimum element and swaps it into its correct position at the front.
+                        <details class="sort-code-accordion">
+                            <summary>Show Selection Sort Python code</summary>
+                            <div class="code-window">
+                                <div class="code-window-header">
+                                    <div class="code-window-left">
+                                        <div class="window-dots dots-mac">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <span class="window-filename">selection_sort.py</span>
+                                    </div>
+                                    <div class="code-window-right">
+                                        <span class="code-lang-badge">Python</span>
+                                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                            </svg>
+                                            <span>Copy code</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-window-body">
+                                    <pre><code class="language-python">def selection_sort(values):
+    for start in range(len(values)):
+        min_index = start
+        for i in range(start + 1, len(values)):
+            if values[i] &lt; values[min_index]:
+                min_index = i
+        values[start], values[min_index] = values[min_index], values[start]
+    return values</code></pre>
+                                </div>
+                            </div>
+                        </details>
+                    </li>
+                    <li>
+                        <strong>Insertion Sort:</strong> Builds the sorted array one element at a time. Takes the next unsorted item and inserts it into its proper position relative to the elements already sorted (like sorting a hand of playing cards).
+                        <details class="sort-code-accordion">
+                            <summary>Show Insertion Sort Python code</summary>
+                            <div class="code-window">
+                                <div class="code-window-header">
+                                    <div class="code-window-left">
+                                        <div class="window-dots dots-mac">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <span class="window-filename">insertion_sort.py</span>
+                                    </div>
+                                    <div class="code-window-right">
+                                        <span class="code-lang-badge">Python</span>
+                                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                            </svg>
+                                            <span>Copy code</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-window-body">
+                                    <pre><code class="language-python">def insertion_sort(values):
+    for i in range(1, len(values)):
+        current = values[i]
+        position = i - 1
+        while position &gt;= 0 and values[position] &gt; current:
+            values[position + 1] = values[position]
+            position -= 1
+        values[position + 1] = current
+    return values</code></pre>
+                                </div>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+
+                <h3>B. Divide &amp; Conquer / Recursive Sorts</h3>
+                <ul>
+                    <li>
+                        <strong>Merge Sort:</strong> A classic <em>Divide and Conquer</em> algorithm. Recursively splits the unsorted dataset in half until individual elements remain, then repeatedly merges the smaller sorted sub-lists back together in correct order.
+                        <details class="sort-code-accordion">
+                            <summary>Show Merge Sort Python code</summary>
+                            <div class="code-window">
+                                <div class="code-window-header">
+                                    <div class="code-window-left">
+                                        <div class="window-dots dots-mac">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <span class="window-filename">merge_sort.py</span>
+                                    </div>
+                                    <div class="code-window-right">
+                                        <span class="code-lang-badge">Python</span>
+                                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                            </svg>
+                                            <span>Copy code</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-window-body">
+                                    <pre><code class="language-python">def merge_sort(values):
+    if len(values) &lt;= 1:
+        return values
+
+    middle = len(values) // 2
+    left = merge_sort(values[:middle])
+    right = merge_sort(values[middle:])
+    merged = []
+    left_index = right_index = 0
+
+    while left_index &lt; len(left) and right_index &lt; len(right):
+        if left[left_index] &lt;= right[right_index]:
+            merged.append(left[left_index])
+            left_index += 1
+        else:
+            merged.append(right[right_index])
+            right_index += 1
+
+    merged.extend(left[left_index:])
+    merged.extend(right[right_index:])
+    return merged</code></pre>
+                                </div>
+                            </div>
+                        </details>
+                    </li>
+                    <li>
+                        <strong>Quick Sort:</strong> Selects a "pivot" element from the array and partitions the remaining elements into two sub-arrays (those smaller than the pivot and those larger). Recursively sorts the sub-arrays.
+                        <details class="sort-code-accordion">
+                            <summary>Show Quick Sort Python code</summary>
+                            <div class="code-window">
+                                <div class="code-window-header">
+                                    <div class="code-window-left">
+                                        <div class="window-dots dots-mac">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <span class="window-filename">quick_sort.py</span>
+                                    </div>
+                                    <div class="code-window-right">
+                                        <span class="code-lang-badge">Python</span>
+                                        <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                            </svg>
+                                            <span>Copy code</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-window-body">
+                                    <pre><code class="language-python">def quick_sort(values):
+    if len(values) &lt;= 1:
+        return values
+
+    pivot = values[-1]
+    smaller = [value for value in values[:-1] if value &lt;= pivot]
+    larger = [value for value in values[:-1] if value &gt; pivot]
+    return quick_sort(smaller) + [pivot] + quick_sort(larger)</code></pre>
+                                </div>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+
+                <p><a href="https://sorting-algorithms-app-v2.vercel.app/" target="_blank">Visualize these algorithms here</a>.</p>
+
+                <h2><span class="step-num">3.</span> Algorithmic Efficiency &amp; Big-O Notation</h2>
+                <p>How do computer scientists measure whether one algorithm is "better" than another? We do not measure raw execution speed in seconds, because a fast supercomputer will always run code faster than a smartphone. Instead, we measure <strong>algorithmic efficiency</strong> by counting the number of computational steps required as the input size (<code>N</code>) grows.</p>
+
+                <p><strong>Big-O Notation</strong> describes the upper bound (worst-case scenario) of an algorithm's growth rate:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Big-O Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Big-O Complexity</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description &amp; Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" data-label="Big-O Complexity"><code>O(1)</code></td>
+                                <td data-label="Name">Constant Time</td>
+                                <td data-label="Description & Example">Execution steps remain identical regardless of input size <code>N</code>. (e.g., Accessing list item by index <code>lst[0]</code>).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Big-O Complexity"><code>O(log N)</code></td>
+                                <td data-label="Name">Logarithmic Time</td>
+                                <td data-label="Description & Example">Steps grow slowly because input size is halved each step. (e.g., <strong>Binary Search</strong>).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Big-O Complexity"><code>O(N)</code></td>
+                                <td data-label="Name">Linear Time</td>
+                                <td data-label="Description & Example">Steps grow proportionally 1-to-1 with input size <code>N</code>. (e.g., <strong>Linear Search</strong>).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Big-O Complexity"><code>O(N log N)</code></td>
+                                <td data-label="Name">Log-Linear Time</td>
+                                <td data-label="Description & Example">Optimal efficiency for general comparison sorting algorithms. (e.g., <strong>Merge Sort</strong>, <strong>Quick Sort</strong>).</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Big-O Complexity"><code>O(N<sup>2</sup>)</code></td>
+                                <td data-label="Name">Quadratic Time</td>
+                                <td data-label="Description & Example">Steps grow exponentially when using nested loops over dataset <code>N</code>. (e.g., <strong>Bubble, Selection, Insertion Sorts</strong>).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <blockquote>
+                    <strong>Grading vs. Conceptual Knowledge</strong>
+                    <p>In this course, your lab Python code is graded on correctness and logical design rather than execution efficiency. However, for AP CSP assessments, you must understand how algorithms are measured and be able to compare execution steps as datasets scale from 10 items to 1,000,000 items!</p>
+                    <p><strong>Reasonable Time:</strong> An algorithm whose execution time grows polynomial-style (<code>N</code>, <code>N<sup>2</sup></code>, <code>N<sup>3</sup></code>). Linear (<code>O(N)</code>) and Binary (<code>log<sub>2</sub>(N)</code>) searches run in reasonable time.</p>
+                    <p><strong>Unreasonable Time:</strong> An algorithm whose execution time grows exponentially (<code>2<sup>N</sup></code> or <code>N!</code>). As the list size grows slightly, execution time explodes, making it impossible to solve on modern hardware for large inputs.</p>
+                </blockquote>
+
+                <h2>Algorithm Comparison Summary</h2>
+                <div class="table-responsive">
+                    <table>
+                        <caption>Algorithm Comparison Table</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Algorithm</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Worst-Case Efficiency</th>
+                                <th scope="col">Prerequisite Requirement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" data-label="Algorithm"><strong>Linear Search</strong></td>
+                                <td data-label="Type">Search</td>
+                                <td data-label="Worst-Case Efficiency"><code>O(N)</code></td>
+                                <td data-label="Prerequisite Requirement">None (works on unsorted data)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Algorithm"><strong>Binary Search</strong></td>
+                                <td data-label="Type">Search</td>
+                                <td data-label="Worst-Case Efficiency"><code>O(log N)</code></td>
+                                <td data-label="Prerequisite Requirement">Dataset must be sorted!</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Algorithm"><strong>Bubble / Selection / Insertion</strong></td>
+                                <td data-label="Type">Sort</td>
+                                <td data-label="Worst-Case Efficiency"><code>O(N<sup>2</sup>)</code></td>
+                                <td data-label="Prerequisite Requirement">None</td>
+                            </tr>
+                            <tr>
+                                <td scope="row" data-label="Algorithm"><strong>Merge / Quick Sort</strong></td>
+                                <td data-label="Type">Sort</td>
+                                <td data-label="Worst-Case Efficiency"><code>O(N log N)</code></td>
+                                <td data-label="Prerequisite Requirement">Divide & Conquer methodology</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <p><strong>Trade-off Analysis:</strong></p>
+                    <p>Sorting an unsorted list takes time (<code>O(N log N)</code>).</p>
+                    <p><strong>When Linear Search is better:</strong> If you are only doing a <strong>single search</strong> on a small or frequently changing list, sorting first is wasteful.</p>
+                    <p><strong>When Binary Search is better:</strong> If you sort the dataset <strong>once</strong> and perform thousands/millions of lookups over time (like a user login system), Binary Search is exponentially faster.</p>
+
+                </blockquote>
+
+                <h2>Check Your Understanding</h2>
+                <ol>
+                    <li>If an unsorted list contains 1,000,000 elements, what is the maximum number of items Linear Search might need to inspect?</li>
+                    <li>If a sorted list contains 1,000,000 elements, what is the maximum number of checks Binary Search requires? <em>(Hint: <code>log<sub>2</sub>(1,000,000) &asymp; 20</code>)</em>.</li>
+                    <li>Why is Merge Sort generally preferred over Bubble Sort for large datasets?</li>
+                    <li>Explain why attempting Binary Search on an unsorted list leads to incorrect results.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+
+    <!-- Interactive Visualizer Logic -->
+    <script>
+        // Datasets
+        const linearData = [42, 15, 88, 23, 77, 34, 91, 50];
+        const binaryData = [12, 23, 34, 45, 58, 67, 77, 89, 95];
+
+        function renderArray(containerId, data) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            data.forEach((val, idx) => {
+                const box = document.createElement('div');
+                box.className = 'array-box';
+                box.id = `${containerId}-box-${idx}`;
+                box.innerHTML = `<span class="box-index">[${idx}]</span>${val}`;
+                container.appendChild(box);
+            });
+        }
+
+        // Linear Search Simulation
+        let linearRunning = false;
+        async function runLinearSearch() {
+            if (linearRunning) return;
+            linearRunning = true;
+            document.getElementById('runLinearBtn').disabled = true;
+            const target = 77;
+            const status = document.getElementById('linearStatus');
+
+            for (let i = 0; i < linearData.length; i++) {
+                status.innerText = `Checking index [${i}]: Is ${linearData[i]} == ${target}?`;
+                const box = document.getElementById(`linearArray-box-${i}`);
+                box.classList.add('checking');
+
+                await new Promise(r => setTimeout(r, 700));
+
+                if (linearData[i] === target) {
+                    box.classList.remove('checking');
+                    box.classList.add('found');
+                    status.innerText = `FOUND! Target ${target} located at index [${i}] in ${i + 1} steps.`;
+                    linearRunning = false;
+                    return;
+                }
+
+                box.classList.remove('checking');
+                box.classList.add('eliminated');
+            }
+            status.innerText = "Target not found.";
+            linearRunning = false;
+        }
+
+        function resetLinearSearch() {
+            linearRunning = false;
+            document.getElementById('runLinearBtn').disabled = false;
+            document.getElementById('linearStatus').innerText = "Status: Ready";
+            renderArray('linearArray', linearData);
+        }
+
+        // Binary Search Simulation
+        let binaryRunning = false;
+        async function runBinarySearch() {
+            if (binaryRunning) return;
+            binaryRunning = true;
+            document.getElementById('runBinaryBtn').disabled = true;
+            const target = 77;
+            const status = document.getElementById('binaryStatus');
+
+            let low = 0;
+            let high = binaryData.length - 1;
+            let step = 0;
+
+            while (low <= high) {
+                step++;
+                let mid = Math.floor((low + high) / 2);
+                
+                status.innerText = `Step ${step}: Low=[${low}], High=[${high}], Mid=[${mid}] (${binaryData[mid]})`;
+                
+                // Highlight active mid
+                const midBox = document.getElementById(`binaryArray-box-${mid}`);
+                midBox.classList.add('checking');
+
+                await new Promise(r => setTimeout(r, 1000));
+
+                if (binaryData[mid] === target) {
+                    midBox.classList.remove('checking');
+                    midBox.classList.add('found');
+                    status.innerText = `FOUND! Target ${target} located at index [${mid}] in only ${step} steps!`;
+                    binaryRunning = false;
+                    return;
+                }
+
+                if (binaryData[mid] < target) {
+                    status.innerText = `${binaryData[mid]} < ${target}. Eliminating left half...`;
+                    for (let i = low; i <= mid; i++) {
+                        document.getElementById(`binaryArray-box-${i}`).classList.add('eliminated');
+                    }
+                    low = mid + 1;
+                } else {
+                    status.innerText = `${binaryData[mid]} > ${target}. Eliminating right half...`;
+                    for (let i = mid; i <= high; i++) {
+                        document.getElementById(`binaryArray-box-${i}`).classList.add('eliminated');
+                    }
+                    high = mid - 1;
+                }
+
+                await new Promise(r => setTimeout(r, 800));
+            }
+
+            status.innerText = "Target not found.";
+            binaryRunning = false;
+        }
+
+        function resetBinarySearch() {
+            binaryRunning = false;
+            document.getElementById('runBinaryBtn').disabled = false;
+            document.getElementById('binaryStatus').innerText = "Status: Ready";
+            renderArray('binaryArray', binaryData);
+        }
+
+        // Initial rendering on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArray('linearArray', linearData);
+            renderArray('binaryArray', binaryData);
+        });
+    </script>
+</body>
+</html>

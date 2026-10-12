@@ -230,7 +230,7 @@ units:
         description: "Deep Space Logistics: String Tokenization, Dictionaries, and Payload Accumulation in Python."
         topics:
           - "Challenge"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

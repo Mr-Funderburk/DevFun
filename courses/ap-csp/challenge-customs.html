@@ -1,0 +1,201 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Customs Duty Auditor: Nested String Splitting, Dictionary Lookups, and Financial Accumulation in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Customs Duty Auditor | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Customs Duty Auditor</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Challenge: Customs Duty Auditor</h1>
+                <p class="lesson-subtitle">Parse passenger manifests, look up tier allowances, calculate key-value item pairs, and assess duty taxes on orbital imports.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>Commercial sub-orbital flight lines carry passengers between Earth and orbital habitats. Upon re-entering Earth's airspace, all passengers must declare luxury lunar souvenirs, rare meteorites, and orbital technological artifacts brought back from space.</p>
+
+                <p>To keep customs processing fast and efficient, the spaceport relies on an automated guidance terminal. Different passenger ticket tiers receive different duty-free baggage allowances. Your automated software must parse a passenger declaration string, look up the passenger's duty-free allowance, total the value of declared items, and assess a <strong>15% customs duty tax</strong> on any value exceeding their allowance.</p>
+
+                <h2>Official Duty-Free Tier Allowances</h2>
+                <p>Your program must map ticket classes to their official duty-free allowance values (in USD) below:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Ticket Class</th>
+                            <th>Duty-Free Allowance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>VIP</code></td><td>$500.00</td></tr>
+                        <tr><td><code>BUSINESS</code></td><td>$350.00</td></tr>
+                        <tr><td><code>STANDARD</code></td><td>$200.00</td></tr>
+                        <tr><td><code>ECONOMY</code></td><td>$100.00</td></tr>
+                    </tbody>
+                </table>
+                <p><em>Note: Unrecognized or unlisted ticket classes receive a $0.00 allowance.</em></p>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Specifications & Rules:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>customs_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>customs_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>evaluate_customs(passenger_data)</code> that accepts one parameter <code>passenger_data</code>.</li>
+                        <li><strong>Input String Format:</strong> <code>passenger_data</code> is a single pipe-delimited (<code>|</code>) string formatted as:
+                            <br><code>"PassengerName|TicketClass|Item1:Price1,Item2:Price2,Item3:Price3..."</code></li>
+                        <li><strong>Parsing & Calculations:</strong>
+                            <ul>
+                                <li>The list of declared items is comma-separated and may contain 0, 1, or many <code>Item:Price</code> pairs.</li>
+                                <li>Ticket class comparisons must be case-insensitive (e.g., <code>"vip"</code>, <code>"Vip"</code>, and <code>"VIP"</code> all map to $500.00).</li>
+                                <li>Prices are floating-point values (e.g., <code>300</code> or <code>120.50</code>).</li>
+                                <li>Cleanly trim whitespace around passenger names, ticket classes, item names, and prices.</li>
+                                <li>If total declared value is <strong>less than or equal to</strong> the allowance, duty owed is <code>$0.00</code>.</li>
+                                <li>If total declared value <strong>exceeds</strong> the allowance, assess a <strong>15% tax (0.15)</strong> ONLY on the amount *over* the allowance.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Return Output Requirement:</strong> Return an exact string formatted as:
+                            <br><code>"&lt;PassengerName&gt; (&lt;TicketClass&gt;), Customs Duty Owed: $&lt;duty_amount&gt;"</code>
+                            <br><em>(Note: Preserve the original ticket class casing as given in the input string, and format the duty amount to exactly two decimal places using <code>{duty:.2f}</code>).</em></li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Input Telemetry String (<code>passenger_data</code>)</th>
+                            <th scope="col">Expected Return String</th>
+                            <th scope="col">Mathematical Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Eleni|VIP|MoonRock:300,ZeroGWatch:400"</code></td>
+                            <td data-label="Expected Result"><code>"Eleni (VIP), Customs Duty Owed: $30.00"</code></td>
+                            <td>Total: $700. Excess: $700 &minus; $500 = $200. Tax: $200 &times; 0.15 = $30.00</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Marcus|BUSINESS|Meteorite:350"</code></td>
+                            <td data-label="Expected Result"><code>"Marcus (BUSINESS), Customs Duty Owed: $0.00"</code></td>
+                            <td>Total: $350. Allowance: $350. Exact boundary &rarr; $0.00 owed.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Zara|STANDARD|ZeroGGlasses:150"</code></td>
+                            <td data-label="Expected Result"><code>"Zara (STANDARD), Customs Duty Owed: $0.00"</code></td>
+                            <td>Total: $150. Allowance: $200. Under allowance &rarr; $0.00 owed.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Chen|ECONOMY|MarsDust:50,Patch:80"</code></td>
+                            <td data-label="Expected Result"><code>"Chen (ECONOMY), Customs Duty Owed: $4.50"</code></td>
+                            <td>Total: $130. Excess: $130 &minus; $100 = $30. Tax: $30 &times; 0.15 = $4.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Test Your Code Locally</h3>
+                <p>Copy and paste the test harness below into the bottom of your Python file to run automated checks against the sample inputs:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">challenge-customs.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">if __name__ == "__main__":
+    sample_tests = [
+        ("Eleni|VIP|MoonRock:300,ZeroGWatch:400", "Eleni (VIP), Customs Duty Owed: $30.00"),
+        ("Marcus|BUSINESS|Meteorite:350", "Marcus (BUSINESS), Customs Duty Owed: $0.00"),
+        ("Zara|STANDARD|ZeroGGlasses:150", "Zara (STANDARD), Customs Duty Owed: $0.00"),
+        ("Chen|ECONOMY|MarsDust:50,Patch:80", "Chen (ECONOMY), Customs Duty Owed: $4.50")
+    ]
+
+    print("\n--- RUNNING LOCAL TESTS ---")
+    passed = 0
+    for sample_input, expected in sample_tests:
+        actual = evaluate_customs(sample_input)
+        if actual == expected:
+            print(f"PASS: '{sample_input}'")
+            passed += 1
+        else:
+            print(f"FAIL: '{sample_input}'\n   Expected: {expected}\n   Got:      {actual}\n")
+            
+    print(f"Result: {passed}/{len(sample_tests)} sample tests passed.\n")</code></pre>
+                    </div>
+                </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

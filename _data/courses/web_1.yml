@@ -146,3 +146,12 @@ units:
         topics:
           - "Grid"
         status: "published"
+        
+  - title: "Challenges"
+    lessons:
+      - title: "Layout Replication 1"
+        file: "layout-challenge_01.html"
+        description: "Try to recreate this challenge from just the picture."
+        topics:
+          - "Challenge"
+        status: "published"

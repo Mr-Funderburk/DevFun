@@ -231,6 +231,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Customs"
+        file: "challenge-customs.html"
+        description: "Nested String Splitting, Dictionary Lookups, and Financial Accumulation in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

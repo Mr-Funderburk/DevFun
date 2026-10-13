@@ -1,0 +1,198 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Replicate a provided layout spec using semantic HTML, CSS Grid, Flexbox, Positioning, and interactive states.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Layout Replication Challenge | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/code-window.css">
+
+    <style>
+        .challenge-images {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-block: 1.5rem;
+        }
+
+        .challenge-image {
+            display: block;
+            width: 100%;
+            height: 240px;
+            cursor: zoom-in;
+        }
+
+        .challenge-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 180ms ease;
+        }
+
+        .challenge-image:hover img,
+        .challenge-image:focus-visible img {
+            filter: brightness(1.2);
+        }
+
+        @media (max-width: 700px) {
+            .challenge-images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="/js/prism.min.js" defer></script>
+    <script src="/js/prism-gml.js" defer></script>
+    <script src="/js/code-window.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Layout Challenge</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Layout Replication Challenge</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>The Ultimate Design Blueprint Challenge</h2>
+                <p>In client-world web development, you are rarely asked to invent layouts from scratch. Instead, designers hand you a visual mock-up or spec sheet, and your job as a front-end developer is to translate that picture into clean, pixel-perfect HTML and CSS.</p>
+
+                <p>In this challenge, your instructor will project or provide a screenshot of a target layout. Your task is to inspect the visual details and write the complete HTML and CSS code required to replicate the layout precisely!</p>
+
+                <blockquote class="code-explanation">
+                    <h4>No Source Code Provided!</h4>
+                    <p>You will only receive the visual image of the final website. You must determine which semantic HTML tags to write, which CSS layout system (Flexbox vs. CSS Grid) fits each section, and how to position floating badges and hover effects.</p>
+                </blockquote>
+
+                <h2>Deconstructing the Challenge Layout</h2>
+                <p>Analyze the screenshot provided by your instructor carefully. The target layout contains five major layout structural features:</p>
+
+                <ol>
+                    <li>
+                        <strong>Sticky Header &amp; Flex Navigation:</strong> A top navigation bar pinned to the top of the viewport containing a brand logo, navigation links, and a primary CTA button aligned with Flexbox.
+                    </li>
+                    <li>
+                        <strong>Asymmetrical Bento Hero Grid:</strong> A 2-column or 3-column hero section built using <strong>CSS Grid</strong>. The main featured card spans across 2 rows and contains a floating badge anchored in the top-right corner using absolute positioning.
+                    </li>
+                    <li>
+                        <strong>3-Card Feature Grid:</strong> A lower section containing three equal-width feature cards that wrap smoothly using Flexbox or Grid.
+                    </li>
+                    <li>
+                        <strong>Sidebar &amp; Main Content Split:</strong> The primary page content is split into a 2-column layout with a wider main content zone (2.5fr) and a narrower sidebar (1fr).
+                    </li>
+                    <li>
+                        <strong>Interactive Hover Micro-Interactions:</strong> Moving the mouse over cards or navigation buttons smoothly shifts background fills, borders, or slightly elevates cards using transitions.
+                    </li>
+                </ol>
+
+                <h2>Technical Requirements Checklist</h2>
+                <p>Your code submission must strictly meet all of the following technical constraints:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Technical Evaluation Criteria</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Requirement Category</th>
+                                <th scope="col">Technical Expectation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">File Architecture</th>
+                                <td>A root folder named <code>layout-challenge-1/</code> containing <code>index.html</code>, <code>style.css</code>, and an <code>css/</code> subfolder.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">HTML Semantics</th>
+                                <td>Must use valid semantic HTML5 markup: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code>. Limit generic <code>&lt;div&gt;</code> spaghetti!</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CSS Layout Engines</th>
+                                <td>Must utilize <strong>CSS Grid</strong> for the 2D bento grid &amp; main page split, and <strong>Flexbox</strong> for header link distribution and card alignments.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CSS Positioning</th>
+                                <td>Must implement correct positioning (<code>sticky</code>, <code>relative</code>, <code>absolute</code>)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Interactive States</th>
+                                <td>Must feature <code>:hover</code> state transitions on buttons, links, and cards.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Recommended Strategy for Success</h2>
+                <ol>
+                    <li><strong>Draw the Boxes First:</strong> Look at the screenshot and draw bounding boxes around the major sections. Identify which element is the parent container and which are the children.</li>
+                    <li><strong>Build HTML Skeleton First:</strong> Write all your semantic HTML structure before touching CSS. Make sure all parent and child tags are properly nested and indented!</li>
+                    <li><strong>Add Universal Reset:</strong> Start your CSS file with <code>* { margin: 0; padding: 0; box-sizing: border-box; }</code> to eliminate browser default offset quirks.</li>
+                    <li><strong>Work Top-to-Bottom:</strong> Style the sticky header first, then move to the hero grid, main content layout, sidebar, and finally the footer.</li>
+                </ol>
+
+                <h2>Artifacts</h2>
+                <p class="note">Click on each image to view them full size.</p>
+                <div id="artifacts" class="challenge-images">
+                    <a class="challenge-image" href="img/layout-challenge-01_desktop.png" target="_blank" rel="noopener">
+                        <img src="img/layout-challenge-01_desktop.png" alt="Desktop layout challenge reference">
+                    </a>
+                    <a class="challenge-image" href="img/layout-challenge-01_hover.png" target="_blank" rel="noopener">
+                        <img src="img/layout-challenge-01_hover.png" alt="Hover layout challenge reference">
+                    </a>
+                    <a class="challenge-image" href="img/layout-challenge-01_mobile.png" target="_blank" rel="noopener">
+                        <img src="img/layout-challenge-01_mobile.png" alt="Mobile layout challenge reference">
+                    </a>
+                </div>
+
+                <h2>Submission Instructions</h2>
+                <p>Once your implementation closely matches the instructor's screenshot spec, compress your <code>layout-challenge-1/</code> folder into a <code>.zip</code> file and upload it to the assignment drop box!</p>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

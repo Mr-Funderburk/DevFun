@@ -39,6 +39,26 @@ course: ap_csp
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
+        .visualizer-controls label {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 600;
+        }
+        .visualizer-controls input {
+            width: 90px;
+            padding: 8px;
+            border: 1px solid #6d7cff;
+            border-radius: 6px;
+            background: #1b2640;
+            color: white;
+            font: inherit;
+        }
+        .item-count-control {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+        }
         .visualizer-btn {
             background: #0066cc;
             color: white;
@@ -189,10 +209,28 @@ course: ap_csp
                     <li><strong>Worst-Case Steps:</strong> If the list has <code>N</code> items, Linear Search may need up to <code>N</code> checks.</li>
                 </ul>
 
+                <div class="visualizer-card">
+                    <h4>Search Visualizer Settings</h4>
+                    <div class="visualizer-controls">
+                        <label for="searchTarget">Target value
+                            <input type="number" id="searchTarget" value="77" step="any">
+                        </label>
+                        <div class="item-count-control">
+                            <label for="itemCount">Items in each list</label>
+                            <button class="visualizer-btn" type="button" aria-label="Decrease number of items" onclick="changeItemCount(-1)">-</button>
+                            <input type="number" id="itemCount" value="8" min="1" max="30" step="1" aria-describedby="itemCountHelp">
+                            <button class="visualizer-btn" type="button" aria-label="Increase number of items" onclick="changeItemCount(1)">+</button>
+                        </div>
+                        <button class="visualizer-btn" type="button" onclick="regenerateData()">New random lists</button>
+                        <span class="visualizer-status" id="settingsStatus" role="status"></span>
+                    </div>
+                    <p id="itemCountHelp" style="font-size: 0.9em; margin-bottom: 0;">Choose 1–30 items. Changing the list size creates new random values; the binary-search list is sorted automatically.</p>
+                </div>
+
                 <!-- Interactive Linear Search Widget -->
                 <div class="visualizer-card">
                     <h4>Interactive Visualizer: Linear Search</h4>
-                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong>77</strong> in an unsorted list.</p>
+                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong id="linearTargetLabel">77</strong> in an unsorted list.</p>
                     <div class="visualizer-controls">
                         <button class="visualizer-btn" id="runLinearBtn" onclick="runLinearSearch()">Start Linear Search</button>
                         <button class="visualizer-btn" style="background:#6c757d;" onclick="resetLinearSearch()">Reset</button>
@@ -211,7 +249,7 @@ course: ap_csp
                 <!-- Interactive Binary Search Widget -->
                 <div class="visualizer-card">
                     <h4>Interactive Visualizer: Binary Search</h4>
-                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong>77</strong> in a sorted list.</p>
+                    <p style="font-size: 0.9em; margin-bottom: 12px;">Searching for target value: <strong id="binaryTargetLabel">77</strong> in a sorted list.</p>
                     <div class="visualizer-controls">
                         <button class="visualizer-btn" id="runBinaryBtn" onclick="runBinarySearch()">Start Binary Search</button>
                         <button class="visualizer-btn" style="background:#6c757d;" onclick="resetBinarySearch()">Reset</button>
@@ -611,8 +649,36 @@ def binary_search(data, target):
     <!-- Interactive Visualizer Logic -->
     <script>
         // Datasets
-        const linearData = [42, 15, 88, 23, 77, 34, 91, 50];
-        const binaryData = [12, 23, 34, 45, 58, 67, 77, 89, 95];
+        let linearData = [];
+        let binaryData = [];
+
+        function generateData(itemCount) {
+            const values = Array.from({ length: itemCount }, () => Math.floor(Math.random() * 100) + 1);
+            return {
+                linear: values,
+                binary: [...values].sort((a, b) => a - b)
+            };
+        }
+
+        function getSearchTarget() {
+            const targetInput = document.getElementById('searchTarget');
+            const target = targetInput.valueAsNumber;
+            if (!Number.isFinite(target)) {
+                targetInput.setCustomValidity('Enter a valid number to search for.');
+                targetInput.reportValidity();
+                return null;
+            }
+            targetInput.setCustomValidity('');
+            return target;
+        }
+
+        function updateTargetLabels() {
+            const targetInput = document.getElementById('searchTarget');
+            if (Number.isFinite(targetInput.valueAsNumber)) {
+                document.getElementById('linearTargetLabel').innerText = targetInput.value;
+                document.getElementById('binaryTargetLabel').innerText = targetInput.value;
+            }
+        }
 
         function renderArray(containerId, data) {
             const container = document.getElementById(containerId);
@@ -628,11 +694,14 @@ def binary_search(data, target):
 
         // Linear Search Simulation
         let linearRunning = false;
+        let linearRunId = 0;
         async function runLinearSearch() {
             if (linearRunning) return;
+            const target = getSearchTarget();
+            if (target === null) return;
             linearRunning = true;
+            const runId = ++linearRunId;
             document.getElementById('runLinearBtn').disabled = true;
-            const target = 77;
             const status = document.getElementById('linearStatus');
 
             for (let i = 0; i < linearData.length; i++) {
@@ -641,12 +710,14 @@ def binary_search(data, target):
                 box.classList.add('checking');
 
                 await new Promise(r => setTimeout(r, 700));
+                if (runId !== linearRunId) return;
 
                 if (linearData[i] === target) {
                     box.classList.remove('checking');
                     box.classList.add('found');
                     status.innerText = `FOUND! Target ${target} located at index [${i}] in ${i + 1} steps.`;
                     linearRunning = false;
+                    document.getElementById('runLinearBtn').disabled = false;
                     return;
                 }
 
@@ -655,9 +726,11 @@ def binary_search(data, target):
             }
             status.innerText = "Target not found.";
             linearRunning = false;
+            document.getElementById('runLinearBtn').disabled = false;
         }
 
         function resetLinearSearch() {
+            linearRunId++;
             linearRunning = false;
             document.getElementById('runLinearBtn').disabled = false;
             document.getElementById('linearStatus').innerText = "Status: Ready";
@@ -666,11 +739,14 @@ def binary_search(data, target):
 
         // Binary Search Simulation
         let binaryRunning = false;
+        let binaryRunId = 0;
         async function runBinarySearch() {
             if (binaryRunning) return;
+            const target = getSearchTarget();
+            if (target === null) return;
             binaryRunning = true;
+            const runId = ++binaryRunId;
             document.getElementById('runBinaryBtn').disabled = true;
-            const target = 77;
             const status = document.getElementById('binaryStatus');
 
             let low = 0;
@@ -688,12 +764,14 @@ def binary_search(data, target):
                 midBox.classList.add('checking');
 
                 await new Promise(r => setTimeout(r, 1000));
+                if (runId !== binaryRunId) return;
 
                 if (binaryData[mid] === target) {
                     midBox.classList.remove('checking');
                     midBox.classList.add('found');
                     status.innerText = `FOUND! Target ${target} located at index [${mid}] in only ${step} steps!`;
                     binaryRunning = false;
+                    document.getElementById('runBinaryBtn').disabled = false;
                     return;
                 }
 
@@ -712,21 +790,75 @@ def binary_search(data, target):
                 }
 
                 await new Promise(r => setTimeout(r, 800));
+                if (runId !== binaryRunId) return;
             }
 
             status.innerText = "Target not found.";
             binaryRunning = false;
+            document.getElementById('runBinaryBtn').disabled = false;
         }
 
         function resetBinarySearch() {
+            binaryRunId++;
             binaryRunning = false;
             document.getElementById('runBinaryBtn').disabled = false;
             document.getElementById('binaryStatus').innerText = "Status: Ready";
             renderArray('binaryArray', binaryData);
         }
 
+        function changeItemCount(change) {
+            const itemCountInput = document.getElementById('itemCount');
+            const currentCount = Number.parseInt(itemCountInput.value, 10);
+            const settingsStatus = document.getElementById('settingsStatus');
+            if (!Number.isInteger(currentCount) || currentCount < 1 || currentCount > 30) {
+                itemCountInput.setCustomValidity('Enter a whole number from 1 to 30.');
+                itemCountInput.reportValidity();
+                settingsStatus.innerText = 'List size must be a whole number from 1 to 30.';
+                return;
+            }
+
+            const itemCount = Math.min(30, Math.max(1, currentCount + change));
+            itemCountInput.value = itemCount;
+            regenerateData();
+        }
+
+        function regenerateData() {
+            const itemCountInput = document.getElementById('itemCount');
+            const itemCount = itemCountInput.valueAsNumber;
+            const settingsStatus = document.getElementById('settingsStatus');
+            if (!Number.isInteger(itemCount) || itemCount < 1 || itemCount > 30) {
+                itemCountInput.setCustomValidity('Enter a whole number from 1 to 30.');
+                itemCountInput.reportValidity();
+                settingsStatus.innerText = 'List size must be a whole number from 1 to 30.';
+                return;
+            }
+
+            itemCountInput.setCustomValidity('');
+            settingsStatus.innerText = '';
+            resetLinearSearch();
+            resetBinarySearch();
+            const data = generateData(itemCount);
+            linearData = data.linear;
+            binaryData = data.binary;
+            renderArray('linearArray', linearData);
+            renderArray('binaryArray', binaryData);
+        }
+
         // Initial rendering on page load
         document.addEventListener('DOMContentLoaded', () => {
+            const initialData = generateData(document.getElementById('itemCount').valueAsNumber);
+            linearData = initialData.linear;
+            binaryData = initialData.binary;
+            document.getElementById('searchTarget').addEventListener('input', updateTargetLabels);
+            document.getElementById('searchTarget').addEventListener('input', () => {
+                resetLinearSearch();
+                resetBinarySearch();
+            });
+            document.getElementById('itemCount').addEventListener('input', () => {
+                document.getElementById('itemCount').setCustomValidity('');
+                document.getElementById('settingsStatus').innerText = '';
+            });
+            document.getElementById('itemCount').addEventListener('change', regenerateData);
             renderArray('linearArray', linearData);
             renderArray('binaryArray', binaryData);
         });

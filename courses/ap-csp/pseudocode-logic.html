@@ -1,0 +1,256 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learn problem-solving strategies, algorithm design, flowcharting, and writing structured pseudocode.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Thinking Like a Programmer: Flowcharts & Pseudocode | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Thinking Like a Programmer</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Thinking Like a Programmer: Logic, Flowcharts & Pseudocode</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>The real challenge of programming isn't learning a language's syntax—it's learning to creatively and logically solve problems. At its core, programming is about problem-solving: thinking logically and breaking down complex tasks into step-by-step solutions.</p>
+                
+                <p>Many beginners approach a programming challenge by immediately typing random code, guessing at solutions without much structure. If that attempt fails, they try another random tweak until it works or they give up. While you might get lucky occasionally, this trial-and-error approach is inefficient, frustrating, and error-prone. To avoid this trap, software engineers follow a structured system: <strong>Identify, Plan, Break-Down, Solve, and Test</strong>.</p>
+
+                <h2>The 5-Step Problem Solving Framework</h2>
+
+                <h3>1. Identify</h3>
+                <p>It is impossible to solve a problem if you don't fully understand what is being asked. Before writing a single line of code, make sure you understand the goal. A classic indicator of true understanding is whether you can <strong>explain the problem in layman's terms</strong> to someone else.</p>
+                <p>Programmers use many techniques to clarify problems: drawing diagrams, talking through logic with a peer, or even using "rubber duck debugging"—explaining the logic line by line out loud to an inanimate object. Anything that forces you to analyze the problem from multiple angles will help reveal hidden assumptions.</p>
+
+                <h3>2. Plan</h3>
+                <p>A common mistake made by new programmers is diving straight into code. While experienced developers might quickly sketch solutions mentally based on past projects, formal planning remains standard industry practice. Tools like flowcharts, storyboards, UML diagrams, and pseudocode help model system behavior before implementation starts.</p>
+
+                <h3>3. Break-Down (Decomposition)</h3>
+                <p>Once you understand the problem and have a high-level plan, break the problem down into smaller subproblems. Continue reducing each part until you reach manageable tasks that you know how to solve immediately. Each subproblem should be self-contained and independently testable.</p>
+
+                <blockquote>
+                    <p><strong>The "Reduce the Problem" Technique:</strong></p>
+                    <p><em>"If I could teach every beginning programmer one problem-solving skill, it would be the 'reduce the problem technique.' Suppose you're asked to write a program that reads ten numbers and figures out which number is the third highest. If you're stuck, reduce the problem to something simpler: find the highest number overall, or find the larger of just two numbers. Reduce the problem to the point where you know how to solve it, write that solution, then expand it back out step by step."</em> — V. Anton Spraul</p>
+                </blockquote>
+
+                <h3>4. Solve</h3>
+                <p>With a clear understanding, a high-level plan, and decomposed subproblems, you are ready to write code. Solve the smallest components first, then combine them to build the complete program.</p>
+
+                <h3>5. Test</h3>
+                <p>Generating an output does not guarantee it is correct. Programmers test their code against typical inputs, edge cases, and unexpected user behaviors. Remember: <strong>problem-solving is iterative</strong>. If testing reveals a flaw in your logic, you will return to the planning or breakdown steps to refine your approach before updating your code.</p>
+
+                <h2>Flowcharts</h2>
+                <img src="img/friendship-algorithm.webp" alt="The Friendship Algorithm Flowchart (Big Bang Theory)" style="display: block; float: right; width: 400px; object-fit: cover; border-radius: 16px; margin-left: 20px; margin-bottom: 20px;">
+                <p>A <strong>flowchart</strong> is a visual diagram that depicts a process, system, or computer algorithm. Flowcharts document, plan, and communicate complex logic using standard shapes connected by arrows that indicate direction and sequence.</p>
+
+                <p>Standard flowchart symbols include:</p>
+                <ul>
+                    <li><strong>Oval / Pill (Terminator):</strong> Represents the Start or End point of a process.</li>
+                    <li><strong>Rectangle (Process):</strong> Represents an operational action, calculation, or data manipulation (e.g., <code>SET total = total + 1</code>).</li>
+                    <li><strong>Diamond (Decision):</strong> Represents a conditional question with multiple exiting paths (typically "Yes/No" or "True/False").</li>
+                    <li><strong>Parallelogram (Input/Output):</strong> Represents receiving input from a user or displaying output to a screen/file.</li>
+                    <li><strong>Arrows (Flow Lines):</strong> Connect the shapes to establish execution order.</li>
+                </ul>
+
+                <div style="width: 560px; height: 315px; margin: 0 auto;">
+                <iframe style="width: 100%; height: 100%; border-radius: 16px;" src="https://www.youtube.com/embed/5Cuoxa59jxI?si=MV3APMMLesh63_F6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <h2>Pseudocode</h2>
+                <p><strong>Pseudocode</strong> (literally <em>"fake code"</em>) is an informal, human-readable method for planning algorithms. It allows you to outline a program's sequence and logic without worrying about language-specific syntax, missing semicolons, or matching brackets.</p>
+
+                <h3>Why Use Pseudocode?</h3>
+                <ul>
+                    <li><strong>Improves Readability:</strong> Focuses purely on logic so anyone—including non-programmers—can understand the solution.</li>
+                    <li><strong>Eases Code Construction:</strong> Translating clean pseudocode into concrete code (Python, Java, JavaScript) becomes quick and direct.</li>
+                    <li><strong>Early Bug Detection:</strong> Catching flaws in logic on paper saves time compared to debugging complex code errors later.</li>
+                </ul>
+
+                <h3>Formatting Conventions for Pseudocode</h3>
+                <p>While pseudocode has no strict syntax compiler rules, following consistent conventions keeps your logic organized and easy to follow:</p>
+
+                <ul>
+                    <li><strong>UPPERCASE Keywords:</strong> Write structural command words in all caps to make control flow stand out (e.g., <code>IF</code>, <code>ELSE</code>, <code>FOR EACH</code>, <code>WHILE</code>, <code>OUTPUT</code>, <code>SET</code>).</li>
+                    <li><strong>Indentation:</strong> Indent any code that belongs inside a conditional block or loop structure.</li>
+                    <li><strong>Descriptive Naming:</strong> Use clear variable and function names with standard casing like <code>camelCase</code> or <code>PascalCase</code>.</li>
+                    <li><strong>Omit Syntax Overhead:</strong> Leave out language-specific punctuation like semicolons, curly braces <code>{}</code>, or explicit variable types.</li>
+                </ul>
+
+                <h3>Pseudocode Examples</h3>
+
+                <p><strong>Example 1: Basic Decision Logic</strong></p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">day_greeting.pseudo</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Pseudocode</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-plaintext">SET dayOfWeek to current day
+
+IF dayOfWeek is "Monday"
+    PRINT "Where's my coffee??"
+ELSE IF dayOfWeek is "Wednesday"
+    PRINT "HUMP DAY!!!"
+ELSE IF dayOfWeek is "Friday"
+    PRINT "Happy FriYAY!"
+ELSE
+    PRINT "Just another day!"
+END IF</code></pre>
+                    </div>
+                </div>
+
+                <p><strong>Example 2: Evaluating Criteria with Math Operators</strong></p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">grade_check.pseudo</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Pseudocode</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-plaintext">// Determine if a student passed a course
+// A passing grade is 60 or higher
+
+SET studentGrade to current student's score
+
+IF studentGrade >= 60
+    PRINT "Passed"
+ELSE
+    PRINT "Failed"
+END IF</code></pre>
+                    </div>
+                </div>
+
+                <p><strong>Example 3: Iteration and Aggregation</strong></p>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">calculate_average.pseudo</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Pseudocode</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-plaintext">// Calculate the class average score
+SET total to 0
+SET studentCount to 0
+
+FOR EACH grade IN classGrades
+    SET total to total + grade
+    SET studentCount to studentCount + 1
+END FOR
+
+SET classAverage to total / studentCount
+PRINT classAverage</code></pre>
+                    </div>
+                </div>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following questions to consolidate your understanding of problem-solving methods, flowcharts, and pseudocode.</p>
+                <ol>
+                    <li>Beyond computer science, how can structured problem-solving and "thinking like a programmer" apply to challenges in everyday life or other academic subjects?</li>
+                    <li>Create a flowchart for a process of your choice. Your flowchart must include at least one <strong>decision symbol</strong> (diamond), one <strong>process symbol</strong> (rectangle), and one <strong>input/output symbol</strong> (parallelogram). <span class="note">(Free flowcharting tools like <a href="https://www.lucidchart.com" target="_blank" rel="noopener">Lucidchart</a> or <a href="https://app.diagrams.net" target="_blank" rel="noopener">Draw.io</a> can be used to generate your chart.)</span></li>
+                    <li>Write pseudocode for an outdoor activity advisor program: If the weather is nice, advise playing outside; otherwise, advise playing inside.</li>
+                    <li>Write step-by-step pseudocode for making a peanut butter and jelly sandwich. Assume all ingredients and utensils are on the table in front of you. Pay special attention to explicit sequencing and conditional steps!</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

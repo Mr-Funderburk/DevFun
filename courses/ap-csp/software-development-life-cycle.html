@@ -1,0 +1,152 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learn the Software Development Life Cycle (SDLC), development methodologies like Waterfall and Agile, testing strategies, and documentation standards.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Software Development Life Cycle (SDLC) | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Software Development Life Cycle</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>The Software Development Life Cycle (SDLC)</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Building high-quality computing innovations requires a structured process. The <strong>Software Development Life Cycle (SDLC)</strong> is a formal framework used by computer scientists and software engineers to design, build, test, and deliver reliable software applications. By following standard SDLC practices, development teams can meet user needs, prevent costly bugs, manage project budgets, and deliver software on schedule.</p>
+                
+                <p>In computer science—and specifically on the AP Computer Science Principles exam—software development is recognized as an <strong>iterative and collaborative process</strong>. Programmers rarely follow a straight line from start to finish; instead, they refine their code continuously through feedback, testing, and documentation.</p>
+
+                <h2>Phases of the Software Development Life Cycle</h2>
+                <p>While different engineering organizations adapt the framework to fit their team size, most projects move through seven core phases:</p>
+
+                <h3>1. Planning</h3>
+                <p>In the planning phase, project managers and lead engineers establish the project scope, objectives, budget, timeline, and resource allocations. Planning establishes clear boundaries to prevent <em>scope creep</em>—the tendency for a project to continually expand beyond its original goals.</p>
+                <p>Planning involves collaboration with <strong>stakeholders</strong>—anyone who affects or is affected by the application. Stakeholders include end users, clients, software developers, domain experts, and business analysts.</p>
+
+                <h3>2. Defining Requirements</h3>
+                <p>Before designing a solution, engineers must define the program specifications. Requirements define both what the application must do and the constraints it must respect:</p>
+                <ul>
+                    <li><strong>Functional Requirements:</strong> Features and behaviors the application must support (e.g., user authentication, search indexing, or data filtering).</li>
+                    <li><strong>Resource & Platform Requirements:</strong> Hardware requirements, operating system compatibility, network bandwidth constraints, and required external software libraries.</li>
+                </ul>
+
+                <h3>3. Design & Prototyping</h3>
+                <p>The design phase determines <em>how</em> the software will meet its requirements without writing final production code. Key elements include:</p>
+                <ul>
+                    <li><strong>System Architecture:</strong> Selecting programming languages, frameworks, data structures, and overall system design patterns.</li>
+                    <li><strong>User Interface (UI) & User Experience (UX):</strong> Designing layout mockups and defining how users interact with the program and receive output.</li>
+                    <li><strong>Security & Communication Protocols:</strong> Establishing data encryption standards (SSL/TLS), password hashing, and network protocols.</li>
+                    <li><strong>Prototyping:</strong> Constructing early, simplified models of the system to gather user feedback before investing heavy development time.</li>
+                </ul>
+
+                <h3>4. Software Development & Documentation</h3>
+                <p>Developers write the source code based on the design specifications. For team projects, programmers use <strong>Version Control Systems (VCS)</strong> like Git to track changes, manage parallel feature branches, resolve code conflicts, and review code collaboratively.</p>
+
+                <blockquote>
+                    <p><strong>AP CSP Essential Knowledge: Program Documentation</strong></p>
+                    <p>Documentation is an essential part of software development. It explains how program logic works and how users should interact with the software. Program documentation includes:</p>
+                    <ul>
+                        <li><strong>Inline Code Comments:</strong> Explanations within source code describing algorithm logic, variable purposes, and function parameters. Comments improve code readability and facilitate maintenance.</li>
+                        <li><strong>User Guides & APIs:</strong> Written technical specifications, onboarding tours, and API documentation for external developers.</li>
+                    </ul>
+                </blockquote>
+
+                <h3>5. Testing & Quality Assurance</h3>
+                <p>Before software reaches users, it must be thoroughly tested to identify logic errors, performance bottlenecks, and security vulnerabilities. Testing involves evaluating various input conditions:</p>
+                <ul>
+                    <li><strong>Normal Cases:</strong> Typical inputs expected during standard usage.</li>
+                    <li><strong>Edge / Boundary Cases:</strong> Inputs at the absolute minimum, maximum, or extreme limits of expected values (e.g., testing empty inputs, zero, or max integer values).</li>
+                    <li><strong>Invalid / Unexpected Inputs:</strong> Testing how the program handles improper data types or malicious input without crashing (robustness).</li>
+                </ul>
+
+                <h3>6. Deployment</h3>
+                <p>In deployment, the completed software is delivered to end users. Deployment can range from automated app store updates and web cloud deployment to complex multi-server infrastructure database migrations.</p>
+
+                <h3>7. Operations & Maintenance</h3>
+                <p>Once deployed, software enters maintenance. Users discover bugs that slipped through quality testing, hardware/OS platforms update, or new user requirements emerge. Customer feedback in the maintenance phase triggers new development cycles for future software patches and feature updates.</p>
+
+                <h2>SDLC Methodologies & Models</h2>
+                <p>Different software engineering projects require different workflows. SDLC models dictate how a team transitions through planning, coding, and testing phases.</p>
+
+                <h3>1. Waterfall Model</h3>
+                <p>The <strong>Waterfall model</strong> is a strict, sequential workflow. Each phase must be 100% completed, reviewed, and approved before the next phase begins. While easy to manage for small projects with rigid, unchanging requirements, Waterfall makes it difficult and costly to make changes once coding has started.</p>
+
+                <h3>2. Agile Methodology</h3>
+                <p>The <strong>Agile methodology</strong> prioritizes flexibility, customer feedback, and continuous delivery. Instead of releasing software all at once, Agile breaks development into short cycles called <em>sprints</em> (typically 1 to 4 weeks). Each sprint produces a functional increment of the software that is tested and reviewed by stakeholders, allowing developers to adapt quickly to changing user needs.</p>
+
+                <h3>3. Iterative & Incremental Development</h3>
+                <p>In an <strong>Iterative model</strong>, developers build a simplified working version of the program first. With each iteration, engineers add features (incremental updates) and refine existing code based on testing and user evaluations until the final system is built.</p>
+
+                <h3>4. DevOps</h3>
+                <p><strong>DevOps</strong> (Development + Operations) integrates software development teams with system administration/operations teams. By automating software building, testing, and continuous deployment (CI/CD pipelines), DevOps reduces time-to-market and improves software stability in production environments.</p>
+
+                <h3>5. Lean Development</h3>
+                <p>Adapted from lean manufacturing principles, <strong>Lean software development</strong> focuses on efficiency by eliminating wasteful practices (e.g., redundant code, unnecessary documentation, delays), optimizing team learning, and delivering user value quickly.</p>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following questions to demonstrate your mastery of software development practices, testing strategies, and project management methodologies.</p>
+                <ol>
+                    <li>Why is software development defined in AP Computer Science Principles as an <em>iterative process</em>? Explain how user feedback influences software design throughout the development lifecycle.</li>
+                    <li>Compare and contrast the <strong>Waterfall</strong> model and the <strong>Agile</strong> framework. In what specific project scenarios would a team select Waterfall over Agile?</li>
+                    <li>A programmer writes code to calculate a student's final percentage grade (<code>0-100%</code>). List three specific test inputs the programmer should use to thoroughly evaluate the program: one <strong>normal case</strong>, one <strong>boundary/edge case</strong>, and one <strong>invalid case</strong>.</li>
+                    <li>Explain why inline code comments and official program documentation are crucial during team-based software development and post-deployment maintenance.</li>
+                    <li>What is the purpose of constructing a software <strong>prototype</strong> during the design phase? Why is catching design flaws during prototyping far less costly than fixing them during development or deployment?</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,231 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP - Learn about user input, program output, program state, state diagrams, coordinate systems, and algorithm tracing.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Input, Output, and Program State | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Input, Output, & State</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <h1>Input, Output, and Program State</h1>
+            </header>
+
+            <div class="lesson-content">
+                <p>Every software application operates on a fundamental loop: receiving data from the outside world, processing that data based on internal rules, and returning results. Understanding how programs handle <strong>input</strong>, generate <strong>output</strong>, and keep track of their internal <strong>state</strong> is core to understanding algorithm execution.</p>
+
+                <h2>Input & Output (I/O)</h2>
+                <img src="img/computer-io.jpg" alt="Computer IO" style="display: block; float: right; width: 400px; object-fit: cover; border-radius: 16px; margin-left: 20px; margin-bottom: 20px;">
+                <p>At its simplest, <strong>input</strong> is any data or signal sent to a program for processing, while <strong>output</strong> is any data or signal produced by the program and delivered to a user or another system.</p>
+
+                <h3>Biological vs. Computing Systems</h3>
+                <p>Human beings rely on sensory inputs—touch, sight, sound, smell, and taste—to perceive their environment and determine intelligent outputs, such as swerving to avoid an obstacle or taking notes during a presentation.</p>
+
+                <p>Computing devices rely on input and output hardware peripherals to interact with physical environments:</p>
+                <ul>
+                    <li><strong>Input Peripherals:</strong> Keyboards, mice, touchscreens, gamepads, cameras, microphones, GPS receivers, accelerometers, and environmental sensors.</li>
+                    <li><strong>Output Peripherals:</strong> Visual displays (monitors/screens), speakers, haptic feedback motors, printers, network cards, and automated actuators.</li>
+                </ul>
+
+                <blockquote>
+                    <p><strong>AP CSP Essential Knowledge: Program Inputs & Events</strong></p>
+                    <p>Program inputs affect the sequence of execution. Inputs can be delivered explicitly by a user (e.g., typing text or clicking a button), continuously through data streams (e.g., sensor readings or network packets), or non-sequentially through <strong>event-driven triggers</strong> (e.g., timer events or user actions).</p>
+                </blockquote>
+
+                <h2>Understanding Program State</h2>
+                <p>In computer science, <strong>state</strong> refers to a complete snapshot of all variable values, data structures, and execution status in a program at any given moment in time.</p>
+
+                <p>While a program's state can change continuously during execution, it can only hold one definitive state at any single instant. In code, state is maintained by <strong>variables</strong>. When an event occurs or an instruction executes, variable values update, transitioning the program into a new state.</p>
+
+                <h3>State Diagrams</h3>
+                <p>Engineers use <strong>state diagrams</strong> to model how a system transitions between finite states in response to inputs or events:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">state_transition.txt</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Diagram</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-plaintext">[ State: Locked Door ] ─── Input: "Unlock Key" ───► [ State: Closed Door ]
+                                                             │
+                                                    Input: "Push Open"
+                                                             │
+                                                             ▼
+                                                    [ State: Open Door ]</code></pre>
+                    </div>
+                </div>
+
+                <p>In game design, a player character's state might be defined by variables like <code>position_x</code>, <code>position_y</code>, <code>health</code>, <code>is_jumping</code>, and <code>direction_facing</code>. An input like pressing the "Jump" key triggers a transition that modifies <code>is_jumping = True</code> and changes the velocity variable.</p>
+
+                <h2>Coordinate Systems in Software & Games</h2>
+                <img src="img/Cartesian-coordinate-system.png" alt="Cartesian Coordinate System"  style="display: block; float: right; width: 400px; object-fit: cover; border-radius: 16px; margin-left: 20px; margin-bottom: 20px;">
+                <p>Tracking spatial state requires a coordinate system. While standard mathematics uses the classic Cartesian plane, graphics and software development often adapt coordinates to fit hardware displays.</p>
+
+                <h3>1. Standard Cartesian Coordinates vs. Screen Coordinates</h3>
+                <p>In standard mathematics, <code>(0, 0)</code> sits in the center of a graph, with positive numbers extending up and right, and negative numbers extending down and left.</p>
+
+                <p>In web development, 2D game design, and screen graphics, coordinate origins are typically positioned at the <strong>top-left corner</strong> <code>(0, 0)</code> of the window or screen canvas:</p>
+                <ul>
+                    <li><strong>X-axis:</strong> Increases as you move <strong>right</strong>.</li>
+                    <li><strong>Y-axis:</strong> Increases as you move <strong>down</strong> (the reverse of standard algebra!).</li>
+                </ul>
+
+                <h3>2. Angles and Orientation State</h3>
+                <p>In addition to position <code>(x, y)</code>, spatial state includes orientation or heading angle:</p>
+                <ul>
+                    <li><code>0°</code> &rarr; Facing Right / East</li>
+                    <li><code>90°</code> &rarr; Facing Up / North (or Down depending on coordinate conventions)</li>
+                    <li><code>180°</code> &rarr; Facing Left / West</li>
+                    <li><code>270°</code> &rarr; Facing Down / South</li>
+                </ul>
+
+                <h3>3. 3D Spatial Systems</h3>
+                <p>3D software adds a third axis (<code>Z</code>). In games like <em>Minecraft</em>, position is defined as <code>(X, Y, Z)</code>, where <code>X</code> and <code>Z</code> represent horizontal movement across the ground, and <code>Y</code> represents elevation (height above bedrock).</p>
+
+                <h2>Tracing Program State: Grid Simulations</h2>
+                <img src="img/RoboRally-Twonky.png" alt="Twonky - Robo Rally" style="display: block; float: left; margin-right: 20px; width: 80px; border-radius: 16px;">
+                <p>A critical skill on the AP CSP exam is <strong>algorithm tracing</strong>—manually tracking variable states line by line or step by step.</p>
+
+                <p>Consider a board game simulation (like <em>RoboRally</em> or a grid-robot problem) where players queue up moves ahead of time. To predict outcomes, you must track state changes after each instruction.</p>
+
+                <h3>State Representation in Code</h3>
+                <p>We can model a robot's state in Python using variables or dictionaries:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">robot_state.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Initial State for Twonky
+robot = {
+    "name": "Twonky",
+    "x": 6,
+    "y": 3,
+    "facing_angle": 270  # Facing South
+}
+
+def move_forward(robot, steps):
+    # Depending on heading, adjust state variables
+    if robot["facing_angle"] == 270:
+        robot["y"] -= steps  # Moving South on standard Cartesian grid
+    elif robot["facing_angle"] == 90:
+        robot["y"] += steps  # Moving North
+
+# Execute Step
+move_forward(robot, 3)
+print(f"New Position: ({robot['x']}, {robot['y']})")  # Output: (6, 0)</code></pre>
+                    </div>
+                </div>
+
+                <h3>Tracing Execution Steps</h3>
+                <p>Evaluating state transitions step by step ensures that complex, multi-turn algorithms execute predictably:</p>
+                <ul>
+                    <li><strong>Initial State:</strong> Hammerbot at <code>(5, 3)</code> facing <code>0&deg;</code>; Twonky at <code>(6, 3)</code> facing <code>270&deg;</code>.</li>
+                    <li><strong>Transition 1 (Twonky moves Forward 3):</strong> Twonky's <code>Y</code>-coordinate decreases by 3. New State: <code>(6, 0)</code>, facing <code>270&deg;</code>.</li>
+                    <li><strong>Transition 2 (Twonky turns Right <code>90&deg;</code>):</strong> Facing angle updates: <code>270&deg; - 90&deg; = 180&deg;</code> (Facing West). Position remains <code>(6, 0)</code>.</li>
+                    <li><strong>Collision / Push Rule:</strong> If Hammerbot moves Forward 1 into <code>(6, 3)</code> before Twonky acts, Hammerbot's movement pushes Twonky to <code>(7, 3)</code>, updating Twonky's state <em>before</em> Twonky's planned turn executes.</li>
+                </ul>
+
+                <img src="img/RoboRally-States-03.jpg" alt="Robo Rally" style="display: block; width: 600px; max-width: 100%; margin: 10px auto; border-radius: 16px;">
+
+                <h2>State Practice</h2>
+                <p>Let's <a href="https://www.abcya.com/games/robot_islands" target="_blank">play a game</a>! Consider the robot's <em>state</em> while you're playing and what different actions would do to its state as the game progresses.</p>
+
+                <h2>Conclusion Questions</h2>
+                <p>Answer the following questions to verify your understanding of inputs, outputs, coordinate systems, and program state tracing.</p>
+                <ol>
+                    <li>Identify two computing devices that use non-traditional hardware inputs (e.g., sensors, biometric scanners) and explain how those inputs are transformed into useful digital outputs.</li>
+                    <li>Explain the main difference between standard mathematical Cartesian coordinates and computer graphics/screen coordinate systems regarding the <code>Y</code>-axis.</li>
+                    <li>Suppose a grid robot starts at position <code>(x=2, y=5)</code> facing East (<code>0&deg;</code>). Trace the robot's state (position and direction) step-by-step through the following instructions:
+                        <ul>
+                            <li>Move Forward 2 units</li>
+                            <li>Turn Left <code>90&deg;</code></li>
+                            <li>Move Forward 3 units</li>
+                        </ul>
+                    </li>
+                    <li>In game development, why is it necessary to track a player's state using multiple variables rather than just a single coordinate? List at least four state variables a game might track for a player character.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

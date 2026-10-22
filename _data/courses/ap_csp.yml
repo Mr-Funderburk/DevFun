@@ -32,6 +32,39 @@ units:
           - "Algorithmic Thinking"
         status: "published"
 
+      - title: "Rubber Ducky Debugging"
+        file: "rubber-ducky.html"
+        description: "Hands on practice with conditional statements in Python."
+        topics:
+          - "Rubber Ducky, You're the One!"
+        status: "published"
+
+      - title: "Pseudocode & Logic"
+        file: "pseudocode-logic.html"
+        description: "Problem-solving strategies, algorithm design, flowcharting, and writing structured pseudocode."
+        topics:
+          - "Pseudocode"
+          - "Flowcharts"
+          - "Logic"
+        status: "coming_soon"
+
+      - title: "Software Development Life Cycle"
+        file: "software-development-life-cycle.html"
+        description: "The Software Development Life Cycle (SDLC), development methodologies like Waterfall and Agile, testing strategies, and documentation standards."
+        topics:
+          - "SDLC"
+          - "Iterative Design"
+        status: "coming_soon"
+
+      - title: "Input, Output, & State"
+        file: "input-output-state.html"
+        description: "User input, program output, program state, state diagrams, coordinate systems, and algorithm tracing."
+        topics:
+          - "Input"
+          - "Output"
+          - "State"
+        status: "coming_soon"
+
   - title: "Python"
     lessons:
       - title: "Variables & Data Types"
@@ -86,13 +119,6 @@ units:
         description: "Hands on practice with conditional statements in Python."
         topics:
           - "Practice"
-        status: "published"
-
-      - title: "Rubber Ducky Debugging"
-        file: "rubber-ducky.html"
-        description: "Hands on practice with conditional statements in Python."
-        topics:
-          - "Rubber Ducky, You're the One!"
         status: "published"
 
       - title: "Strings"
@@ -186,7 +212,7 @@ units:
           - "Searching Collections"
           - "Sorting Collections"
           - "Algorithmic Efficiency"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Python Challenges"
     lessons:

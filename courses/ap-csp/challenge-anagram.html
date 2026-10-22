@@ -1,0 +1,163 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Quantum Encryption: String Manipulation, Case Normalization, and Anagram Validation in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Quantum Encryption | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Quantum Encryption</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Quantum Encryption — Anagram Signal Validator</h1>
+                <p class="lesson-subtitle">Parse delimited transmission pairs, normalize character streams, and verify scrambled signal integrity using boolean logic.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>During deep-space research missions, encrypted telemetry feeds transmit sensitive mission data in paired phrases. To verify signal integrity and prevent data corruption caused by cosmic radiation, the receiving station relies on a <strong>Quantum Anagram Handshake</strong>.</p>
+
+                <p>An <strong>anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once. If the incoming transmission pair is a valid anagram pair, the function confirms signal integrity with a boolean <code>True</code>. If any characters are missing, duplicated, or corrupted, it flags a signal abort with <code>False</code>.</p>
+
+                <p>Your task is to build an automated <strong>Anagram Signal Validator</strong>. Your program will receive a single pipe-delimited telemetry string, clean and normalize both phrases, evaluate if they are exact anagrams, and return the boolean result.</p>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Specifications & Rules:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>anagram_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>anagram_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>check_anagram(signal_data)</code> that accepts one parameter <code>signal_data</code>.</li>
+                        <li><strong>Input String Format:</strong> <code>signal_data</code> is a single pipe-delimited (<code>|</code>) string containing two words or phrases:
+                            <br><code>"StringOne|StringTwo"</code></li>
+                        <li><strong>Validation Specifications:</strong>
+                            <ul>
+                                <li><strong>Case-Insensitive:</strong> Letter comparisons must ignore upper/lowercase differences (e.g., <code>'Listen'</code> and <code>'Silent'</code> match).</li>
+                                <li>Cleanly trim leading/trailing whitespace surrounding the strings before processing.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Return Output Requirements:</strong> Your function must return a boolean value:
+                            <ul>
+                                <li><code>True</code> (if the two strings are valid anagrams)</li>
+                                <li><code>False</code> (if the two strings are NOT valid anagrams)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                
+                <table class="truth-table">
+                    <caption>Test Cases Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Input Telemetry String (<code>signal_data</code>)</th>
+                            <th scope="col">Expected Return Value</th>
+                            <th scope="col">Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Listen|Silent"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Both contain identical letters: <code>e, i, l, n, s, t</code>.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Mike|Mike"</code></td>
+                            <td data-label="Expected Result"><code>False</code></td>
+                            <td>Two strings that are the same are not anagrams.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"STOP|POTS"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Both contain identical letters: <code>s, t, o, p</code>.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Hello|World"</code></td>
+                            <td data-label="Expected Result"><code>False</code></td>
+                            <td>Letter compositions do not match.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Test Your Code Locally</h3>
+                <p>Copy and paste the test harness below into the bottom of your Python file to run automated checks against the sample inputs:</p>
+
+                <div class="code-window">
+                    <pre><code class="language-python">if __name__ == "__main__":
+    sample_tests = [
+        ("Listen|Silent", True),
+        ("Mike|Mike", False),
+        ("STOP|POTS", True),
+        ("Hello|World", False)
+    ]
+
+    print("\n--- RUNNING LOCAL TESTS ---")
+    passed = 0
+    for sample_input, expected in sample_tests:
+        actual = check_anagram(sample_input)
+        if actual == expected:
+            print(f"PASS: '{sample_input}'")
+            passed += 1
+        else:
+            print(f"FAIL: '{sample_input}'\n   Expected: {expected}\n   Got:      {actual}\n")
+            
+    print(f"Result: {passed}/{len(sample_tests)} sample tests passed.\n")</code></pre>
+                </div>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

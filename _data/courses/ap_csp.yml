@@ -264,6 +264,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Anagram"
+        file: "challenge-anagram.html"
+        description: "String Manipulation, Case Normalization, and Anagram Validation in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

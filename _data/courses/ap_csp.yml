@@ -46,7 +46,7 @@ units:
           - "Pseudocode"
           - "Flowcharts"
           - "Logic"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Software Development Life Cycle"
         file: "software-development-life-cycle.html"
@@ -54,7 +54,7 @@ units:
         topics:
           - "SDLC"
           - "Iterative Design"
-        status: "coming_soon"
+        status: "published"
 
       - title: "Input, Output, & State"
         file: "input-output-state.html"
@@ -270,7 +270,7 @@ units:
         description: "String Manipulation, Case Normalization, and Anagram Validation in Python."
         topics:
           - "Challenge"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

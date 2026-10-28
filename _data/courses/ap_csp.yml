@@ -63,7 +63,7 @@ units:
           - "Input"
           - "Output"
           - "State"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Python"
     lessons:

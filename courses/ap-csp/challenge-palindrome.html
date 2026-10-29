@@ -1,0 +1,194 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - String Normalization, Slicing, and Mirror Echo Validation in Python.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Weekly Challenge: Deep Space Telemetry | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Deep Space Telemetry</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Deep Space Telemetry — Symmetric Echo Validator</h1>
+                <p class="lesson-subtitle">Parse laser telemetry streams, eliminate spacing artifacts, and verify bi-directional mirror symmetry in planetary signals.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>Deep-space exploration probes transmit laser telemetry signals back to Earth across millions of miles. To verify that laser communication pulses are not distorted by solar radiation or space dust, receiving stations employ a <strong>Symmetric Mirror Echo Protocol</strong>.</p>
+
+                <p>A sequence is considered a valid <strong>palindrome</strong> if it reads identically forward and backward (e.g., <code>"Madam"</code>, <code>"123321"</code>, or <code>"$a3*3A$"</code>). Space interference often introduces random spaces or capitalization shifts into the optical link; therefore, your validator must normalize signals before checking for symmetry.</p>
+
+                <p>Your task is to build an automated <strong>Symmetric Echo Validator</strong>. Your software must accept a sequence argument, strip out space padding, ignore case differences, evaluate bi-directional symmetry, and return a boolean status.</p>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Naming & Coding Specifications:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>palindrome_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>palindrome_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>palindrome(msg)</code> that accepts one parameter: <code>msg</code> (a string containing letters, numbers, or symbols).</li>
+                        <li><strong>Return Output Requirement:</strong> Your function must return a boolean value:
+                            <ul>
+                                <li><code>True</code></li>
+                                <li><code>False</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+                
+                <table class="truth-table">
+                    <caption>Test Cases Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Input Sequence (<code>msg</code>)</th>
+                            <th scope="col">Expected Return Value</th>
+                            <th scope="col">Validation Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Madam"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Reads as <code>"madam"</code> forward and backward.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"AbBa"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Normalized: <code>"abba"</code>. Symmetric match.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"123321"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Numeric sequence reads identically reversed.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"$a3*3A$"</code></td>
+                            <td data-label="Expected Result"><code>True</code></td>
+                            <td>Normalized: <code>"$a3*3a$"</code>. Symbols and numbers are symmetric.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"Kangaroo"</code></td>
+                            <td data-label="Expected Result"><code>False</code></td>
+                            <td><code>"kangaroo"</code> &ne; <code>"ooragnak"</code>.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"$!(OK)!$"</code></td>
+                            <td data-label="Expected Result"><code>False</code></td>
+                            <td>Symbols match, but inner <code>"ok"</code> &ne; <code>"ko"</code>.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>"abAB"</code></td>
+                            <td data-label="Expected Result"><code>False</code></td>
+                            <td>Normalized: <code>"abab"</code> &ne; <code>"baba"</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Test Your Code Locally</h3>
+                <p>Copy and paste the test harness below into the bottom of your Python file to run automated checks against the sample inputs:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">challenge-palindrome.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">if __name__ == "__main__":
+    sample_tests = [
+        ("Madam", True),
+        ("AbBa", True),
+        ("123321", True),
+        ("$a3*3A$", True),
+        ("Kangaroo", False),
+        ("$!(OK)!$", False),
+        ("abAB", False)
+    ]
+
+    print("\n--- RUNNING LOCAL TESTS ---")
+    passed = 0
+    for sample_input, expected in sample_tests:
+        actual = palindrome(sample_input)
+        if actual == expected:
+            print(f"PASS: '{sample_input}'")
+            passed += 1
+        else:
+            print(f"FAIL: '{sample_input}'\n   Expected: {expected}\n   Got:      {actual}\n")
+            
+    print(f"Result: {passed}/{len(sample_tests)} sample tests passed.\n")</code></pre>
+                </div>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

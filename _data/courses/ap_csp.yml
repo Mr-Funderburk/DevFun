@@ -271,6 +271,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Palindrome"
+        file: "challenge-palindrome.html"
+        description: "String Normalization, Slicing, and Mirror Echo Validation in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

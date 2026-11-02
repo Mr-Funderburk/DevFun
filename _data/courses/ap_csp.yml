@@ -277,7 +277,7 @@ units:
         description: "String Normalization, Slicing, and Mirror Echo Validation in Python."
         topics:
           - "Challenge"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

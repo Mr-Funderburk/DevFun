@@ -212,7 +212,7 @@ units:
           - "Searching Collections"
           - "Sorting Collections"
           - "Algorithmic Efficiency"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Python Challenges"
     lessons:

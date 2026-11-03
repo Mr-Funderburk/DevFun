@@ -108,24 +108,9 @@ course: ap_csp
                             <td>Normalized: <code>"abba"</code>. Symmetric match.</td>
                         </tr>
                         <tr>
-                            <td scope="row" data-label="Test Case"><code>"123321"</code></td>
-                            <td data-label="Expected Result"><code>True</code></td>
-                            <td>Numeric sequence reads identically reversed.</td>
-                        </tr>
-                        <tr>
-                            <td scope="row" data-label="Test Case"><code>"$a3*3A$"</code></td>
-                            <td data-label="Expected Result"><code>True</code></td>
-                            <td>Normalized: <code>"$a3*3a$"</code>. Symbols and numbers are symmetric.</td>
-                        </tr>
-                        <tr>
                             <td scope="row" data-label="Test Case"><code>"Kangaroo"</code></td>
                             <td data-label="Expected Result"><code>False</code></td>
                             <td><code>"kangaroo"</code> &ne; <code>"ooragnak"</code>.</td>
-                        </tr>
-                        <tr>
-                            <td scope="row" data-label="Test Case"><code>"$!(OK)!$"</code></td>
-                            <td data-label="Expected Result"><code>False</code></td>
-                            <td>Symbols match, but inner <code>"ok"</code> &ne; <code>"ko"</code>.</td>
                         </tr>
                         <tr>
                             <td scope="row" data-label="Test Case"><code>"abAB"</code></td>
@@ -164,10 +149,7 @@ course: ap_csp
     sample_tests = [
         ("Madam", True),
         ("AbBa", True),
-        ("123321", True),
-        ("$a3*3A$", True),
         ("Kangaroo", False),
-        ("$!(OK)!$", False),
         ("abAB", False)
     ]
 

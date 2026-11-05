@@ -221,7 +221,7 @@ units:
           - "Bits"
           - "Bytes"
           - "Base-10 Number System"
-        status: "coming-soon"
+        status: "coming_soon"
         
       - title: "Binary"
         file: "binary.html"
@@ -230,7 +230,7 @@ units:
           - "Binary"
           - "Binary Conversion"
           - "Base-2 Number System"
-        status: "coming-soon"
+        status: "coming_soon"
 
   - title: "Python Challenges"
     lessons:

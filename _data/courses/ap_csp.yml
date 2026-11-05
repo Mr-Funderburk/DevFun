@@ -278,6 +278,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "Euclidian Algorithm"
+        file: "challenge-euclid.html"
+        description: "Iterative Subtraction, Greatest Common Divisor (GCD), and Coprime Frequency Validation in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

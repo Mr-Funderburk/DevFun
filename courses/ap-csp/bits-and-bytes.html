@@ -62,7 +62,7 @@ course: ap_csp
                 <ul>
                     <li><strong>Bit (Binary Digit):</strong> The smallest increment of digital data. A single bit can store only one of two values: <code>0</code> (Off / False) or <code>1</code> (On / True).</li>
                     <li><strong>Nibble:</strong> A group of <strong>4 bits</strong> (half of a byte). Nibbles are frequently used when converting binary values into single hexadecimal digits.</li>
-                    <li><strong>Byte:</strong> A group of <strong>8 bits</strong>. A single byte provides $2^8 = 256$ unique combinations—enough capacity to represent a single ASCII character (such as the letter <code>'h'</code> or the symbol <code>'#'</code>).</li>
+                    <li><strong>Byte:</strong> A group of <strong>8 bits</strong>. A single byte provides <code>2^8 = 256</code> unique combinations—enough capacity to represent a single ASCII character (such as the letter <code>'h'</code> or the symbol <code>'#'</code>).</li>
                 </ul>
 
                 <table class="truth-table">
@@ -84,27 +84,27 @@ course: ap_csp
                         <tr>
                             <td><strong>Nibble</strong></td>
                             <td>4 Bits</td>
-                            <td>$2^4 = 16$ states (0 to 15)</td>
+                            <td><code>2<sup>4</sup> = 16</code> states (0 to 15)</td>
                             <td>One hexadecimal digit (<code>0x0</code> to <code>0xF</code>)</td>
                         </tr>
                         <tr>
                             <td><strong>Byte (B)</strong></td>
                             <td>8 Bits</td>
-                            <td>$2^8 = 256$ states (0 to 255)</td>
+                            <td><code>2<sup>8</sup> = 256</code> states (0 to 255)</td>
                             <td>One plain-text ASCII character</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h2><span class="step-num">2.</span> Measuring Data Storage: Binary vs. Decimal</h2>
-                <p>Because computer architectures are built on powers of 2 ($2^n$), system memory (RAM) and digital storage rely on binary calculations where each standard multiplier increment increases by $2^{10} = 1024$ rather than 1,000.</p>
+                <p>Because computer architectures are built on powers of 2 (2<sup>n</sup>), system memory (RAM) and digital storage rely on binary calculations where each standard multiplier increment increases by 2<sup>10</sup> = 1024 rather than 1,000.</p>
 
                 <table class="truth-table">
                     <thead>
                         <tr>
                             <th>Unit Name</th>
                             <th>Abbreviation</th>
-                            <th>Binary Calculation ($2^n$)</th>
+                            <th>Binary Calculation (2<sup>n</sup>)</th>
                             <th>Total Bytes</th>
                         </tr>
                     </thead>
@@ -112,26 +112,26 @@ course: ap_csp
                         <tr>
                             <td><strong>Kilobyte</strong></td>
                             <td>KB</td>
-                            <td>$1,024 \text{ Bytes}$</td>
-                            <td>$1,024 \text{ Bytes}$</td>
+                            <td><code>1,024 Bytes</code></td>
+                            <td><code>1,024 Bytes</code></td>
                         </tr>
                         <tr>
                             <td><strong>Megabyte</strong></td>
                             <td>MB</td>
-                            <td>$1,024 \text{ KB}$</td>
-                            <td>$1,048,576 \text{ Bytes}$</td>
+                            <td><code>1,024 KB</code></td>
+                            <td><code>1,048,576 Bytes</code></td>
                         </tr>
                         <tr>
                             <td><strong>Gigabyte</strong></td>
                             <td>GB</td>
-                            <td>$1,024 \text{ MB}$</td>
-                            <td>$1,073,741,824 \text{ Bytes}$</td>
+                            <td><code>1,024 MB</code></td>
+                            <td><code>1,073,741,824 Bytes</code></td>
                         </tr>
                         <tr>
                             <td><strong>Terabyte</strong></td>
                             <td>TB</td>
-                            <td>$1,024 \text{ GB}$</td>
-                            <td>$1,099,511,627,776 \text{ Bytes}$</td>
+                            <td><code>1,024 GB</code></td>
+                            <td><code>1,099,511,627,776 Bytes</code></td>
                         </tr>
                     </tbody>
                 </table>
@@ -142,15 +142,17 @@ course: ap_csp
                 <p>This is not a hardware defect—it is caused by a difference in unit definitions between hardware manufacturers and computer operating systems:</p>
 
                 <ul>
-                    <li><strong>Drive Manufacturers (Decimal Standard / Base-10):</strong> Use decimal multipliers ($10^3$). A 10 GB drive is manufactured to hold exactly $10 \times 10^9 = 10,000,000,000 \text{ bytes}$.</li>
-                    <li><strong>Operating Systems (Binary Standard / Base-2):</strong> Calculate gigabytes using binary powers ($2^{30} = 1,073,741,824 \text{ bytes}$).</li>
+                    <li><strong>Drive Manufacturers (Decimal Standard / Base-10):</strong> Use decimal multipliers (10<sup>3</sup>). A 10 GB drive is manufactured to hold exactly 10 &times; 10<sup>9</sup> = 10,000,000,000 bytes.</li>
+                    <li><strong>Operating Systems (Binary Standard / Base-2):</strong> Calculate gigabytes using binary powers (2<sup>30</sup> = 1,073,741,824 bytes).</li>
                 </ul>
 
-                <p>When the operating system evaluates $10,000,000,000 \text{ bytes}$, it divides by the binary standard ($1,073,741,824$):</p>
+                <p>When the operating system evaluates 10,000,000,000 bytes, it divides by the binary standard (1,073,741,824):</p>
 
-                $$\frac{10,000,000,000 \text{ bytes}}{1,073,741,824 \text{ bytes/GB}} \approx 9.31 \text{ GB}$$
+                <blockquote class="code-explanation">
+                    (10,000,000,000 bytes) &divide; (1,073,741,824 bytes/GB) &approx; 9.31 GB
+                </blockquote>
 
-                <h2>3. Critical Distinction: Bits vs. Bytes in Data Transfer</h2>
+                <h2><span class="step-num">3.</span> Critical Distinction: Bits vs. Bytes in Data Transfer</h2>
                 <p>When evaluating network speeds and file transfer rates, capitalization matters!</p>
 
                 <ul>
@@ -164,10 +166,8 @@ course: ap_csp
                     <p><code>3.0 Mbps (Megabits per second) &divide; 8 = 0.375 MBps (Megabytes per second)</code></p>
                 </blockquote>
 
-                <h2><span class="step-num">4.</span> The Language of Computers: Base-10 vs. Base-2</h2>
-
-                <h3>Base-10 (Decimal System)</h3>
-                <p>The human counting system uses 10 distinct digits (<code>0</code> through <code>9</code>). In decimal numbers, each positional column from right to left represents an increasing power of 10 ($10^0, 10^1, 10^2, 10^3, \dots$).</p>
+                <h2><span class="step-num">3.</span> Base-10 (Decimal System)</h2>
+                <p>The human counting system uses 10 distinct digits (<code>0</code> through <code>9</code>). In decimal numbers, each positional column from right to left represents an increasing power of 10 (10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, 10<sup>3</sup>, ...).</p>
 
                 <p>Consider the decimal number <strong>9,047</strong>:</p>
 
@@ -175,10 +175,10 @@ course: ap_csp
                     <thead>
                         <tr>
                             <th>Place Value Column</th>
-                            <th>Thousands ($10^3$)</th>
-                            <th>Hundreds ($10^2$)</th>
-                            <th>Tens ($10^1$)</th>
-                            <th>Ones ($10^0$)</th>
+                            <th>Thousands (10<sup>3</sup>)</th>
+                            <th>Hundreds (10<sup>2</sup>)</th>
+                            <th>Tens (10<sup>1</sup>)</th>
+                            <th>Ones (10<sup>0</sup>)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -198,10 +198,10 @@ course: ap_csp
                         </tr>
                         <tr>
                             <td><strong>Calculated Value</strong></td>
-                            <td>$9 \times 1000 = 9000$</td>
-                            <td>$0 \times 100 = 0$</td>
-                            <td>$4 \times 10 = 40$</td>
-                            <td>$7 \times 1 = 7$</td>
+                            <td>9 &times; 1000 = 9000</td>
+                            <td>0 &times; 100 = 0</td>
+                            <td>4 &times; 10 = 40</td>
+                            <td>7 &times; 1 = 7</td>
                         </tr>
                     </tbody>
                 </table>

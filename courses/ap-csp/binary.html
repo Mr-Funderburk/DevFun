@@ -1,0 +1,340 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Binary Conversion: Base-2 system, Positional Notation, Doubling method, Descending Powers, and Short Division.">
+    <title>Binary Conversions | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Binary Conversions</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Binary &amp; Base Conversion</h1>
+                <p class="lesson-subtitle">Master bidirectional conversions between Base-10 (Decimal) and Base-2 (Binary) using positional weighting, doubling, subtraction, and short division.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <blockquote class="quote">
+                    <p><em>"There are 10 kinds of people in the world: those who understand binary, and those who don't."</em></p>
+                </blockquote>
+
+                <h2><span class="step-num">1.</span> The Base-2 (Binary) System</h2>
+                <p>Binary is a <strong>base-2</strong> positional number system that uses only two digits: <code>0</code> and <code>1</code>. While human decimal arithmetic operates on powers of ten (10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, ...), binary positional values double with each step to the left as increasing powers of two (2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, ...).</p>
+
+                <p>For AP Computer Science Principles, you should memorize the first 8 positional powers of two from right to left:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Exponent (2<sup>n</sup>)</th>
+                            <th>2<sup>7</sup></th>
+                            <th>2<sup>6</sup></th>
+                            <th>2<sup>5</sup></th>
+                            <th>2<sup>4</sup></th>
+                            <th>2<sup>3</sup></th>
+                            <th>2<sup>2</sup></th>
+                            <th>2<sup>1</sup></th>
+                            <th>2<sup>0</sup></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Decimal Value</strong></td>
+                            <td><strong>128</strong></td>
+                            <td><strong>64</strong></td>
+                            <td><strong>32</strong></td>
+                            <td><strong>16</strong></td>
+                            <td><strong>8</strong></td>
+                            <td><strong>4</strong></td>
+                            <td><strong>2</strong></td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>To convert a 4-bit binary nibble like <code>1011</code><sub>2</sub> to decimal, multiply each bit by its positional power of 2 and sum the results:</p>
+
+                <blockquote class="code-explanation">
+                    (1 &times; 2<sup>3</sup>) + (0 &times; 2<sup>2</sup>) + (1 &times; 2<sup>1</sup>) + (1 &times; 2<sup>0</sup>) = 8 + 0 + 2 + 1 = 11<sub>10</sub>
+                </blockquote>
+
+                <h2><span class="step-num">2.</span> Converting Binary to Decimal (Base-2 &rarr; Base-10)</h2>
+
+                <h3>Method A: Positional Notation (Recommended)</h3>
+                <p>Write out the positional powers of two above each bit. Add together the place values of all columns containing a <code>1</code>.</p>
+
+                <p><strong>Example:</strong> Convert the 8-bit binary string <code>1001 1010</code><sub>2</sub> to decimal.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Place Value (2<sup>n</sup>)</th>
+                            <th>128 (2<sup>7</sup>)</th>
+                            <th>64 (2<sup>6</sup>)</th>
+                            <th>32 (2<sup>5</sup>)</th>
+                            <th>16 (2<sup>4</sup>)</th>
+                            <th>8 (2<sup>3</sup>)</th>
+                            <th>4 (2<sup>2</sup>)</th>
+                            <th>2 (2<sup>1</sup>)</th>
+                            <th>1 (2<sup>0</sup>)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Binary Bit</strong></td>
+                            <td><code>1</code></td>
+                            <td><code>0</code></td>
+                            <td><code>0</code></td>
+                            <td><code>1</code></td>
+                            <td><code>1</code></td>
+                            <td><code>0</code></td>
+                            <td><code>1</code></td>
+                            <td><code>0</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Value Added</strong></td>
+                            <td><strong>128</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>16</strong></td>
+                            <td><strong>8</strong></td>
+                            <td>0</td>
+                            <td><strong>2</strong></td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote class="code-explanation">
+                    128 + 16 + 8 + 2 = 154<sub>10</sub>
+                </blockquote>
+
+                <h3>Method B: The Doubling Method</h3>
+                <p>Start from the leftmost bit (Most Significant Bit). Multiply your running total by 2, add the current bit, and repeat for every remaining bit across the string.</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">doubling_method_trace.txt</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Trace</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-text">Target Binary: 10011010
+
+Start total = 0
+Step 1 (Bit 1): (0 * 2) + 1 = 1
+Step 2 (Bit 0): (1 * 2) + 0 = 2
+Step 3 (Bit 0): (2 * 2) + 0 = 4
+Step 4 (Bit 1): (4 * 2) + 1 = 9
+Step 5 (Bit 1): (9 * 2) + 1 = 19
+Step 6 (Bit 0): (19 * 2) + 0 = 38
+Step 7 (Bit 1): (38 * 2) + 1 = 77
+Step 8 (Bit 0): (77 * 2) + 0 = 154
+
+Final Decimal Result = 154</code></pre>
+                    </div>
+                </div>
+
+                <h2><span class="step-num">3.</span> Converting Decimal to Binary (Base-10 &rarr; Base-2)</h2>
+
+                <h3><span class="step-num">Method A:</span> Descending Powers (Subtraction Method)</h3>
+                <p>Find the largest power of two that fits inside your target decimal number. Subtract that power value, place a <code>1</code> in its column, and evaluate the remainder. If a power value is larger than the remaining target, place a <code>0</code> in that column and move to the next smaller power.</p>
+
+                <p><strong>Example:</strong> Convert decimal <strong>205</strong><sub>10</sub> to an 8-bit binary string.</p>
+
+                <ol>
+                    <li>2<sup>8</sup> = 256 is larger than 205, so we start at 2<sup>7</sup> = 128.</li>
+                    <li>205 &ge; 128 &rarr; Place <code>1</code> in 128 column. Remainder: 205 - 128 = 77.</li>
+                    <li>77 &ge; 64 &rarr; Place <code>1</code> in 64 column. Remainder: 77 - 64 = 13.</li>
+                    <li>13 < 32 &rarr; Place <code>0</code> in 32 column. Remainder remains 13.</li>
+                    <li>13 < 16 &rarr; Place <code>0</code> in 16 column. Remainder remains 13.</li>
+                    <li>13 &ge; 8 &rarr; Place <code>1</code> in 8 column. Remainder: 13 - 8 = 5.</li>
+                    <li>5 &ge; 4 &rarr; Place <code>1</code> in 4 column. Remainder: 5 - 4 = 1.</li>
+                    <li>1 < 2 &rarr; Place <code>0</code> in 2 column. Remainder remains 1.</li>
+                    <li>1 &ge; 1 &rarr; Place <code>1</code> in 1 column. Remainder: 1 - 1 = 0.</li>
+                </ol>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Column Power (2<sup>n</sup>)</th>
+                            <th>128</th>
+                            <th>64</th>
+                            <th>32</th>
+                            <th>16</th>
+                            <th>8</th>
+                            <th>4</th>
+                            <th>2</th>
+                            <th>1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Binary Result</strong></td>
+                            <td><code>1</code></td>
+                            <td><code>1</code></td>
+                            <td><code>0</code></td>
+                            <td><code>0</code></td>
+                            <td><code>1</code></td>
+                            <td><code>1</code></td>
+                            <td><code>0</code></td>
+                            <td><code>1</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote class="code-explanation">
+                    205<sub>10</sub> = 1100 1101<sub>2</sub>
+                </blockquote>
+
+                <h3><span class="step-num">Method B:</span> Short Division (Successive Division by 2)</h3>
+                <p>Repeatedly divide your decimal number by 2. Record the integer quotient for the next division step and record the remainder (<code>0</code> or <code>1</code>). The binary result is read <strong>from bottom to top</strong> (the last remainder is the Most Significant Bit).</p>
+
+                <p><strong>Example:</strong> Convert <strong>205</strong><sub>10</sub> using short division.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Division Operation</th>
+                            <th>Integer Quotient</th>
+                            <th>Remainder</th>
+                            <th>Bit Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>205 &div; 2</td>
+                            <td>102</td>
+                            <td><strong>1</strong></td>
+                            <td>Least Significant Bit (LSB - Rightmost)</td>
+                        </tr>
+                        <tr>
+                            <td>102 &div; 2</td>
+                            <td>51</td>
+                            <td><strong>0</strong></td>
+                            <td>Bit 1</td>
+                        </tr>
+                        <tr>
+                            <td>51 &div; 2</td>
+                            <td>25</td>
+                            <td><strong>1</strong></td>
+                            <td>Bit 2</td>
+                        </tr>
+                        <tr>
+                            <td>25 &div; 2</td>
+                            <td>12</td>
+                            <td><strong>1</strong></td>
+                            <td>Bit 3</td>
+                        </tr>
+                        <tr>
+                            <td>12 &div; 2</td>
+                            <td>6</td>
+                            <td><strong>0</strong></td>
+                            <td>Bit 4</td>
+                        </tr>
+                        <tr>
+                            <td>6 &div; 2</td>
+                            <td>3</td>
+                            <td><strong>0</strong></td>
+                            <td>Bit 5</td>
+                        </tr>
+                        <tr>
+                            <td>3 &div; 2</td>
+                            <td>1</td>
+                            <td><strong>1</strong></td>
+                            <td>Bit 6</td>
+                        </tr>
+                        <tr>
+                            <td>1 &div; 2</td>
+                            <td>0</td>
+                            <td><strong>1</strong></td>
+                            <td>Most Significant Bit (MSB - Leftmost)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Reading remainders from bottom to top yields: <code>11001101</code><sub>2</sub>.</p>
+
+                <h2>Conclusion Questions</h2>
+
+                <ol>
+                    <li>Convert the following base-10 (decimal) numbers to 8-bit binary strings formatted as two 4-bit nibbles (e.g., <code>0000 0000</code>):
+                        <ol type="a">
+                            <li><code>46</code></li>
+                            <li><code>8</code></li>
+                            <li><code>213</code></li>
+                            <li><code>194</code></li>
+                        </ol>
+                    </li>
+                    <li>Convert the following binary strings into base-10 decimal numbers:
+                        <ol type="a">
+                            <li><code>0010 1001</code><sub>2</sub></li>
+                            <li><code>1110 0011</code><sub>2</sub></li>
+                            <li><code>0010</code><sub>2</sub></li>
+                            <li><code>1101 1001</code><sub>2</sub></li>
+                        </ol>
+                    </li>
+                    <li>Explain the technical difference between <strong>MB</strong> (Megabyte) and <strong>Mb</strong> (Megabit).</li>
+                    <li>In our previous lesson, we covered storage capacities up to Terabytes (TB). What are the next three higher storage units in computing?</li>
+                </ol>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

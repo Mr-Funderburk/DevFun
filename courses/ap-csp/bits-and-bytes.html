@@ -1,0 +1,228 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Bits & Bytes: Binary representation, data storage units, network transfer speeds, and base-10 vs base-2 number systems.">
+    <title>Bits &amp; Bytes | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Bits &amp; Bytes</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Bits &amp; Bytes</h1>
+                <p class="lesson-subtitle">Explore digital data units, storage capacity calculations, network transmission rates, and positional number systems.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2><span class="step-num">1.</span> Fundamental Units of Data</h2>
+                <p>At the lowest physical level, modern digital computers process information using rapid electrical impulses representing two states: <strong>ON</strong> (high voltage) or <strong>OFF</strong> (low voltage).</p>
+
+                <ul>
+                    <li><strong>Bit (Binary Digit):</strong> The smallest increment of digital data. A single bit can store only one of two values: <code>0</code> (Off / False) or <code>1</code> (On / True).</li>
+                    <li><strong>Nibble:</strong> A group of <strong>4 bits</strong> (half of a byte). Nibbles are frequently used when converting binary values into single hexadecimal digits.</li>
+                    <li><strong>Byte:</strong> A group of <strong>8 bits</strong>. A single byte provides $2^8 = 256$ unique combinations—enough capacity to represent a single ASCII character (such as the letter <code>'h'</code> or the symbol <code>'#'</code>).</li>
+                </ul>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Size</th>
+                            <th>Value Range / Capacity</th>
+                            <th>Common Analogy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bit (b)</strong></td>
+                            <td>1 Binary Digit</td>
+                            <td><code>0</code> or <code>1</code></td>
+                            <td>A single light switch state</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nibble</strong></td>
+                            <td>4 Bits</td>
+                            <td>$2^4 = 16$ states (0 to 15)</td>
+                            <td>One hexadecimal digit (<code>0x0</code> to <code>0xF</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Byte (B)</strong></td>
+                            <td>8 Bits</td>
+                            <td>$2^8 = 256$ states (0 to 255)</td>
+                            <td>One plain-text ASCII character</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2><span class="step-num">2.</span> Measuring Data Storage: Binary vs. Decimal</h2>
+                <p>Because computer architectures are built on powers of 2 ($2^n$), system memory (RAM) and digital storage rely on binary calculations where each standard multiplier increment increases by $2^{10} = 1024$ rather than 1,000.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Unit Name</th>
+                            <th>Abbreviation</th>
+                            <th>Binary Calculation ($2^n$)</th>
+                            <th>Total Bytes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kilobyte</strong></td>
+                            <td>KB</td>
+                            <td>$1,024 \text{ Bytes}$</td>
+                            <td>$1,024 \text{ Bytes}$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Megabyte</strong></td>
+                            <td>MB</td>
+                            <td>$1,024 \text{ KB}$</td>
+                            <td>$1,048,576 \text{ Bytes}$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gigabyte</strong></td>
+                            <td>GB</td>
+                            <td>$1,024 \text{ MB}$</td>
+                            <td>$1,073,741,824 \text{ Bytes}$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Terabyte</strong></td>
+                            <td>TB</td>
+                            <td>$1,024 \text{ GB}$</td>
+                            <td>$1,099,511,627,776 \text{ Bytes}$</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>The Hard Drive Storage Discrepancy</h3>
+                <p>Have you ever plugged in a brand-new 10 GB external hard drive and noticed your operating system reporting only <strong>9.31 GB</strong> of available space?</p>
+
+                <p>This is not a hardware defect—it is caused by a difference in unit definitions between hardware manufacturers and computer operating systems:</p>
+
+                <ul>
+                    <li><strong>Drive Manufacturers (Decimal Standard / Base-10):</strong> Use decimal multipliers ($10^3$). A 10 GB drive is manufactured to hold exactly $10 \times 10^9 = 10,000,000,000 \text{ bytes}$.</li>
+                    <li><strong>Operating Systems (Binary Standard / Base-2):</strong> Calculate gigabytes using binary powers ($2^{30} = 1,073,741,824 \text{ bytes}$).</li>
+                </ul>
+
+                <p>When the operating system evaluates $10,000,000,000 \text{ bytes}$, it divides by the binary standard ($1,073,741,824$):</p>
+
+                $$\frac{10,000,000,000 \text{ bytes}}{1,073,741,824 \text{ bytes/GB}} \approx 9.31 \text{ GB}$$
+
+                <h2>3. Critical Distinction: Bits vs. Bytes in Data Transfer</h2>
+                <p>When evaluating network speeds and file transfer rates, capitalization matters!</p>
+
+                <ul>
+                    <li><strong>Lowercase <code>b</code> = Bits:</strong> Used for data transmission rates over network channels (e.g., <strong>Mbps</strong> = Megabits per second).</li>
+                    <li><strong>Uppercase <code>B</code> = Bytes:</strong> Used for file storage size on disk (e.g., <strong>MBps</strong> = Megabytes per second).</li>
+                </ul>
+
+                <blockquote>
+                    <strong>Real-World Network Conversion Rule</strong>
+                    <p>Because <code>1 Byte = 8 Bits</code>, divide advertised Internet service provider speeds (bits) by <strong>8</strong> to calculate the actual maximum file download speed (bytes):</p>
+                    <p><code>3.0 Mbps (Megabits per second) &divide; 8 = 0.375 MBps (Megabytes per second)</code></p>
+                </blockquote>
+
+                <h2><span class="step-num">4.</span> The Language of Computers: Base-10 vs. Base-2</h2>
+
+                <h3>Base-10 (Decimal System)</h3>
+                <p>The human counting system uses 10 distinct digits (<code>0</code> through <code>9</code>). In decimal numbers, each positional column from right to left represents an increasing power of 10 ($10^0, 10^1, 10^2, 10^3, \dots$).</p>
+
+                <p>Consider the decimal number <strong>9,047</strong>:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Place Value Column</th>
+                            <th>Thousands ($10^3$)</th>
+                            <th>Hundreds ($10^2$)</th>
+                            <th>Tens ($10^1$)</th>
+                            <th>Ones ($10^0$)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Positional Multiplier</strong></td>
+                            <td>1,000</td>
+                            <td>100</td>
+                            <td>10</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Digit</strong></td>
+                            <td><code>9</code></td>
+                            <td><code>0</code></td>
+                            <td><code>4</code></td>
+                            <td><code>7</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Calculated Value</strong></td>
+                            <td>$9 \times 1000 = 9000$</td>
+                            <td>$0 \times 100 = 0$</td>
+                            <td>$4 \times 10 = 40$</td>
+                            <td>$7 \times 1 = 7$</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote class="code-explanation">
+                    Total Value = 9000 + 0 + 40 + 7 = 9,047
+                </blockquote>
+
+                <h2>Conclusion Questions</h2>
+                <ol>
+                    <li>How many individual bits are contained in a 4-byte floating-point number?</li>
+                    <li>If an Internet service provider advertises a download speed of 80 Mbps, what is the maximum speed in Megabytes per second (MBps) you will see when downloading a file?</li>
+                    <li>Why does operating system memory scale in multiples of 1,024 instead of 1,000?</li>
+                </ol>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

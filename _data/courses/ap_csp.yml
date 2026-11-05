@@ -213,6 +213,24 @@ units:
           - "Sorting Collections"
           - "Algorithmic Efficiency"
         status: "published"
+        
+      - title: "Bits & Bytes"
+        file: "bits-and-bytes.html"
+        description: "Binary representation, data storage units, network transfer speeds, and the base-10 number system."
+        topics:
+          - "Bits"
+          - "Bytes"
+          - "Base-10 Number System"
+        status: "coming-soon"
+        
+      - title: "Binary"
+        file: "binary.html"
+        description: "Binary Conversion: Base-2 system, Positional Notation, Doubling method, Descending Powers, and Short Division."
+        topics:
+          - "Binary"
+          - "Binary Conversion"
+          - "Base-2 Number System"
+        status: "coming-soon"
 
   - title: "Python Challenges"
     lessons:

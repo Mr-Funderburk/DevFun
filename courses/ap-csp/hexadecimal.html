@@ -1,0 +1,293 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Hexadecimal & Base-16: Positional conversions, A-F character mappings, real-world applications, and the 4-bit binary nibble shortcut.">
+    <title>Hexadecimal &amp; Base-16 | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Hexadecimal &amp; Base-16</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Hexadecimal &amp; Base-16 Conversions</h1>
+                <p class="lesson-subtitle">Learn how programmers use base-16 notation to represent binary bytes compactly, map digits A through F, and perform fast paper conversions using 4-bit nibbles.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <div style="background: var(--bg-alt, #f0f7ff); border-left: 4px solid #0066cc; padding: 18px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+                    <strong style="color: #004499; display: block; margin-bottom: 4px;">📌 AP CSP Exam Alignment Note</strong>
+                    <p style="margin: 0;">Hexadecimal conversion is <strong>not tested on the AP Computer Science Principles multiple-choice exam</strong> (the College Board exam focuses exclusively on Base-2 Binary and Base-10 Decimal). However, understanding hexadecimal is an essential real-world computer science skill—used daily in web development, memory management, color representation, and low-level debugging.</p>
+                </div>
+
+                <h2>1. Why Hexadecimal? (Base-16)</h2>
+                <p>Working with binary strings like <code>1101011010111100</code><sub>2</sub> is easy for silicon microprocessors, but unwieldy and error-prone for human software engineers. Reading a string of 32 ones and zeros leads to frequent visual mistakes.</p>
+
+                <p><strong>Hexadecimal (Base-16)</strong> acts as a human-friendly shorthand for binary. Because $16 = 2^4$, exactly <strong>one hexadecimal digit represents four binary bits (one nibble)</strong>. A full 8-bit byte ($00000000_2$ to $11111111_2$) can be written concisely as just <strong>two hexadecimal digits</strong> ($00_{16}$ to $FF_{16}$).</p>
+
+                <h2>2. The Characters: Why A through F?</h2>
+                <p>Decimal uses 10 symbols (<code>0</code>–<code>9</code>). Binary uses 2 symbols (<code>0</code>–<code>1</code>). Hexadecimal requires <strong>16 distinct symbols</strong> to represent place values 0 through 15 in a single positional column.</p>
+
+                <p>Why can't we just write "10" for ten? <strong>Ambiguity!</strong> If you write the string <code>1015</code> in Hex, does that mean:</p>
+                <ul>
+                    <li>The number <code>10</code> followed by the number <code>15</code>?</li>
+                    <li>Or four separate digits: <code>1</code>, <code>0</code>, <code>1</code>, and <code>5</code>?</li>
+                </ul>
+
+                <p>To avoid confusion and guarantee every place value is a single character, computer scientists use the capital letters <strong>A through F</strong> for values 10 through 15:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Symbol</th>
+                            <th>Decimal Equivalent</th>
+                            <th>4-Bit Binary (Nibble)</th>
+                            <th>Hex Symbol</th>
+                            <th>Decimal Equivalent</th>
+                            <th>4-Bit Binary (Nibble)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>0</code></td><td>0</td><td><code>0000</code></td><td><code>8</code></td><td>8</td><td><code>1000</code></td></tr>
+                        <tr><td><code>1</code></td><td>1</td><td><code>0001</code></td><td><code>9</code></td><td>9</td><td><code>1001</code></td></tr>
+                        <tr><td><code>2</code></td><td>2</td><td><code>0010</code></td><td><code>A</code></td><td>10</td><td><code>1010</code></td></tr>
+                        <tr><td><code>3</code></td><td>3</td><td><code>0011</code></td><td><code>B</code></td><td>11</td><td><code>1011</code></td></tr>
+                        <tr><td><code>4</code></td><td>4</td><td><code>0100</code></td><td><code>C</code></td><td>12</td><td><code>1100</code></td></tr>
+                        <tr><td><code>5</code></td><td>5</td><td><code>0101</code></td><td><code>D</code></td><td>13</td><td><code>1101</code></td></tr>
+                        <tr><td><code>6</code></td><td>6</td><td><code>0110</code></td><td><code>E</code></td><td>14</td><td><code>1110</code></td></tr>
+                        <tr><td><code>7</code></td><td>7</td><td><code>0111</code></td><td><code>F</code></td><td>15</td><td><code>1111</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h2>3. Standard Mathematical Base-16 Conversion</h2>
+                <p>Like decimal and binary, hexadecimal uses positional powers ($16^0 = 1, 16^1 = 16, 16^2 = 256, 16^3 = 4096$).</p>
+
+                <h3>Converting Hex to Decimal (Base-16 &rarr; Base-10)</h3>
+                <p>Multiply each hex character by its positional power of 16 and sum the totals.</p>
+
+                <p><strong>Example:</strong> Convert Hex <code>2F</code><sub>16</sub> to Decimal:</p>
+
+                <div style="text-align: center; font-family: 'Fira Code', monospace; font-size: 1.05em; font-weight: 600; padding: 14px; background: var(--bg-alt, #f8f9fa); border-radius: 6px; margin: 16px 0; border: 1px solid var(--border-color, #e1e4e8);">
+                    (2 &times; 16<sup>1</sup>) + (F &times; 16<sup>0</sup>) = (2 &times; 16) + (15 &times; 1) = 32 + 15 = 47<sub>10</sub>
+                </div>
+
+                <h3>Converting Decimal to Hex (Base-10 &rarr; Base-16)</h3>
+                <p>Divide the decimal number by 16. The integer quotient continues to the next division step, while the remainder gives the current Hex digit.</p>
+
+                <p><strong>Example:</strong> Convert Decimal <code>205</code><sub>10</sub> to Hex:</p>
+
+                <ol>
+                    <li>$205 \div 16 = 12$ with a remainder of <strong>13</strong>.</li>
+                    <li>Quotient <code>12</code> maps to Hex symbol <strong><code>C</code></strong>.</li>
+                    <li>Remainder <code>13</code> maps to Hex symbol <strong><code>D</code></strong>.</li>
+                    <li>Result: <code>CD</code><sub>16</sub>.</li>
+                </ol>
+
+                <h2>4. The Human Shortcut: Using Binary as a Bridge</h2>
+                <p>Calculating large powers of 16 ($16^2 = 256, 16^3 = 4096$) mentally or on paper is slow. Because $1 \text{ Hex Digit} = 4 \text{ Binary Bits}$, you can use <strong>Binary as a bridge</strong> for fast, error-free conversions!</p>
+
+                <div style="background: var(--card-bg, #ffffff); border: 2px solid #0066cc; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                    <h3 style="margin-top: 0; color: #0066cc;">🌉 The Binary Bridge Rule</h3>
+                    <p style="margin-bottom: 0;"><strong>Every Hexadecimal digit converts directly to a 4-bit Binary Nibble (and vice versa).</strong></p>
+                </div>
+
+                <h3>Shortcut 1: Hex &rarr; Binary &rarr; Decimal</h3>
+                <p>Convert Hex <code>B4</code><sub>16</sub> to Decimal using the Binary Bridge:</p>
+
+                <ol>
+                    <li>Split Hex <code>B4</code> into two separate digits: <code>B</code> and <code>4</code>.</li>
+                    <li>Convert each digit into a 4-bit nibble using <code>[8, 4, 2, 1]</code> weighting:
+                        <ul>
+                            <li><code>B</code> (11) = <code>1011</code></li>
+                            <li><code>4</code> (4) = <code>0100</code></li>
+                        </ul>
+                    </li>
+                    <li>Combine the nibbles into an 8-bit byte: <code>1011 0100</code><sub>2</sub>.</li>
+                    <li>Convert the 8-bit byte to decimal using standard powers of two:
+                        <br><code>128 + 32 + 16 + 4 = 180</code><sub>10</sub>.</li>
+                </ol>
+
+                <h3>Shortcut 2: Decimal &rarr; Binary &rarr; Hex</h3>
+                <p>Convert Decimal <code>205</code><sub>10</sub> to Hex using the Binary Bridge:</p>
+
+                <ol>
+                    <li>Convert Decimal <code>205</code> to an 8-bit binary byte: <code>1100 1101</code><sub>2</sub>.</li>
+                    <li>Split the byte into two 4-bit nibbles:
+                        <ul>
+                            <li>Left Nibble: <code>1100</code></li>
+                            <li>Right Nibble: <code>1101</code></li>
+                        </ul>
+                    </li>
+                    <li>Convert each nibble independently:
+                        <ul>
+                            <li><code>1100</code> = 8 + 4 = 12 &rarr; <strong><code>C</code></strong></li>
+                            <li><code>1101</code> = 8 + 4 + 1 = 13 &rarr; <strong><code>D</code></strong></li>
+                        </ul>
+                    </li>
+                    <li>Combine the characters: <strong><code>CD</code><sub>16</sub></strong>.</li>
+                </ol>
+
+                <h2>5. Real-World Applications of Hexadecimal</h2>
+
+                <h3>A. HTML &amp; CSS Web Color Codes (RGB)</h3>
+                <p>In web design, colors are expressed as 6-digit Hex codes starting with a hash symbol (<code>#RRGGBB</code>). The six digits represent three 8-bit channels (Red, Green, Blue), allowing for $256 \times 256 \times 256 = 16.7 \text{ million}$ unique colors:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Color Code</th>
+                            <th>Red Channel (<code>RR</code>)</th>
+                            <th>Green Channel (<code>GG</code>)</th>
+                            <th>Blue Channel (<code>BB</code>)</th>
+                            <th>Resulting Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>#FF0000</code></td>
+                            <td><code>FF</code> (255 - Max)</td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><span style="display:inline-block; width:16px; height:16px; background:#FF0000; border-radius:3px; vertical-align:middle; margin-right:6px;"></span> Pure Red</td>
+                        </tr>
+                        <tr>
+                            <td><code>#00FF00</code></td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><code>FF</code> (255 - Max)</td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><span style="display:inline-block; width:16px; height:16px; background:#00FF00; border-radius:3px; vertical-align:middle; margin-right:6px;"></span> Pure Green</td>
+                        </tr>
+                        <tr>
+                            <td><code>#0000FF</code></td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><code>00</code> (0 - Off)</td>
+                            <td><code>FF</code> (255 - Max)</td>
+                            <td><span style="display:inline-block; width:16px; height:16px; background:#0000FF; border-radius:3px; vertical-align:middle; margin-right:6px;"></span> Pure Blue</td>
+                        </tr>
+                        <tr>
+                            <td><code>#FFFFFF</code></td>
+                            <td><code>FF</code> (255)</td>
+                            <td><code>FF</code> (255)</td>
+                            <td><code>FF</code> (255)</td>
+                            <td><span style="display:inline-block; width:16px; height:16px; background:#FFFFFF; border:1px solid #ccc; border-radius:3px; vertical-align:middle; margin-right:6px;"></span> Pure White</td>
+                        </tr>
+                        <tr>
+                            <td><code>#000000</code></td>
+                            <td><code>00</code> (0)</td>
+                            <td><code>00</code> (0)</td>
+                            <td><code>00</code> (0)</td>
+                            <td><span style="display:inline-block; width:16px; height:16px; background:#000000; border-radius:3px; vertical-align:middle; margin-right:6px;"></span> Pure Black</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>B. Programming &amp; Memory Notation (`0x`)</h3>
+                <p>In Python, C++, Java, and low-level assembly, hexadecimal literals are written with a <code>0x</code> prefix to prevent ambiguity with decimal numbers:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">hex_notation.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Python automatically evaluates 0x hex prefix to integer decimal values
+hex_val = 0xFF
+print(hex_val)  # Prints: 255
+
+memory_address = 0x7FFF
+print(f"Memory Address: {memory_address}")  # Prints: 32767
+
+# Convert decimal to hex string in Python:
+print(hex(180))  # Output: '0xb4'</code></pre>
+                    </div>
+                </div>
+
+                <h2>Check Your Understanding</h2>
+
+                <ol>
+                    <li>Why are the characters A through F used in hexadecimal instead of two-digit numbers 10 through 15?</li>
+                    <li>Convert the following 8-bit binary strings to Hexadecimal using the 4-bit nibble method:
+                        <ol type="a">
+                            <li><code>1010 0111</code><sub>2</sub></li>
+                            <li><code>0011 1100</code><sub>2</sub></li>
+                            <li><code>1111 0001</code><sub>2</sub></li>
+                        </ol>
+                    </li>
+                    <li>Convert the following Hexadecimal values directly to 8-bit Binary:
+                        <ol type="a">
+                            <li><code>3E</code><sub>16</sub></li>
+                            <li><code>A9</code><sub>16</sub></li>
+                            <li><code>7B</code><sub>16</sub></li>
+                        </ol>
+                    </li>
+                    <li>In CSS, what color is represented by the hexadecimal string <code>#000000</code>? What about <code>#FFFFFF</code>?</li>
+                    <li>Convert decimal <code>154</code><sub>10</sub> to hexadecimal using the Binary Bridge method.</li>
+                </ol>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

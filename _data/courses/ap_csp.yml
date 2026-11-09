@@ -231,6 +231,16 @@ units:
           - "Binary Conversion"
           - "Base-2 Number System"
         status: "published"
+        
+      - title: "Hexadecimal"
+        file: "hexadecimal.html"
+        description: "Hexadecimal & Base-16: Positional conversions, A-F character mappings, real-world applications, and the 4-bit binary nibble shortcut."
+        topics:
+          - "Hexadecimal"
+          - "Hexadecimal Conversion"
+          - "Base-16 Number System"
+          - "Binary Nibble Shortcut"
+        status: "coming_soon"
 
   - title: "Python Challenges"
     lessons:

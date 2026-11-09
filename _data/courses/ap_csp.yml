@@ -241,6 +241,15 @@ units:
           - "Base-16 Number System"
           - "Binary Nibble Shortcut"
         status: "coming_soon"
+        
+      - title: "Octal"
+        file: "octal.html"
+        description: "Octal & Base-8: Positional conversions, 3-bit binary chunking, Unix file permissions, and Python octal notation."
+        topics:
+          - "Octal"
+          - "Octal Conversion"
+          - "Base-8 Number System"
+        status: "coming_soon"
 
   - title: "Python Challenges"
     lessons:

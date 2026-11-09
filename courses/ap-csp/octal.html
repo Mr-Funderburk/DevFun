@@ -1,0 +1,251 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Octal & Base-8: Positional conversions, 3-bit binary chunking, Unix file permissions, and Python octal notation.">
+    <title>Octal &amp; Base-8 | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Octal &amp; Base-8</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Octal &amp; Base-8 Conversions</h1>
+                <p class="lesson-subtitle">Explore the Base-8 number system, master 3-bit binary chunking shortcuts, and learn how octal powers Unix system file permissions.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <blockquote>
+                    <strong>AP CSP Exam Alignment Note</strong>
+                    <p>Like Hexadecimal, Octal is <strong>not tested on the AP Computer Science Principles exam</strong>. However, base-8 provides an ideal bridge for understanding how positional number systems work and is heavily used in operating systems for configuring security permissions.</p>
+                </blockquote>
+
+                <h2><span class="step-num">1.</span> What is Octal? (Base-8)</h2>
+                <p><strong>Octal</strong> is a <strong>Base-8</strong> positional number system that uses eight distinct symbols: <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, and <code>7</code>.</p>
+
+                <p>Unlike Hexadecimal (Base-16), Octal <strong>does not require letter characters (A-F)</strong>. Because the maximum single-column digit in Base-8 is <code>7</code>, every octal position fits comfortably within standard single-digit decimal numbers!</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Octal Digit</th>
+                            <th>Decimal Equivalent</th>
+                            <th>3-Bit Binary Representation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>0</code></td><td>0</td><td><code>000</code></td></tr>
+                        <tr><td><code>1</code></td><td>1</td><td><code>001</code></td></tr>
+                        <tr><td><code>2</code></td><td>2</td><td><code>010</code></td></tr>
+                        <tr><td><code>3</code></td><td>3</td><td><code>011</code></td></tr>
+                        <tr><td><code>4</code></td><td>4</td><td><code>100</code></td></tr>
+                        <tr><td><code>5</code></td><td>5</td><td><code>101</code></td></tr>
+                        <tr><td><code>6</code></td><td>6</td><td><code>110</code></td></tr>
+                        <tr><td><code>7</code></td><td>7</td><td><code>111</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h2><span class="step-num">2.</span> Standard Base-8 Mathematical Conversions</h2>
+                <p>Octal positional values increase right-to-left as powers of eight (8<sup>0</sup> = 1, 8<sup>1</sup> = 8, 8<sup>2</sup> = 64, 8<sup>3</sup> = 512).</p>
+
+                <h3>Converting Octal to Decimal (Base-8 &rarr; Base-10)</h3>
+                <p>Multiply each octal digit by its positional power of 8 and sum the totals.</p>
+
+                <p><strong>Example:</strong> Convert Octal <code>357</code><sub>8</sub> to Decimal:</p>
+
+                <blockquote>
+                    (3 &times; 8<sup>2</sup>) + (5 &times; 8<sup>1</sup>) + (7 &times; 8<sup>0</sup>) = (3 &times; 64) + (5 &times; 8) + (7 &times; 1) = 192 + 40 + 7 = 239<sub>10</sub>
+                </blockquote>
+
+                <h3>Converting Decimal to Octal (Base-10 &rarr; Base-8)</h3>
+                <p>Repeatedly divide the decimal number by 8. Record the remainder for each step and write the remainders from <strong>bottom to top</strong>.</p>
+
+                <p><strong>Example:</strong> Convert Decimal <code>205</code><sub>10</sub> to Octal:</p>
+
+                <ol>
+                    <li>205 &divide; 8 = 25 with a remainder of <strong>5</strong> (Least Significant Digit - rightmost).</li>
+                    <li>25 &divide; 8 = 3 with a remainder of <strong>1</strong>.</li>
+                    <li>3 &divide; 8 = 0 with a remainder of <strong>3</strong> (Most Significant Digit - leftmost).</li>
+                </ol>
+
+                <blockquote>
+                    Reading remainders bottom-to-top yields: 315<sub>8</sub>
+                </blockquote>
+
+                <h2><span class="step-num">3.</span> The Human Shortcut: The 3-Bit Binary Bridge</h2>
+                <p>Because 8 = 2<sup>3</sup>, exactly <strong>one octal digit corresponds to three binary bits</strong>. Instead of performing long division by 8, you can use 3-bit binary chunks to convert quickly on paper!</p>
+
+                <blockquote>
+                    <h3>The 3-Bit Binary Bridge Rule</h3>
+                    <p><strong>Hexadecimal uses 4-bit nibbles (2<sup>4</sup> = 16). Octal uses 3-bit chunks (2<sup>3</sup> = 8).</strong></p>
+                </blockquote>
+
+                <h3><span class="step-num">Shortcut 1:</span> Octal &rarr; Binary &rarr; Decimal</h3>
+                <p>Convert Octal <code>315</code><sub>8</sub> to Decimal using the Binary Bridge:</p>
+
+                <ol>
+                    <li>Split Octal <code>315</code> into individual digits: <code>3</code>, <code>1</code>, and <code>5</code>.</li>
+                    <li>Convert each digit into a 3-bit binary chunk using <code>[4, 2, 1]</code> weighting:
+                        <ul>
+                            <li><code>3</code> (2 + 1) = <code>011</code></li>
+                            <li><code>1</code> (1) = <code>001</code></li>
+                            <li><code>5</code> (4 + 1) = <code>101</code></li>
+                        </ul>
+                    </li>
+                    <li>Combine the 3-bit chunks: <code>011 001 101</code><sub>2</sub> (or <code>11001101</code><sub>2</sub>).</li>
+                    <li>Convert the 8-bit binary string to decimal:
+                        <br><code>128 + 64 + 8 + 4 + 1 = 205</code><sub>10</sub>.</li>
+                </ol>
+
+                <h3><span class="step-num">Shortcut 2:</span> Decimal &rarr; Binary &rarr; Octal</h3>
+                <p>Convert Decimal <code>180</code><sub>10</sub> to Octal using the Binary Bridge:</p>
+
+                <ol>
+                    <li>Convert Decimal <code>180</code> to binary: <code>1011 0100</code><sub>2</sub>.</li>
+                    <li>Group the binary bits into <strong>chunks of 3 starting from the right</strong> (add leading zeros on the left if necessary):
+                        <br><code>010</code> | <code>110</code> | <code>100</code></li>
+                    <li>Convert each 3-bit chunk independently using <code>[4, 2, 1]</code> weighting:
+                        <ul>
+                            <li><code>010</code> = 2 &rarr; <strong><code>2</code></strong></li>
+                            <li><code>110</code> = 4 + 2 = 6 &rarr; <strong><code>6</code></strong></li>
+                            <li><code>100</code> = 4 &rarr; <strong><code>4</code></strong></li>
+                        </ul>
+                    </li>
+                    <li>Combine the digits: <strong><code>264</code><sub>8</sub></strong>.</li>
+                </ol>
+
+                <h2><span class="step-num">4.</span> Real-World Application: Unix File Permissions</h2>
+                <p>The most famous application of octal numbers in modern software development is configuring file security permissions on Linux and macOS operating systems (via the <code>chmod</code> command).</p>
+
+                <p>Every file in Unix has three security permission groups: <strong>User (Owner)</strong>, <strong>Group</strong>, and <strong>Others</strong>. Each group is assigned three binary flag bits: <strong>Read (r)</strong>, <strong>Write (w)</strong>, and <strong>Execute (x)</strong>.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Permission Flag</th>
+                            <th>Binary Weight</th>
+                            <th>Bit Active Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Read (r)</strong></td><td>2<sup>2</sup> = 4</td><td><code>100</code><sub>2</sub> = 4</td></tr>
+                        <tr><td><strong>Write (w)</strong></td><td>2<sup>1</sup> = 2</td><td><code>010</code><sub>2</sub> = 2</td></tr>
+                        <tr><td><strong>Execute (x)</strong></td><td>2<sup>0</sup> = 1</td><td><code>001</code><sub>2</sub> = 1</td></tr>
+                    </tbody>
+                </table>
+
+                <p>Because each permission category is exactly 3 bits, it maps perfectly to a single <strong>Octal Digit (0 through 7)</strong>!</p>
+
+                <blockquote>
+                    <p><strong>Example:</strong> <code>chmod 755 script.sh</code></p>
+                    <ul>
+                        <li><strong>User (Owner) = 7 (<code>rwx</code>):</strong> 4 + 2 + 1 = 7 &rarr; Read, Write, and Execute permitted.</li>
+                        <li><strong>Group = 5 (<code>r-x</code>):</strong> 4 + 0 + 1 = 5 &rarr; Read and Execute permitted (No Write).</li>
+                        <li><strong>Others = 5 (<code>r-x</code>):</strong> 4 + 0 + 1 = 5 &rarr; Read and Execute permitted (No Write).</li>
+                    </ul>
+                </blockquote>
+
+                <h2><span class="step-num">5.</span> Octal Notation in Python (`0o`)</h2>
+                <p>In Python, octal integer literals are designated using a <code>0o</code> (zero + lowercase 'o') prefix:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">octal_notation.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python"># Python automatically evaluates 0o octal prefix to integer decimal values
+oct_val = 0o357
+print(oct_val)  # Prints: 239
+
+# Convert decimal to octal string in Python:
+print(oct(205))  # Output: '0o315'
+
+# Verify 3-bit binary representation:
+print(bin(0o755))  # Output: '0b111101101'</code></pre>
+                    </div>
+                </div>
+
+                <h2>Conclusion Questions</h2>
+
+                <ol>
+                    <li>Why does the Octal number system use digits 0-7 without needing letter symbols like Hexadecimal?</li>
+                    <li>How many binary bits are represented by a single Octal digit? How many are represented by a Hexadecimal digit?</li>
+                    <li>Convert the following 3-bit chunked binary strings directly to Octal:
+                        <ol type="a">
+                            <li><code>101 110</code><sub>2</sub></li>
+                            <li><code>001 011 111</code><sub>2</sub></li>
+                            <li><code>111 000 100</code><sub>2</sub></li>
+                        </ol>
+                    </li>
+                    <li>In Linux/Unix file permissions, if a file has permissions set to <code>chmod 644</code>, what permissions do the Owner, Group, and Others have? <em>(Hint: Break down digits 6, 4, and 4 into Read/Write/Execute bits)</em>.</li>
+                    <li>Convert Octal <code>246</code><sub>8</sub> to Decimal using the Binary Bridge method.</li>
+                </ol>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

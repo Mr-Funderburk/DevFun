@@ -57,18 +57,18 @@ course: ap_csp
 
             <div class="lesson-content">
 
-                <div style="background: var(--bg-alt, #f0f7ff); border-left: 4px solid #0066cc; padding: 18px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
-                    <strong style="color: #004499; display: block; margin-bottom: 4px;">📌 AP CSP Exam Alignment Note</strong>
-                    <p style="margin: 0;">Hexadecimal conversion is <strong>not tested on the AP Computer Science Principles multiple-choice exam</strong> (the College Board exam focuses exclusively on Base-2 Binary and Base-10 Decimal). However, understanding hexadecimal is an essential real-world computer science skill—used daily in web development, memory management, color representation, and low-level debugging.</p>
-                </div>
+                <blockquote>
+                    <strong>AP CSP Exam Alignment Note</strong>
+                    <p>Hexadecimal conversion is <strong>not tested on the AP Computer Science Principles multiple-choice exam</strong> (the College Board exam focuses exclusively on Base-2 Binary and Base-10 Decimal). However, understanding hexadecimal is an essential real-world computer science skill—used daily in web development, memory management, color representation, and low-level debugging.</p>
+                </blockquote>
 
-                <h2>1. Why Hexadecimal? (Base-16)</h2>
+                <h2><span class="step-num">1.</span> Why Hexadecimal? (Base-16)</h2>
                 <p>Working with binary strings like <code>1101011010111100</code><sub>2</sub> is easy for silicon microprocessors, but unwieldy and error-prone for human software engineers. Reading a string of 32 ones and zeros leads to frequent visual mistakes.</p>
 
-                <p><strong>Hexadecimal (Base-16)</strong> acts as a human-friendly shorthand for binary. Because $16 = 2^4$, exactly <strong>one hexadecimal digit represents four binary bits (one nibble)</strong>. A full 8-bit byte ($00000000_2$ to $11111111_2$) can be written concisely as just <strong>two hexadecimal digits</strong> ($00_{16}$ to $FF_{16}$).</p>
+                <p><strong>Hexadecimal (Base-16)</strong> acts as a human-friendly shorthand for binary. Because 16 = 2<sup>4</sup>, exactly <strong>one hexadecimal digit represents four binary bits (one nibble)</strong>. A full 8-bit byte (<code>00000000<sub>2</sub></code> to <code>11111111<sub>2</sub></code>) can be written concisely as just <strong>two hexadecimal digits</strong> (00<sub>16</sub> to FF<sub>16</sub>).</p>
 
-                <h2>2. The Characters: Why A through F?</h2>
-                <p>Decimal uses 10 symbols (<code>0</code>–<code>9</code>). Binary uses 2 symbols (<code>0</code>–<code>1</code>). Hexadecimal requires <strong>16 distinct symbols</strong> to represent place values 0 through 15 in a single positional column.</p>
+                <h2><span class="step-num">2.</span> The Characters: Why A through F?</h2>
+                <p>Decimal uses 10 symbols (<code>0</code>-<code>9</code>). Binary uses 2 symbols (<code>0</code>-<code>1</code>). Hexadecimal requires <strong>16 distinct symbols</strong> to represent place values 0 through 15 in a single positional column.</p>
 
                 <p>Why can't we just write "10" for ten? <strong>Ambiguity!</strong> If you write the string <code>1015</code> in Hex, does that mean:</p>
                 <ul>
@@ -101,17 +101,17 @@ course: ap_csp
                     </tbody>
                 </table>
 
-                <h2>3. Standard Mathematical Base-16 Conversion</h2>
-                <p>Like decimal and binary, hexadecimal uses positional powers ($16^0 = 1, 16^1 = 16, 16^2 = 256, 16^3 = 4096$).</p>
+                <h2><span class="step-num">3.</span> Standard Mathematical Base-16 Conversion</h2>
+                <p>Like decimal and binary, hexadecimal uses positional powers (16<sup>0</sup> = 1, 16<sup>1</sup> = 16, 16<sup>2</sup> = 256, 16<sup>3</sup> = 4096).</p>
 
                 <h3>Converting Hex to Decimal (Base-16 &rarr; Base-10)</h3>
                 <p>Multiply each hex character by its positional power of 16 and sum the totals.</p>
 
                 <p><strong>Example:</strong> Convert Hex <code>2F</code><sub>16</sub> to Decimal:</p>
 
-                <div style="text-align: center; font-family: 'Fira Code', monospace; font-size: 1.05em; font-weight: 600; padding: 14px; background: var(--bg-alt, #f8f9fa); border-radius: 6px; margin: 16px 0; border: 1px solid var(--border-color, #e1e4e8);">
+                <blockquote>
                     (2 &times; 16<sup>1</sup>) + (F &times; 16<sup>0</sup>) = (2 &times; 16) + (15 &times; 1) = 32 + 15 = 47<sub>10</sub>
-                </div>
+                </blockquote>
 
                 <h3>Converting Decimal to Hex (Base-10 &rarr; Base-16)</h3>
                 <p>Divide the decimal number by 16. The integer quotient continues to the next division step, while the remainder gives the current Hex digit.</p>
@@ -119,21 +119,21 @@ course: ap_csp
                 <p><strong>Example:</strong> Convert Decimal <code>205</code><sub>10</sub> to Hex:</p>
 
                 <ol>
-                    <li>$205 \div 16 = 12$ with a remainder of <strong>13</strong>.</li>
+                    <li>205 &divide; 16 = 12 with a remainder of <strong>13</strong>.</li>
                     <li>Quotient <code>12</code> maps to Hex symbol <strong><code>C</code></strong>.</li>
                     <li>Remainder <code>13</code> maps to Hex symbol <strong><code>D</code></strong>.</li>
                     <li>Result: <code>CD</code><sub>16</sub>.</li>
                 </ol>
 
-                <h2>4. The Human Shortcut: Using Binary as a Bridge</h2>
-                <p>Calculating large powers of 16 ($16^2 = 256, 16^3 = 4096$) mentally or on paper is slow. Because $1 \text{ Hex Digit} = 4 \text{ Binary Bits}$, you can use <strong>Binary as a bridge</strong> for fast, error-free conversions!</p>
+                <h2><span class="step-num">4.</span> The Human Shortcut: Using Binary as a Bridge</h2>
+                <p>Calculating large powers of 16 (16<sup>2</sup> = 256, 16<sup>3</sup> = 4096) mentally or on paper is slow. Because 1 Hex Digit = 4 Binary Bits, you can use <strong>Binary as a bridge</strong> for fast, error-free conversions!</p>
 
-                <div style="background: var(--card-bg, #ffffff); border: 2px solid #0066cc; border-radius: 8px; padding: 20px; margin: 20px 0;">
-                    <h3 style="margin-top: 0; color: #0066cc;">🌉 The Binary Bridge Rule</h3>
-                    <p style="margin-bottom: 0;"><strong>Every Hexadecimal digit converts directly to a 4-bit Binary Nibble (and vice versa).</strong></p>
+                <blockquote>
+                    <h3 >The Binary Bridge Rule</h3>
+                    <p><strong>Every Hexadecimal digit converts directly to a 4-bit Binary Nibble (and vice versa).</strong></p>
                 </div>
 
-                <h3>Shortcut 1: Hex &rarr; Binary &rarr; Decimal</h3>
+                <h3><span class="step-num">Shortcut 1:</span> Hex &rarr; Binary &rarr; Decimal</h3>
                 <p>Convert Hex <code>B4</code><sub>16</sub> to Decimal using the Binary Bridge:</p>
 
                 <ol>
@@ -149,7 +149,7 @@ course: ap_csp
                         <br><code>128 + 32 + 16 + 4 = 180</code><sub>10</sub>.</li>
                 </ol>
 
-                <h3>Shortcut 2: Decimal &rarr; Binary &rarr; Hex</h3>
+                <h3><span class="step-num">Shortcut 2:</span> Decimal &rarr; Binary &rarr; Hex</h3>
                 <p>Convert Decimal <code>205</code><sub>10</sub> to Hex using the Binary Bridge:</p>
 
                 <ol>
@@ -169,10 +169,10 @@ course: ap_csp
                     <li>Combine the characters: <strong><code>CD</code><sub>16</sub></strong>.</li>
                 </ol>
 
-                <h2>5. Real-World Applications of Hexadecimal</h2>
+                <h2><span class="step-num">5.</span> Real-World Applications of Hexadecimal</h2>
 
-                <h3>A. HTML &amp; CSS Web Color Codes (RGB)</h3>
-                <p>In web design, colors are expressed as 6-digit Hex codes starting with a hash symbol (<code>#RRGGBB</code>). The six digits represent three 8-bit channels (Red, Green, Blue), allowing for $256 \times 256 \times 256 = 16.7 \text{ million}$ unique colors:</p>
+                <h3><span class="step-num">A.</span> HTML &amp; CSS Web Color Codes (RGB)</h3>
+                <p>In web design, colors are expressed as 6-digit Hex codes starting with a hash symbol (<code>#RRGGBB</code>). The six digits represent three 8-bit channels (Red, Green, Blue), allowing for <code>256 &times; 256 &times; 256 = 16.7 million</code> unique colors:</p>
 
                 <table class="truth-table">
                     <thead>
@@ -223,7 +223,7 @@ course: ap_csp
                     </tbody>
                 </table>
 
-                <h3>B. Programming &amp; Memory Notation (`0x`)</h3>
+                <h3><span class="step-num">B.</span> Programming &amp; Memory Notation (`0x`)</h3>
                 <p>In Python, C++, Java, and low-level assembly, hexadecimal literals are written with a <code>0x</code> prefix to prevent ambiguity with decimal numbers:</p>
 
                 <div class="code-window">
@@ -260,7 +260,7 @@ print(hex(180))  # Output: '0xb4'</code></pre>
                     </div>
                 </div>
 
-                <h2>Check Your Understanding</h2>
+                <h2>Conclusion Questions</h2>
 
                 <ol>
                     <li>Why are the characters A through F used in hexadecimal instead of two-digit numbers 10 through 15?</li>

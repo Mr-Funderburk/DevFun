@@ -230,7 +230,7 @@ units:
           - "Binary"
           - "Binary Conversion"
           - "Base-2 Number System"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Python Challenges"
     lessons:

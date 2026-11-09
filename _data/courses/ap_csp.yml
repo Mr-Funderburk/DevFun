@@ -221,7 +221,7 @@ units:
           - "Bits"
           - "Bytes"
           - "Base-10 Number System"
-        status: "coming_soon"
+        status: "published"
         
       - title: "Binary"
         file: "binary.html"
@@ -302,7 +302,7 @@ units:
         description: "Iterative Subtraction, Greatest Common Divisor (GCD), and Coprime Frequency Validation in Python."
         topics:
           - "Challenge"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Create PT Prep"
     lessons:

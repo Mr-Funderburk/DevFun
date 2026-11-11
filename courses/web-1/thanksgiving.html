@@ -1,0 +1,245 @@
+---
+course: web_1
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development 1 - Project: Build an interactive, single-page Thanksgiving web page showcasing Flexbox/Grid layouts, custom fonts, absolute positioning, and anchor navigation.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+    
+    <title>Project: Thanksgiving Single-Page Showcase | Web Development 1</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">Web Dev 1</a>
+                    <span class="separator">/</span>
+                    <span>Project: Thanksgiving Showcase</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Project: Thanksgiving Single-Page Showcase</h1>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Project Overview</h2>
+                <p>In this project, you will design and build a responsive, single-page website themed around <strong>Thanksgiving</strong>. This project synthesizes key layout and positioning skills: custom font styling, CSS Grid/Flexbox container alignment, absolute element positioning, and in-page anchor smooth scrolling.</p>
+
+                <blockquote class="code-explanation">
+                    <h4>Two Recommended Ideas for Extra Sections</h4>
+                    <p>In addition to <strong>History</strong> and <strong>Traditions</strong>, your page must feature two additional content sections. Here are two section concepts tailored for custom styling:</p>
+                    <ul>
+                        <li><strong>1. The Thanksgiving Feast &amp; Recipe Corner:</strong> A grid of favorite dishes (Turkey, Stuffing, Pumpkin Pie) featuring ingredient tables, custom image cards, and absolute-positioned "Family Favorite" badges.</li>
+                        <li><strong>2. The Gratitude Board:</strong> A collection of styled note cards or quotes displaying things, people, or events you are thankful for this year, formatted using Flexbox or Grid.</li>
+                    </ul>
+                </blockquote>
+
+                <h2>Core Required Web Page Sections</h2>
+                <p>Your single-page layout must contain a sticky header navigation bar that smooth-scrolls to four distinct section IDs:</p>
+
+                <ol>
+                    <li><strong>History of Thanksgiving:</strong> Background on the origins of the holiday, historical details, and at least one absolute link to an external source (e.g., History Channel or encyclopedia) opening in a new tab.</li>
+                    <li><strong>Family or General Traditions:</strong> Details on annual activities, parades, touch football games, or morning prep routines.</li>
+                    <li><strong>The Thanksgiving Feast (Section Idea 1):</strong> Styled grid or list layout showcasing signature holiday foods, recipes, or menu cards.</li>
+                    <li><strong>The Gratitude Board (Section Idea 2):</strong> Styled card wall highlighting things you are thankful for.</li>
+                </ol>
+
+                <h2>Grading Benchmark &amp; Requirements</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <caption>Thanksgiving Project Evaluation Rubric</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Requirement</th>
+                                <th scope="col">Baseline ("B" Grade)</th>
+                                <th scope="col">Excellence ("A" Grade)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Page Structure</th>
+                                <td>Single-page HTML document containing all 4 required sections with valid semantic tags.</td>
+                                <td>Advanced semantic markup with clean section IDs and smooth intra-page scrolling (<code>html { scroll-behavior: smooth; }</code>).</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Layout Systems</th>
+                                <td>Uses standard Flexbox or Grid for at least 2 sections.</td>
+                                <td>Combines CSS Grid for multi-column bento/card sections and Flexbox for sticky navigation and footer elements.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Typography &amp; Fonts</th>
+                                <td>Custom font stack applied via standard CSS system fonts.</td>
+                                <td>Imports and applies custom Google Fonts (e.g., <em>Playfair Display</em> for headers, <em>Inter</em> for body text).</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CSS Positioning</th>
+                                <td>Uses basic <code>position: sticky</code> or <code>position: relative</code>.</td>
+                                <td>Implements at least one floating badge using <code>position: absolute;</code> anchored relative to its parent container (<code>position: relative;</code>).</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Hyperlinks</th>
+                                <td>Internal anchor links in navigation bar.</td>
+                                <td>Internal anchor links plus at least one external absolute link with <code>target="_blank"</code> and <code>rel="noopener noreferrer"</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Project Folder Structure</h2>
+                <p>Organize your project files inside a dedicated folder before zipping for submission:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">folder-structure</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Directory</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-markdown">thanksgiving-project/
+├── index.html            (Main single-page HTML document)
+├── css/
+│   └── style.css         (Custom stylesheet)
+└── images/
+    ├── hero-turkey.jpg   (Banner image)
+    ├── history.jpg      (Historical section image)
+    └── pie.jpg          (Feast section image)</code></pre>
+                    </div>
+                </div>
+
+                <h2>Technical Code Snippet Examples</h2>
+                
+                <h3>1. In-Page Anchor Links (Internal Hyperlinks)</h3>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">anchor-links.html</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">HTML</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-html">&lt;!-- Navigation Bar Anchor Links --&gt;
+&lt;nav&gt;
+    &lt;a href="#history"&gt;History&lt;/a&gt;
+    &lt;a href="#traditions"&gt;Traditions&lt;/a&gt;
+    &lt;a href="#feast"&gt;The Feast&lt;/a&gt;
+    &lt;a href="#gratitude"&gt;Gratitude&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Target Section --&gt;
+&lt;section id="feast"&gt;
+    &lt;h2&gt;The Thanksgiving Feast&lt;/h2&gt;
+&lt;/section&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h3>2. Absolute Positioning Overlay Badge</h3>
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">absolute-badge.css</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">CSS</span>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-css">/* Parent container must be relative */
+.food-card {
+    position: relative;
+    background-color: #271c19;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Floating child badge placed with absolute positioning */
+.badge-favorite {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background-color: #ea580c;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+}</code></pre>
+                    </div>
+                </div>
+
+                <h2>Submission Checklist</h2>
+                <ol>
+                    <li>Single <code>index.html</code> file with functioning anchor navigation linking to all 4 required sections.</li>
+                    <li>External Google Font imported in the <code>&lt;head&gt;</code> and applied in <code>css/style.css</code>.</li>
+                    <li>At least one image or element styled with <code>position: absolute;</code> inside a <code>position: relative;</code> parent.</li>
+                    <li>At least one absolute external hyperlink opening in a new window using <code>target="_blank"</code>.</li>
+                    <li>All images stored locally in an <code>images/</code> folder and referenced using correct relative paths.</li>
+                    <li>Zip the <code>thanksgiving-project/</code> directory and submit via the portal.</li>
+                </ol>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

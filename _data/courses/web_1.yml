@@ -154,7 +154,7 @@ units:
         description: "Build an interactive, single-page Thanksgiving web page showcasing Flexbox/Grid layouts, custom fonts, absolute positioning, and anchor navigation."
         topics:
           - "Thankgiving Project"
-        status: "coming_soon"
+        status: "published"
         
   - title: "Challenges"
     lessons:

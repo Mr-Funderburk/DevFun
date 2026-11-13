@@ -240,7 +240,7 @@ units:
           - "Hexadecimal Conversion"
           - "Base-16 Number System"
           - "Binary Nibble Shortcut"
-        status: "coming_soon"
+        status: "published"
         
       - title: "Octal"
         file: "octal.html"
@@ -249,7 +249,7 @@ units:
           - "Octal"
           - "Octal Conversion"
           - "Base-8 Number System"
-        status: "coming_soon"
+        status: "published"
 
   - title: "Python Challenges"
     lessons:

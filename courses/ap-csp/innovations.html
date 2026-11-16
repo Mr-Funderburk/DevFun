@@ -1,0 +1,160 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - Computing Innovations: Software-driven problem solving, data transformation vs. collection devices, and societal impact.">
+    <title>Computing Innovations | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Computing Innovations</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>Computing Innovations</h1>
+                <p class="lesson-subtitle">Examine how software-driven technologies consume, process, and transform data to reshape society, culture, and industry.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <h2><span class="step-num">1.</span> What is a Computing Innovation?</h2>
+                <p>A <strong>computing innovation</strong> refers to the creation and application of novel ideas, technologies, and approaches within the field of computing. It involves developing new algorithms, software systems, hardware architectures, and computational methodologies to solve complex problems, improve efficiency, and drive advancements across various domains.</p>
+
+                <p>The single most important rule for identifying a computing innovation is:</p>
+
+                <blockquote>
+                    <strong>Core Requirement</strong>
+                    <p>A computing innovation <strong>must include a program (software/code) as an integral part of its function</strong>. Physical tools or machines that operate without executing code (such as a standard mechanical bicycle or a traditional analog thermometer) are <em>not</em> computing innovations.</p>
+                </blockquote>
+
+                <p>Computing innovations take many forms, including:</p>
+                <ul>
+                    <li><strong>Software &amp; Applications:</strong> Navigation apps (Waze, Google Maps), streaming recommendation engines, and generative AI models.</li>
+                    <li><strong>Physical Hardware with Embedded Code:</strong> Autonomous vehicles, smart insulin pumps, drones, and robotic surgical systems.</li>
+                    <li><strong>Digital Concepts &amp; Protocols:</strong> E-commerce platforms, encrypted messaging protocols, and cloud computing architectures.</li>
+                </ul>
+
+                <h2><span class="step-num">2.</span> Data vs. Data Collection Devices</h2>
+                <p>Every computing innovation works by consuming, producing, or transforming <strong>data</strong>. On the AP Computer Science Principles exam, you must clearly distinguish between the <strong>data itself</strong> and the <strong>hardware device</strong> used to capture or display it.</p>
+
+                <p>Fundamental data types include <strong>numbers</strong>, <strong>boolean values</strong>, <strong>text</strong>, and <strong>signals</strong>. Data can also be inferred or complex representations of these types, such as audio, video, images, fingerprints, temperature readings, or geographic coordinates.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Actual Data (Input / Output)</th>
+                            <th>Collection or Output Device (NOT Data)</th>
+                            <th>Example Transformation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Audio / Sound Waves</strong> (Signals)</td>
+                            <td>Microphone / Speaker</td>
+                            <td>Voice assistant converts audio signals into text commands.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Images / Video Frames</strong> (Pixels)</td>
+                            <td>Camera / Optical Sensor / Monitor</td>
+                            <td>Facial recognition scans pixel arrays to return a boolean match (<code>True</code>/<code>False</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temperature / Speed</strong> (Numbers)</td>
+                            <td>Thermometer / Accelerometer / GPS Chip</td>
+                            <td>Smart thermostat compares room temperature numbers against a target threshold.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Text / Characters</strong> (Strings)</td>
+                            <td>Keyboard / Touchscreen</td>
+                            <td>Translation software transforms English text strings into Spanish text strings.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Biometric Patterns</strong> (Fingerprints)</td>
+                            <td>Fingerprint Scanner</td>
+                            <td>Smartphone OS converts ridge patterns into encrypted numerical hashes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2><span class="step-num">3.</span> Societal, Economic, &amp; Cultural Impact</h2>
+                <p>Computing innovations rarely exist in a vacuum. When an innovation is adopted at scale, it creates ripple effects across society:</p>
+                <ul>
+                    <li><strong>Beneficial Effects:</strong> Solving previously intractable problems, increasing accessibility, automating dangerous tasks, or connecting global communities.</li>
+                    <li><strong>Unintended Consequences:</strong> Privacy concerns, algorithmic bias, security vulnerabilities, or economic shifts in the workforce.</li>
+                </ul>
+
+                <h2>Assignment: Computing Innovation Research &amp; Presentation</h2>
+                <p>For this assignment, you will research a computing innovation of your choice and prepare a short presentation for the class.</p>
+
+                <blockquote>
+                    <p><strong>Assignment Requirements &amp; Guidelines</strong></p>
+                    <ul>
+                        <li><strong>Select an Innovation:</strong> Choose a computing innovation that includes a program as an integral part of its function and has had a <strong>meaningful impact on society, economy, or culture</strong>.</li>
+                        <li><strong>Analyze the Data Pipeline:</strong> Your innovation must consume, produce, or transform data. In your write-up and presentation, explicitly identify:
+                            <ul>
+                                <li>The specific <strong>data type(s)</strong> processed (e.g., numbers, booleans, text, signals, images, audio, video, biometric data, etc.).</li>
+                                <li><strong>Input:</strong> What data is processed and how does the innovation collect or consume it? <em>(Remember: sensors, cameras, and keyboards are devices, NOT data!)</em></li>
+                                <li><strong>Output:</strong> How does the innovation use, produce, or transform that data into useful output?</li>
+                            </ul>
+                        </li>
+                        <li><strong>Written Deliverable:</strong> Write a <strong>minimum of two well-written paragraphs</strong> outlining:
+                            <ol>
+                                <li>What the innovation is and <strong>who came up with it</strong> (creator, inventor, or organization).</li>
+                                <li>The <strong>data it processes</strong> (inputs, data types, and outputs/transformations).</li>
+                                <li>How it is <strong>used in everyday society</strong>.</li>
+                                <li>How it has <strong>meaningfully impacted</strong> society, the economy, or culture.</li>
+                            </ol>
+                        </li>
+                        <li><strong>In-Class Presentation:</strong> Be prepared to present your innovation and your findings to the class during our <strong>next class session</strong>.</li>
+                    </ul>
+                </blockquote>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

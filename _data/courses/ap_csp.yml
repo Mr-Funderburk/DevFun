@@ -251,6 +251,30 @@ units:
           - "Base-8 Number System"
         status: "published"
 
+  - title: "Innovations & Pioneers"
+    lessons:
+      - title: "Computing Innovations"
+        file: "innovations.html"
+        description: "Software-driven problem solving, data transformation vs. collection devices, and societal impact."
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Pioneers in CS"
+        file: "pioneers.html"
+        description: "Exploring the mathematicians, engineers, and visionaries who shaped modern computing."
+        topics:
+          - ""
+        status: "coming_soon"
+
+      - title: "The Digital Divide"
+        file: "digital-divide.html"
+        description: "Exploring socioeconomic, geographic, and demographic barriers to computing access, equity, and global influence."
+        topics:
+          - ""
+        status: "coming_soon"
+  
+
   - title: "Python Challenges"
     lessons:
       - title: "Vowel Counter"

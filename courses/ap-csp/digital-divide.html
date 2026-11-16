@@ -1,0 +1,178 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - The Digital Divide: Exploring socioeconomic, geographic, and demographic barriers to computing access, equity, and global influence.">
+    <title>The Digital Divide | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>The Digital Divide</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>The Digital Divide</h1>
+                <p class="lesson-subtitle">Examine how unequal access to computing devices, high-speed internet, and digital literacy impacts equity, opportunity, and global influence.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <blockquote>
+                    <strong>AP CSP Exam Alignment (Big Idea 5: Impact of Computing)</strong>
+                    <p>The <strong>Digital Divide</strong> is an official topic on the AP Computer Science Principles exam (<strong>Topic IOC-1.B</strong>). Multiple-choice questions frequently ask you to identify factors that contribute to the divide, analyze its effects on individuals and communities, and evaluate how different groups can help reduce it.</p>
+                </blockquote>
+
+                <h2><span class="step-num">1.</span> What is the Digital Divide?</h2>
+                <p>The <strong>digital divide</strong> refers to the gap between individuals, households, businesses, and geographic areas that have reliable access to modern computing devices and high-speed Internet, and those that do not.</p>
+
+                <p>While early definitions focused purely on whether someone owned a computer, modern computer science evaluates the digital divide across <strong>three distinct layers</strong>:</p>
+                <ul>
+                    <li><strong>Device &amp; Hardware Access:</strong> Having reliable access to capable computing hardware (laptops, desktops, tablets) rather than relying solely on a shared smartphone with a small screen and limited software capabilities.</li>
+                    <li><strong>Connectivity &amp; Infrastructure:</strong> Having affordable, high-speed broadband internet access capable of supporting video streaming, cloud software, and large downloads.</li>
+                    <li><strong>Digital Literacy &amp; Skills:</strong> Having the education, technical confidence, and accessibility tools needed to effectively evaluate information, protect privacy, and use software productively.</li>
+                </ul>
+
+                <h2><span class="step-num">2.</span> Contributing Factors</h2>
+                <p>Internet and device access varies widely both locally and globally. On the AP CSP exam, these disparities are categorized into three primary characteristics:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Factor Category</th>
+                            <th>How It Creates Barriers</th>
+                            <th>Real-World Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Socioeconomic Status</strong></td>
+                            <td>High costs for monthly broadband subscriptions, data plans, and modern computers prevent low-income households from maintaining consistent connectivity.</td>
+                            <td>A family cannot afford home Wi-Fi or must share a single computer among multiple children for schoolwork.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Geographic Location</strong></td>
+                            <td>Internet Service Providers (ISPs) often avoid building expensive fiber-optic infrastructure in sparsely populated or remote areas due to lower financial returns.</td>
+                            <td>Rural farming towns or developing nations lacking cell towers and broadband cables compared to major urban centers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Demographic &amp; Accessibility Characteristics</strong></td>
+                            <td>Differences in age, education level, language availability, or physical disabilities can limit how easily people can navigate digital platforms.</td>
+                            <td>Websites built without screen-reader support for visually impaired users, or older adults lacking technical training for online banking and healthcare portals.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2><span class="step-num">3.</span> Impact: Equity, Access, &amp; Influence</h2>
+                <p>Because modern society relies on the Internet for essential daily tasks, the digital divide affects both <strong>individuals</strong> and <strong>entire communities</strong>, raising major questions about <strong>equity, access, and influence</strong>:</p>
+
+                <ul>
+                    <li><strong>Education (The "Homework Gap"):</strong> Students without home broadband struggle to complete online assignments, access digital textbooks, or participate in remote learning, placing them at an academic disadvantage.</li>
+                    <li><strong>Economic &amp; Career Mobility:</strong> Most modern job applications, resume portals, and professional training programs exist exclusively online. Without reliable access, job seekers are locked out of employment opportunities.</li>
+                    <li><strong>Healthcare Access:</strong> Telehealth appointments, digital prescription refills, and online medical records require stable high-speed connections, leaving disconnected communities with fewer healthcare options.</li>
+                    <li><strong>Voice &amp; Global Influence:</strong> Communities with limited Internet access are underrepresented in online public discourse, digital journalism, and data sets used to train modern algorithms and AI systems.</li>
+                </ul>
+
+                <blockquote>
+                    <strong>Key AP Exam Concept: Amplification of Inequality</strong>
+                    <p>The digital divide does not just reflect existing social and economic inequalities—it often <strong>amplifies</strong> them. As more essential services move exclusively online, those left offline fall further behind.</p>
+                </blockquote>
+
+                <h2><span class="step-num">4.</span> Who Can Bridge the Digital Divide?</h2>
+                <p>Reducing the digital divide requires coordinated action across three major groups of stakeholders:</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Stakeholder Group</th>
+                            <th>Actions to Reduce the Divide</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Governments &amp; Policymakers</strong></td>
+                            <td>
+                                &bull; Fund public broadband infrastructure grants for rural and underserved regions.<br>
+                                &bull; Provide subsidized internet vouchers for low-income households.<br>
+                                &bull; Equip public libraries and schools with free Wi-Fi and loaner laptops.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Organizations &amp; Corporations</strong></td>
+                            <td>
+                                &bull; Non-profits refurbishing and donating used computers to schools and families.<br>
+                                &bull; Tech companies developing lightweight apps that work on older hardware or low-bandwidth connections.<br>
+                                &bull; Deploying satellite internet constellations to reach remote geographic areas.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Individuals</strong></td>
+                            <td>
+                                &bull; Volunteering to teach digital literacy workshops at local community centers or senior facilities.<br>
+                                &bull; Donating functional older devices to local refurbishment drives.<br>
+                                &bull; Designing accessible software that follows universal accessibility standards.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2><span class="step-num">Assignment:</span> Analyzing &amp; Bridging the Digital Divide</h2>
+                <p>Apply what you have learned about the digital divide by completing the short written response below. Be prepared to discuss your answers with the class.</p>
+
+                <blockquote>
+                    <p><strong>Reflection &amp; Analysis Questions</strong></p>
+                    <ol>
+                        <li><strong>Identify a Barrier:</strong> Choose one specific factor contributing to the digital divide (<em>socioeconomic, geographic, or demographic</em>). Explain in 3&ndash;4 sentences how this barrier limits an individual's access to education, healthcare, or employment.</li>
+                        <li><strong>Local vs. Global Perspective:</strong> Give one example of how the digital divide looks in your own local community (or state) and one example of how it affects a developing region globally.</li>
+                        <li><strong>Actionable Solution:</strong> Propose one realistic initiative that a <strong>government</strong>, an <strong>organization</strong>, or an <strong>individual</strong> could take to narrow the digital divide. Identify which stakeholder group is responsible and explain why their action would be effective.</li>
+                    </ol>
+                </blockquote>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

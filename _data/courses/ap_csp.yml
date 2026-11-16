@@ -257,21 +257,29 @@ units:
         file: "innovations.html"
         description: "Software-driven problem solving, data transformation vs. collection devices, and societal impact."
         topics:
-          - ""
+          - "Innovations"
         status: "coming_soon"
         
       - title: "Pioneers in CS"
         file: "pioneers.html"
         description: "Exploring the mathematicians, engineers, and visionaries who shaped modern computing."
         topics:
-          - ""
+          - "Pioneers"
         status: "coming_soon"
 
       - title: "The Digital Divide"
         file: "digital-divide.html"
         description: "Exploring socioeconomic, geographic, and demographic barriers to computing access, equity, and global influence."
         topics:
-          - ""
+          - "The Digital Divide"
+        status: "coming_soon"
+
+      - title: "The Turing Test"
+        file: "turing-test.html"
+        description: "Exploring the Imitation Game, machine intelligence, Reverse Turing Tests (CAPTCHAs), and modern LLMs."
+        topics:
+          - "Alan Turing"
+          - "Turing Test"
         status: "coming_soon"
   
 

@@ -1,0 +1,154 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Lesson - The Turing Test: Exploring the Imitation Game, machine intelligence, Reverse Turing Tests (CAPTCHAs), and modern LLMs.">
+    <title>The Turing Test | AP CSP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Alan Turing &amp; The Turing Test</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+            
+            <header class="lesson-header">
+                <h1>The Turing Test</h1>
+                <p class="lesson-subtitle">Examine Alan Turing's 1950 benchmark for artificial intelligence, how the "Imitation Game" works, and what it means when machines sound human.</p>
+            </header>
+
+            <div class="lesson-content">
+
+                <blockquote>
+                    <strong>Connection to <em>The Imitation Game</em> &amp; AP CSP</strong>
+                    <p>After breaking the German Enigma cipher during World War II, British mathematician <strong>Alan Turing</strong> turned his attention to a bold new question: <em>Can machines think?</em> His 1950 research paper laid the philosophical and practical foundation for modern Artificial Intelligence and connects directly to <strong>AP CSP Big Idea 5 (Impact of Computing)</strong>.</p>
+                </blockquote>
+
+                <h2><span class="step-num">1.</span> What is the Turing Test?</h2>
+                <p>In 1950, Alan Turing published a landmark paper titled <em>"Computing Machinery and Intelligence."</em> Turing realized that the question <em>"Can machines think?"</em> was too vague to answer scientifically because humans cannot agree on a strict definition of "thinking."</p>
+
+                <p>Instead, Turing proposed replacing that question with a practical behavioral experiment he called <strong>The Imitation Game</strong>—known today as the <strong>Turing Test</strong>.</p>
+
+                <table class="truth-table">
+                    <thead>
+                        <tr>
+                            <th>Participant Role</th>
+                            <th>Identity</th>
+                            <th>Objective in the Test</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Player C: The Interrogator</strong></td>
+                            <td>Human Judge</td>
+                            <td>Chats via text with Players A and B from a separate room and tries to determine which one is human and which one is a machine.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Player A: Witness 1</strong></td>
+                            <td>Computer / AI</td>
+                            <td>Generates text responses designed to convince the Interrogator that it is a real human being.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Player B: Witness 2</strong></td>
+                            <td>Human</td>
+                            <td>Answers naturally to help the Interrogator correctly identify them as the real person.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>How does a machine pass?</strong> According to Turing, if a computer can engage in an unrestricted, text-only conversation and fool the human judge into mistaking it for a human at least as often as a real person does, the machine has demonstrated intelligent behavior.</p>
+
+                <h2><span class="step-num">2.</span> Key Design Rules of the Test</h2>
+                <ul>
+                    <li><strong>Text-Only Interface (Teletype):</strong> All participants communicate strictly through typed text in isolated rooms. This prevents the judge from relying on physical appearance, voice synthesis, or facial expressions, focusing purely on reasoning, language, and knowledge.</li>
+                    <li><strong>Deception &amp; Human Imperfection:</strong> Passing the test doesn't mean answering every question like an encyclopedia—in fact, sounding <em>too</em> robotic gives the AI away! In his 1950 paper, Turing imagined an interrogator asking: <em>"Add 34,957 to 70,764."</em> A smart AI would intentionally pause for 30 seconds before answering—or occasionally make an arithmetic mistake—to mimic human behavior.</li>
+                    <li><strong>The Reverse Turing Test (CAPTCHA):</strong> Every time you click <em>"I am not a robot"</em> or identify traffic lights in a grid before logging into a website, you are taking a <strong>Reverse Turing Test</strong>. A <strong>CAPTCHA</strong> (<em>Completely Automated Public Turing test to tell Computers and Humans Apart</em>) flips the roles: a computer acts as the judge, testing whether <em>you</em> are human.</li>
+                </ul>
+
+                <h2><span class="step-num">3.</span> Has AI Passed the Turing Test?</h2>
+                <p>For over seventy years, passing the Turing Test was considered a major milestone in computer science:</p>
+                <ul>
+                    <li><strong>1966 (ELIZA):</strong> An early chatbot simulated a psychotherapist by rephrasing user statements as questions. It briefly fooled a few users, but quickly broke down when asked questions outside its rigid script.</li>
+                    <li><strong>2020s (Large Language Models):</strong> With the rise of transformer-based Large Language Models (LLMs), controlled three-party Turing Test studies have shown modern AI systems fooling human judges over <strong>50% of the time</strong>—making them statistically indistinguishable from human participants in short text conversations.</li>
+                </ul>
+
+                <blockquote class="quote">
+                    <strong>Critical Thinking: Imitation vs. Understanding</strong>
+                    <p>Modern computer scientists emphasize that passing the Turing Test proves a system can <strong>statistically imitate human language</strong>, not that it possesses consciousness, genuine emotions, or true understanding. LLMs can still hallucinate false facts or reflect biases found in their training data.</p>
+                </blockquote>
+
+                <h2>Interactive Activity: Can You Spot the AI?</h2>
+                <p>Step into the shoes of the <strong>Interrogator</strong>! Use one of the interactive Turing Test platforms below to chat with mystery partners and see if you can reliably distinguish a real human from a modern AI.</p>
+
+                <blockquote>
+                    <p><strong>Choose a Turing Test Simulator:</strong></p>
+                    <ul>
+                        <li><strong>Option 1 — Classic 3-Party Format:</strong> <a href="https://turingtest.live/" target="_blank" rel="noopener noreferrer">Play The Turing Test Live (turingtest.live)</a> &mdash; Interview two witnesses side-by-side (one human, one LLM) and vote on which is which.</li>
+                        <li><strong>Option 2 — 2-Minute Speed Rounds:</strong> <a href="https://humanornot.so/" target="_blank" rel="noopener noreferrer">Play Human or Not (humanornot.so)</a> &mdash; You have 120 seconds to chat with a mystery partner before deciding: Human or Bot?</li>
+                        <li><strong>Option 3 — Solo Training Mode:</strong> <a href="https://play.turinggame.ai/" target="_blank" rel="noopener noreferrer">Play TuringGame (play.turinggame.ai)</a> &mdash; Practice spotting AI cues in focused training rounds.</li>
+                    </ul>
+                </blockquote>
+
+                <h3>Interrogator Strategy Tips</h3>
+                <p>Before you start chatting, think like a computer scientist. What questions are easy for a human to answer naturally, yet awkward or overly formal for an AI?</p>
+                <ul>
+                    <li><strong>Test Current Context &amp; Local Knowledge:</strong> Ask about what happened in school today, local weather, or recent pop-culture memes.</li>
+                    <li><strong>Watch Pacing &amp; Formatting:</strong> Notice punctuation, capitalization, response speed, and whether the partner uses overly polite customer-service phrasing.</li>
+                    <li><strong>Throw a Curveball:</strong> Ask an absurd hypothetical question or use playful sarcasm to see if the partner plays along naturally or over-explains the joke.</li>
+                </ul>
+
+                <h2>Check Your Understanding</h2>
+                <ol>
+                    <li>Why did Alan Turing propose the "Imitation Game" instead of directly trying to answer the question <em>"Can machines think?"</em></li>
+                    <li>In the classic Turing Test, why must the Interrogator communicate with the witnesses strictly through typed text?</li>
+                    <li>What is a <strong>Reverse Turing Test</strong>, and how do websites use it to prevent automated spam or cyberattacks?</li>
+                    <li>After playing at least <strong>three rounds</strong> on one of the Turing Test simulators above, record your win/loss score and describe <strong>two specific clues</strong> that gave away the AI (or tricked you into thinking an AI was human).</li>
+                </ol>
+
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

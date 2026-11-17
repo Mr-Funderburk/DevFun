@@ -258,14 +258,14 @@ units:
         description: "Software-driven problem solving, data transformation vs. collection devices, and societal impact."
         topics:
           - "Innovations"
-        status: "coming_soon"
+        status: "published"
         
       - title: "Pioneers in CS"
         file: "pioneers.html"
         description: "Exploring the mathematicians, engineers, and visionaries who shaped modern computing."
         topics:
           - "Pioneers"
-        status: "coming_soon"
+        status: "published"
 
       - title: "The Digital Divide"
         file: "digital-divide.html"

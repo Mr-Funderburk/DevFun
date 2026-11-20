@@ -273,7 +273,167 @@ units:
         topics:
           - "The Digital Divide"
         status: "coming_soon"
+  
+  - title: "Simulations"
+    lessons:
+      - title: "Simulations"
+        file: ""
+        description: ""
+        topics:
+          - "Net Logo"
+          - "Bridge Building"
+        status: "coming_soon"
+        
+      - title: "Rock, Paper, Scissors"
+        file: ""
+        description: ""
+        topics:
+          - "Project"
+        status: "coming_soon"
+  
+  - title: "Data Compression"
+    lessons:
+      - title: "Data Compression"
+        file: ""
+        description: ""
+        topics:
+          - "Lossy"
+          - "Lossless"
+        status: "coming_soon"
+        
+      - title: "Your Encoding Algorithms"
+        file: ""
+        description: ""
+        topics:
+          - "Run Length Encoding"
+          - "Lossy Encoding"
+        status: "coming_soon"
+        
+      - title: "Creating Art in Python"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Pixel Art"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Image Filters"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
 
+  - title: "Cryptography"
+    lessons:
+      - title: "Privacy & Security"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Hidden in Pixels"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Attacks"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Common Cyber Threats"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Cryptography Research"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Cryptosystem Recreation"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Cryptosystem Creation"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+
+  - title: "Networking & The Internet"
+    lessons:
+      - title: "What is the Internet?"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Network Hardware"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Addressing"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Sequential, Parallel, and Distributed Computing"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Fault Tolerance"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Crowdsourcing"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Copyright"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+
+  - title: "Artificial Intelligence"
+    lessons:
       - title: "The Turing Test"
         file: "turing-test.html"
         description: "Exploring the Imitation Game, machine intelligence, Reverse Turing Tests (CAPTCHAs), and modern LLMs."
@@ -281,7 +441,49 @@ units:
           - "Alan Turing"
           - "Turing Test"
         status: "coming_soon"
-  
+
+      - title: "What is AI?"
+        file: ""
+        description: ""
+        topics:
+          - "AI"
+        status: "coming_soon"
+        
+      - title: "AI for Good"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Computing Bias"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "AI Games"
+        file: ""
+        description: ""
+        topics:
+          - "Moral Machine"
+          - "Quick Draw"
+        status: "coming_soon"
+        
+      - title: "Machine Learning"
+        file: ""
+        description: ""
+        topics:
+          - ""
+        status: "coming_soon"
+        
+      - title: "Tic Tac Toe"
+        file: ""
+        description: ""
+        topics:
+          - "Project"
+        status: "coming_soon"
 
   - title: "Python Challenges"
     lessons:
@@ -354,6 +556,13 @@ units:
         topics:
           - "Challenge"
         status: "published"
+        
+      - title: "DrowLasrever"
+        file: "word-reversal.html"
+        description: "Reverse each word while preserving punctuation, contractions, and capitalization by position in Python."
+        topics:
+          - "Challenge"
+        status: "coming_soon"
 
   - title: "Create PT Prep"
     lessons:

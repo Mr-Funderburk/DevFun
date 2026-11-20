@@ -1,0 +1,175 @@
+---
+course: ap_csp
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AP CSP Weekly Challenge - Word Reversal: Reverse each word while preserving punctuation, contractions, and capitalization by position in Python.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/DevFun/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/DevFun/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/DevFun/img/favicon-16x16.png">
+
+    <title>Weekly Challenge: Word Reversal | AP CSP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/DevFun/css/main.css">
+    <link rel="stylesheet" href="/DevFun/css/code-window.css">
+
+    <script src="/DevFun/js/prism.min.js" defer></script>
+    <script src="/DevFun/js/prism-gml.js" defer></script>
+    <script src="/DevFun/js/code-window.js" defer></script>
+    <script src="/DevFun/js/main.js" defer></script>
+    <script src="/DevFun/js/lesson.js" defer></script>
+</head>
+<body>
+
+    {% include header.html %}
+    {% include lesson-sidebar.html %}
+
+    <main class="container">
+        <article class="lesson-container">
+            <div class="lesson-header-nav">
+                <nav class="breadcrumb">
+                    <a href="/DevFun/index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="/DevFun/index.html#courses">Courses</a>
+                    <span class="separator">/</span>
+                    <a href="index.html">AP CSP</a>
+                    <span class="separator">/</span>
+                    <span>Challenge: Word Reversal</span>
+                </nav>
+
+                <button type="button" class="lesson-sidebar-toggle-btn" id="lessonSidebarToggle" aria-label="Toggle course lessons sidebar" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Lessons</span>
+                </button>
+            </div>
+
+            <header class="lesson-header">
+                <h1>Weekly Challenge: Word Reversal — Reverse Each Word in Place</h1>
+                <p class="lesson-subtitle">Reverse the characters in every word while keeping punctuation, contractions, capitalization, and sentence structure intact.</p>
+            </header>
+
+            <div class="lesson-content">
+                <h2>Introduction</h2>
+                <p>Reversing an entire string from back to front is a classic introductory coding exercise. This challenge takes that concept a step further: instead of flipping the whole sentence backward, your program must <strong>reverse each individual word in place</strong> while keeping the sentence structure intact.</p>
+
+                <p>Your algorithm must follow three core formatting rules:</p>
+                <ol>
+                    <li><strong>Anchor Surrounding Punctuation:</strong> Standard punctuation marks and symbols must remain in their exact original positions rather than shifting to the front of a reversed word (e.g., <code>cool!</code> becomes <code>looc!</code>, and <code>"Nevermore."</code> becomes <code>"Eromreven."</code>).</li>
+                    <li><strong>Reverse Contractions Together:</strong> Apostrophes inside contractions are part of the word and must travel with the letters when reversed (e.g., <code>Don't</code> becomes <code>T'nod</code>).</li>
+                    <li><strong>Preserve Capitalization by Position:</strong> Uppercase and lowercase formatting stays locked to the character index, not the original letter. For example, because <code>Cougar</code> starts with a capital letter at index <code>0</code>, its reversed form is <code>Raguoc</code> (with index <code>0</code> capitalized).</li>
+                </ol>
+
+                <h2>Program Requirements</h2>
+                <blockquote>
+                    <p><strong>Strict Naming &amp; Coding Specifications:</strong></p>
+                    <ul>
+                        <li><strong>File Naming Rule:</strong> Name your Python file <code>word_reversal_lastname.py</code> where <code>lastname</code> is replaced by your official last name (e.g., <code>word_reversal_funderburk.py</code>).</li>
+                        <li><strong>Student Identifier Constant:</strong> Define a global variable near the top of your script:
+                            <br><code>NAME = "Your First and Last Name"</code></li>
+                        <li><strong>Function Signature:</strong> Define a function named <code>word_reversal(msg)</code> that accepts one string parameter: <code>msg</code>.</li>
+                        <li><strong>Output Specifications:</strong>
+                            <ul>
+                                <li>Your function must return a string with each word reversed in its original position.</li>
+                                <li>Preserve the original spacing and keep surrounding punctuation in its original position.</li>
+                                <li>Include apostrophes within contractions when reversing a word, and preserve the capitalization pattern by character index.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h2>Sample Test Cases</h2>
+
+                <table class="truth-table">
+                    <caption>Test Cases Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Function Call Parameters</th>
+                            <th scope="col">Expected Return String</th>
+                            <th scope="col">Algorithmic Reasoning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>word_reversal("Hello world")</code></td>
+                            <td data-label="Expected Result"><code>Olleh dlrow</code></td>
+                            <td>Reverse each word in place; the first character remains uppercase by position.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>word_reversal("Cool, world!")</code></td>
+                            <td data-label="Expected Result"><code>LooC, dlrow!</code></td>
+                            <td>Both punctuation marks stay at their original positions as each word reverses.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row" data-label="Test Case"><code>word_reversal("Don't stop.")</code></td>
+                            <td data-label="Expected Result"><code>T'nod pots.</code></td>
+                            <td>The contraction's apostrophe reverses with its word, and the period stays anchored.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Test Your Code Locally</h3>
+                <p>Copy and paste the test harness below into the bottom of your Python file to run automated checks against the sample inputs:</p>
+
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-left">
+                            <div class="window-dots dots-mac">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="window-filename">word_reversal_lastname.py</span>
+                        </div>
+                        <div class="code-window-right">
+                            <span class="code-lang-badge">Python</span>
+                            <button class="copy-code-btn" type="button" aria-label="Copy code to clipboard">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                </svg>
+                                <span>Copy code</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-window-body">
+                        <pre><code class="language-python">if __name__ == "__main__":
+    sample_tests = [
+        ("Hello world", "Olleh dlrow"),
+        ("Cool, world!", "LooC, dlrow!"),
+        ("Don't stop.", "T'nod pots.")
+    ]
+
+    print("\n--- RUNNING LOCAL TESTS ---")
+    passed = 0
+    for msg, expected in sample_tests:
+        actual = word_reversal(msg)
+        if actual == expected:
+            print(f"PASS for input {msg!r}")
+            passed += 1
+        else:
+            print(f"FAIL for input {msg!r}\n--- Expected ---\n{expected}\n--- Got ---\n{actual}\n")
+
+    print(f"Result: {passed}/{len(sample_tests)} sample tests passed.\n")</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            {% include lesson-nav.html %}
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>
